@@ -13,8 +13,8 @@ chdir("..");
 $commands = array(
 				  'echo $PWD',
 				  'whoami',
-				  'git pull',
 				  'git status',
+				  'git pull',
 				  //'git submodule sync',
 				  //'git submodule update',
 				  //'git submodule status',
