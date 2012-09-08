@@ -37,11 +37,11 @@ foreach($commands AS $command){
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<title>Nottinghack Deployment Script</title>
+	<title>Nottinghack Deployment Script v1.0</title>
 </head>
 <body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
 <pre>
-Nottinghack Deployment Script
+Nottinghack Deployment Script v1.0
 
 <?php echo $output; ?>
 </pre>
