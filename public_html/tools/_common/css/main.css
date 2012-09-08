@@ -1,0 +1,120 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 62.5%;
+	background: #CCCCCC;
+}
+
+.hidden {
+	display: none;	
+}
+
+div#maincontainer {
+	width: 900px;
+	margin: 10px auto;
+	background: #FFFFFF;
+}
+
+h1 {
+	background: #195905 url('../images/logo.gif') no-repeat 815px center;
+	color: #FFFFFF;
+	height: 55px;
+	padding: 20px 0px 20px 10px;
+}
+
+div#content {
+	padding: 10px;
+}
+
+h2 {
+	color: #195905;
+	margin: 0 0 15px 0;
+}
+
+p {
+	font-size: 1.2em;
+	margin: 0 0 10px 0;
+}
+
+
+
+/* Form */
+#content form p {
+	clear: both;
+	padding: 10px 0 0 260px;
+}
+
+#content fieldset {
+	border: none;
+	min-height: 10px;
+}
+
+#content div.fieldset {
+	background: #DCE6D9;
+	margin: 0 0 10px 0;
+	padding: 2em 5px 10px 5px;
+	position: relative;
+}
+
+html>body #content div.fieldset {
+	padding-bottom: 0px;
+}
+
+#content legend span {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	padding: 0;
+	margin: 0;
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #000000;
+}
+
+#content input,
+#content select,
+#content textarea {
+	display: block;
+	float: left;
+	width: 500px;
+	font-size: 1.2em;
+	border: #195905 solid 1px;
+	text-align: left;
+	margin: 0px 0px 5px 0px;
+	padding: 2px;
+}
+
+#content label {
+	clear: left;
+	display: block;
+	float: left;
+	width: 250px;
+	margin: 0px 10px 5px 0px;
+	text-align: right;
+	color: #000000;
+	font-size: 1.2em;
+	padding: 2px 0 0 0;
+}
+
+#content input.radio {
+	width: auto;
+	border: none;
+}
+
+#content input.button {
+	width: auto;
+}
+
+#content input.error {
+	border: #FF0000 solid 1px;
+	background: #FFCDCD;
+}
+
+#content label.error {
+	color: #FF0000;
+	font-weight: bold;
+}

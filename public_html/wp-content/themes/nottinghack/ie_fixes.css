@@ -1,0 +1,29 @@
+/* No Alpha PNGs?  MUst be IE! */
+* html #branding {
+	_behavior: expression( /* IE6 only - transparency with proper handling of relative URLs */
+		this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1],
+		this.style.background = "none",
+		this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ")");
+}
+
+* html #search #s {
+	background: url('images/search_box_ie.jpg') no-repeat;
+	margin-top: -1px;
+}
+
+
+#footer-widget-area ul ul {
+	margin-top: -16px;
+}
+
+#access ul ul {
+	width: 100% !important;
+}
+
+div.front-widget-area {
+	width: 295px;
+}
+
+.home #main {
+	padding-bottom: 40px;
+}

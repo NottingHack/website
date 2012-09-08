@@ -1,0 +1,217 @@
+/* General Styles */
+div.gl-clearer {
+	border-width: 0;
+	clear: both;
+	font-size: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+/* Style all calendars - colours */
+
+div.gl-header {
+	background: #195905;
+	color: #FFFFFF;
+}
+
+div.gl-day {
+	background: #A4BD9C;
+}
+
+div.gl-weekend {
+	background: #5E8B50;
+}
+
+div.gl-empty {
+	background: #D2DECE;
+}
+
+div.gl-event {
+	background: #195905;
+	color: #FFFFFF;
+}
+
+
+
+/* Structure the main calendar */
+div.gl-main-calendar {
+	position: relative;
+	width: 880px;
+	margin: 0 0 10px 0;
+}
+
+div.gl-main-calendar * {
+	margin: 0px;
+	padding: 0px;
+	line-height: normal;
+}
+
+div.gl-main-calendar div.gl-month-header a.gl-month-header {
+	padding: 0 10px 0 10px;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+div.gl-main-calendar div.gl-header,
+div.gl-main-calendar div.gl-day {
+	width: 118px;
+	margin: 1px 2px 2px 1px;
+	float: left;
+	font-size: 0.9em;
+	padding: 0px 2px 0px 2px;
+}
+
+div.gl-main-calendar div.gl-header {
+	font-weight: bold;
+	padding: 3px 2px 3px 2px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+div.gl-main-calendar div.gl-day {
+	height: 100px;
+}
+
+div.gl-main-calendar div.gl-day div.gl-date {
+	text-align: right;
+	margin: 2px;
+	font-size: 0.9em;
+}
+
+/* Events styling */
+div.gl-main-calendar div.gl-event {
+	display: block;
+	margin: 2px;
+	padding: 2px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	overflow: auto;
+	zoom: 1;
+}
+
+div.gl-main-calendar div.gl-event div {
+	display: none;
+}
+
+div.gl-main-calendar div.gl-event div.gl-time {
+	display: block;
+	width: 23px;
+	float: left;
+	font-size: 0.8em;
+	padding: 2px 0 0 0;
+	margin: 0 2px 0 0;
+}
+
+div.gl-main-calendar div.gl-event div.gl-name {
+	display: block;
+	width: 85px;
+	float: left;
+}
+
+/* Event Details */
+div#gl-event-details {
+	width: 240px;
+	height: 140px;
+	border: 1px solid #195905;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background: #FFFFFF;
+	padding: 5px;
+	
+	position: absolute;
+	top: 50px;
+	left: 50px;
+}
+
+div#gl-event-details div.gl-ed-close {
+	width: 15px;
+	padding: 0 3px 0 0;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	text-align: right;
+	font-weight: bold;
+	color: #195905;
+}
+
+div#gl-event-details div.gl-ed-title {
+	padding: 0 20px 0 0;
+	font-weight: bold;
+	color: #195905;
+	font-size: 1.1em;
+}
+
+div#gl-event-details div.gl-ed-desc {
+	margin: 10px 0 0 0;
+}
+
+div#gl-event-details div.gl-ed-link {
+	text-align: right;
+}
+
+/* LITTLE CALENDARS */
+/* Structure the main calendar */
+div.gl-little-calendar {
+	width: 286px;
+	margin: 10px 5px 0px 0px;
+	float: left;
+}
+
+div.gl-little-calendar * {
+	margin: 0px;
+	padding: 0px;
+	line-height: normal;
+}
+
+div.gl-little-calendar div.gl-month-header a.navlinks {
+	display: none;
+}
+
+div.gl-little-calendar div.gl-header,
+div.gl-little-calendar div.gl-day {
+	width: 38px;
+	margin: 1px;
+	float: left;
+	font-size: 0.8em;
+}
+
+div.gl-little-calendar div.gl-header {
+	font-weight: bold;
+	padding: 3px 0px 3px 0px;
+	text-align: center;
+	margin-top: 5px;
+}
+
+div.gl-little-calendar div.gl-header span.gl-day-text {
+	display: none;
+}
+
+div.gl-little-calendar div.gl-day {
+	position: relative;
+	height: 36px;
+}
+
+div.gl-little-calendar div.gl-events {
+	background: #195905;
+	color: #FFFFFF;
+}
+
+div.gl-little-calendar div.gl-day div.gl-date {
+	text-align: right;
+	margin: 2px;
+	font-size: 1.0em;
+}
+
+/* Hide all events */
+div.gl-little-calendar div.gl-event {
+	display: none;
+}

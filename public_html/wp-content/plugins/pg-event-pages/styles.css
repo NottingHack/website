@@ -1,0 +1,173 @@
+div#pg-event {
+	clear: both;
+	overflow: auto;
+	width: 100%;
+	margin: 0 0 20px 0;
+	border-top: 1px solid #195905;
+	padding: 10px 0 0 0;
+}
+
+div#pge-attendees {
+	float: left;
+	width: 33%;
+}
+
+div#pge-attendees h3,
+div#pge-comments h3 {
+	font-size: 1.2em;
+	line-height: 1.2em;
+}
+
+div#pge-attendees ul {
+	margin: 0 0 10px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+div#pge-attendees li {
+	margin: 0 0 3px 0;
+}
+
+div#pge-attendees img {
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+	margin-right: 10px;
+}
+
+/*
+div#pge-comments {
+	float: right;
+	width: 65%;
+}
+*/
+
+div#pge-comments div.pge-comment {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+	margin: 0 0 5px 0;
+}
+
+div#pge-comments img.pge-star {
+	width: 25px;
+	height: 24px;
+}
+
+div#pge-comments div.pge-comment img.pge-star {
+	width: 12px;
+	height: 12px;
+}
+
+div#pge-comments div#pge-overall {
+	float: right;
+	margin-bottom: 10px;
+}
+
+div#pge-comments div.pge-comment img.pge-profile {
+	width: 35px;
+	height: 35px;
+	margin-right: 10px;
+	vertical-align: top;
+	float: left;
+}
+
+div#pge-comments div.pge-comment div.pge-rating {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+div#pge-comments div.pge-comment p {
+	margin-left: 45px;
+	font-size: 1.1em;
+	line-height: 1.1em;
+	margin-bottom: 6px;
+}
+
+div#pge-comments div.pge-comment p.pge-name {
+	font-weight: bold;
+	color: #195905;
+	margin-bottom: 10px;
+}
+
+a#pge-link-comment {
+	display: block;
+	clear: both;
+	margin-top: 10px;
+}
+
+div#pge-overlay {
+	display: none;
+	background: transparent url('images/overlay.png') repeat top left;
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1000;
+}
+
+div.pge-form {
+	display: none;
+	position: fixed;
+	top: 50px;
+	left: 30%;
+	right: 30%;
+	background-color: #FFFFFF;
+	color: #7F7F7F;
+	padding: 20px;
+	/*border: 2px solid #195905;*/
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	-khtml-border-radius: 10px 10px 0px 0px;
+	-moz-box-shadow: 0 1px 5px #333;
+	-webkit-box-shadow: 0 1px 5px #333;
+	z-index: 1001;
+}
+
+div.pge-form label {
+	clear: both;
+	float: left;
+	width: 25%;
+	margin: 5px 10px 0 0;
+	text-align: right;
+	font-size: 1.1em;
+	line-height: 1.1em;
+}
+
+div.pge-form input,
+div.pge-form select,
+div.pge-form textarea {
+	float: left;
+	width: 70%;
+	margin: 0 0 10px 0;
+	font-size: 1.1em;
+	line-height: 1.1em;
+}
+
+div.pge-form input.button {
+	width: auto;
+	margin-right: 10px;
+}
+
+div.pge-form .error {
+	border-color: #FF0000;
+	background: #FFCDCD;
+}
+
+div.pge-form div.pge-rate {
+	float: left;
+	width: 70%;
+	margin: 0 0 10px 0;
+	overflow: auto;
+}
+
+div.pge-form a.pge-rate-star {
+	display: block;
+	float: left;
+	width: 20px;
+	height: 19px;
+	background: url('images/star.png') no-repeat 0px 0px;
+	text-decoration: none;
+}

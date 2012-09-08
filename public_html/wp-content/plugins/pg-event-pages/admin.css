@@ -1,0 +1,46 @@
+table.pge {
+	width: 100%;
+}
+
+table.pge th,
+table.pge td {
+	text-align: center;
+}
+
+table.pge th.firstcol,
+table.pge td.firstcol {
+	text-align: left;
+}
+
+table.pge th.lastcol,
+table.pge td.lastcol {
+	text-align: right;
+}
+
+table.pge th {
+	background: #D8D8D8;
+	padding: 3px 5px;
+}
+
+table.pge td {
+	padding: 2px 5px;
+}
+
+table.pge tr.even td {
+	background: #F1F1F1;
+}
+
+table.pge tr.odd td {
+	background: #E2E2E2;
+}
+
+table.pge img {
+	width: 35px;
+	height: 35px;
+	vertical-align: middle;
+}
+
+table.pge img.pge-star {
+	width: 12px;
+	height: 12px;
+}

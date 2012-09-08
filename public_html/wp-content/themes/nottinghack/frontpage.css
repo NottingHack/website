@@ -1,0 +1,272 @@
+/* override styles.css.  remove if changing all pages to this style */
+div#main {
+	background: #8CAC82;
+}
+
+#primary {
+	float: right;
+	margin-right: 20px;
+	height: 0px;
+}
+
+/* toprow: banner with news */
+div#toprow {
+	float: left;
+	margin: 0px -260px 30px 0px;
+	overflow: auto;
+	width: 100%;
+}
+
+div#banner {
+	position: relative;
+	width: 590px;
+	height: 400px;
+	overflow: hidden;
+	float: left;
+	
+	-moz-border-radius 12px;
+	-webkit-border-radius: 12px; 
+	border-radius: 12px;
+}
+
+/* need to fix some webkit wierdness */
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	div#banner:before {
+		content: "";
+		width: 590px;
+		height: 400px;
+		border: 8px solid #8CAC82;
+		-webkit-border-radius: 20px;
+		
+		z-index: 100;
+		position: absolute;
+		top: -8px;
+		left: -8px;
+	}
+}
+
+div#banner_imgs a {
+	z-index: 1;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+div#banner_imgs a span {
+	display: none;
+}
+
+div#banner_imgs a.active {
+	z-index: 3;
+}
+
+div#banner_text {
+	position: absolute;
+	left: 0px;
+	bottom: 40px;
+	
+	width: 550px;
+	height: 60px;
+	padding: 20px;
+	background: url('images/banner_post_back.png');
+	z-index: 10;
+	
+	color: #FFFFFF;
+	font-size: 1.7em;
+}
+
+div#banner_nav {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	
+	width: 590px;
+	height: 40px;
+	background: #195905;
+	z-index: 10;
+}
+
+div#banner_nav div {
+	padding: 10px 0px 10px 0px;
+	margin: 0 auto;
+	overflow: auto;
+}
+
+div#banner_nav a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: url('images/banner_nav.gif') no-repeat 0 -20px;
+	float: left;
+	margin-right: 10px;
+}
+
+div#banner_nav a.active,
+div#banner_nav a.active:hover {
+	background-position: 0px 0px;
+}
+
+div#banner_nav a:hover {
+	background-position: 0px -40px;
+}
+
+div#news {
+	position: relative;
+	width: 260px;
+	height: 360px;
+	overflow: hidden;
+	background: #195905 url('images/news_back.gif') no-repeat;
+	float: left;
+	margin-left: 30px;
+	padding: 20px;
+	
+	-moz-border-radius 12px;
+	-webkit-border-radius: 12px; 
+	border-radius: 12px;
+}
+
+div#news div#highlight {
+	display: none;
+	position: absolute;
+	width: 300px;
+	height: 70px;
+	background: url('images/news_post_back.png');
+	left: 0px;
+}
+
+div#news h2 {
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+div#news ul {
+	position: absolute;
+	width: 280px;
+	list-style-type: none;
+	margin: 10px 0px 0px 0px;
+	padding: 0;
+}
+
+div#news li {
+	display: block;
+	margin: 0;
+	padding: 10px 0 10px 0px;
+	height: 50px;
+	font-size: 1.7em;
+}
+
+div#news li a {
+	color: #FFFFFF;
+}
+
+
+/* Main Content */
+
+div#content .page {
+	padding: 0px;
+	-moz-border-radius 0px;
+	-webkit-border-radius: 0px; 
+	border-radius: 0px;
+}
+
+div#content {
+	clear: both;
+	float: left;
+	background: #FFFFFF;
+	width: 550px;
+	padding: 20px;
+	margin: 0px 0px 30px 0px;
+	
+	-moz-border-radius 12px;
+	-webkit-border-radius: 12px; 
+	border-radius: 12px;
+}
+
+h1.entry-title {
+	display: none;
+}
+
+div.hentry {
+	margin: 0px;
+}
+
+div.entry-content {
+	padding: 0px;
+}
+
+/* Widget */
+ul.xoxo li {
+	padding: 0px;
+	background: none;
+	
+	-moz-border-radius 0px;
+	-webkit-border-radius: 0px; 
+	border-radius: 0px;
+}
+
+div.front-widget-area {
+	float: left;
+	width: 300px;
+	margin: 0px 0px 30px 30px;
+	padding: 20px 0 20px 0;
+	background: #769C6A;
+	
+	-moz-border-radius 12px;
+	-webkit-border-radius: 12px; 
+	border-radius: 12px;
+}
+
+/* Styling for agenda */
+div.front-widget-area  ul,
+div.front-widget-area  li {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0pxl
+}
+
+div.front-widget-area h3 {
+	font-size: 1.7em;
+	font-weight: bold;
+	color: #000000;
+	margin: 0 20px 20px 20px;
+}
+
+div.front-widget-area ul.glcal-agenda li {
+	font-size: 1.2em;
+	margin: 0;
+	padding: 5px 20px 5px 20px;
+	color: #FFFFFF;
+	background: #195905;
+}
+
+div.front-widget-area ul.glcal-agenda ul {
+	margin: 0 0 15px 0;
+	overflow: auto;
+}
+
+div.front-widget-area ul.glcal-agenda ul li {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	margin: 5px 0 0 0;
+	color: #000000;
+	background: none;
+	padding: 0px 20px 0px 20px;
+}
+
+div.front-widget-area ul.glcal-agenda li a,
+div.front-widget-area ul.glcal-agenda li span {
+	color: #000000;
+	display: block;
+	float: left;
+	width: 40px;
+}
+
+div.front-widget-area ul.glcal-agenda li a {
+	width: 220px;
+}
+
+div.front-widget-area ul.glcal-agenda li a:hover {
+	color: #195905;
+}
