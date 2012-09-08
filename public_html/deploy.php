@@ -41,6 +41,8 @@ foreach($commands AS $command){
 </head>
 <body style="background-color: #000000; color: #FFFFFF; font-weight: bold; padding: 0 10px;">
 <pre>
+Nottinghack Deployment Script
+
 <?php echo $output; ?>
 </pre>
 </body>
