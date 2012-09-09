@@ -65,11 +65,11 @@ footer {
 	Layout
 */
 #container {
-	width: 880px;
+	width: 1000px;
 }
 
 .text {
-	max-width: 800px;
+	max-width: 980px;
 }
 
 #credits {

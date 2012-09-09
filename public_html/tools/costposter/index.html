@@ -16,26 +16,53 @@
 		// = Balance =
 		// ===========
 		var data = new google.visualization.DataTable();
-		data.addColumn('string', 'Month');
+		/*data.addColumn('string', 'Month');
 		data.addColumn('number', 'Subscriptions, Donations, Other Income £1,358');
 		data.addColumn('number', 'Expenses £1,701');
 		data.addRows([
 			['March 2012', 1358.00, 1701.00],
+		]);*/
+		
+		data.addColumn('string', 'Type');
+		data.addColumn('number', 'Fixed');
+		data.addColumn('number', 'Variable');
+		data.addRows([
+			['Income', 1583.78, 1027.40],
+			['Expenses', 1451, 630.42],
 		]);
+		
 
 		var options = {
-		  // title: 'London Hackspace Budget',
 			axisTitlesPosition: 'none',
 			legend: { position: 'top' },
-			hAxis: { viewWindow: { min: 0 } },
-			vAxis: { textPosition: 'none' },
-			chartArea: { left: 10, top: 30, width: "100%", height: "60%"},
-			fontSize: 16
+			fontSize: 16,
+			isStacked: true
 		};
 
 		var chart = new google.visualization.BarChart(document.getElementById('balance_div'));
 		chart.draw(data, options);
+		
+		// ==========
+		// = Income =
+		// ==========
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Item');
+		data.addColumn('number', 'Cost');
+		data.addRows([
+			['Membership £1,583.73', 1583.73],
+			['Petty Cash £175', 175],
+			['Workshops £765.40', 765.40],
+			['Donations £87.00', 87]
+		]);
 
+		var options = {
+			chartArea: { left: 0, top: 5, width: "100%", height: "95%"},
+			fontSize: 16
+		};
+
+		var chart = new google.visualization.PieChart(document.getElementById('income_div'));
+		chart.draw(data, options);
+		
 		// ============
 		// = Expenses =
 		// ============
@@ -44,15 +71,14 @@
 		data.addColumn('number', 'Cost');
 		data.addRows([
 			['Rent £990', 990],
-			['Misc £256', 256],
-			['Rent Arrears £245', 245],
-			['Electricity £116', 116],
-			['Insurance £66', 66],
-			['Internet £28', 28]
+			['Misc £630.42', 630.42],
+			['Loan £208.33', 208.33],
+			['Electricity £158.54', 158.54],
+			['Insurance £65.39', 65.39],
+			['Internet £28.74', 28.74]
 		]);
 
 		var options = {
-		  // title: 'London Hackspace Budget',
 			chartArea: { left: 0, top: 5, width: "100%", height: "95%"},
 			fontSize: 16
 		};
@@ -67,15 +93,13 @@
 		data.addColumn('string', 'Item');
 		data.addColumn('number', 'Cost');
 		data.addRows([
-			['Coin Mechanism £49', 49],
-			['Snackspace £20', 20],
-			['Storage Furniture £86', 86],
-			['Welding safety gear £106', 106],
-			['Fire extinguishers £15', 15]
+			['EMF £120', 120],
+			['Domains £22.74', 22.74],
+			['Badges and Kits £390.48', 390.48],
+			['Snackspace £97.20', 97.20]
 		]);
 
 		var options = {
-		  // title: 'London Hackspace Budget',
 			chartArea: { left: 0, top: 5, width: "100%", height: "95%"},
 			fontSize: 16
 		};
@@ -89,7 +113,8 @@
 	<div id="container">
 		<header role="banner" class="text">
 			<h1><img src="logo.png" width="60" height="60" alt="Nottingham Hackspace" /> The Cost of Hacking</h1>
-			<p>Nottingham Hackspace is funded by your membership subscriptions, donations &amp; workshops. At present we have a monthly deficit. Please consider becoming a member or increasing your monthly subscription payment.</p>
+			<p>Nottingham Hackspace is funded by your membership subscriptions, donations &amp; workshops.  As of August 2012 we are breaking even, this means we can start to plough money back into the space to make it even better!</p>
+			<p>Please consider becoming a member or increasing your monthly subscription payment.</p>
 		</header>
 		
 		<div id="main" role="main" class="text">
@@ -97,20 +122,26 @@
 				<header>
 					<h2>Our Monthly Balance</h2>
 				</header>
-				<div id="balance_div" class="graph" style="width: 600px; height: 150px;"></div>
+				<div id="balance_div" class="graph" style="width: 980px; height: 150px;"></div>
+			</article>
+			<article>
+				<header>
+					<h2>Our Monthly Income</h2>
+				</header>
+				<div id="income_div" class="graph" style="width: 980px; height: 300px;"></div>
 			</article>
 			<article>
 				<header>
 					<h2>Our Monthly Expenses</h2>
 				</header>
-				<div id="expenses_div" class="graph" style="width: 600px; height: 300px;"></div>
+				<div id="expenses_div" class="graph" style="width: 980px; height: 300px;"></div>
 			</article>
 			<article>
 				<header>
 					<h2>Misc?</h2>
 				</header>
-				<p>What's this "Misc" entry?  This is our average spend on consumables, tools, etc.  As an example, let's look at March's misc entry, which was £276</p> 
-				<div id="misc_div" class="graph" style="width: 600px; height: 300px;"></div>
+				<p>What's this "Misc" entry?  This is our spend on consumables, tools, etc. For August, this was:</p> 
+				<div id="misc_div" class="graph" style="width: 980px; height: 300px;"></div>
 			</article>
 
 			<article>
@@ -118,8 +149,8 @@
 					<h2>How You Can Help</h2>
 				</header>
 				<ul>
-					<li><strong class="large">Become a member today!</strong> You'll get 24/7 access, a storage box for your projects, and warm fuzzy feelings for supporting us. You can pay what you like, our average is currently £15 per month. </li>
-					<li><strong class="large">Tell all your friends!</strong> At out current average, we need 120 members to cover all our outgoings and have a bit left over.</li>
+					<li><strong class="large">Become a member today!</strong> You'll get 24/7 access, a storage box for your projects, and warm fuzzy feelings for supporting us. You can pay what you like, our average is currently £13 per month. </li>
+					<li><strong class="large">Tell all your friends!</strong> At out current average, we need 118 members to cover all our outgoings and have a bit left over.</li>
 					<li>If you're already a member and can afford it, <strong class="large">increase your monthly subscription payment</strong> by a few pounds.</li>
 					<li>Volunteer to run a workshop on your area of expertise, or help us keep our infrastructure in shape.</li>
 					<li>Let us know if there's something you'd like added to or changed in the Hackspace that would convince you to pay more each month.</li>
