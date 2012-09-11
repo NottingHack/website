@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Snackspace – Nottingham Hackspace</title>
+	<link rel="stylesheet" href="base.css" type="text/css">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+	<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawCharts);
+	
+	function drawCharts() {
+		
+		// ==============
+		// = This Month =
+		// ==============
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Type');
+		data.addColumn('number', 'In');
+		data.addColumn('number', 'Out');
+		data.addRows([
+			['Jul 12', 211.17, 305.50],
+			['Year to Date', 999.83, 867.04],  // + 20 (Mar12)
+		]);
+		
+
+		var options = {
+			axisTitlesPosition: 'none',
+			legend: { position: 'top' },
+			hAxis: { format: '£#,###' },
+			fontSize: 16
+		};
+
+		var chart = new google.visualization.BarChart(document.getElementById('month_div'));
+		chart.draw(data, options);
+		
+		// ================
+		// = Overall Line =
+		// ================
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Month');
+		data.addColumn('number', 'In');
+		data.addColumn('number', 'Out');
+		data.addRows([
+			['Mar 12', 130.83, 122.06],
+			['Apr 12', 245.43, 130.00],
+			['May 12', 110.55, 177.39],
+			['Jun 12', 301.85, 132.09],
+			['Jul 12', 211.17, 305.50]
+		]);
+		
+		var options = {
+			fontSize: 16,
+		};
+		
+		var chart = new google.visualization.LineChart(document.getElementById('overall_div'));
+		chart.draw(data, options);
+		
+		// ===============
+		// = Overall Bar =
+		// ===============
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Type');
+		data.addColumn('number', 'Mar 12');
+		data.addColumn('number', 'Apr 12');
+		data.addColumn('number', 'May 12');
+		data.addColumn('number', 'Jun 12');
+		data.addColumn('number', 'Jul 12');
+		data.addRows([
+			['In', 130.83, 245.43, 110.55, 301.85, 211.17],
+			['Out', 122.06, 130.00, 177.39, 132.09, 305.50],
+		]);
+		
+		var options = {
+			axisTitlesPosition: 'none',
+			legend: { position: 'right' },
+			hAxis: { format: '£#,###' },
+			fontSize: 16,
+			isStacked: true
+		};
+		
+		var chart = new google.visualization.BarChart(document.getElementById('stacked_div'));
+		chart.draw(data, options);
+		
+	}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<header role="banner" class="text">
+			<h1><img src="logo.png" width="60" height="60" alt="Nottingham Hackspace" /> Snackspace</h1>
+			<!--<p>Snackspace</p>-->
+		</header>
+		
+		<div id="main" role="main" class="text">
+			<article>
+				<header>
+					<h2>Money In/Out</h2>
+				</header>
+				<div id="month_div" class="graph" style="width: 1000px; height: 250px;"></div>
+			</article>
+			<article>
+				<header>
+					<h2>Overall</h2>
+				</header>
+				<p>11th March 2012 to Date</p>
+				<div id="overall_div" class="graph" style="width: 1000px; height: 450px;"></div>
+				<p>Same data, different visual</p>
+				<div id="stacked_div" class="graph" style="width: 1000px; height: 250px;"></div>
+			</article>
+			
+
+			<article>
+				<header>
+					<h2>How You Can Help</h2>
+				</header>
+				<ul>
+					<li><strong class="large">Become a member today!</strong> You'll get 24/7 access, a storage box for your projects, and warm fuzzy feelings for supporting us. You can pay what you like, our average is currently £13 per month. </li>
+					<li><strong class="large">Tell all your friends!</strong> At out current average, we need 118 members to cover all our outgoings and have a bit left over.</li>
+					<li>If you're already a member and can afford it, <strong class="large">increase your monthly subscription payment</strong> by a few pounds.</li>
+					<li>Volunteer to run a workshop on your area of expertise, or help us keep our infrastructure in shape.</li>
+					<li>Let us know if there's something you'd like added to or changed in the Hackspace that would convince you to pay more each month.</li>
+				</ul>
+			</article>
+		</div>
+		<footer id="credits" role="contentinfo" class="text">
+			<hr />
+			<p>Last updated 11 September 2012. Inspired by <a href="http://londonhackspace.github.com/propaganda/posters/cost-of-hacking/">London Hackspace</a></p>
+		</footer>
+	</div>
+</body>
+</html>
