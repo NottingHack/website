@@ -57,7 +57,6 @@ footer {
 }
 
 .graph {
-	margin: 0px auto;
 	width: 100%;
 }
 
@@ -69,9 +68,12 @@ footer {
 }
 
 .text {
-	max-width: 980px;
+	max-width: 1000px;
 }
-
+ul {
+	margin: 0px 0px 0px 15px;
+	padding: 0px;
+}
 #credits {
 	color: #666;
 	margin-top: 2em;
