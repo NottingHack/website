@@ -19,7 +19,7 @@ foreach ($aMinutes as $sMinute) {
 			$sName = "";
 		}
 		
-		if (!in_array($sName, $aIgnoreName)) {
+		if (!in_array($sName, $aIgnoreNames)) {
 			outputMinute($sTime, $sName, $sMinute);
 		}
 	}
