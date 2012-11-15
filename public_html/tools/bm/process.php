@@ -6,7 +6,7 @@ $aMinutes = file($sFile, FILE_IGNORE_NEW_LINES);
 
 $aIgnoreNames = array("nh-holly");
 
-$aColours = array("00C322", "FF1300", "3E13AF", "FFD700", "CD0074", "FFAA00", "9FEE00", "009999", "A64B00", "D8005F");
+$aColours = array("#00C322", "#FF1300", "#3E13AF", "#FFD700", "#CD0074", "#FFAA00", "#9FEE00", "#009999", "#A64B00", "#D8005F");
 $iColourID = 0;
 $aUserMaps = array();
 
