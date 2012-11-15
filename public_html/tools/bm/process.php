@@ -4,7 +4,7 @@ $sFile = "minutes_2012-11-07.txt";
 
 $aMinutes = file($sFile, FILE_IGNORE_NEW_LINES);
 
-$aIgnoreNames = "nh-holly";
+$aIgnoreNames = array("nh-holly");
 
 foreach ($aMinutes as $sMinute) {
 	if (strpos($sMinute, '[') === 0) {
