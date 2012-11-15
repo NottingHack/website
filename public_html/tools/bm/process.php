@@ -50,7 +50,7 @@ function outputMinute($sTime, $sName, $sMinute) {
 	}
 	
 	$sOutput = "|-\n";
-	$sOutput .=  '|<span style="colour: #999999">' . $sTime . '</span>||<span style="color: ' . $aUserMaps[$sName] . '">' . $sName . '</span>||' . $sMinute . "\n";
+	$sOutput .=  '|<span style="color: #AAAAAA">' . $sTime . '</span>||<span style="color: ' . $aUserMaps[$sName] . '">' . $sName . '</span>||' . $sMinute . "\n";
 	
 	return $sOutput;
 }
