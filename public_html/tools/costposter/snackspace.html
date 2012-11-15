@@ -67,14 +67,15 @@
 		data.addColumn('number', 'May 12');
 		data.addColumn('number', 'Jun 12');
 		data.addColumn('number', 'Jul 12');
+		data.addColumn('number', 'Aug 12');
 		data.addRows([
-			['In', 130.83, 245.43, 110.55, 301.85, 211.17],
-			['Out', 122.06, 130.00, 177.39, 132.09, 305.50],
+			['In', 130.83, 245.43, 110.55, 301.85, 211.17, 515.09],
+			['Out', 122.06, 130.00, 177.39, 132.09, 305.50, 607.96],
 		]);
 		
 		var options = {
 			axisTitlesPosition: 'none',
-			legend: { position: 'right' },
+			legend: { position: 'top' },
 			hAxis: { format: '£#,###' },
 			fontSize: 16,
 			isStacked: true
@@ -107,7 +108,7 @@
 				<p>11th March 2012 to Date</p>
 				<div id="overall_div" class="graph" style="width: 1000px; height: 450px;"></div>
 				<p>Same data, different visual</p>
-				<div id="stacked_div" class="graph" style="width: 1000px; height: 250px;"></div>
+				<div id="stacked_div" class="graph" style="width: 1000px; height: 200px;"></div>
 			</article>
 			
 
