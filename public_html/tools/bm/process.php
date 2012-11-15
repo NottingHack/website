@@ -17,7 +17,7 @@ foreach ($aMinutes as $sMinute) {
 	if (strpos($sMinute, '[') === 0) {
 		list($sTime, $sMinute) = explode("]", $sMinute);
 		$sTime = trim($sTime, "[");
-		if (strpos($sMinute, ":") !== FALSE) {
+		if (strpos($sMinute, " ") !== 0) {
 			// something is said
 			list($sName, $sMinute) = explode(":", $sMinute, 2);
 		}
