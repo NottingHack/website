@@ -1,0 +1,102 @@
+[20:15]Nachimir:Nottingham Hackspace monthly meeting about to start: 01/08/2012
+[20:15] LWK_mac joined the chat room.
+[20:16]Nachimir:Present: Jake H, Gill, David H, David C, Craig P, Daniel, Matt Lloyd, Kate B.
+[20:17] kim-jonggill joined the chat room.
+[20:17]Nachimir:Actions: Redesign spray booth to allow welding.
+[20:17]Nachimir:Everyone: WTF?
+[20:17]Nachimir:Closed, we're not doing that. Unanimous.
+[20:18]Nachimir:2. Add historical minutes to wiki. David: Done, James' bit: Not done.
+[20:18]Nachimir:David C: did we get last month's minutes? Kate: Yes.
+[20:18]Nachimir:3. Proposal for large project area? No (We seem to be managing).
+[20:18]Nachimir:4. Code lock on front door, Matt L: Done.
+[20:19]Nachimir:Item 2. Financial update.
+[20:19]LWK_mac:Quick summary
+[20:19]LWK_mac:Start bank balance: £2,493.98
+[20:19]LWK_mac:Out: £1,148.54
+[20:19]LWK_mac:In: £2,645.28
+[20:19]Nachimir:Jake: The financial update is that Matt is enjoying a delicious burger.
+[20:19]LWK_mac:End: £3,512.64(bank said £3,481.83)
+[20:19]LWK_mac:Paypal Start: £57.76
+[20:19]LWK_mac:Paypal End: £57.76
+[20:19]LWK_mac:Cash Start balance: £177.33
+[20:19]LWK_mac:Cash In: £384.77
+[20:19]LWK_mac:Cash Out: £441.50
+[20:19]LWK_mac:Cash End: £120.60
+[20:19]LWK_mac:[edit]Members
+[20:19]LWK_mac:Start: 96
+[20:19] ChickenGrylls left the chat room. (Ping timeout: 245 seconds)
+[20:19]LWK_mac:New: 11
+[20:19]LWK_mac:Ex: 0
+[20:19]LWK_mac:End: 107
+[20:19]LWK_mac:Average membership due: £13.16
+[20:19]LWK_mac:[edit]In/out Breakdown
+[20:19]LWK_mac:[edit]Outgoings
+[20:19]LWK_mac:BizSpace: £ 1,154.16
+[20:19]LWK_mac:Talk talk: £28.74
+[20:19]LWK_mac:Insurance: £65.39
+[20:19]LWK_mac:Loan: £208.33
+[20:19]LWK_mac:Other: £170.00
+[20:19]LWK_mac:[edit]Income
+[20:19]LWK_mac:Membership dues: £1,319.28
+[20:19]LWK_mac:Petty Cash Deposits: £136
+[20:19]LWK_mac:Workshops: £1,150.00
+[20:19]LWK_mac:Donations: £40.00
+[20:19]LWK_mac:Events: £
+[20:19]LWK_mac:Pledges: £
+[20:20]Nachimir:Matt Ll: We are at 107 concurrent paying members, average membership is down to £13.16p
+[20:21]Nachimir:110 is our break even membership goal.
+[20:22]Nachimir:Bank balance looks healthier than it is, we owe Oomlout for kits.
+[20:23]Nachimir:Matt Lloyd, David H: Member audit then code change.
+[20:23]Nachimir:Recorded as an action.
+[20:24]Nachimir:Matt Lloyd: We need to sort out bank account. Possibly different account type, name change, and more access for board members.
+[20:25]Nachimir:Matt Lloyd steps up to be new treasurer.
+[20:27]Nachimir:Item 3: EMF ticket draw.
+[20:27]Nachimir:Four names, Jake Rolling a dice to determine.
+[20:27]Nachimir:First result: Andrew Armstrong.
+[20:28]nh-holly:Door opened
+[20:28]Nachimir:(Andrew's number four times in a row).
+[20:28]Nachimir:Second result: Wendy Gent
+[20:29]Nachimir:Item 4: Vending Machine payments
+[20:30]Nachimir:Daniel voices a few options: Nominated members people can pay, or a jar.
+[20:30]Nachimir:(Andrew Armstrong joins the meeting)
+[20:30]nh-holly:Door opened
+[20:30]Nachimir:People generally in favour of nominated members. Matt Little in charge of stock.
+[20:31]Nachimir:(Some questions fly by too fast for me)
+[20:31]Nachimir:Dominic: Will there be an option to pay online?
+[20:31]Nachimir:Matt and Daniel: Yes, bank transfer would be doable.
+[20:32]Nachimir:David H: We could use the old key safe to keep the money.
+[20:33]Nachimir:David C: At the moment, only the person who bought something knows they owe the money? Daniel and Matt: No, it records sales right now.
+[20:33]Nachimir:Jake: So we can leave you with it and talk about it at a later meeting? Daniel: Yes. The only other thing is emailing members to notify what they owe and request payment.
+[20:34]Nachimir:David H: Whatever emails go out could have the banking details in too?
+[20:34]Nachimir:(We're going to bikeshed, move to mailing list and later meeting).
+[20:35]Nachimir:Item 5: Board membership/companies house confirmation of directors.
+[20:36]Nachimir:David C: I can't do that, but one of the existing board members needs.
+[20:36]Nachimir:to change details on Companies House.
+[20:36]Nachimir:Matt Lloyd: Me and David could do. David: Companies House have some good services for filing.
+[20:37]Nachimir:Action: Matt Lloyd and David H to contact new board members and sort this.
+[20:37]Nachimir:Item 6: Young Rewired State: Access, etc.
+[20:38]Nachimir:David C: I'm going to be present to open up, and will be around during the day.
+[20:40]Nachimir:Matt Ll, various: Courtney will need all door codes. David H: Just after YRS probably a good time to do the code change.
+[20:41]Nachimir:Item 7: A.O.B.
+[20:41]nh-holly:Door opened
+[20:46]nh-holly:Door opened
+[20:47] ChickenGrylls joined the chat room.
+[20:49]nh-holly:Door opened
+[20:50]Nachimir:Item 8: Discretionary spending of trustees.
+[20:50]Nachimir:David H: Need clarification of exactly what directors can spend, when, and not.
+[20:50]Nachimir:Various: There haven't been any problematic instances of it so far.
+[20:51]Nachimir:David: The understanding and systems we have, have been vague and have various potentials to go wrong.
+[20:51]Nachimir:Action: David H to draft a policy on discretionary spending.
+[20:51]Nachimir:Other ideas floated: A minority of directors can vote on smaller amounts?
+[20:52]Nachimir:David C: Have we had a list of rules from Bizspace about use of the space?
+[20:52]Nachimir:Dominic: It's on the back of the contract, it's not very long.
+[20:52]Nachimir:David C: It's recently been put up in the hall near the lift.
+[20:53]Nachimir:Dominic: Wouldn't worry about it too much.
+[20:54]Nachimir:David C: Went to ask building manager, raised lights on stairwell as a safety issue. Said the man who does it was on holiday. David C fixed it and charged him.
+[20:54]nh-holly:Door opened
+[20:54]Nachimir:I'm starving. This is the longest 40 minutes of my life 
+[20:55]Nachimir:Jake: AOAOB?
+[20:55]Nachimir:Everyone: No.
+[20:55]Nachimir:Kate: Um.
+[20:55]Nachimir:Jake: Ok, no, good.
+[20:55]Nachimir:Meeting closed.

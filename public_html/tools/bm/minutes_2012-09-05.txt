@@ -1,0 +1,130 @@
+[20:04]Nachimir:Nottinghack meeting about to start, 05/09/2012
+[20:04]Nachimir:1. Roll call: Board members: David H, David C, Kate B, Jake, Matt Lloyd, Dominic M, and James H (via Skype).
+[20:05]Nachimir:Members: Michael E, Spencer, Gillian, Russel H, Danial, Craig, Tristan, Justin, Fiona, Patrick J.
+[20:05]Nachimir:1. Actions from last meeting:
+[20:05]Nachimir:(Geeksareforlife, busy taking minutes. Send Dominic a link please)
+[20:06]Nachimir:Psychology Dan joins meeting.
+[20:07]Nachimir:Spray booth: In progress.
+[20:07] justin_ipad left the chat room. (Remote host closed the connection)
+[20:08] justin_ipad joined the chat room.
+[20:08]Nachimir:Actions list not up to date…
+[20:09]Nachimir:Action 1, David: Annual return: Halfway done, have all details ready.
+[20:10]Nachimir:Dominic: Bizspace say we need to sign within the next two weeks for the year. Everyone: Yes, sign it (Action for Dominic)
+[20:11]Nachimir:Code change: David and Matt notifying tonight, changing codes next week (Action for Matt and David).
+[20:11]Nachimir:David drafting board expense policy: Done. Can cover in AOB.
+[20:11]Nachimir:Matt Lloyd to become treasurer: Dominic to talk to bank about getting him set up with account access.
+[20:11]Nachimir:2. Events
+[20:12]Nachimir:(EMF camp first listed. It went very well. Other hackspaces said we were scarily well organised).
+[20:12]Nachimir:Other events: Halloween and Festivus.
+[20:14]Nachimir:James H: EMF this year was awesome, but could have been improved. In 2014, we'll be organising the workshops, and the hackspace tent. That's going to cost us, so all in favour?
+[20:14]Nachimir:Lots of yeses.
+[20:14]Nachimir:Matt gives brief outline: EMFs workshop tent was just used for soldering, spilled over into Nottinghack village.
+[20:15]Nachimir:James: We'd end up organising part of EMF as Nottingham Hackspace. EMF would cover a lot of costs, but we'd be doing what we did on a bigger scale. hiring van etc.
+[20:15]Nachimir:Jake: EMF planning going to start in seven months time, should have back on the agenda at that time.
+[20:15]Nachimir:Dominic: Should have a subgroup to liase with EMF.
+[20:16]Nachimir:James: Now we're covering our fixed outgoings on member's fees, workshops and events are going to give us the money to get the shiny stuff we want. We should have a go kit for smaller events, so more members can go out and represent nottingham hackspace. We should buy an event shelter.
+[20:17]Nachimir:Kate: We should buy a smaller event shelter, because (e.g.) the GReen Festival has strict outlines on the amount of space. Would have to look at pricing.
+[20:17]Nachimir:James and Dominic: We should get the bigger one.
+[20:18]Nachimir:David: We have options for smaller shelters already.
+[20:19]Nachimir:James: Votes for? Yes to buying it in February or before Kate quits her job. (General agreement).
+[20:19]Nachimir:David C: Discount in off season? Kate: Employee discount is better.
+[20:20] justin_ipad left the chat room. (Remote host closed the connection)
+[20:20]Nachimir:James: Maker faire, we should start organising and planning this now. Contact all spaces in the UK, have our own space but ask them if they'd like to join us.
+[20:20] justin_ipad joined the chat room.
+[20:21]Nachimir:Dominic: Is it worth positioning something bigger, even an outdoor thing?
+[20:21]Nachimir:David: Weather not that great. James: Not that much outdoor space if in same venue as last time.
+[20:21]Nachimir:James: Action: taking on planning for Maker Faire. David C: Date? James: 26th and 27th of April.
+[20:22]Nachimir:James: Propose another subgroup, James happy to lead.
+[20:22]Nachimir:Jake: Are we going to be teaching soldering? Could clash with what they're planning already? James: Wouldn't want to compete with them.
+[20:22]Nachimir:James: Could sell kits. More likely to promote hackspace if that's the case. Especially stuff for kids.
+[20:22]Nachimir:Kate: Colouring!
+[20:23] Blazemore left the chat room. (Ping timeout: 248 seconds)
+[20:23]Nachimir:Jake: Ok. Halloween and Festivus?
+[20:24] Blazemore joined the chat room.
+[20:24]Nachimir:Dominic: Last year we were going to have a halloween party, but it kind of got railroaded by invite to Mayhem. That's run by one of our members, Gareth. Last year, we went to a really late showing of a hammy horror film. Was good fun. Idea this time: We have a party here on Sat 3rd Nov, then go to a late showing at a special price for Nottinghack members.
+[20:25]Nachimir:Kate: It pains me to have a halloween party after halloween. Sat 27th would be a better day, not clash with Mayhem, and it's an event we could promote to everybody.
+[20:25]Nachimir:Jake: Tend to agree with Kate.
+[20:26]Nachimir:James: Third option, actual halloween is on our open hack night.
+[20:26]Nachimir:David H: Let's all dress up for that open hack night as if we've had terrible accidents with the machines.
+[20:27]Nachimir:Jake: Resolution? > Kate taking on Halloween, Dominic taking on Festivus.
+[20:27]Nachimir:(Dominic explains festivus). Think we might be better off doing it on the 22nd rather than the 23rd.
+[20:28]Nachimir:General assent. Action: Kate taking care of halloween, Dominic taking care of Festivus.
+[20:29]Nachimir:5. STEM popup shop.
+[20:30]Nachimir:Dominic: Rick Hall contacted us, good friend of Hannah Fox, and Tim Hunkin. Running drop in shop in cornerhouse, from 15th - 31st of October. Asked us to participate, but there's no funding.
+[20:31]Nachimir:Opportunity or us to run workshops: Zoetropes, pinhole cameras, soldering. Good opportunity to promote the hackspace.
+[20:31]Nachimir:Invites for people that might want to get involved.
+[20:31]Nachimir:Dominic: We can do a few days, we don't have to do the whole two week stretch.
+[20:32]Nachimir:Jake: We need definite volunteers. Dominic: We have 120 members, I can put out a more formal request.
+[20:32]Nachimir:James: Materials costs?
+[20:32]Nachimir:Dominic: No funding, going to ask if we can charge them for kits, etc.
+[20:34]Nachimir:James: MAterials costs: We should at least make the money back.
+[20:34]Nachimir:6. Update on board membership and annual return.
+[20:34]Nachimir:David C: Obv, things are progressing given earlier discussion.
+[20:35]Nachimir:7. Update on lighting and spray booth projects.
+[20:36]Nachimir:Tristan: Max has been away, but we're cracking on with it.
+[20:36]Nachimir:David C: Is there anything you need help with?
+[20:36]Nachimir:Dominic: Would be good to get a summary up on the google group, just "Here's where we are, here's what's happening next".
+[20:37]Nachimir:Matt Ll: Lighting hasn't been touched since Derby MMF, because we're done Manchester MMF and EMF Camp.
+[20:38]Nachimir:Michael E: Just spoke to Max, he's been working away. Plans to come in tomorrow and do the door, then extraction and lighting within next week.
+[20:38]Nachimir:8. Tidying up after using the hackspace, how can we improve matter?
+[20:38]Nachimir:David C: I come in a lot during the day. Quite often, after the OHN, people have been in and leave tools, projects, materials, wastage, stuff out.
+[20:39]Nachimir:Drill bits left in drill press, etc.
+[20:39]Nachimir:Also, drill press has been broken: Someone set depth stop, someone else forced it and broke it. Belt sander has had a guard broken off it since yesterday.
+[20:40]Nachimir:Doesn't seem to be a general mood to tidy up or put stuff away after things have been used.
+[20:40]Nachimir:Jake: Maybe we could put signs up?
+[20:40]Nachimir:Dominic: Not a fan of signs. David C: Signs won't work. Not something we need to make a big fuss of, but it's noticeable. It's going to become a bigger problem, and start having fallout between members.
+[20:41]Nachimir:James: David, do you know who it is, and should we be having conversations with those people?
+[20:41]Nachimir:David C: We're all guilty, but let's try to be less cavalier with our use of the space.
+[20:42]Nachimir:Dominic: We talked before about hiring a cleaner. I don't want to do it, yet I can't tell someone else to do it unless I hire them.
+[20:42]Nachimir:Action: Price up a cleaner, Dominic.
+[20:44]Nachimir:Fiona: For instance, ladies night. I cleaned the toilets. They are a state. I hate the thought of new members coming in, and going "Urgh". Hoovered up last week; it matters.
+[20:45]Nachimir:Jake: Any objections? Justin: I say put the cleaner on a trial period. David: Think it depends on price.
+[20:45]Nachimir:9. Hack the space day
+[20:46]Nachimir:David C: Thought it was probably time we spent some time sorting, tidying, fixing, etc. Need to sort out after ripples from the spray booth disrupting everything.
+[20:46]Nachimir:Dominic: Can we find a date? (Conflict).
+[20:46]Nachimir:James: I think we should turn this into a monthly thing?
+[20:46]Nachimir:Dominic: How about the first Sunday of the month? Matt: Sunday is a great day to piss off the church…
+[20:47]Nachimir:Jake: I don't think it needs to be that often? Dominic: I think if it's that regular, it's straightforward for people. 120 members, we should be able to get plenty coming.
+[20:48]Nachimir:Spencer: 10 members per day, each member does one day per year? dominic: Yes, "We're not going to make you, but it would be great if you could do one day a year".
+[20:49]Nachimir:Dominic and James: David C to organise? David C: Only free in afternoons on those days. (discussion) Lot's of decisions to make, David C to organise. 7 Oct probable date for first.
+[20:49]Nachimir:10. Club Mate.
+[20:49]Nachimir:Dominic: A number of people asked about Club Mate. Tricky to get and expensive, but it sells well.
+[20:50]Nachimir:Jake: I don't like it, but I think we should stock it.
+[20:50]Nachimir:James: How much do it cost for a pallet? Dominic: A lot…
+[20:50]Nachimir:500ml, 20 bottle to a crate, 40 crates per pallet. Crates: £19.88 each including delivery.
+[20:50]Nachimir:Nearly 800 quid.
+[20:51]Nachimir:Half pallet: £22.someting per box, about £460.
+[20:51]Nachimir:Not suggesting we do that, I'll drive the van up and buy some boxes.
+[20:53]Nachimir:Spencer: What's the margin for the hackspace on it? Dominic: 330ml are what London have, and sold for £1.40. Dominic got 500ml bottle, sold for 1.50. 33% return for space.
+[20:53]Nachimir:James: Would take twelve weeks to sell half pallet and make £260 profit.
+[20:55]Nachimir:(Lots of discussion)
+[20:56]Nachimir:Warren: Club Mate is cheapest in Manchester, which I drive to. I could bring small quantities over. Dominic: I could fit half a pallet in my van.
+[20:57]Nachimir:James: Though it's a little bit more expensive, why don't we get six boxes from Manchester, see how it goes, and that can drive our decision on half pallet/pallet, etc.
+[20:57]Nachimir:Item X: Financial update:
+[20:57]LWK:Quick summary
+[20:57]LWK:Start bank balance: £2,882.22
+[20:57]LWK:Out: £2,081.42
+[20:57]LWK:In: £2,611.18
+[20:57]LWK:End: £3,411.98 (bank was reported as £3991.59)
+[20:57] LWK left the chat room. (Excess Flood)
+[20:58]Nachimir:LWK's reckoning is out, need to find out why financial tracking is not accurate.
+[20:59] LWK joined the chat room.
+[20:59]Nachimir:Snackspace turnover, plus many events and workshops, have made the cash account have quite a high turnover.
+[20:59]Nachimir:We've used far too much electricity in August.
+[21:01]Nachimir:Members: Started month with 107, 14 new, 3 ex, end of month membership: 118. Average membership: £13.18. Total dues: £1573
+[21:01]Nachimir:We're at break even.
+[21:02]Nachimir:Bank balance up £529, overall worth up £550. Still need more members.
+[21:03]Nachimir:Kate: Point out Warren and (other guy). They want to run lockpicking workshops. Willing to do one 1st or 4th saturday of the month. Kate happy to work with them on setting up and advertising. That way, more people in. Was always popular before.
+[21:03]Nachimir:Dominic: Little bit of money for the space, little bit for the organisers, and a good quality workshop for the attendees.
+[21:04]Nachimir:Warren: Amount of money it needs to make is my diesel and a sandwich, not more. Sale of picks is popular, percentage could go to hackspace.
+[21:04]Nachimir:James: Should get some of those picks in the vending machine.
+[21:04]GeeksAreForLife:sale or return!
+[21:04]Nachimir:Action for Kate. Dominic: Lock picks in vending machine.
+[21:04] gmjhowe left the chat room. (Quit: Leaving.)
+[21:05]Nachimir:Michael E: Some interest in having some floating arduinos for people to play with when they come in. Dominic: How many kits do we have? Shall we use those two spares as floating demo kits for people to play with? Jake: Michael, happy to take the lead on that?
+[21:05]Nachimir:David C: Mott hall is open again.
+[21:05]Nachimir:*Moot hall
+[21:08] kimjonggill left the chat room. (Quit: Page closed)
+[21:10]Nachimir:David outlines expenditure rules for board members. Action: Write up and put forward at next meeting.
+[21:10] ChickenGrylls left the chat room. (Quit: Page closed)
+[21:10]Nachimir:Meeting closed.
