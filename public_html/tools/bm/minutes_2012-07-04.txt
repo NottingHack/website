@@ -1,0 +1,162 @@
+[20:10:19] <KateMonkey> I am taking minutes! Because I am the kind of person who can!
+[20:12:33] <KateMonkey> Members in attendance:
+[20:12:35] <KateMonkey> Kate
+[20:12:38] <KateMonkey> Jake
+[20:12:41] <KateMonkey> Dominic
+[20:12:43] <KateMonkey> Matt
+[20:12:46] <KateMonkey> James
+[20:12:48] <KateMonkey> David Clarke
+[20:12:57] <KateMonkey> Non-Board Members:
+[20:12:58] <KateMonkey> Justin
+[20:13:08] <KateMonkey> Trixie
+[20:13:10] <KateMonkey> daniel
+[20:13:11] <KateMonkey> Gillian
+[20:13:19] <KateMonkey> Actions update:
+[20:13:35] <KateMonkey> Marcus still has an open item to up membership
+[20:13:44] <KateMonkey> Declared a victory and pointed towards Kate
+[20:14:01] <KateMonkey> Tony was going to set up the spray booth.
+[20:14:17] <KateMonkey> Switched to Max, who is making progress
+[20:14:24] <KateMonkey> Debate over whether or not to have the potter's wheel in the spray booth
+[20:14:34] <KateMonkey> Dominic is against it because it would take up too much space.
+[20:14:47] <KateMonkey> James is for it because it can fit in the corner
+[20:15:04] <KateMonkey> Dominic would like to see plans. James says it's massive and would fit.
+[20:15:28] <KateMonkey> Dominic is outvoted 3 to 1
+[20:16:09] <KateMonkey> Debate on how messy the potter's wheel is going to be.
+[20:17:05] <KateMonkey> Dominic still thinks it will use too much space, and wants the spray booth to be used just for spraying.
+[20:17:35] <KateMonkey> James - Add historical minutes to the wiki - in progress
+[20:17:47] <KateMonkey> Pat - Area for leaving projects for a few days - nothing done.
+[20:18:04] <KateMonkey> Matt Lloyd - Door lock - came in today, going to be fitted on friday.
+[20:18:21] ChickenGrylls (5c1b07ad@gateway/web/freenode/ip.92.27.7.173) joined the channel.
+[20:18:23] <KateMonkey> David Clarke: Tools & Equipment
+[20:18:33] <KateMonkey> David's updated tools we have and tools we would like
+[20:18:40] <KateMonkey> Listed on the wiki and in the google group
+[20:18:54] <KateMonkey> Prices and info needed
+[20:19:05] <KateMonkey> and an idea/policy for moving forwards
+[20:19:15] <KateMonkey> i.e. do we buy when we can afford it (the big and shiny things)
+[20:19:27] <KateMonkey> or do we replace existing items for better things
+[20:19:32] <KateMonkey> More input is needed
+[20:20:21] <KateMonkey> Dominic is suggesting coming up with ideal circumstances for particular areas (i.e. the best woodworking area, etc.)
+[20:20:30] kimjonggill (5c1b07ad@gateway/web/freenode/ip.92.27.7.173) joined the channel.
+[20:20:58] <KateMonkey> List out Barbie's Dream Workspace, then price it out, then have months and periods where we fundraise/shop for that place.
+[20:22:41] <KateMonkey> David: Special offers and bargains is something that should be taken care of - do we need things or are we buying them just because they're on sale?
+[20:23:58] <KateMonkey> We should buy better tools, not cheaper tools - time to stop buying the Lidl discounts and, instead, buy the high quality stuff.
+[20:25:03] <KateMonkey> David will organise this project on the list.
+[20:26:14] <KateMonkey> Debate about the flypress that has been offered. Dominic wonders about the lack of space and big things coming in.
+[20:27:35] <KateMonkey> David points out that we need more blue end-frames for the shelving
+[20:28:06] <KateMonkey> Dominic suggested a place near Shipton's Brewery, but it is now closed.
+[20:28:29] <KateMonkey> Dominic then suggests getting new shelving possibly - for better spacing and organisation.
+[20:28:47] <KateMonkey> Part of the Barbie's Dream Workspace concept, then.
+[20:28:57] <KateMonkey> Donations:
+[20:29:14] <KateMonkey> Jake did some great work on the two-box system, but now it's a little more complicated
+[20:29:17] <KateMonkey> And it's missing discipline
+[20:29:23] <KateMonkey> (Dominic is saying all this)
+[20:29:45] <KateMonkey> The original premise of the two-box system was clearing out the boxes every other month on an alternating basis.
+[20:30:13] <KateMonkey> And needs people to be empowered for people to throw things away - they should and *could* throw them all away
+[20:30:42] <KateMonkey> David Clarke and Dominic suggest using actual months on the boxes
+[20:30:54] <KateMonkey> 1. Boxes listed as July or August (respectively)
+[20:31:02] <KateMonkey> 2. You put items into this month's box or next month's box.
+[20:31:17] <KateMonkey> 3. If you want things, you take things away.
+[20:31:32] <KateMonkey> 4. End of the month, everyone can throw it away.
+[20:32:10] <KateMonkey> James asked about WEEE disposal. David points out that he carries things in his tiny car, so it's all residential and doesn't get charged.
+[20:32:48] <KateMonkey> Dominic suggests we move away from Jake's system of Working/Not-Working/Parts, due to being too complicated and needing work done.
+[20:34:10] <KateMonkey> Jake says that the not-working/working needs to be listed, because it should be pointed out, and Dominic points out that people aren't following the rules right now, so as best practice, people should 'Red X' non-working items.
+[20:34:33] <KateMonkey> Dominic would like David Clarke to take charge, since he bins things nicely.
+[20:34:48] <KateMonkey> David says that all existing stuff in there will be binned end of July.
+[20:35:07] <KateMonkey> Dominic will write the details to the list.
+[20:35:30] <KateMonkey> Explaining how it's going to go and how it's going to be.
+[20:35:57] <KateMonkey> National Events Planning: Nottinghack Inclusion
+[20:36:23] <KateMonkey> Dominic suggests that we shouldn't go to all the mini maker faires next year
+[20:36:47] <KateMonkey> Finite number of people, finite number of projects, let's do less and give big bangs for certain ones.
+[20:37:46] <KateMonkey> Local maker faires for local people
+[20:37:59] <KateMonkey> Derby and National always
+[20:38:28] <KateMonkey> Also hit the local events
+[20:39:20] <KateMonkey> Looking at more local events with more people and more projects available.
+[20:39:26] <KateMonkey> Think more of recruitment and community.
+[20:39:59] <KateMonkey> List of events, plan it more over the winter, get it all together and cover some of the costs and info.
+[20:40:08] <KateMonkey> Action carried towards winter board meeting
+[20:42:05] <KateMonkey> action Kate: Talk to Stonebridge City Farm about having a booth at their open day and just giving out flyers and things
+[20:43:25] <KateMonkey> Set up a meeting with three directors here and them about partnerships and events and whatnot
+[20:44:06] <KateMonkey> EMFCamp:
+[20:44:57] <KateMonkey> Dominic thinks that EMFCamp will become as big of a hack event as CCC in Europe.
+[20:45:08] <KateMonkey> Right now, Nottingham Hackspace is going to have a fairly small presence.
+[20:45:17] <KateMonkey> And that's a shame for a large hackspace.
+[20:46:00] <KateMonkey> And now Dominic is suggesting the Hackspace subsidises tickets for two members to also attend.
+[20:46:23] <KateMonkey> Board is exempt from winning these tickets
+[20:46:31] <KateMonkey> We need a way for people to show that they're interested in it.
+[20:46:54] <KateMonkey> Jake thinks that if members actively do something to win, you might not get any interest, and then it's a question about judging.
+[20:47:00] <KateMonkey> Jake suggests prize draw is the best option.
+[20:47:23] <KateMonkey> James says that we're legally allowed to do this
+[20:47:50] <KateMonkey> Dominic lays out the concept of EMFCamp - like a music festival, but for hackers and nerds and other delightful people.
+[20:48:06] <KateMonkey> About 500 hackers in fields with talks and workshops and villages
+[20:48:51] <KateMonkey> Justin suggests maybe a competition with a prize draw. A fairly easy competition with the end result being drawn out of a hat
+[20:49:11] <KateMonkey> Dominic worries that any sort of competition will put people off.
+[20:50:12] <KateMonkey> Dominic says that only people who want to go will get into the competition.
+[20:50:46] <KateMonkey> We're not going to magic them there, we're just helping people to go.
+[20:52:07] <KateMonkey> Action Dominic: Pre-order two tickets, £60 expenditure to reserve the tickets
+[20:52:17] <KateMonkey> Get positive about the Nottinghack Village
+[20:53:01] <KateMonkey> James wants us to be The Hackspace at EMFCamp
+[20:54:00] <KateMonkey> Everyone agrees
+[20:54:05] <KateMonkey> Matt: Financial Update:
+[20:54:09] <LWK_mac> Quick summary
+[20:54:09] <LWK_mac> Start bank balance: £2286.48
+[20:54:09] <LWK_mac> Out: £4,557.19
+[20:54:09] <LWK_mac> In: £4,770.08
+[20:54:09] <LWK_mac> End: £2,499.37
+[20:54:09] <LWK_mac> Paypal Start: £57.76
+[20:54:09] <LWK_mac> Paypal End: £57.76
+[20:54:09] <LWK_mac> Cash Start balance: £249.32
+[20:54:09] <LWK_mac> Cash In: £836.37
+[20:54:09] <LWK_mac> Cash Out: £908.36
+[20:54:09] <LWK_mac> Cash End: £177.33
+[20:54:09] <LWK_mac> [edit]Members
+[20:54:09] <LWK_mac> Start: 87
+[20:54:09] <LWK_mac> New: 10
+[20:54:09] <LWK_mac> Ex: 1
+[20:54:09] <LWK_mac> End: 96
+[20:54:09] <LWK_mac> Average membership due: £13.54
+[20:54:09] <LWK_mac> [edit]In/out Breakdown
+[20:54:09] <LWK_mac> [edit]Outgoings
+[20:54:09] <LWK_mac> BizSpace: £ 4,117.66
+[20:54:09] <LWK_mac> Talk talk: £28.74
+[20:54:09] <LWK_mac> Insurance: £65.39
+[20:54:09] <LWK_mac> Other: £410.79
+[20:54:09] <LWK_mac> [edit]Income
+[20:54:09] <LWK_mac> Membership dues: £1,189.28
+[20:54:09] <LWK_mac> Petty Cash Deposits: £611.00
+[20:54:09] <LWK_mac> Workshops: £275.80
+[20:54:09] <LWK_mac> Donations: £2,500.00
+[20:54:09] <LWK_mac> Events: £
+[20:54:09] <LWK_mac> Pledges: £194.00
+[20:55:44] <KateMonkey> Dominic explains that BizSpace sent us a large bill because they were not billing us properly.
+[20:56:00] <KateMonkey> So Dominic attempted to arrange a billing agreement.
+[20:56:19] <KateMonkey> An anonymous donor offered the space an interest-free loan, which will be paid over 12 months
+[20:56:46] <KateMonkey> We are now paying £208 each month as part of the outgoing expenses, it's just going to the donor, rather than BizSpace.
+[20:57:06] <KateMonkey> The May/June BizSpace bill is the corrected amount.
+[20:57:35] <KateMonkey> Over £1000 cash has been turned over in the past month.
+[20:58:10] <KateMonkey> Membership up by 10 this month alone.
+[20:59:34] <KateMonkey> About 111 members will cover expenses.
+[21:00:23] <KateMonkey> Dominic points out that London Hackspace sends out emails saying that the average membership is ___ and the lowest is ___ and guilt-trips them into donating more.
+[21:01:19] <KateMonkey> Action Kate: Add that sort of information to the newsletter on a bimonthly basis. (first of the month)
+[21:01:41] <KateMonkey> Action James: Update cost of hacking infographic
+[21:02:06] <KateMonkey> Justin suggests two-stage membership. Everyone worries about that and says no.
+[21:04:43] <KateMonkey> Matt says we need to sort out access to the bank account so that more board members can access it.
+[21:05:07] <KateMonkey> Originally set up as a social/group account, but we'll have to switch to a Ltd account.
+[21:05:45] <KateMonkey> It would mean that we'll have to open a new account, and then switch over all the standing orders.
+[21:06:07] <KateMonkey> This needs to be worked out with NatWest
+[21:06:26] <KateMonkey> Switching over the standing orders would also mean that all members would have appropriately individual references to make membership marking easier.
+[21:07:47] <KateMonkey> Newsletter:
+[21:08:15] <KateMonkey> Dominic suggests that rather than weekly, it's weekly or less
+[21:08:24] <KateMonkey> Jake will make a poster.
+[21:09:01] <KateMonkey> With all the events and any big news
+[21:12:22] <KateMonkey> AOB:
+[21:12:47] <KateMonkey> Dominic wants the board meeting in the blue room
+[21:12:54] <KateMonkey> Not very inviting to people
+[21:13:02] <KateMonkey> Plus the stomp party upstairs
+[21:14:35] ChickenGrylls (5c1b07ad@gateway/web/freenode/ip.92.27.7.173) left IRC. (Ping timeout: 245 seconds)
+[21:15:08] <KateMonkey> Justin asks about joint membership and hangers-on
+[21:15:19] <KateMonkey> Debate about whether or not we tell people to have individual memberships or not.
+[21:15:59] <KateMonkey> Nobody thinks it's an issue, and then we move on. Justin just thinks that, financially, it's not as fair as it could be.
+[21:16:18] <KateMonkey> Jake says it fits into the "pay what you feel is right" sort of thing, and that's it's all good.
+[21:17:04] <KateMonkey> Dominic points out that the only problem is one RFID card swapped between people
+[21:18:22] <KateMonkey> Meeting over.
+[21:18:23] <kimjonggill> Say goodbye Kate
