@@ -1,6 +1,6 @@
 <?php
 
-$sFile = "minutes_2012-09-05.txt";
+$sFile = "minutes_2012-08-01.txt";
 
 $aMinutes = file($sFile, FILE_IGNORE_NEW_LINES);
 
