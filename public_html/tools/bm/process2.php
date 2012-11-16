@@ -16,6 +16,7 @@ foreach ($aMinutes as $sMinute) {
 	if (strpos($sMinute, '[') === 0) {
 		list($sTime, $sMinute) = explode(" ", $sMinute, 2);
 		$sTime = trim($sTime);
+		var_dump($sTime);
 		if (strpos($sMinute, "-nh-holly") === 0) {
 			// ignore these lines
 			continue;
