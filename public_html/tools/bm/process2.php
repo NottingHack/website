@@ -13,26 +13,24 @@ $sOutput = '{| class="wikitable"' . "\n";
 $sOutput .= "!Time!!Name!!Minute\n";
 
 foreach ($aMinutes as $sMinute) {
-	if (strpos($sMinute, '[') === 0) {
-		list($sTime, $sMinute) = explode(" ", $sMinute, 2);
-		$sTime = trim($sTime);
-		var_dump($sTime);
-		if (strpos($sMinute, "-nh-holly") === 0) {
-			// ignore these lines
-			continue;
-		}
-		if (strpos($sMinute, "-->") === 0 or strpos($sMinute, "<--") === 0) {
-			// something is said
-			list($sName, $sMinute) = explode("\t", $sMinute, 2);
-			$sName = trim($sName, "<>");
-		}
-		else {
-			// Room notification
-			$sName = "";
-		}
-		
-		$sOutput .= outputMinute($sTime, $sName, $sMinute);
+	list($sTime, $sMinute) = explode(" ", $sMinute, 2);
+	$sTime = trim($sTime);
+	var_dump($sTime);
+	if (strpos($sMinute, "-nh-holly") === 0) {
+		// ignore these lines
+		continue;
 	}
+	if (strpos($sMinute, "-->") === 0 or strpos($sMinute, "<--") === 0) {
+		// something is said
+		list($sName, $sMinute) = explode("\t", $sMinute, 2);
+		$sName = trim($sName, "<>");
+	}
+	else {
+		// Room notification
+		$sName = "";
+	}
+	
+	$sOutput .= outputMinute($sTime, $sName, $sMinute);
 }
 
 $sOutput .= "|}\n";
