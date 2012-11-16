@@ -19,7 +19,7 @@ foreach ($aMinutes as $sMinute) {
 		// ignore these lines
 		continue;
 	}
-	if (strpos($sMinute, "-->") === 0 or strpos($sMinute, "<--") === 0) {
+	if (strpos($sMinute, "-->") !== 0 and strpos($sMinute, "<--") !== 0) {
 		// something is said
 		list($sName, $sMinute) = explode("\t", $sMinute, 2);
 		$sName = trim($sName, "<>");
