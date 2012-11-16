@@ -1,0 +1,103 @@
+20:05:50 <Nachimir>	Nottingham A.G.M. about to start.
+20:05:57 <Nachimir>	18 members present, making us quorate.
+20:07:33 -nh-holly/#nottinghack-	Door opened
+20:07:49 <Nachimir>	Roll call: James H, Matt Lloyd, David H, Kate B, James, F, John Woodcock, Spencer, Gill Z, Micheal P, Matt Little, Jake Howe, Max M, Jimena, David C, Craig P, Jezz A. Skype: Dominic Morrow. Proxy for John Crouchley: Spencer Owen.
+20:08:22 <Nachimir>	Item: Constitution
+20:08:45 <Nachimir>	Nottinghack constitution has been online for a while, we need to ratify to run elections.
+20:08:54 <Nachimir>	Everyone has seen: Yes.
+20:09:24 <Nachimir>	David H: People should be allowed to abstain if they want. James H: That's been added.
+20:09:44 -->	CPhoenix2 (~androirc@host-92-27-7-173.static.as13285.net) has joined #nottinghack
+20:10:38 <Nachimir>	Spencer: Should people have to use all of their votes? For instance: someone votes by email , but for just one person when four board positions are open?
+20:10:44 <Nachimir>	Max: I think it should count.
+20:11:02 <Nachimir>	James: I think there's a risk of not filling all board positions.
+20:11:25 <Nachimir>	Matt Little: Yes, include it.
+20:11:53 <Nachimir>	Unanimous show of hands: votes for less than four (in this instance) places should count.
+20:12:49 <Nachimir>	James: Should I read it? Jake: Read and discuss each section.
+20:13:57 <Nachimir>	James H reads: Interpretation, no dissent.
+20:15:23 <Nachimir>	James H reads section 1, trustees. David C: 1.5, "additional member". Michael P: "Is that with the consent of the member?" *laughter*.
+20:15:52 <Nachimir>	(Link to draft constitution: https://docs.google.com/document/d/1pC3BI0129rS7owoW3jdlsfJ4ECiDC2JksYF1jo1RuaI/edit#heading=h.lcxu0wvmjkck )
+20:19:17 <Nachimir>	James reads section 2: AGMs. Spencer: What happens if there's a tie in the voting?
+20:20:49 <Nachimir>	(Various) reach suggestion of a rerun election between tied parties. Go back to whole membership with proxy vote.
+20:22:12 <Nachimir>	2.5.10 added to constitution, 7 day window for proxy voting in event of ties.
+20:22:26 <Nachimir>	James H reads section 3.
+20:23:34 <Nachimir>	3.2 added.
+20:24:11 -nh-holly/#nottinghack-	Door opened
+20:24:19 -nh-holly/#nottinghack-	Door opened
+20:25:03 <Nachimir>	James H reads section 4: terminations.
+20:26:16 -nh-holly/#nottinghack-	Door opened
+20:26:22 <Nachimir>	David C suggests there should be a clause in 3 that the board should have private meetings about matters relating to termination.
+20:27:31 <Nachimir>	A few people say "That's a bad idea".
+20:27:57 <Nachimir>	David H: Complex: there are situations where people need privacy, but anything the board does also has to be accountable.
+20:28:06 <Nachimir>	Dominic: That meeting should be board only.
+20:28:24 <Nachimir>	James: I'm not comfortable having something in the constitution that says we can have secret meetings.
+20:30:40 -nh-holly/#nottinghack-	Door opened
+20:31:10 <Nachimir>	James F: Can we just go back to the bit about non-payment? Surely it should include some effort on the part of the board to contact people?
+20:31:41 <Nachimir>	Dominic: What we're addressing here is someone who just stops paying and doesn't reply to reminders.
+20:35:02 <Nachimir>	Wording of 4 changed according to group: non-payment terms less absolute, don't relate only to membership fees.
+20:35:31 <Nachimir>	Craig P: What about the loss of a board member? James, Matt Ll: It goes to an EGM accrding to the articles.
+20:35:43 <Nachimir>	James moves that we ratify constitution.
+20:35:49 <Nachimir>	No one requests secret vote.
+20:35:58 <Nachimir>	Carried unanimously.
+20:36:16 <LWK_mac>	http://wiki.nottinghack.org.uk/wiki/AGM_Financials_June_2011_to_May_2012
+20:36:20 <Nachimir>	Item: Finances to year end.
+20:36:35 <Nachimir>	LWK_mac / Matt Lloyd links above
+20:37:08 -->	kimjonggill (~androirc@82.132.211.73) has joined #nottinghack
+20:37:13 *	Nachimir discovers that he can make LWK_Mac 's macbook ding at will )
+20:37:45 -nh-holly/#nottinghack-	Door opened
+20:38:10 <Nachimir>	Average membership dues over the year were 14.24, now 13.86.
+20:38:38 <Nachimir>	Electricity for the year was £1530.
+20:39:31 <Nachimir>	IOnternet: £549 including line moving.
+20:40:25 <Nachimir>	(Rest at link)
+20:43:15 <Nachimir>	James: Came back from DMMF with £330. Minus £25 for PAT testing, and £26 to Ben Gray for a few of his kits we sold. Matt Little given £90 for badge bits, have a load of bits left but sold all badges.
+20:43:42 <LWK_mac>	Income over the Year
+20:43:42 <LWK_mac>	Membership due's: £10,583.12
+20:44:49 <Nachimir>	Item: Election
+20:45:14 <Nachimir>	Has anyone not voted? *some people put hands up*
+20:45:37 <Nachimir>	James: Everybody vote!
+20:46:25 <Nachimir>	Question from Matt Little on the election: No time for people putting themselves forward to promote themselves. In future, are we having a session where people introduce themselves?
+20:47:28 <Nachimir>	David: If we're doing it, I think we should minimise it, as in, an image and a paragraph of text. I'd hate it if it became a bunch of long campaigns and electioneering.
+20:47:39 <Nachimir>	Dominic: I think people should also be able to opt out.
+20:48:13 <--	ChickenGrylls has quit (Ping timeout: 245 seconds)
+20:48:13 <Nachimir>	James: Open up a thread on the mailing list, but it can all be optional.
+20:48:50 <Nachimir>	Matt Little: Announcement email should be separate to the email group. James: Yes, announcement always goes through the members only list or mailshot.
+20:49:28 -nh-holly/#nottinghack-	Door opened
+20:49:35 <Nachimir>	(Everyone goes to vote).
+20:53:51 <Nachimir>	LWK_Mac
+20:53:54 <Nachimir>	LWK_Mac
+20:53:55 <Nachimir>	LWK_Mac
+20:53:57 <LWK_mac>	Nachimir
+20:56:11 <Nachimir>	David H proposes that people be allowed to pay by cash if they want to.
+20:56:47 <Nachimir>	Especially now we're banking cash from the space.
+20:57:19 <Nachimir>	Matt and Max: Sure they get six weeks rather than their membership being terminated?
+20:57:29 <Nachimir>	Dominic: I think it should be discouraged.
+20:58:52 <Nachimir>	James: It's no more secure for us to have it from the bank or in cash. We can't trace people through the bank.
+21:00:29 -->	ChickenGrylls (5ec4d630@gateway/web/freenode/ip.94.196.214.48) has joined #nottinghack
+21:03:54 <Nachimir>	(Long discussion) David: A few related problems here, mainly that people are excited and we send them away for a week before they can be members.
+21:04:10 <Nachimir>	A lot of entropy in our current system because so much of it is manual.
+21:04:17 <Nachimir>	Dominic: Should be simple.
+21:04:31 <Nachimir>	Matt: No one is getting paid to administer this, and we have to keep ourselves sane.
+21:05:58 <Nachimir>	(Late entrant) John: Process would be better for people if they knew what delay was coming.
+21:06:16 <Nachimir>	Not knowing is the thing that makes it awkward.
+21:06:57 <Nachimir>	Dominic: Issue is that more board members need to be able to see the bank account.
+21:07:48 <Nachimir>	Improve the process we have.
+21:08:00 <Nachimir>	No objections.
+21:08:46 <Nachimir>	James: Want to give people specific references. We'd need to go back through the membership and make them change their standing order.
+21:09:23 <Nachimir>	Dominic: If people have to cancel their standing orders, that's full of danger.
+21:09:35 <Nachimir>	James: Reason is so we can automate stuff.
+21:09:43 <Nachimir>	Dominic: We'd lose 20 members immediately.
+21:09:55 <Nachimir>	Michael Proctor: Let's just do it for new members.
+21:10:08 <Nachimir>	Matt Little: How diverse are the existing references?
+21:10:24 <Nachimir>	Michael P: We can probably come up with rules to look after the existing ones?
+21:10:51 <Nachimir>	Max: What about last four digits of the bank account? Michael: We don't see that, which is annoying. sometimes I have to refund but don't have bank details.
+21:10:59 <Nachimir>	James: Any more AOB?
+21:11:38 <Nachimir>	Matt Little: One little thing. Emails relating to workshops. A few people are not on the google group to reduce noise. Could we put people on a mailing list?
+21:11:57 <Nachimir>	James: We can send them information, but we can't send them advertising.
+21:12:13 <Nachimir>	Kate: We could set up a nottinghack public announcements list.
+21:12:23 <Nachimir>	Item: Over to spencer for election results.
+21:13:28 <Nachimir>	Spencer: 51 for Dominic Morrow, everyone with exception of Dominic. 42 votes for Kate. David C with 41 votes. Tie for fourth place: 33 votes each, Michael Erskine and Jake.
+21:13:59 <Nachimir>	Spencer: Happy for someone to recount votes if they want to.
+21:14:37 <Nachimir>	Dominic: Huge thank you to Michael Proctor and Matt Little, who are stepping down. Both been with us since the start, and have done a tremendous amount of work. *applause*.
+21:16:25 <Nachimir>	James: We should hold election immediately by email. Spencer has list of emails.
+21:16:35 <Nachimir>	David: Need to be updated with a few more as of tonight.
+21:17:41 <Nachimir>	AOB from Kate: Green Festival this Sunday, who wants to help?
+21:17:49 <Nachimir>	(Some people volunteer).
