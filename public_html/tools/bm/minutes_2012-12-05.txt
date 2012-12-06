@@ -1,0 +1,173 @@
+[20:08]Nachimir:Nottingham Hackspace members meeting about to begin, 05/12/2012. Board, quorate, present: David H, David C, Russell, Michael E, Craig P, Daniel, Marcus, James H, Jake H, Tom G, Tristan, Kate B, Matt Ll, Adam F, Potential members: Daniel G, Michel.
+[20:08]Nachimir:1. James H: Historical minutes are now on the wiki.
+[20:08]ChickenGrylls:and Dominic on IRC 
+[20:08]Nachimir:3. Actions update.
+[20:09]Nachimir:Actions, from August.
+[20:09]Nachimir:Update companies house - done.
+[20:09]Nachimir:September: Matt Ll access to bank account. Not done yet.
+[20:09]Nachimir:Buy an event shelter in February. Kate. Not February yet.
+[20:11]Nachimir:James outlines: Dominic planning a big hackspace map for maker faire.
+[20:11]Nachimir:Orgainse Festivus party: In progress, DM.
+[20:11]Nachimir:Get quote from cleaner: In progress.
+[20:12]Nachimir:Organise monthly hack the space days: Done. David C: Had a second, which went quite well.
+[20:12]Nachimir:DM: Pick up six crates of Club Mate from Manchester: Not done yet, new year at earlest.
+[20:12]Nachimir:David H: Draft expenses policy for board members.
+[20:13]Nachimir:Dominic: Store chairs. Now at Backlit, going back in Dominic's office at no charge.
+[20:13]Nachimir:Hackspace video, David H, Jake H: Main filming done, need cutaways. Estimate: New year.
+[20:14]Nachimir:Kate: Quotes for stickers. Not done yet.
+[20:14]Nachimir:Matt Ll: Cost new shelves for members room. Not done yet.
+[20:14]Nachimir:Matt Ll: Make light switch map. There's already one on the wiki that Dan and Tim made.
+[20:15]Nachimir:DM: Talk to Wendy about expenses for Wood lathe. Not done.
+[20:15]Nachimir:David Clarke: Email members about wood lathe pledges. Not done yet.
+[20:16]Nachimir:Review pillar drill pledge and assess suitable options: DM and Russell. Matt Ll: decision made, just have to go and get it.
+[20:16]Nachimir:(Decided on radial arm model).
+[20:17]nh-holly:Door opened
+[20:17]nh-holly:Door opened
+[20:17]Nachimir:James H: Young hackers.
+[20:17]Nachimir:David H: Talk to NTU, not done.
+[20:17]Nachimir:Mouse: Ear defnders - not yet.
+[20:17]Nachimir:Matt Ll: Sourcing spray mask and filters.
+[20:18]Nachimir:+Mouse
+[20:18]Nachimir:Guidance for new members, David H and Kate: Not done.
+[20:19]Nachimir:ACtions done.
+[20:19]Nachimir:4. Financial update
+[20:19]nh-holly:Door opened
+[20:19] LWK_mac joined the chat room.
+[20:20]LWK_mac:Quick summary
+[20:20]LWK_mac:Start bank balance: £3,688.28
+[20:20]LWK_mac:Out: £1,678.40
+[20:20]LWK_mac:In: £1,553.29
+[20:20]LWK_mac:End: £3,563.17
+[20:20]LWK_mac:Paypal Start: £43.76
+[20:20]LWK_mac:Paypal End: £43.76
+[20:20]LWK_mac:Cash Start balance: £472.24
+[20:20]LWK_mac:Cash In: £238.02
+[20:20]LWK_mac:Cash Out: £304.68
+[20:20]LWK_mac:Cash End: £405.58
+[20:20]LWK_mac:[edit]Members
+[20:20]LWK_mac:Start: 128
+[20:20]LWK_mac:New: 10
+[20:20]LWK_mac:Ex: 3
+[20:20]LWK_mac:End: 135
+[20:20]LWK_mac:Average membership due: £12.85
+[20:20]LWK_mac:[edit]In/out Breakdown
+[20:20]LWK_mac:[edit]Outgoings
+[20:20]LWK_mac:BizSpace: £1,180.08 (should have been £ 1,170.36)
+[20:20]LWK_mac:Talk talk: £28.74
+[20:20]LWK_mac:Insurance: £65.39
+[20:20]LWK_mac:Loan: £208.33
+[20:20]LWK_mac:Other: £205.58
+[20:20]LWK_mac:[edit]Income
+[20:20]LWK_mac:Membership dues: £1,553.29
+[20:20]LWK_mac:Petty Cash Deposits:
+[20:20]LWK_mac:Workshops: £
+[20:20]LWK_mac:Donations: £
+[20:20]LWK_mac:Events: £
+[20:20]LWK_mac:Pledges: £
+[20:20]LWK_mac:Quick summary
+[20:20]LWK_mac:Start bank balance: £3,688.28
+[20:20]LWK_mac:Out: £1,678.40
+[20:20]LWK_mac:In: £1,553.29
+[20:20]LWK_mac:End: £3,563.17
+[20:20]LWK_mac:Paypal Start: £43.76
+[20:20]LWK_mac:Paypal End: £43.76
+[20:20]LWK_mac:Cash Start balance: £472.24
+[20:20]LWK_mac:Cash In: £238.02
+[20:20]LWK_mac:Cash Out: £304.68
+[20:21]LWK_mac:Cash End: £405.58
+[20:21]LWK_mac:[edit]Members
+[20:21]LWK_mac:Start: 128
+[20:21]LWK_mac:New: 10
+[20:21]LWK_mac:Ex: 3
+[20:21]LWK_mac:End: 135
+[20:21]LWK_mac:Average membership due: £12.85
+[20:21]LWK_mac:[edit]In/out Breakdown
+[20:21]LWK_mac:[edit]Outgoings
+[20:21]LWK_mac:BizSpace: £1,180.08 (should have been £ 1,170.36)
+[20:21]LWK_mac:Talk talk: £28.74
+[20:21]LWK_mac:Insurance: £65.39
+[20:21]LWK_mac:Loan: £208.33
+[20:21]LWK_mac:Other: £205.58
+[20:21]LWK_mac:[edit]Income
+[20:21]LWK_mac:Membership dues: £1,553.29
+[20:21]LWK_mac:Petty Cash Deposits:
+[20:21]LWK_mac:Workshops: £
+[20:21]LWK_mac:Donations: £
+[20:21]LWK_mac:Events: £
+[20:21]LWK_mac:Pledges: £
+[20:21]Nachimir:5. Fixings, JH
+[20:23]Nachimir:JH would like to authorise budget for nuts, bolts and screws. About £200?
+[20:24]Nachimir:David C and Matt: £70 for comprehensive collection of nuts and bolts.
+[20:24]Nachimir:Qtys for each size of bolt to get discount from Butlers = 500s and 1000s. Could get 40% off.
+[20:25]Nachimir:Kate: Need nails in there too; ones we have right now are a grab bag of random bits.
+[20:26]Nachimir:David C: Will make partly worked out list, will turn into concrete one and pass to Matt Ll and David H.
+[20:26]Nachimir:David C suggests initial budget of £100.
+[20:27]Nachimir:+ £30 for parts draws we can label in anticipation. No objections, both carried.
+[20:27]Nachimir:6. Young Adult Hackers - JH.
+[20:27]Nachimir:James has seen lawyers. Discussion on Hackspace organisers mailing list.
+[20:28]Nachimir:Lawyer: Bad plan, will just give us worst case information. (David H: NTU action struck).
+[20:28]Nachimir:.
+[20:28]Nachimir:We need to make the decision ourselves.
+[20:29]Nachimir:DETOUR INTO AOB
+[20:29]Nachimir:Russell raises welding gas.
+[20:31]Nachimir:Matt Lloyd gives estimated costs, 4.a-bit-p per litre, we'd get through 10 litres per minute. Russell: This is why small things are unusable, we'd go through them in minutes. Big container gives us 4000-odd litres. £94 per refill, we buy the tank. Tank cost: £160-something, comes filled.
+[20:32]Nachimir:So, at cheapest, would cost 40-something pence per minute to weld.
+[20:33]Nachimir:Steel wire fairly cheap, etc. Cylinder has gauge showing us amount of gas left.
+[20:33]Nachimir:Probably wouldn't charge, but we'd need to make clear to members that welding costs about 50p a minute.
+[20:34]Nachimir:Total expenditure: About £265. Jake: Shall we offset by one month. David C: May be additional expenses with regard to mill.
+[20:34]Nachimir:James H: Shall we offset to January? No objections, yes.
+[20:35]Nachimir:Russell: Ok to organise welding gas in Jan? Yes.
+[20:35] LWK_mac left the chat room. (Quit: Quit)
+[20:35]Nachimir:Back to 6, Young Adult Hackers.
+[20:37]Nachimir:Email from Russ: CRB checking not an issue anymore. Main issue is occupiers liability. Hackspace has a legal duty of care. For adults: Need to provide warning of dangers. For children (Under 18), need to be prepared for them to be less careful.
+[20:37]Nachimir:James proposes: Lower limit of 16, chat with guardian, anyone younger has to be supervised.
+[20:40]Nachimir:Suggestion of competency test. James H: Problems with that: We don't ask existing members to, so that would be disriminatory. Also, if someone passes test, then hurts theirself, that throw liability back on us.
+[20:41]Nachimir:Russell: No lone working policy, no panic button. We should have something to handle emergencies and safety. Feels like there's a missing element.
+[20:41]Nachimir:James H: I agree, most businesses have a lone working policy at least. Make sure someone knows where you are, how long you'll be, and how to contact you.
+[20:41]Nachimir:Russell: We can probably do better than that. James: Yes, my worry with that as with most technical hackspace projects, is will it get done? Lot of bikeshedding.
+[20:42]Nachimir:Daniel G: What about limiting hours. Kate, James: Wouldn't work, we grant 24h access. Letting them in means they can stay beyond those hours even if gatekeeper has limits.
+[20:43]ChickenGrylls:the onus needs to be on the individual to be responsible at all times in all ways including lone working
+[20:44]Nachimir:Waivers mentioned: James H: Unenforceable.
+[20:45]Nachimir:Many of the things we worry about with 16 - 18 year olds we could worry about with any of our other, relatively immature members.
+[20:45]Nachimir:Kate: So as well as member details on record, we have guardians details too. So when a kid runs around with a power saw, we can inform their guardian.
+[20:46]Nachimir:Jake: Should maintain contact with their guardians, or at least give them an opportunity to get the same updates.
+[20:47]ChickenGrylls:tell their parents on them? In my opinion that's a bit silly. We should trial with the existing junior applicants and see what we learn.
+[20:47]Nachimir:David C: Cannot see how we can have under 18s doing the sort of things that the hackspace allows us to do. Power tools, machining, etc. Worries me: I was involved in theater backstage work from the age of 15, using power tools, up ladders, etc., but there were adults around all the time. Not specifically looking after me, just around. Hackspace is potentially providing space where kids can do this, but adults are not necessarily around.
+[20:48]ChickenGrylls:and THAT is a good thing
+[20:48]Nachimir:David C: Young rewired team were drilling some stuff, sensible, intelligent, etc., but was using the wrong type of drill bit for the material. David stepped in, helped, and that worked well. Could be aproblem that we're implying anyone who signs up can just use the bench drill.
+[20:49]ChickenGrylls:I've seen lot of 30 year olds use the wrong drill bit
+[20:49]ChickenGrylls:I've used the wrong things myself
+[20:49]ChickenGrylls:it has nothing to do with age
+[20:50]Nachimir:James H: All members should ask for help if they don't know how to use a tool. For 16 - 18, that should be emphasised. I get it, and agree, but think it's safer for them to come here: At least there's a chance of them learning to use the tools properly.
+[20:50]Nachimir:Daniel G: Induction, crash course in health and safety or something.
+[20:50]ChickenGrylls:I agree with James
+[20:51]Nachimir:Kate: Every member joins for different reasons. Just have to drive home: ASK if you don't know how to use something. A physical induction for everything will last forever and a person will forget all of it.
+[20:51]ChickenGrylls:Kate is right
+[20:52]Nachimir:David C: We could make videos of people using tools properly. It's then "How it works, where the bits are, how to use it safely".
+[20:52]ChickenGrylls:I would think that would take someone a very very long time
+[20:52]nh-holly:Door opened
+[20:53]ChickenGrylls:besides its the same issue. Are we saying that magically at 18 everyone knows how to do stuff? The liability is THE SAME
+[20:53]Nachimir:Jake: Most of the tools you could do serious damage to yourself with already require an induction.
+[20:53]ChickenGrylls:we allow under 18s on a case-by-case
+[20:53]Nachimir:(Dominic, have you asked anyone to be your voice here? As ever, I'm busy taking minutes).
+[20:54]ChickenGrylls:Don't worry about me. I'm getting my thoughts on the record!
+[20:54]ChickenGrylls:I've not asked
+[20:54]nh-holly:Door opened
+[20:54]Nachimir:Kate: Need to keep under 18s away from the liquor cabinet. James: It would actually be legal for them to drink alcohol here. (We'd probably ask them not to).
+[20:55]Nachimir:James: Need to make clear that the hackspace is an adult space, there will be swearing, drinking, etc. List of extra stuff for a board member to go through, and a list by which a board member can assess their maturity.
+[20:55]nh-holly:Door opened
+[20:56]Nachimir:Michel asks about HSE. James: We have employers duty of care to people running workshops, volunteering for anything.
+[20:57]nh-holly:Door opened
+[20:57]Nachimir:James: Any other objections? (No). Action: Kate and James H to put together documentation for this.
+[20:58]nh-holly:Door opened
+[20:58]Nachimir:Michel: What happens if this goes wrong? James: We'd review this at another board meeting. If we found we couldn't have 16 - 18 members, then we'd bring it to an end.
+[20:58]nh-holly:Door opened
+[20:59]Nachimir:Russell: Assessment should probably involve 2 board members. James: I agree.
+[21:00]Nachimir:David C: Feasible to have a probationary period with their guardian coming with them? James: Problem is that so many parents don't give a toss about these subjects. Ones with interested parents are already coming on joint memberships.
+[21:01]Nachimir:Russell: Could it be that membership is probabtionary until 18? James: Yes.
+[21:02]Nachimir:Jake: If they do something silly in the first couple of visits, but what's the difference between that and them doing something silly a year in?
+[21:02]Nachimir:Kate: Would say it's a recommendation rather than mandatory, but we ask they come in on open nights for their first few months.
+[21:02]nh-holly:Door opened
+[21:02]Nachimir:James and Kate writing up and posting to mailing list.
+[21:04]Nachimir:AOAOB: David C: Thanks to everyone who did some work at hack the space. We have some windows covered in bubble wrap, etc. to help insulate. Expenses need to be paid. Have material left, list of jobs still to do. James H: Dominic paying expenses by weekend.
+[21:04]Nachimir:Meeting adjourned.
