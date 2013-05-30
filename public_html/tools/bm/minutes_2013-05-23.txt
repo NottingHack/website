@@ -1,0 +1,158 @@
+[19:22]Nachimir:Nottinghack 2013 AGM begins. Roll call: (Taken on paper, to be added later). Number of members attending: 36.
+[19:22]Nachimir:2. Finances up to May
+[19:23]Nachimir:Matt Lloyd: Are on the wiki already for the last 11 months. Jun 2012 - Apr 2013.
+[19:23]Nachimir:EOY bank balance: £2856 (Didn't catch rest).
+[19:23]Nachimir:Membership: 87 at start of year, end of year 173.
+[19:24]Nachimir:Membership dues for Apr 2013 broke £2000.
+[19:25]Nachimir:Total outgoings: £28,588. 16K = rent and bills.
+[19:25]Nachimir:£2300 - snackspace.
+[19:25]Nachimir:Income for year: 28,011.50p
+[19:25]Nachimir:(Missed total dues)
+[19:25]Nachimir:Workshops: £2700 in
+[19:25]Nachimir:Pledges: 727
+[19:26]Nachimir:Snackspace: £2651
+[19:26]Nachimir:(Full figures here: http://wiki.nottinghack.org.uk/wiki/AGM_Financials_June_2011_to_May_2012 )
+[19:27]Nachimir:Officially we made a loss of £575.76p.
+[19:27]Nachimir:However, from that past year expenditure we've gained assets: Mill, etc.
+[19:28]Nachimir:Question: Ange Taggart asks about loans. Is that included in the finances?
+[19:28]Nachimir:Matt: Yes.
+[19:28] luxpir left the chat room. (Ping timeout: 248 seconds)
+[19:29]Nachimir:Dominic: It wasn't for rent. It was for a shortfall in bizspaces billing. We took a soft loan which we paid back at ~£250 per month. Two repayments remain.
+[19:29]Nachimir:Ange: Is that still a problem? James: No, we break even now.
+[19:30]Nachimir:(Joking) Dominic: Shouldn't joke about stuff, the mill is a significant asset that we got cheaply and restored.
+[19:30]Nachimir:Matt Ll: We've had a small surplus each month for the past few.
+[19:31]Nachimir:James H: If we weren't improving the space, we'd have much more than we need to run the space. We should aim to break even, or save for planned expenditure, , not make a profit.
+[19:32]Nachimir:Ange ask if this be ing noted down: Yes, minuted on IRC.
+[19:33]Nachimir:3. Special resolution 2.5
+[19:33]Nachimir:James H: Amendment to section 2.5 of constitution. Summary: Current one is how today's election runs.
+[19:33]Nachimir:Returning officer offers voting by email or ballot.
+[19:33]Nachimir:Proposed change: Electronic voting, using S.T.V.
+[19:34]Nachimir:James: STV is fairer, and electronic voting allows us to involve more members.
+[19:34]LWK:http://wiki.nottinghack.org.uk/wiki/Talk:Constitution
+[19:34]Nachimir:Proposed change: http://wiki.nottinghack.org.uk/wiki/Talk:Constitution
+[19:35]Nachimir:2.5 Elections
+[19:35]Nachimir:2.5.1 Trustee positions become vacant when trustees either reach the end of their term of office or decide to stand down part way through their term. These will be decided a month before AGM.
+[19:35]Nachimir:2.5.2 In the week leading up to the AGM, elections must be held for all trustee positions that have become vacant.
+[19:35]Nachimir:2.5.3 Any member can nominate themselves to stand for election by giving notice to the community during the nomination window.
+[19:35]Nachimir:2.5.4 The nomination window will normally begin when the AGM is announced and end 24 hours before elections begin. The window will be announced along with the AGM.
+[19:35]Nachimir:2.5.5 Elections shall be conducted using electronic means. These must be secure and fair.
+[19:35]Nachimir:2.5.6 Elections will use Single Transferable Vote
+[19:35]Nachimir:2.5.7 Members may abstain from voting
+[19:35]Nachimir:2.5.8 In the event of a tie, a new election will take place immediately amongst the tied candidates.
+[19:35]Nachimir:2.5.9 If one of the tied candidates decides to withdraw, and the remaining candidate has passed the winning threshold a new election will not be required.
+[19:36]Nachimir:Questions: Matt Little: Fully electronic? No way of writing down votes? Everyone would need some kind of gadget?
+[19:36]Nachimir:James: Yes, or they could vote in the space. Would be secure and anonymous.
+[19:36]Nachimir:System stores vote, and that you voted, but they're stored separately. Cannot trace who voted for what.
+[19:37]Nachimir:Dominic: Would it not be better to retain the use of a returning officer to remove any doubt?
+[19:37]Nachimir:James: Someitmes difficult to find.
+[19:37]Nachimir:Andrew A: Website takes less work. I would have volunteered for that this time.
+[19:38]Nachimir:James F: This is a turnkey solution, not one we're writing ourselves?
+[19:38]Nachimir:James H: Yes, it's an open source system used by London Hackspace.
+[19:38]Nachimir:Wants to write a clause in that lets us find an alternative solution if this service goes down.
+[19:39] rkm joined the chat room.
+[19:39]Nachimir:Ange: How long do you have to be a member in order to vote? James: As long as you're a member when the election starts, then you can vote. Ange: Have experienced this in Nottingham before where people come into an AGM en masse and vote.
+[19:39]Nachimir:Dominic: But our current system is really slow.
+[19:40]Nachimir:[name]: Not specific to electronic system though. Could still happen under our current system.
+[19:40]Nachimir:[new member, sorry don't have name]: Could people without tech have a proxy person? James: Not sure. Can we park that while we deal with Ange's point?
+[19:41]Nachimir:Ange: A month would be better than the day before. James F: What happened in the other case? Ange: They had to bring in someone external to rewrite the constitution with safeguards against it.
+[19:42]Nachimir:James: We're considering lowering the quorum.
+[19:43]Nachimir:Michael E: Wouldn't people have to maintain their membership to effect that change?
+[19:43]Nachimir:Ange: They could just cancel after a month.
+[19:43]Nachimir:James H: But Michael is saying that the changes they'd want to effect would be quite physical.
+[19:44]Nachimir:Liz M: Not practical to make a rule that stops people from getting their friends to join, but if it's visible that someone had persuaded friends to join, is there some way we could discipline that.
+[19:44]Nachimir:John H: Perhaps a better way would be a minimum number of payments.
+[19:45]Nachimir:James H: I agree. Worry about new members not getting or feeling involved.
+[19:45]Nachimir:Michel: Not in favour of electronic voting.
+[19:45]Nachimir:(Wanted it recorded).
+[19:45]Nachimir:James: We'll vote on it in a minute. We need a 60% vote yes from this room to pass it.
+[19:46]Nachimir:Adam: No matter what, it can be gamed. I think regardless of rules, it will always be a potential issue.
+[19:47]Nachimir:Jake: When an AGM is announced, anyone who is a member at that point can vote?
+[19:47]Nachimir:James: Election starts a week before the AGM. So one way we could do it, it that someone should be a member when the AGM (or EGM) is announced.
+[19:49]Nachimir:Michael E: Any determined party could come in an take over the hackspace. In which case, the membership will agree with it, or go somewhere else and set soemthing else up. It's just how organisations are, and we could legislate against it forever.
+[19:49]Nachimir:Liz M: I think if we try to put preventative rules in place, we'd just alienate new members.
+[19:50]Nachimir:[New member]: Some membership orgs have aims and objectives, and if members aren't following those, they might not be allowed to be members.
+[19:50]Nachimir:James: We've intentionally kept those quite lose. That could quite easily be perverted while still operating within them.
+[19:51]Nachimir:Difficult to match everyone against those, and we'd practically become thought police.
+[19:52]Nachimir:Dominic: I think this is a valid concern. Like many others: Probably better for us to be open though, rather than bind ourselves in rules.
+[19:52]Nachimir:Ange: In order to be able to vote, what exactly are the criteria? James: One monthly payment by the time the election starts.
+[19:52]Nachimir:Ange: I think that's fair enough, it just means people can't turn up the day before.
+[19:53]Nachimir:(Dominic and Kate describe current joining procedure).
+[19:54]Nachimir:James: Would you like to propose an amendment? Ange: No, happy with the way it is after that discussion.
+[19:55]Nachimir:James: Anyone think we should propose an amendment? (No hands). Jake: Only change I could see is you've got to be a member when the AGM is announced. James H: To be fair, you have to be a member when the AGM is announced to run for the board, so why not make it the same cutoff for new members voting?
+[19:56]Nachimir:Dominic: Against that. Two people in this room wouldn't be able to vote today, and we're only just quorate.
+[19:58]Nachimir:12 in favour of Jakes amendment, 15 against.
+[19:58]Nachimir:Voting limit remains at start of election rather than announcement.
+[19:59]Nachimir:(Andrew A points out quibble I didn't quite catch).
+[19:59]Nachimir:Andrew: similar to 2.5.10 in the old constitution. Creates another seven day window, even with the new voting system, rather than calling for an immediate election.
+[20:00]Nachimir:James, Dominic: That's a good point. Will amend.
+[20:00]Nachimir:David C: That new election cause by a draw, would the voters be the same pool, or anyone a member at *that* point?
+[20:00]Nachimir:James H: No, it would still be restricted to the voter pool at the start of the elections.
+[20:01]Nachimir:Question about ties that are over the threshold: Are those people in?
+[20:01]Nachimir:James H: No, even if above the threshold, the tie would go to another election.
+[20:02]Nachimir:Matt Little: If it's all electronic, I'd like something written in to allow for either someone to do it manually (offline), or that computer access will be provided for them?
+[20:02]Nachimir:James H: There is a way that we can use offline voting too.
+[20:02] justin_j_ left the chat room. (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+[20:02]nh-holly:Door Opened by: SebZeppelin (last seen 3d 00h 58m 00s ago)
+[20:02]Nachimir:Dominic: If there's no returning officer, I don't understand how that would work.
+[20:03]Nachimir:(Person enters: 37 members in attendance).
+[20:03]Nachimir:Eddie: How would you contact people if you don't have their email?
+[20:04]Nachimir:Andrew A: Only notification in the constitution is to put it on the calendar. Michael E: But it's online. Could we also put it on the wall? James H: Yes.
+[20:05]Nachimir:James: Do we need to amend it to allow some kind of offline voting? *Nearly everyone says yes*.
+[20:05]Nachimir:Joe  We will need a returning officer then.
+[20:06] justin_j_ joined the chat room.
+[20:06]Nachimir:James H: (Proposes amendments that allow for a returning officer and physical voting).
+[20:06]Nachimir:Votes for that: Nearly all yes.
+[20:06]Nachimir:Voting on seven day window: Also nearly unanimous.
+[20:07]Nachimir:(new member): How are you defining offline members?
+[20:07]Nachimir:James: If anyone hasn't given an email address.
+[20:07]Nachimir:(new member): So if I've given you an email, I have to vote electronically?
+[20:08]Nachimir:James: No, returning officer finds a way for people to vote offline if they want to, they can opt out of online voting. Returning officer will manage that.
+[20:09]Nachimir:Michael E: To raise a point of order, this amendment has been published and available for everyone to comment on for a week. For everyone to start picking it apart right now is a bit last minute.
+[20:10]Nachimir:James reads whole amendment again at the request of Matthew Gates. *waits for it to load*
+[20:10]Nachimir:(Including amendments from this meeting).
+[20:12]Nachimir:Vote on amendment to constitution: Carried.
+[20:12]Nachimir:(almost unanimous).
+[20:12]Nachimir:4. Quorum.
+[20:12]Nachimir:James: Last year we defined the quorum as 20% and put it into constitution. There was talk yesterday of lowering it,, so we could maintain quorum.
+[20:12]Nachimir:(We only just made it tonight).
+[20:13]Nachimir:(35 were required).
+[20:13]Nachimir:James: Should we change that percentage?
+[20:14]Nachimir:Voting to see purely to see if we should have a discussion: more in favour than not, but less than half.
+[20:14]Nachimir:Dominic: We could have done more to get members down to this meeting. It's about having representation, not rushing stuff through.
+[20:15]Nachimir:We could put on transport from Derby. We could get pizza in, there's more we could do to raise engagement.
+[20:15]Nachimir:Spencer: What estimates do we have for growth.
+[20:16]Nachimir:James: Forecast for 2014 is that we'll have 26X members and need 54.
+[20:16]Nachimir:Andrew A: What's the percentage of members we have who aren't in Nottingham?
+[20:16]Nachimir:James H: Last I checked, 70% live in Nottingham.
+[20:17] emilepetrone left the chat room. (Remote host closed the connection)
+[20:18]Nachimir:Adam F: Tonight, some people acted as proxies, so in favour of keeping it. (New member): Electronic voting proxies? James H: No, a proxy needs to be able to speak at the AGM.
+[20:18]Nachimir:Spencer: Would Skype be acceptable? James H: Yes, we'd have to provide the means though. We could do a massive google hangout if we needed to.
+[20:19]Nachimir:Ange: I think it's really dangerous to lower it. Makes the space more vulnerable to cliques.
+[20:20]Nachimir:Matthew G: I think lowering it moderately would make sense. As our membership grows, I think we have more of a long tail.
+[20:20]Nachimir:Dominic: The worst that will happen is we're not quorate, and have to go out and get people more engaged.
+[20:20] emilepetrone joined the chat room.
+[20:21]Nachimir:James: Any member can appoint any other member as their proxy for the AGM, and a member can even serve as a proxy for multiple members as long as those people feel they can represent their views.
+[20:21]Nachimir:Rob M: How do we authenticate proxies?
+[20:22]Nachimir:James H: We make it a matter of public record, and if those people object it invalidates.
+[20:22]Nachimir:AGM conclusions, votes, etc.
+[20:22]Nachimir:James calls vote on changing or maintaining quorum. Passes on no change, almost unanimous.
+[20:23]Nachimir:5. Election.
+[20:23] justin_j_ left the chat room. (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+[20:23]Nachimir:James summarises. Rob Hayward in blue room with voting slips, if you've voted electronically, you will not be able to vote tonight.
+[20:23]Nachimir:(Meeting breaks up to vote).
+[20:29]artag:arduino
+[20:29]artag:oops
+[20:29]artag:soory
+[20:32] justin_j_ joined the chat room.
+[20:32]nh-holly:Door opened
+[20:33]nh-holly:Door opened
+[20:34]nh-holly:Door opened
+[20:34]nh-holly:Door opened
+[20:40]nh-holly:Door opened
+[20:41] rkm left the chat room. (Ping timeout: 276 seconds)
+[20:44] justin_j_ left the chat room. (Quit: My MacBook Pro has gone to sleep. ZZZzzz…)
+[20:44]Nachimir:Election results: 40 voters.
+[20:46]Nachimir:38 votes for James Hayward. 38, David Hayward. 38, Matt Lloyd. 37 Gareth Howell. 2 voted "None of the above".
+[20:46]nh-holly:Door opened
+[20:46] LWK left the chat room. (Excess Flood)
+[20:46]Nachimir:AGM concluded.
