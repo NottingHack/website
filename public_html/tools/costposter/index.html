@@ -20,8 +20,8 @@
 		data.addColumn('number', 'Fixed');
 		data.addColumn('number', 'Variable');
 		data.addRows([
-			['Income', 1583.78, 1027.40],
-			['Expenses', 1451, 630.42],
+			['Income', 1991.61, 345.00],
+			['Expenses', 1491.42, 75],
 		]);
 		
 
@@ -56,9 +56,18 @@
 			['May 12', 87, 13.86],
 			['Jun 12', 96, 13.46],
 			['Jul 12', 107, 13.16],
-			['Aug 12', 118, 13.15]
+			['Aug 12', 118, 13.13],
+			['Sep 12', 128, 12.82],
+			['Oct 12', 129, 12.81],
+			['Nov 12', 134, 12.85],
+			['Dec 12', 135, 12.61],
+			['Jan 13', 138, 10.87],
+			['Feb 13', 153, 12.00],
+			['Mar 13', 162, 11.29],
+			['Apr 13', 175, 11.79],
+			['May 13', 183, 11.74],
 		]);
-		
+
 		var options = {
 			vAxes: {
 					0: { title: 'count', logScale: false },
@@ -81,10 +90,10 @@
 		data.addColumn('string', 'Item');
 		data.addColumn('number', 'Cost');
 		data.addRows([
-			['Membership £1,583.73', 1583.73],
-			['Petty Cash £175', 175],
-			['Workshops £765.40', 765.40],
-			['Donations £87.00', 87]
+			['Membership £1,991.61', 1991.61],
+			['Petty Cash £345', 345],
+			['Workshops £0', 0],
+			['Donations £0', 0]
 		]);
 
 		var options = {
@@ -104,11 +113,11 @@
 		data.addColumn('number', 'Cost');
 		data.addRows([
 			['Rent £990', 990],
-			['Misc £630.42', 630.42],
+			['Misc £75.00', 75],
 			['Loan £208.33', 208.33],
-			['Electricity £158.54', 158.54],
-			['Insurance £65.39', 65.39],
-			['Internet £28.74', 28.74]
+			['Electricity £196.99', 196.99],
+			['Insurance £66.70', 66.70],
+			['Internet £29.40', 29.40]
 		]);
 
 		var options = {
@@ -126,10 +135,7 @@
 		data.addColumn('string', 'Item');
 		data.addColumn('number', 'Cost');
 		data.addRows([
-			['EMF £120', 120],
-			['Domains £22.74', 22.74],
-			['Badges and Kits £390.48', 390.48],
-			['Snackspace £97.20', 97.20]
+			['Bookmarks £75', 75]
 		]);
 
 		var options = {
@@ -147,8 +153,9 @@
 	<div id="container">
 		<header role="banner" class="text">
 			<h1><img src="logo.png" width="60" height="60" alt="Nottingham Hackspace" /> The Cost of Hacking</h1>
-			<p>Nottingham Hackspace is funded by your membership subscriptions, donations &amp; workshops.  As of August 2012 we are breaking even, this means we can start to plough money back into the space to make it even better!</p>
+			<p>Nottingham Hackspace is funded by your membership subscriptions, donations &amp; workshops.  As of August 2012 we started to break even, this means we can plough money back into the space to make it even better!</p>
 			<p>Please consider becoming a member or increasing your monthly subscription payment.</p>
+			<p>Below are the details for <strong>May 2013</strong>, a relatively slow month.</p>
 		</header>
 		
 		<div id="main" role="main" class="text">
@@ -175,7 +182,7 @@
 				<header>
 					<h2>Misc?</h2>
 				</header>
-				<p>What's this "Misc" entry?  This is our spend on consumables, tools, etc. For August, this was:</p> 
+				<p>What's this "Misc" entry?  This is our spend on consumables, tools, etc. For May 2013, this was:</p> 
 				<div id="misc_div" class="graph" style="width: 485px; height: 300px"></div>
 			</article>
 
@@ -184,7 +191,7 @@
 					<h2>How You Can Help</h2>
 				</header>
 				<ul>
-					<li><strong class="large">Become a member today!</strong> You'll get 24/7 access, a storage box for your projects, and warm fuzzy feelings for supporting us. You can pay what you like, our average is currently £13 per month. </li>
+					<li><strong class="large">Become a member today!</strong> You'll get 24/7 access, a storage box for your projects, and warm fuzzy feelings for supporting us. You can pay what you like! </li>
 					<li><strong class="large">Tell all your friends!</strong> At out current average, we need 118 members to cover all our outgoings and have a bit left over.</li>
 					<li>If you're already a member and can afford it, <strong class="large">increase your monthly subscription payment</strong> by a few pounds.</li>
 					<li>Volunteer to run a workshop on your area of expertise, or help us keep our infrastructure in shape.</li>
@@ -194,7 +201,7 @@
 		</div>
 		<footer id="credits" role="contentinfo" class="text">
 			<hr />
-			<p>Last updated 11 September 2012. Shamelessy copied from <a href="http://londonhackspace.github.com/propaganda/posters/cost-of-hacking/">London Hackspace</a></p>
+			<p>Last updated 15 June 2013. Shamelessy copied from <a href="http://londonhackspace.github.com/propaganda/posters/cost-of-hacking/">London Hackspace</a></p>
 		</footer>
 	</div>
 </body>
