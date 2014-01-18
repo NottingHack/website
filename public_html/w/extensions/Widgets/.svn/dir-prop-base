@@ -1,0 +1,7 @@
+K 13
+svn:externals
+V 130
+smarty		http://smarty-php.googlecode.com/svn/tags/Smarty_2_6_18/libs/
+googlecode	http://support.googlecode.com/svn/trunk/scripts/
+
+END

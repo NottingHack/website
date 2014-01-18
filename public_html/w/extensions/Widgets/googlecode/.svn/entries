@@ -1,0 +1,53 @@
+8
+
+dir
+556
+http://support.googlecode.com/svn/trunk/scripts
+http://support.googlecode.com/svn
+
+
+
+2009-03-24T23:52:01.189088Z
+190
+andy.chooooo
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+341a5c8d-861a-0410-8641-3d3dc95ea080
+
+googlecode_upload.py
+file
+
+
+
+
+2010-07-08T15:51:38.000000Z
+2c641567f21be979e0f575590c0b570a
+2009-03-24T23:52:01.189088Z
+190
+andy.chooooo
+has-props
+
+googlecode_distutils_upload.py
+file
+
+
+
+
+2010-07-08T15:51:38.000000Z
+8f4dfd4bdfc7886cdffa5caf881ee68d
+2007-07-25T17:33:47.790526Z
+22
+david.jc.anderson
+

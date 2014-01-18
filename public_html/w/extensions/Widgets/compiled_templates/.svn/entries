@@ -1,0 +1,41 @@
+8
+
+dir
+80102
+http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Widgets/compiled_templates
+http://svn.wikimedia.org/svnroot/mediawiki
+
+
+
+2009-06-13T17:32:43.418516Z
+51831
+ialex
+has-props
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+dd0e9695-b195-4be7-bd10-2dea1a65a6b6
+
+.htaccess
+file
+
+
+
+
+2010-07-08T15:51:35.000000Z
+d0ae84972d03b8fb2c21228502bcfc42
+2009-03-18T18:10:48.286782Z
+48519
+ialex
+has-props
+

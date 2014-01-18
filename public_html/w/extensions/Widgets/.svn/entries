@@ -1,0 +1,99 @@
+8
+
+dir
+80102
+http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Widgets
+http://svn.wikimedia.org/svnroot/mediawiki
+
+
+
+2010-12-19T21:29:55.561402Z
+78608
+raymond
+has-props
+
+svn:special svn:externals svn:needs-lock
+svn:externals
+
+
+
+
+
+
+
+
+
+
+dd0e9695-b195-4be7-bd10-2dea1a65a6b6
+
+smarty_plugins
+dir
+
+WidgetRenderer.php
+file
+
+
+
+
+2010-12-14T01:42:51.000000Z
+ca5974c28cb5d427cbdc78945c5a7650
+2010-10-15T17:12:01.033367Z
+74809
+sergeychernyshev
+has-props
+
+Widgets.i18n.magic.php
+file
+
+
+
+
+2010-12-14T01:42:51.000000Z
+a840d9484939684016fcf984c15640e4
+2010-10-31T17:55:47.642542Z
+75726
+siebrand
+has-props
+
+compiled_templates
+dir
+
+Widgets.i18n.php
+file
+
+
+
+
+2011-01-12T18:59:56.000000Z
+323f4ca173f8def384b9a9e2ac4a939f
+2010-12-19T21:29:55.561402Z
+78608
+raymond
+has-props
+
+Widgets.php
+file
+
+
+
+
+2010-12-14T01:43:10.000000Z
+2e4d28be6ca1d5f021ded2f730cb4cc5
+2010-09-19T23:35:04.845321Z
+73352
+sergeychernyshev
+has-props
+
+Makefile
+file
+
+
+
+
+2010-07-08T15:51:35.000000Z
+f9872f82d980919b330c0bdb872b24bb
+2010-04-16T21:37:29.683850Z
+65142
+sergeychernyshev
+has-props
+

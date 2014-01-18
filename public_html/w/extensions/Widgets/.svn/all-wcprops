@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/mediawiki/!svn/ver/78608/trunk/extensions/Widgets
+END
+WidgetRenderer.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/mediawiki/!svn/ver/74809/trunk/extensions/Widgets/WidgetRenderer.php
+END
+Widgets.i18n.magic.php
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/mediawiki/!svn/ver/75726/trunk/extensions/Widgets/Widgets.i18n.magic.php
+END
+Widgets.i18n.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/mediawiki/!svn/ver/78608/trunk/extensions/Widgets/Widgets.i18n.php
+END
+Widgets.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/mediawiki/!svn/ver/73352/trunk/extensions/Widgets/Widgets.php
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/mediawiki/!svn/ver/65142/trunk/extensions/Widgets/Makefile
+END

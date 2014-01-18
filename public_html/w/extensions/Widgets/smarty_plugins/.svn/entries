@@ -1,0 +1,41 @@
+8
+
+dir
+80102
+http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/Widgets/smarty_plugins
+http://svn.wikimedia.org/svnroot/mediawiki
+
+
+
+2010-09-19T23:27:45.379151Z
+73350
+sergeychernyshev
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+dd0e9695-b195-4be7-bd10-2dea1a65a6b6
+
+modifier.validate.php
+file
+
+
+
+
+2010-12-14T01:42:51.000000Z
+bde9967bfdd98acd256ae403406ccdcb
+2010-09-19T23:27:45.379151Z
+73350
+sergeychernyshev
+has-props
+
