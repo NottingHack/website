@@ -20,6 +20,7 @@ if( defined( 'MW_INSTALL_PATH' ) ) {
 }
 
 # Import settings that are not safe to put into Git
+# James
 require_once( "$IP/SecretSettings.php" );
 
 
