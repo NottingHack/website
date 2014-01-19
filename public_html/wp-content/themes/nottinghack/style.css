@@ -1,3 +1,4 @@
+
 /*
 Theme Name: Nottinghack
 Theme URI: http://www.nottinghack.org.uk/
@@ -250,7 +251,6 @@ body {
 	width: 680px;
 }
 #content {
-	
 }
 #primary,
 #secondary {
@@ -508,8 +508,9 @@ div#content .page, div#content .post {
 	font-size: 1.5em;
 	line-height: 2.1em;
 }
-#content code {
-	font-size: 1.3em;
+#content pre {
+	font-size: 1em;
+	line-height: 1.3em;
 }
 #content dt,
 #content th {
