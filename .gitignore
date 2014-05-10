@@ -1,10 +1,14 @@
 public_wiki/SecretSettings.php
 # ignore the auto generated planet files
 public_planet/*.*ml
+planet/cache/
+.shh
+.bash*
 
 # Compiled source #
 ###################
 *.pyc
+*.tmplc
 
 # Logs and databases #
 ######################
