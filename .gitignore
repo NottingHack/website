@@ -1,1 +1,3 @@
-public_html/w/SecretSettings.php
+public_wiki/SecretSettings.php
+# ignore the auto generated planet files
+public_planet/*.*ml
