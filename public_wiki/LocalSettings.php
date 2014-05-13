@@ -36,6 +36,7 @@ $wgShellLocale = "en_US.utf8";
 
 $wgLanguageCode = "en";
 
+$wgReadOnly = 'Down for upgrade, access will be restored shortly - LWK';
 
 /*
  +------------------------------+
