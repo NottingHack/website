@@ -80,8 +80,8 @@ $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) )
 
 $wgArticlePath = "/wiki/$1";  # Virtual path. This directory MUST be different from the one used in $wgScriptPath
 $wgUsePathInfo = true;        # Enable use of pretty URLs
-$wgFavicon = "/favicon.ico";
-$wgAppleTouchIcon = "/hackspaceNottmsm128.png";
+$wgFavicon = "$wgScriptPath/favicon.ico";
+$wgAppleTouchIcon = "$wgScriptPath/hackspaceNottmsm128.png";
 
 # This line stops all unregistered users from editing
 $wgGroupPermissions['*']['edit'] = false;
@@ -316,4 +316,3 @@ require_once("$IP/extensions/CSS/CSS.php");
 # Adding HMS auth extension
 require_once('extensions/HMSAuth/Auth.php');
 $wgAuth = new NHAuth();
-
