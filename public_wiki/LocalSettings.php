@@ -18,7 +18,7 @@ if( defined( 'MW_INSTALL_PATH' ) ) {
 }
 
 // Import settings that are not safe to put into Git
-require_once( "$IP/SecretSettings.php" );
+require_once( "/home/nottinghack/www_secure/mw_SecretSettings.php" );
 
 $path = array( $IP, "$IP/includes", "$IP/languages" );
 set_include_path( implode( PATH_SEPARATOR, $path ) . PATH_SEPARATOR . get_include_path() );
