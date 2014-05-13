@@ -2,7 +2,7 @@
 
 $bDebug = false;
 
-$sLogFile = "/home/nottinghack/public_html/w/extensions/HMSAuth/log.txt";
+$sLogFile = "/home/nottinghack/public_wiki/extensions/HMSAuth/log.txt";
 //$url = 'http://192.168.1.170/web2/wikiauth.php';
 $url = 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php';
 //$url = 'https://92.27.7.173/wiki/wikiauth.php';
@@ -402,7 +402,7 @@ class NHAuth extends AuthPlugin
     curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4); // 4 second timeout 
 //    curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/RapidSSL_CA_bundle.pem'); 
-    curl_setopt($ch, CURLOPT_CAINFO, '/home/nottinghack/public_html/w/extensions/HMSAuth/cacert.pem');
+    curl_setopt($ch, CURLOPT_CAINFO, '/home/nottinghack/public_wiki/extensions/HMSAuth/cacert.pem');
     curl_setopt($ch, CURLOPT_SSLVERSION, 3);
     curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, TRUE); 
     $result = curl_exec($ch);
