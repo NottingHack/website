@@ -80,8 +80,8 @@ $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) )
 
 $wgArticlePath = "/wiki/$1";  # Virtual path. This directory MUST be different from the one used in $wgScriptPath
 $wgUsePathInfo = true;        # Enable use of pretty URLs
-$wgFavicon = "http://www.nottinghack.org.uk/favicon.ico";
-$wgAppleTouchIcon = "http://www.nottinghack.org.uk/hackspaceNottmsm128.png";
+$wgFavicon = "/favicon.ico";
+$wgAppleTouchIcon = "/hackspaceNottmsm128.png";
 
 # This line stops all unregistered users from editing
 $wgGroupPermissions['*']['edit'] = false;
@@ -121,7 +121,7 @@ $wgEmailAuthentication = true;
  +------------------------------+
 */
 
-$wgLogo             = "$wgStylePath/common/images/nottinghack_small.png";
+$wgLogo             = "/nottinghack_small.png";
 
 $wgUseTeX           = true;
 
