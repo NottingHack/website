@@ -74,7 +74,7 @@ $wgScriptExtension  = ".php";
 ## The relative URL path to the skins directory
 $wgStylePath        = "$wgScriptPath/skins";
 
-$wgMainCacheType = CACHE_NONE;
+$wgMainCacheType = CACHE_ACCEL;
 $wgMemCachedServers = array();
 #$wgCacheDirectory = "$IP/cache";
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
@@ -90,9 +90,9 @@ $wgGroupPermissions['*']['edit'] = false;
 # Sysops or logged-in users can create accounts for others through Special:Userlogin
 $wgGroupPermissions['*']['createaccount'] = false;
 
-$wgLocaltimezone = 'EST';
+$wgLocaltimezone = 'UTC';
 
-$wgLocalTZoffset = date("Z") / 60;
+# $wgLocalTZoffset = date("Z") / 60;
 
 $wgLocalInterwiki   = strtolower( $wgSitename );
 
