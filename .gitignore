@@ -1,7 +1,17 @@
+# media wiki files #
+################################
 public_wiki/SecretSettings.php
-# ignore the auto generated planet files
+public_wiki/extenstions/HMSAuth/lot.txt
+public_wiki/extensions/Widgets/compiled_templates/
+
+
+# ignore the auto generated planet files #
+##########################################
 public_planet/*.*ml
 planet/cache/
+
+# user pref files #
+###################
 .ssh/
 .profile
 .bash*
