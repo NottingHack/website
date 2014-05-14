@@ -11,12 +11,17 @@
  +----------------------------------------------------------------------+
 */
 
+# Protect against web entry
+if ( !defined( 'MEDIAWIKI' ) ) {
+    exit;
+}
+/*
 if( defined( 'MW_INSTALL_PATH' ) ) {
 	$IP = MW_INSTALL_PATH;
 } else {
 	$IP = dirname( __FILE__ );
 }
-
+*/
 // Import settings that are not safe to put into Git
 require_once( "/home/nottinghack/www_secure/mw_SecretSettings.php" );
 
@@ -24,7 +29,7 @@ $path = array( $IP, "$IP/includes", "$IP/languages" );
 set_include_path( implode( PATH_SEPARATOR, $path ) . PATH_SEPARATOR . get_include_path() );
 
 // Set all default options
-require_once( "$IP/includes/DefaultSettings.php" );
+//require_once( "$IP/includes/DefaultSettings.php" );
 
 if ( $wgCommandLineMode ) {
 	if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
@@ -77,7 +82,7 @@ $wgStylePath        = "$wgScriptPath/skins";
 $wgMainCacheType = CACHE_ACCEL;
 $wgMemCachedServers = array();
 #$wgCacheDirectory = "$IP/cache";
-$wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
+$wgInvalidateCacheOnLocalSettingsChange = true;
 
 $wgArticlePath = "/wiki/$1";  # Virtual path. This directory MUST be different from the one used in $wgScriptPath
 $wgUsePathInfo = true;        # Enable use of pretty URLs
@@ -291,16 +296,6 @@ $wgDefaultUserOptions['wikieditor-preview'] = 1;
 $wgDefaultUserOptions['wikieditor-publish'] = 1;
 # Displays a navigation column (summary) on the right side
 $wgDefaultUserOptions['usenavigabletoc'] = 1;
-
-# Adding Vector extension
-# Bundled in 1.19 and later
-# these are now included in 1.22
-#require_once( "$IP/extensions/Vector/Vector.php" );
-#$wgDefaultUserOptions['useeditwarning'] = 1;
-#$wgVectorFeatures['editwarning']['user'] = true;
-#$wgVectorFeatures['collapsibletabs']['user'] = true;
-#$wgVectorFeatures['collapsiblenav']['user'] = true;
-#$wgVectorUseSimpleSearch = true;
 
 # Adding Renameuser extenstion
 # Bundled in 1.19 and later
