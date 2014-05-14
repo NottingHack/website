@@ -294,12 +294,13 @@ $wgDefaultUserOptions['usenavigabletoc'] = 1;
 
 # Adding Vector extension
 # Bundled in 1.19 and later
-require_once( "$IP/extensions/Vector/Vector.php" );
-$wgDefaultUserOptions['useeditwarning'] = 1;
-$wgVectorFeatures['editwarning']['user'] = true;
-$wgVectorFeatures['collapsibletabs']['user'] = true;
-$wgVectorFeatures['collapsiblenav']['user'] = true;
-$wgVectorUseSimpleSearch = true;
+# these are now included in 1.22
+#require_once( "$IP/extensions/Vector/Vector.php" );
+#$wgDefaultUserOptions['useeditwarning'] = 1;
+#$wgVectorFeatures['editwarning']['user'] = true;
+#$wgVectorFeatures['collapsibletabs']['user'] = true;
+#$wgVectorFeatures['collapsiblenav']['user'] = true;
+#$wgVectorUseSimpleSearch = true;
 
 # Adding Renameuser extenstion
 # Bundled in 1.19 and later
