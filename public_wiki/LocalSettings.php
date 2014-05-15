@@ -87,7 +87,7 @@ $wgInvalidateCacheOnLocalSettingsChange = true;
 $wgArticlePath = "/wiki/$1";  # Virtual path. This directory MUST be different from the one used in $wgScriptPath
 $wgUsePathInfo = true;        # Enable use of pretty URLs
 $wgFavicon = "$wgScriptPath/favicon.ico";
-$wgAppleTouchIcon = "$wgScriptPath/hackspaceNottmsm128.png";
+$wgAppleTouchIcon = "$wgScriptPath/apple-touch-icon.png";
 
 # This line stops all unregistered users from editing
 $wgGroupPermissions['*']['edit'] = false;
@@ -195,7 +195,7 @@ define("NH_NS_GROUP", 512);
 define("NH_NS_GROUP_TALK", 513);
 define("NH_NS_LIBRARY", 514);
 define("NH_NS_LIBRARY_TALK", 515);
- 
+
 $wgExtraNamespaces[NH_NS_PROJECT] = "Project";
 $wgExtraNamespaces[NH_NS_PROJECT_TALK] = "Project_talk";
 $wgExtraNamespaces[NH_NS_GROUP] = "Group";
