@@ -296,7 +296,7 @@ $wgDefaultUserOptions['wikieditor-preview'] = 1;
 # Displays the Publish and Cancel buttons on the top right side
 $wgDefaultUserOptions['wikieditor-publish'] = 1;
 # Displays a navigation column (summary) on the right side
-$wgDefaultUserOptions['usenavigabletoc'] = 1;
+$wgDefaultUserOptions['usenavigabletoc'] = 0;
 
 # Adding Renameuser extenstion
 # Bundled in 1.19 and later
