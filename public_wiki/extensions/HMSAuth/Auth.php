@@ -1,14 +1,38 @@
 <?php
+/**
+ * HHackspace Management System authorisation plugin
+ * Allow hackspace members to use to use there HMS account to login on the wiki
+ *
+ * @file
+ * @ingroup Extensions
+ * @version 0.1
+ * @author Daniel Swann
+ * @copyright © 2014 Daniel Swann
+ * @licence MIT
+ */
+    
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
+
+$wgExtensionCredits['other'][] = array(
+	'path'           => __FILE__,
+	'name'           => 'HMSAuth',
+	'author'         => array ( 'Daniel Swann', 'Matt Lloyd'),
+	'description' => 'Hackspace Management System authorisation plugin',
+	'url'            => 'https://wiki.nottinghakc.org.uk/wiki/User:Daniel',
+	'version'        => '0.1',
+);
+
 
 $bDebug = false;
 
 $sLogFile = "/home/nottinghack/public_wiki/extensions/HMSAuth/log.txt";
-//$url = 'http://192.168.1.170/web2/wikiauth.php';
 $url = 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php';
-//$url = 'https://92.27.7.173/wiki/wikiauth.php';
-$secret = "zklWx467WSd32x";
-//$salt = '$2a$07$Zpqmnrujcmolwmrkchfgpqzst$';
-$salt = '$1$rwioejrikjxcv29xkmfcx$'; // MD5
+
+// secure setting are kept outside the web root
+require_once('/home/nottinghack/www_secure/HMSAuthSecret.php');
 
 function writeMsg($sMsg) 
 {
