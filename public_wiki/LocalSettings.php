@@ -87,7 +87,8 @@ $wgInvalidateCacheOnLocalSettingsChange = true;
 $wgArticlePath = "/wiki/$1";  # Virtual path. This directory MUST be different from the one used in $wgScriptPath
 $wgUsePathInfo = true;        # Enable use of pretty URLs
 $wgFavicon = "$wgScriptPath/favicon.ico";
-$wgAppleTouchIcon = "$wgScriptPath/apple-touch-icon.png";
+# Not needed as we have AppleTouchIcon extension
+# $wgAppleTouchIcon = "$wgScriptPath/apple-touch-icon.png";
 
 # This line stops all unregistered users from editing
 $wgGroupPermissions['*']['edit'] = false;
@@ -132,9 +133,9 @@ $wgLogo             = "/nottinghack_small.png";
 $wgUseTeX           = true;
 
 $wgRightsPage = "Main:Copyright"; # Set to the title of a wiki page that describes your license/copyright
-$wgRightsUrl = "http://creativecommons.org/licenses/by-sa/3.0/";
+$wgRightsUrl = "https://creativecommons.org/licenses/by-sa/3.0/";
 $wgRightsText = "Creative Commons Attribution-ShareAlike 3.0 License";
-$wgRightsIcon = "http://i.creativecommons.org/l/by-sa/3.0/88x31.png";
+$wgRightsIcon = "https://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 # $wgRightsCode = ""; # Not yet used
 
 $wgDefaultSkin = 'vector';
@@ -313,3 +314,6 @@ require_once("$IP/extensions/CSS/CSS.php");
 # Adding HMS auth extension
 require_once('extensions/HMSAuth/Auth.php');
 $wgAuth = new NHAuth();
+
+# Adding AppleTouchIcon extension
+require_once('extensions/AppleTouchIcon/AppleTouchIcon.php');
