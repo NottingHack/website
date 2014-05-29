@@ -61,7 +61,7 @@ function MagicNumberedHeadingsMagicWordMagicWords(&$magicWords)
  
 function MagicNumberedHeadingsMagicWordwgVariableIDs(&$wgVariableIDs)
 {
-        $wgVariableIDs[] = MAG_NUMBEREDHEADINGS;
+        $wgVariableIDs[] = 'MAG_NUMBEREDHEADINGS';
         return true;
 }
  
