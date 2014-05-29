@@ -49,7 +49,9 @@ $wgExtensionCredits['parserhook'][] = array(
 $wgHooks['MagicWordMagicWords'][] = 'MagicNumberedHeadingsMagicWordMagicWords';
 $wgHooks['MagicWordwgVariableIDs'][] = 'MagicNumberedHeadingsMagicWordwgVariableIDs';
 $wgHooks['LanguageGetMagic'][] = 'MagicNumberedHeadingsLanguageGetMagic';
-$wgHooks['ParserBeforeInternalParse'][] = 'MagicNumberedHeadingsParserBeforeInternalParse';
+// LWK edit to http://www.mediawiki.org/wiki/Extension_talk:MagicNumberedHeadings
+//$wgHooks['ParserBeforeInternalParse'][] = 'MagicNumberedHeadingsParserBeforeInternalParse';
+$wgHooks['InternalParseBeforeLinks'][] = 'MagicNumberedHeadingsInternalParseBeforeLinks'; 
  
 function MagicNumberedHeadingsMagicWordMagicWords(&$magicWords)
 {
@@ -68,18 +70,20 @@ function MagicNumberedHeadingsLanguageGetMagic(&$magicWords, $langCode)
         switch($langCode)
         {
                 case 'de' :
-                        $magicWords[MAG_NUMBEREDHEADINGS] = array( 0, '__ÜBERSCHRIFTENNUMMERIERUNG__', '__NUMBEREDHEADINGS__' );
+                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__ÜBERSCHRIFTENNUMMERIERUNG__', '__NUMBEREDHEADINGS__' );
                         break;
                 case 'ksh' :
-                        $magicWords[MAG_NUMBEREDHEADINGS] = array( 0, '__ÖVVERSCHRIFTENUMMERIERE__', '__NUMBEREDHEADINGS__' );
+                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__ÖVVERSCHRIFTENUMMERIERE__', '__NUMBEREDHEADINGS__' );
                         break;
                 default :
-                        $magicWords[MAG_NUMBEREDHEADINGS] = array( 0, '__NUMBEREDHEADINGS__' );
+                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__NUMBEREDHEADINGS__' );
         }
         return true;
 }
- 
-function MagicNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
+
+// LWK edit to fix http://www.mediawiki.org/wiki/Extension_talk:MagicNumberedHeadings
+//function MagicNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
+function MagicNumberedHeadingsInternalParseBeforeLinks($parser, $text, $stripState)
 {
         if (MagicWord::get( MAG_NUMBEREDHEADINGS )->matchAndRemove( $text ) )
         {
