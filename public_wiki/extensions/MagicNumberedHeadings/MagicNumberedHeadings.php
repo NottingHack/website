@@ -32,7 +32,7 @@
  * * Add "__NUMBEREDHEADINGS__" to any article of your choice.
  * 
  * @author Purodha Blissenbach
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12
  */
  
 if (!defined('MEDIAWIKI')) {
@@ -41,17 +41,19 @@ if (!defined('MEDIAWIKI')) {
  
 $wgExtensionCredits['parserhook'][] = array(
         'name' => 'MagicNumberedHeadings',
-        'version' => '$Revision: 1.11 $',
+        'version' => '1.12',
         'author' => 'Purodha Blissenbach',
         'url' => 'https://www.mediawiki.org/wiki/Extension:MagicNumberedHeadings',
         'description' => 'Adds MagicWord "<nowiki>__NUMBEREDHEADINGS__</nowiki>"',
 );
+$dir = dirname(__FILE__) . '/';
+ 
+$wgExtensionMessagesFiles['MagicNumberedHeadings'] = $dir . 'MagicNumberedHeadings.i18n.php';
+ 
 $wgHooks['MagicWordMagicWords'][] = 'MagicNumberedHeadingsMagicWordMagicWords';
 $wgHooks['MagicWordwgVariableIDs'][] = 'MagicNumberedHeadingsMagicWordwgVariableIDs';
-$wgHooks['LanguageGetMagic'][] = 'MagicNumberedHeadingsLanguageGetMagic';
-// LWK edit to http://www.mediawiki.org/wiki/Extension_talk:MagicNumberedHeadings
-//$wgHooks['ParserBeforeInternalParse'][] = 'MagicNumberedHeadingsParserBeforeInternalParse';
-$wgHooks['InternalParseBeforeLinks'][] = 'MagicNumberedHeadingsInternalParseBeforeLinks'; 
+#$wgHooks['ParserBeforeInternalParse'][] = 'MagicNumberedHeadingsParserBeforeInternalParse';
+$wgHooks['InternalParseBeforeLinks'][] = 'MagicNumberedHeadingsInternalParseBeforeLinks';
  
 function MagicNumberedHeadingsMagicWordMagicWords(&$magicWords)
 {
@@ -65,24 +67,7 @@ function MagicNumberedHeadingsMagicWordwgVariableIDs(&$wgVariableIDs)
         return true;
 }
  
-function MagicNumberedHeadingsLanguageGetMagic(&$magicWords, $langCode)
-{
-        switch($langCode)
-        {
-                case 'de' :
-                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__ÜBERSCHRIFTENNUMMERIERUNG__', '__NUMBEREDHEADINGS__' );
-                        break;
-                case 'ksh' :
-                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__ÖVVERSCHRIFTENUMMERIERE__', '__NUMBEREDHEADINGS__' );
-                        break;
-                default :
-                        $magicWords['MAG_NUMBEREDHEADINGS'] = array( 0, '__NUMBEREDHEADINGS__' );
-        }
-        return true;
-}
-
-// LWK edit to fix http://www.mediawiki.org/wiki/Extension_talk:MagicNumberedHeadings
-//function MagicNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
+#function MagicNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
 function MagicNumberedHeadingsInternalParseBeforeLinks($parser, $text, $stripState)
 {
         if (MagicWord::get( 'MAG_NUMBEREDHEADINGS' )->matchAndRemove( $text ) )
@@ -91,4 +76,3 @@ function MagicNumberedHeadingsInternalParseBeforeLinks($parser, $text, $stripSta
         }
         return true;
 }
-?>
