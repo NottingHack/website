@@ -59,6 +59,6 @@ function MNH_AssignValue(&$parser, &$cache, &$magicWordId, &$ret) {
 }
 
 function MNH_DeclareVarIds(&$customVariableIds) {
-	//$customVariableIds[] = 'MAG_NUMBEREDHEADINGS';
+	$customVariableIds[] = 'MAG_NUMBEREDHEADINGS';
 	return true;
 }
