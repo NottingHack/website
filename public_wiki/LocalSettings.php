@@ -306,7 +306,9 @@ require_once("$IP/extensions/Renameuser/Renameuser.php");
 require_once( "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php" );
 
 # Adding MagicNumberedHeadings extension
-require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
+//require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
+// Trying my own
+require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
 
 # Adding CSS extension
 require_once("$IP/extensions/CSS/CSS.php");
