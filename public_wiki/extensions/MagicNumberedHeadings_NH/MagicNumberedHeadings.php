@@ -53,7 +53,7 @@ $wgHooks['MagicWordwgVariableIDs'][] = 'MNH_DeclareVarIds';
 function MNH_AssignValue(&$parser, &$cache, &$magicWordId, &$ret) {
 	if ('MAG_NUMBEREDHEADINGS' == $magicWordId) {
 		$parser->mOptions->mNumberHeadings = (TRUE);
-		$ret = ' ';
+		$ret = '';
 	}
 	return true;
 }
