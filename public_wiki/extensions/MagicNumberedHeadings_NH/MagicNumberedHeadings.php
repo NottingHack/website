@@ -46,8 +46,8 @@ $wgExtensionCredits['parserhook'][] = array(
  
 $wgExtensionMessagesFiles['MagicNumberedHeadings'] = dirname(__FILE__) . 'MagicNumberedHeadings.i18n.php';
  
-//$wgHooks['ParserGetVariableValueSwitch'][] = 'MNH_AssignValue';
-//$wgHooks['MagicWordwgVariableIDs'][] = 'MNH_DeclareVarIds';
+$wgHooks['ParserGetVariableValueSwitch'][] = 'MNH_AssignValue';
+$wgHooks['MagicWordwgVariableIDs'][] = 'MNH_DeclareVarIds';
 
 
 function MNH_AssignValue(&$parser, &$cache, &$magicWordId, &$ret) {
