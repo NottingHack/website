@@ -44,7 +44,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'description' => 'Adds MagicWord "<nowiki>{{NUMBEREDHEADINGS}}</nowiki>"',
 );
  
-$wgExtensionMessagesFiles['MagicNumberedHeadings'] = dirname(__FILE__) . 'MagicNumberedHeadings.i18n.php';
+$wgExtensionMessagesFiles['MagicNumberedHeadings_NH'] = dirname(__FILE__) . 'MagicNumberedHeadings.i18n.php';
  
 $wgHooks['ParserGetVariableValueSwitch'][] = 'MNH_AssignValue';
 $wgHooks['MagicWordwgVariableIDs'][] = 'MNH_DeclareVarIds';
