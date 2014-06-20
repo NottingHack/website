@@ -4,6 +4,9 @@ public_wiki/SecretSettings.php
 public_wiki/extensions/HMSAuth/log.txt
 public_wiki/extensions/Widgets/compiled_templates/
 
+# ether pad install #
+#####################
+public_pads/etherpad-lite/
 
 # ignore the auto generated planet files #
 ##########################################
