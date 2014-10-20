@@ -427,7 +427,7 @@ class NHAuth extends AuthPlugin
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4); // 4 second timeout 
 //    curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/RapidSSL_CA_bundle.pem'); 
     curl_setopt($ch, CURLOPT_CAINFO, '/home/nottinghack/public_wiki/extensions/HMSAuth/cacert.pem');
-    curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+    curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);
     curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, TRUE); 
     $result = curl_exec($ch);
 
