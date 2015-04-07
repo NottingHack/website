@@ -62,7 +62,7 @@ function gl_google_calendar( $content ) {
 	// old google calendar API call
 	//$feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/private-acbf60a032394b53e3caae31e5c725eb/';
 	// April 2015 API call
-	$feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/public/basic';
+	$feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/public/basic/';
 	
 	# If user has clicked on next/prev month links, set the stamp appropriately
 	if ( isset( $_GET['gl_show'] ) ) {
@@ -98,7 +98,8 @@ function gl_google_calendar( $content ) {
 	$end = $nextyear . '-' . $nextmonth . '-01T00:00:00';
 	
 	# Generate URL and get XML from Google
-	$xml_url = $feed_url . 'full?start-min=' . $start . '&start-max=' . $end; 
+	//$xml_url = $feed_url . 'full?start-min=' . $start . '&start-max=' . $end; 
+	$xml_url = $feed_url . '?start-min=' . $start . '&start-max=' . $end; 
 	$xml = file_get_contents( $xml_url );
 	#echo($xml_url);
 	
