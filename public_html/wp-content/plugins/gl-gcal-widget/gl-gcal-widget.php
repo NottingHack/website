@@ -11,9 +11,12 @@ Author URI: http://www.purplegecko.co.uk/
 */
 
 class GL_Cal extends WP_Widget {
-	
-	private $feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/private-acbf60a032394b53e3caae31e5c725eb/';
-	
+
+// former google calendar API call	
+//	private $feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/private-acbf60a032394b53e3caae31e5c725eb/';
+// current (April 2015) google calendar API call
+	private $feed_url = 'https://www.google.com/calendar/feeds/info%40nottinghack.org.uk/public/basic';
+		
 	function GL_Cal() {
 		// widget actual processes
 		$widget_ops = array('classname' => 'widget_gl_cal', 'description' => 'Provides agenda of upcoming events' );
