@@ -24,6 +24,10 @@ planet/cache/
 *.pyc
 *.tmplc
 
+# API Keys #
+############
+public_html/tools/slack/keys.php
+
 # Logs and databases #
 ######################
 *.log
