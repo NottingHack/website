@@ -26,7 +26,7 @@ $trelloMembers = json_decode(file_get_contents($url), true);
 
 foreach ($trelloMembers as $member) {
 	$i = searchArray($member['username'], 'trello', $usernames);
-	if (!is_null($id)) {
+	if (!is_null($i)) {
 		$usernames[$i]['trelloId'] = $member['id'];
 	}
 }
@@ -77,7 +77,10 @@ foreach ($trelloLists as $list) {
 				$unassigned++;
 			}
 		}
-		sendSlack($message);
+		if (isset($message)) {
+			sendSlack($message);
+			unset($message);
+		}
 	}
 
 	if ($unassigned > 0) {
@@ -91,6 +94,7 @@ foreach ($trelloLists as $list) {
 		$message .= ' assigned to anyone in the "' . $list['name'] . '" list';
 	}
 	sendSlack($message);
+	unset($message);
 }
 
 
@@ -110,7 +114,21 @@ function searchArray($searchValue, $searchKey, $haystack) {
 }
 
 function sendSlack($message) {
-	echo('<p>' . $message . '</p>');
+	if ($message == "") {
+		return;
+	}
+	global $webhook;
+
+	$payload = json_encode(array("text" => $message));
+
+	$ch = curl_init($webhook);
+
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	$response = curl_exec($ch);
+	curl_close($ch);
 }
 
 function implodeSlackUsers($slackUsers) {
@@ -126,9 +144,25 @@ function implodeSlackUsers($slackUsers) {
 	return $userString;
 }
 
+function daysToDue($date) {
+	list($date, $time) = explode("T", $date);
+	$date = DateTime::createFromFormat('Y-m-d', $date);
+
+	$today = new DateTime();
+
+	$interval = $today->diff($date);
+
+	$days = $interval->d;
+	if ($date < $today) {
+		$days = $days * -1;
+	}
+
+	return $days;
+}
+
 function dueText($days) {
 	if ($days == 0) {
-		$string = "is due today!";
+		$string = "is due today! :alarm_clock:";
 	}
 	elseif ($days == 1) {
 		$string = "is due tomorrow";
