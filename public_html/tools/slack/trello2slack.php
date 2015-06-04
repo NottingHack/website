@@ -17,7 +17,7 @@ $trelloBoardId = '54745ca526448f2011c10a53';
 $dueRange = 7;
 
 // Lists to ignore
-$ignoreLists = array("Done");
+$ignoreLists = array("Done", "To Discuss", "Templates");
 
 // get all the members on the board
 
