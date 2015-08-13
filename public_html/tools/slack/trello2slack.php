@@ -95,9 +95,10 @@ foreach ($trelloLists as $list) {
 			$message .= 'are ' . $unassigned . " cards that aren't";
 		}
 		$message .= ' assigned to anyone in the "' . $list['name'] . '" list';
+
+		sendSlack($message);
+		unset($message);
 	}
-	sendSlack($message);
-	unset($message);
 }
 
 
