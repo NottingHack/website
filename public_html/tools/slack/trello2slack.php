@@ -65,7 +65,7 @@ foreach ($trelloLists as $list) {
 					$message = 'Hey ' . implodeSlackUsers($slackUsers) . ' your task "' . $card['name'] . '" ' . dueText($days);
 				}
 				else {
-					$message = 'The task "' . $card['name'] . '" ' . dueText($days) . ' and no one is assigned!';
+					$message = '@channel: The task "' . $card['name'] . '" ' . dueText($days) . ' and no one is assigned!';
 				}
 			}
 		}
@@ -84,7 +84,7 @@ foreach ($trelloLists as $list) {
 	}
 
 	if ($unassigned > 0) {
-		$message = 'There ';
+		$message = '@channel: There ';
 		if ($unassigned == 1) {
 			$message .= "is 1 card that isn't";
 		}
