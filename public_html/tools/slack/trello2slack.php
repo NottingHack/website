@@ -10,6 +10,9 @@ require_once('usernames.php');
 */
 require_once('keys.php');
 
+// timezone
+date_default_timezone_set('Europe/London');
+
 // trello details
 $trelloBoardId = '54745ca526448f2011c10a53';
 
