@@ -7,23 +7,27 @@ $usernames = array(
 		),
 	array(
 		'trello'	=>	'dpslwk',
-		'slack'		=>	'ML',
+		'slack'		=>	'dpslwk',
 		),
 	array(
 		'trello'	=>	'davidclarke29',
-		'slack'		=>	'DC',
+		'slack'		=>	'davidclarke',
 		),
 	array(
-		'trello'	=>	'davidhayward5',
-		'slack'		=>	'DH',
+		'trello'	=>	'adamfroggatt',
+		'slack'		=>	'froggy',
 		),
 	array(
-		'trello'	=>	'garethhowell1',
-		'slack'		=>	'GH',
+		'trello'	=>	'sophierwilkinson',
+		'slack'		=>	'sophierach',
+		),
+	array(
+		'trello'	=>	'roberthunt87',
+		'slack'		=>	'rob',
 		),
 	array(
 		'trello'	=>	'jamesfowkes',
-		'slack'		=>	'JF',
+		'slack'		=>	'jamesfowkes',
 		),
 	);
 
