@@ -8,7 +8,7 @@ require_once('usernames.php');
 	$trelloAppKey
 	$trelloToken
 */
-require_once('keys.php');
+require_once('/home/nottinghack/www_secure/slack_keys.php');
 
 // timezone
 date_default_timezone_set('Europe/London');
