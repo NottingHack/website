@@ -155,7 +155,9 @@ function implodeSlackUsers($slackUsers) {
 function daysToDue($date) {
 	var_dump($date);
 	list($date, $time) = explode("T", $date);
+	var_dump($date);
 	$date = DateTime::createFromFormat('Y-m-d', $date);
+	var_dump($date);
 
 	$today = new DateTime();
 
