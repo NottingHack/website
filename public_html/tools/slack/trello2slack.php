@@ -118,10 +118,6 @@ function searchArray($searchValue, $searchKey, $haystack) {
 }
 
 function sendSlack($message) {
-	// testing
-	return;
-
-
 	if ($message == "") {
 		return;
 	}
@@ -153,7 +149,6 @@ function implodeSlackUsers($slackUsers) {
 }
 
 function daysToDue($date) {
-	var_dump($date);
 	list($date, $time) = explode("T", $date);
 	$date = DateTime::createFromFormat('Y-m-d', $date);
 
@@ -165,7 +160,7 @@ function daysToDue($date) {
 	if ($date < $today) {
 		$days = $days * -1;
 	}
-	var_dump($days);
+
 	return $days;
 }
 
