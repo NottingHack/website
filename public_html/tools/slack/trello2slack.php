@@ -168,6 +168,7 @@ function daysToDue($date) {
 		$days = $days * -1;
 	}
 	var_dump($days);
+	var_dump($interval->format('%a'));
 	return $days;
 }
 
