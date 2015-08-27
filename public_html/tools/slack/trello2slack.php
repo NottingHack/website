@@ -178,7 +178,7 @@ function dueText($days) {
 		$string = "was due yesterday!";
 	}
 	elseif ($days < -1) {
-		$string = "was due " . $days . " days ago";
+		$string = "was due " . abs($days) . " days ago";
 	}
 
 	return $string;
