@@ -196,6 +196,8 @@ define("NH_NS_GROUP", 512);
 define("NH_NS_GROUP_TALK", 513);
 define("NH_NS_LIBRARY", 514);
 define("NH_NS_LIBRARY_TALK", 515);
+define("NH_NS_TEAM", 516);
+define("NH_NS_TEAM_TALK", 517);
 
 $wgExtraNamespaces[NH_NS_PROJECT] = "Project";
 $wgExtraNamespaces[NH_NS_PROJECT_TALK] = "Project_talk";
@@ -203,6 +205,8 @@ $wgExtraNamespaces[NH_NS_GROUP] = "Group";
 $wgExtraNamespaces[NH_NS_GROUP_TALK] = "Group_talk";
 $wgExtraNamespaces[NH_NS_LIBRARY] = "Library";
 $wgExtraNamespaces[NH_NS_LIBRARY_TALK] = "Library_talk";
+$wgExtraNamespaces[NH_NS_TEAM] = "Team";
+$wgExtraNamespaces[NH_NS_TEAM_TALK] = "Team_talk";
 
 $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN				=>	true,
@@ -226,7 +230,9 @@ $wgNamespacesToBeSearchedDefault = array(
 	NH_NS_GROUP			=>	true,
 	NH_NS_GROUP_TALK	=>	false,
 	NH_NS_LIBRARY		=>	true,
-	NH_NS_LIBRARY_TALK	=>	false
+	NH_NS_LIBRARY_TALK	=>	false,
+	NH_NS_TEAM		=>	true,
+	NH_NS_TEAM_TALK		=>	false
 );
 
 $wgNamespacesWithSubpages = array(
@@ -251,7 +257,9 @@ $wgNamespacesWithSubpages = array(
 	NH_NS_GROUP			=>	true,
 	NH_NS_GROUP_TALK	=>	false,
 	NH_NS_LIBRARY		=>	true,
-	NH_NS_LIBRARY_TALK	=>	false
+	NH_NS_LIBRARY_TALK	=>	false,
+	NH_NS_TEAM		=>	true,
+	NH_NS_TEAM_TALK		=>	false
 );
 
 
