@@ -16,7 +16,7 @@ require_once('/home/nottinghack/www_secure/slack_keys.php');
 date_default_timezone_set('Europe/London');
 
 // Debug mode
-$debug = true;
+$debug = false;
 
 // trello details
 $trelloBoardId = '54745ca526448f2011c10a53';
