@@ -26,8 +26,8 @@ $usernames = array(
 		'slack'		=>	'rob',
 		),
 	array(
-		'trello'	=>	'jamesfowkes',
-		'slack'		=>	'jamesfowkes',
+		'trello'	=>	'daniel1111',
+		'slack'		=>	'daniel1111',
 		),
 	);
 
