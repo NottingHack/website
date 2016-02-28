@@ -7,11 +7,16 @@ require_once('usernames.php');
 
 	$trelloAppKey
 	$trelloToken
+
+	$webhook
 */
 require_once('/home/nottinghack/www_secure/slack_keys.php');
 
 // timezone
 date_default_timezone_set('Europe/London');
+
+// Debug mode
+$debug = true;
 
 // trello details
 $trelloBoardId = '54745ca526448f2011c10a53';
@@ -19,8 +24,9 @@ $trelloBoardId = '54745ca526448f2011c10a53';
 // Date period to look up to for due dates (in days)
 $dueRange = 7;
 
-// Lists to ignore
-$ignoreLists = array("Done", "To Discuss", "Templates");
+// Special Lists
+$ignoreLists = array("Done", "To Discuss", "Templates", "Tasks for hack the space day");
+$holdList = "On Hold / Waiting";
 
 // get all the members on the board
 
@@ -47,6 +53,24 @@ $trelloLists = json_decode(file_get_contents($url), true);
 
 foreach ($trelloLists as $list) {
 	if (in_array($list['name'], $ignoreLists)) {
+		continue;
+	}
+
+	if ($list['name'] == $holdList) {
+		$numCards = count($list['cards']);
+		if ($numCards > 0) {
+			$noun = "tasks";
+			$pronoun = "they";
+			$verb = "are";
+			if ($numCards == 2) {
+				$noun = "task";
+				$pronoun = "it";
+				$verb = "is";
+			}
+			$message = '@channel: ' . $numCards . ' ' . $noun . ' ' . $verb . ' on hold. Please check that ' . $pronoun . ' should still be.';
+			sendSlack($message);
+			unset($message);
+		}
 		continue;
 	}
 
@@ -122,6 +146,12 @@ function sendSlack($message) {
 		return;
 	}
 	global $webhook;
+	global $debug;
+
+	if ($debug) {
+		echoMessage($message);
+		return;
+	}
 
 	$payload = json_encode(array("text" => $message));
 
@@ -133,6 +163,10 @@ function sendSlack($message) {
 
 	$response = curl_exec($ch);
 	curl_close($ch);
+}
+
+function echoMessage($message) {
+	echo($message . "\n");
 }
 
 function implodeSlackUsers($slackUsers) {
