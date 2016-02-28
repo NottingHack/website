@@ -67,7 +67,7 @@ foreach ($trelloLists as $list) {
 				$pronoun = "it";
 				$verb = "is";
 			}
-			$message = '@channel: ' . $numCards . ' ' . $noun . ' ' . $verb . ' on hold. Please check that ' . $pronoun . ' should still be.';
+			$message = '*@channel: ' . $numCards . ' ' . $noun . ' ' . $verb . ' on hold. Please check that ' . $pronoun . ' should still be.*';
 			sendSlack($message);
 			unset($message);
 		}
@@ -92,7 +92,7 @@ foreach ($trelloLists as $list) {
 					$message = 'Hey ' . implodeSlackUsers($slackUsers) . ' your task "' . $card['name'] . '" ' . dueText($days);
 				}
 				else {
-					$message = '@channel: The task "' . $card['name'] . '" ' . dueText($days) . ' and no one is assigned!';
+					$message = '*@channel: The task "' . $card['name'] . '" ' . dueText($days) . ' and no one is assigned!*';
 				}
 			}
 		}
@@ -111,14 +111,14 @@ foreach ($trelloLists as $list) {
 	}
 
 	if ($unassigned > 0) {
-		$message = '@channel: There ';
+		$message = '*@channel: There ';
 		if ($unassigned == 1) {
 			$message .= "is 1 card that isn't";
 		}
 		else {
 			$message .= 'are ' . $unassigned . " cards that aren't";
 		}
-		$message .= ' assigned to anyone in the "' . $list['name'] . '" list';
+		$message .= ' assigned to anyone in the "' . $list['name'] . '" list*';
 
 		sendSlack($message);
 		unset($message);
