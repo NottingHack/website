@@ -26,7 +26,7 @@ planet/cache/
 
 # API Keys #
 ############
-public_html/tools/slack/keys.php
+www_secure/slack_keys.php
 
 # Logs and databases #
 ######################
