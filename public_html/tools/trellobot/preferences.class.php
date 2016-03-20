@@ -19,7 +19,7 @@ class Preferences extends DataStore
                 return false;
             }
         } else {
-            return false
+            return false;
         }
     }
 

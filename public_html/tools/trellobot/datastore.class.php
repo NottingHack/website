@@ -3,7 +3,7 @@
 Class DataStore
 {
 
-    private $dataFile = '';
+    protected $dataFile = '';
 
     private $data;
 
@@ -12,12 +12,12 @@ Class DataStore
     }
 
     private function readData() {
-        if (file_exists($dataFile)) {
+        if (file_exists($this->dataFile)) {
             $data = file_get_contents($this->dataFile);
             if ($data === false) {
                 return false;
             } elseif ($this->checkDataFormat($data)) {
-                $this->data = $data;
+                $this->data = unserialize($data);
                 return true;
             } else {
                 return false;
@@ -27,7 +27,7 @@ Class DataStore
         }
     }
 
-    private function saveData() {
+    protected function saveData() {
         if (file_put_contents($this->dataFile, serialize($this->data)) === false) {
             return false;
         } else {
@@ -55,19 +55,20 @@ Class DataStore
         }
     }
 
-    private function saveKeyValue($key, $value, $category. $overwrite = true) {
+    protected function saveKeyValue($key, $value, $category = 'default', $overwrite = true) {
         $this->createCategory($category);
 
         if (isset($this->data[$category][$key]) && $overwrite === false) {
             return false;
         } else {
             $this->data[$category][$key] = $value;
+            return true;
         }
     }
 
-    private function getKeyValue($key, $category) {
+    protected function getKeyValue($key, $category = 'default') {
         if (isset($this->data[$category][$key])) {
-            return $this->data[$category][$key]
+            return $this->data[$category][$key];
         } else {
             return false;
         }
