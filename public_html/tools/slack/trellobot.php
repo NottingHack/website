@@ -2,6 +2,7 @@
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once('../../../www_secure/trellobot_keys.php');
 require_once('users.class.php');
+require_once('preferences.class.php');
 
 $botSlackName = 'trellobot';
 $botSlackId = "";
@@ -65,8 +66,6 @@ function processMessage ($data) {
         return;
     }
     if (toMe($data)) {
-        var_dump($data);
-
         sendMsg("Is it me you're looking for?", $data['channel']);
     }
 }
