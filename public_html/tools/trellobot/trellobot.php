@@ -1,4 +1,15 @@
 <?php
+$options = getopt('d', array("debug"));
+
+$debug = false;
+if (isset($options['d']) or isset($options['debug'])) {
+    $debug = true;
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
+
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once('../../../www_secure/trellobot_keys.php');
 require_once('users.class.php');
@@ -7,12 +18,7 @@ require_once('preferences.class.php');
 $botSlackName = 'trellobot';
 $botSlackId = "";
 
-$options = getopt('d', array("debug"));
-
-$debug = false;
-if (isset($options['d']) or isset($options['debug'])) {
-    $debug = true;
-}
+$preferences = New Preferences;
 
 $users = new Users;
 
