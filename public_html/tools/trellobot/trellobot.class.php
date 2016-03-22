@@ -21,7 +21,6 @@ Class TrelloBot
         global $debug;
 
         $this->debug = $debug;
-
         $this->slackName = $name;
 
         $this->preferences = New Preferences;
@@ -32,10 +31,14 @@ Class TrelloBot
         $this->client = new Slack\RealTimeClient($loop);
         $this->client->setToken($slackToken);
 
-        // process incoming messages
+        // setup triggers
         $this->client->on('message', array($this, 'processMessage'));
 
         // Connect and then setup
+        $this->connect();
+    }
+
+    private function connect() {
         $this->client->connect()->then(function () {
             $this->echoMsg("Connected!\n");
 
@@ -61,7 +64,24 @@ Class TrelloBot
             return;
         }
         if ($this->toMe($data)) {
-            $this->sendMsg("Is it me you're looking for?", $data['channel']);
+            $message = $this->stripUsername($data['text']);
+
+            $action = strtolower(substr($message, 0, strpos($message, ' ')));
+
+            switch ($action) {
+                case "time":
+                    $this->setUserTimePref($data, $message);
+                    break;
+                case "frequency":
+                    $this->setUserFreqPref($data, $message);
+                    break;
+                case "action":
+                    $this->processAction($data, $message);
+                    break;
+                default:
+                    // assume this is a taskID
+                    $this->processTaskId($data, $action, $message);
+            }
         }
     }
 
@@ -96,7 +116,6 @@ Class TrelloBot
         global $users, $botSlackId;
 
         if ($data['channel'][0] == 'D') {
-            $this->echoMsg($data['text'] . "\n");
             return true;
         }
         var_dump($data);
@@ -106,4 +125,27 @@ Class TrelloBot
         return false;
     }
 
+    private function stripUsername($message) {
+        $username = '<@' . $this->slackId . '>';
+
+        if (strpos($message, $username) !== false) {
+            $message = ltrim(substr($message, strpos($message, $username) + strlen($username)), ": \t\n");
+        }
+
+        return $message;    
+    }
+
+    private function setUserTimePref($data, $message) {
+        if (preg_match('/(\d{2}:\d{2})/', $message, $matches) === 1) {
+            $time = $matches[1];
+            list($hours, $minutes) = explode(":", $time);
+            if (intval($hours) >= 0 && intval($hours) < 24 && intval($minutes) >= 0 && intval($minutes) < 60) {
+                if ($this->preferences->saveTimeForUser($time, $data['user'])) {
+                    $this->sendMsg("OK, your notification time is set to $time.", $data['channel']);
+                } else {
+                    $this->sendMsg("Sorry, there was an error trying to set your notification time.", $data['channel']);
+                }
+            }
+        }
+    }
 }
