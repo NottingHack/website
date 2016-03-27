@@ -41,12 +41,12 @@ Class TrelloBot
         // Connect and then setup
         $this->connect();
 
-        $this->startTimer();
+        $this->startTimer($loop);
     }
 
     private function connect() {
         $this->client->connect()->then(function () {
-            $this->echoMsg("Connected!\n");
+            $this->echoMsg("Connected!");
 
             // Process list of users
             $this->client->getUsers()->done(function($slackData) {
@@ -59,14 +59,14 @@ Class TrelloBot
 
                 $this->slackId = $this->users->getBySlackUsername($this->slackName)->getSlackId();
 
-                $this->echoMsg("Setup Complete\n");
+                $this->echoMsg("Setup Complete");
             });
 
             $this->connected = true;
         });
     }
 
-    private function startTimer() {
+    private function startTimer(&$loop) {
         $this->timer = $loop->addPeriodicTimer(30, array($this, 'doPeriodicActions'));
     }
 
@@ -124,7 +124,7 @@ Class TrelloBot
 
     private function echoMsg($msg) {
         if ($this->debug) {
-            echo($msg);
+            echo($msg . "\n");
         }
     }
 
@@ -174,7 +174,8 @@ Class TrelloBot
     }
 
     private function getUsersToNotify() {
-
+        $this->echoMsg("Notifying GeeksAreForLife");
+        return [$this->users->getBySlackUsername("geeksareforlife")];
     }
 
     private function getAllCards() {
@@ -182,10 +183,13 @@ Class TrelloBot
     }
 
     private function getCardsForUser($cards, $user) {
-
+        return [1,2];
     }
 
     private function notifyUser($user, $cards) {
-        
+        $channelId = $user->getDM();
+        $this->client->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) {
+            $this->client->send("Daily Notification", $channel);
+        });
     }
 }
