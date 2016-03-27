@@ -17,6 +17,10 @@ Class TrelloBot
 
     private $preferences;
 
+    private $connected;
+
+    private $timer;
+
     public function __construct($name, &$loop, $slackToken) {
         global $debug;
 
@@ -36,6 +40,8 @@ Class TrelloBot
 
         // Connect and then setup
         $this->connect();
+
+        $this->startTimer();
     }
 
     private function connect() {
@@ -55,7 +61,13 @@ Class TrelloBot
 
                 $this->echoMsg("Setup Complete\n");
             });
+
+            $this->connected = true;
         });
+    }
+
+    private function startTimer() {
+        $this->timer = $loop->addPeriodicTimer(30, array($this, 'doPeriodicActions'));
     }
 
     public function processMessage ($data) {
@@ -85,7 +97,19 @@ Class TrelloBot
         }
     }
 
-    function sendMsg($msg, $channelId) {
+    public function doPeriodicActions() {
+        $users = $this->getUsersToNotify();
+        // Get Trello cards
+        $cards = $this->getAllCards();
+        foreach ($users as $user) {
+            $userCards = $this->getCardsForUser($cards, $user);
+            if (count($userCards) > 0) {
+                $this->notifyUser($user, $userCards);
+            }
+        }
+    }
+
+    private function sendMsg($msg, $channelId) {
         if ($channelId[0] == 'D') {
             $this->client->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) use ($msg) {
                 $this->client->send($msg, $channel);
@@ -147,5 +171,21 @@ Class TrelloBot
                 }
             }
         }
+    }
+
+    private function getUsersToNotify() {
+
+    }
+
+    private function getAllCards() {
+
+    }
+
+    private function getCardsForUser($cards, $user) {
+
+    }
+
+    private function notifyUser($user, $cards) {
+        
     }
 }
