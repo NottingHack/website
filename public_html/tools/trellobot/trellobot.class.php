@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . '/users.class.php');
 require_once(__DIR__ . '/preferences.class.php');
+require_once(__DIR__ . '/trello.class.php');
 
 Class TrelloBot
 {
@@ -11,7 +12,9 @@ Class TrelloBot
     private $slackName = '';
     private $slackId = '';
 
-    private $client;
+    private $slackRTC;
+
+    private $trello;
 
     private $users;
 
@@ -21,7 +24,8 @@ Class TrelloBot
 
     private $timer;
 
-    public function __construct($name, &$loop, $slackToken) {
+    public function __construct($name, &$loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard)
+    {
         global $debug;
 
         $this->debug = $debug;
@@ -31,12 +35,17 @@ Class TrelloBot
 
         $this->users = new Users;
 
-        // Add the client into the loop
-        $this->client = new Slack\RealTimeClient($loop);
-        $this->client->setToken($slackToken);
+        // Add the Slack real time client into the loop
+        $this->slackRTC = new Slack\RealTimeClient($loop);
+        $this->slackRTC->setToken($slackToken);
+
+        // Add the Trello API client in the loop
+        $this->trello = new Trello($loop);
+        $this->trello->setCredentials($trelloAppKey, $trelloToken);
+        $this->trello->setBoard($trelloBoard);
 
         // setup triggers
-        $this->client->on('message', array($this, 'processMessage'));
+        $this->slackRTC->on('message', array($this, 'processMessage'));
 
         // Connect and then setup
         $this->connect();
@@ -44,17 +53,21 @@ Class TrelloBot
         $this->startTimer($loop);
     }
 
-    private function connect() {
-        $this->client->connect()->then(function () {
+    private function connect()
+    {
+        $this->slackRTC->connect()->then(function () {
             $this->echoMsg("Connected!");
 
             // Process list of users
-            $this->client->getUsers()->done(function($slackData) {
+            $this->slackRTC->getUsers()->done(function($slackData) {
                 $this->users->setSlackUsers($slackData);
+                $this->trello->getAllUsers()->done(function($trelloData) {
+                    $this->users->setTrelloUsers($trelloData);
+                });
             });
 
             // What DM channels are available?
-            $this->client->getDMs()->done(function($dms) {
+            $this->slackRTC->getDMs()->done(function($dms) {
                 $this->users->setDMs($dms);
 
                 $this->slackId = $this->users->getBySlackUsername($this->slackName)->getSlackId();
@@ -66,11 +79,13 @@ Class TrelloBot
         });
     }
 
-    private function startTimer(&$loop) {
+    private function startTimer(&$loop)
+    {
         $this->timer = $loop->addPeriodicTimer(30, array($this, 'doPeriodicActions'));
     }
 
-    public function processMessage ($data) {
+    public function processMessage ($data)
+    {
         // is this message intended for me?
         if ($this->fromMe($data)) {
             return;
@@ -97,7 +112,8 @@ Class TrelloBot
         }
     }
 
-    public function doPeriodicActions() {
+    public function doPeriodicActions()
+    {
         $users = $this->getUsersToNotify();
         // Get Trello cards
         $cards = $this->getAllCards();
@@ -109,26 +125,29 @@ Class TrelloBot
         }
     }
 
-    private function sendMsg($msg, $channelId) {
+    private function sendMsg($msg, $channelId)
+    {
         if ($channelId[0] == 'D') {
-            $this->client->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) use ($msg) {
-                $this->client->send($msg, $channel);
+            $this->slackRTC->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) use ($msg) {
+                $this->slackRTC->send($msg, $channel);
             });
         }
         elseif ($channelId[0] == 'C') {
-             $this->client->getChannelById($channelId)->then(function (\Slack\Channel $channel) use ($msg) {
-                $this->client->send($msg, $channel);
+             $this->slackRTC->getChannelById($channelId)->then(function (\Slack\Channel $channel) use ($msg) {
+                $this->slackRTC->send($msg, $channel);
             });
         }
     }
 
-    private function echoMsg($msg) {
+    private function echoMsg($msg)
+    {
         if ($this->debug) {
             echo($msg . "\n");
         }
     }
 
-    private function fromMe($data) {
+    private function fromMe($data)
+    {
         if ($data['user'] == $this->slackId) {
             return true;
         }
@@ -136,7 +155,8 @@ Class TrelloBot
         return false;
     }
 
-    private function toMe($data) {
+    private function toMe($data)
+    {
         global $users, $botSlackId;
 
         if ($data['channel'][0] == 'D') {
@@ -149,7 +169,8 @@ Class TrelloBot
         return false;
     }
 
-    private function stripUsername($message) {
+    private function stripUsername($message)
+    {
         $username = '<@' . $this->slackId . '>';
 
         if (strpos($message, $username) !== false) {
@@ -159,7 +180,8 @@ Class TrelloBot
         return $message;    
     }
 
-    private function setUserTimePref($data, $message) {
+    private function setUserTimePref($data, $message)
+    {
         if (preg_match('/(\d{2}:\d{2})/', $message, $matches) === 1) {
             $time = $matches[1];
             list($hours, $minutes) = explode(":", $time);
@@ -173,23 +195,27 @@ Class TrelloBot
         }
     }
 
-    private function getUsersToNotify() {
+    private function getUsersToNotify()
+    {
         $this->echoMsg("Notifying GeeksAreForLife");
         return [$this->users->getBySlackUsername("geeksareforlife")];
     }
 
-    private function getAllCards() {
+    private function getAllCards()
+    {
 
     }
 
-    private function getCardsForUser($cards, $user) {
+    private function getCardsForUser($cards, $user)
+    {
         return [1,2];
     }
 
-    private function notifyUser($user, $cards) {
+    private function notifyUser($user, $cards)
+    {
         $channelId = $user->getDM();
-        $this->client->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) {
-            $this->client->send("Daily Notification", $channel);
+        $this->slackRTC->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) {
+            $this->slackRTC->send("Daily Notification", $channel);
         });
     }
 }

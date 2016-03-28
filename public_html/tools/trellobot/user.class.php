@@ -30,6 +30,10 @@ class User {
         $this->trelloUsername = $username;
     }
 
+    public function setTrelloId($id) {
+        $this->trelloId = $id;
+    }
+
     public function setFirstName($firstName) {
         $this->firstName = $firstName;
     }

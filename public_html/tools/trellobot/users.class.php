@@ -58,15 +58,38 @@ class Users
 		}
 	}
 
-	public function getByTrelloUserame($username) {
-		return $this->users[$this->usersByTrelloName[$username]];
+	public function setTrelloUsers($users) {
+		foreach ($users as $trellouser) {
+			if (isset($this->usersByTrelloName[$trellouser['username']])) {
+				$id = $this->usersByTrelloName[$trellouser['username']];
+				
+				$this->users[$id]->setTrelloId($trellouser['id']);
+				$this->usersByTrelloId[$trellouser['id']] = $id;
+			}
+		}
+	}
+
+	public function getByTrelloUsername($username) {
+		if (isset($this->users[$this->usersByTrelloName[$username]])) {
+			return $this->users[$this->usersByTrelloName[$username]];
+		} else {
+			return false;
+		}
 	}
 
 	public function getBySlackUsername($username) {
-		return $this->users[$this->usersBySlackName[$username]];
+		if (isset($this->users[$this->usersBySlackName[$username]])) {
+			return $this->users[$this->usersBySlackName[$username]];
+		} else {
+			return false;
+		}
 	}
 
 	public function getBySlackId($id) {
-		return $this->users[$this->usersBySlackId[$id]];
+		if (isset($this->users[$this->usersBySlackId[$id]])) {
+			return $this->users[$this->usersBySlackId[$id]];
+		} else {
+			return false;
+		}
 	}
 }
