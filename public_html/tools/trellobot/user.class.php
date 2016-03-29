@@ -45,4 +45,12 @@ class User {
     public function getDM() {
         return $this->dmId;
     }
+
+    public function getTrelloId() {
+        return $this->trelloId;
+    }
+
+    public function getName() {
+        return $this->firstName;
+    }
 }

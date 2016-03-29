@@ -36,26 +36,34 @@ class Trello
         $this->httpClient = $httpClient ?: new GuzzleHttp\Client();
     }
 
-    public function setCredentials($appKey, $token) {
+    public function setCredentials($appKey, $token)
+    {
         $this->appKey = $appKey;
         $this->token = $token;
     }
 
-    public function setBoard($boardId) {
+    public function setBoard($boardId)
+    {
         $this->boardId = $boardId;
     }
 
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $endpoint = '/boards/' . $this->boardId . '/members';
         return $this->apiCall($endpoint, 'GET');
     }
 
-    public function getAllCards() {
+    public function getAllCards()
+    {
         $endpoint = '/boards/' . $this->boardId . '/cards';
         return $this->apiCall($endpoint, 'GET');
     }
 
-
+    public function getAllLists()
+    {
+        $endpoint = '/boards/' . $this->boardId . '/lists';
+        return $this->apiCall($endpoint, 'GET');
+    }
 
     private function apiCall($endpoint, $method)
     {

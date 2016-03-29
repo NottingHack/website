@@ -114,15 +114,7 @@ Class TrelloBot
 
     public function doPeriodicActions()
     {
-        $users = $this->getUsersToNotify();
-        // Get Trello cards
-        $cards = $this->getAllCards();
-        foreach ($users as $user) {
-            $userCards = $this->getCardsForUser($cards, $user);
-            if (count($userCards) > 0) {
-                $this->notifyUser($user, $userCards);
-            }
-        }
+        $this->notifyUsers();
     }
 
     private function sendMsg($msg, $channelId)
@@ -195,27 +187,62 @@ Class TrelloBot
         }
     }
 
+    private function notifyUsers()
+    {
+        $users = $this->getUsersToNotify();
+        if (count($users) > 0) {
+            $this->trello->getAllCards()->done(function($trelloData) use ($users) {
+                $cards = $trelloData;
+                $this->trello->getAllLists()->done(function($trelloData) use ($cards, $users) {
+                    $cards = $this->orderCards($cards, $trelloData);
+
+                    foreach ($users as $user) {
+                        if (count($cards[$user->getTrelloId()]) > 0) {
+                            $msg = 'Hey ' . $user->getName() . ', you have the following tasks on your list:' . "\n";
+                            // CHANGE THIS - Go in list order
+                            // Actually, need to change the way the cards are saved, needs more intelligence
+                            foreach ($cards[$user->getTrelloId()] as $list) {
+                                foreach ($list as $card) {
+                                    $msg .= $card['name'] . "\n";
+                                }
+                            }
+
+                            $this->sendMsg($msg, $user->getDM());
+                        }
+                    }
+                });
+            });
+        }
+    }
+
     private function getUsersToNotify()
     {
         $this->echoMsg("Notifying GeeksAreForLife");
         return [$this->users->getBySlackUsername("geeksareforlife")];
     }
 
-    private function getAllCards()
-    {
+    private function orderCards($unsortedCards, $lists) {
+        $listLookup = [];
+        $cards = [
+            'unassigned' => [],
+        ];
 
-    }
-
-    private function getCardsForUser($cards, $user)
-    {
-        return [1,2];
-    }
-
-    private function notifyUser($user, $cards)
-    {
-        $channelId = $user->getDM();
-        $this->slackRTC->getDMById($channelId)->then(function (\Slack\DirectMessageChannel $channel) {
-            $this->slackRTC->send("Daily Notification", $channel);
-        });
+        foreach ($lists as $list) {
+            $listLookup[$list['id']] = $list['name'];
+        }
+        foreach ($unsortedCards as $card) {
+            if (count($card['idMembers']) > 0) {
+                foreach ($card['idMembers'] as $userId) {
+                    if (!isset($cards[$userId])) {
+                        $cards[$userId] = [];
+                    }
+                    if (!isset($cards[$userId][$listLookup[$card['idList']]])) {
+                        $cards[$userId][$listLookup[$card['idList']]] = [];
+                    }
+                    $cards[$userId][$listLookup[$card['idList']]][] = $card;
+                }
+            }
+        }
+        return $cards;
     }
 }
