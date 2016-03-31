@@ -7,11 +7,13 @@ Class DataStore
 
     private $data;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->readData();
     }
 
-    private function readData() {
+    private function readData()
+    {
         if (file_exists($this->dataFile)) {
             $data = file_get_contents($this->dataFile);
             if ($data === false) {
@@ -27,7 +29,8 @@ Class DataStore
         }
     }
 
-    protected function saveData() {
+    protected function saveData()
+    {
         if (file_put_contents($this->dataFile, serialize($this->data)) === false) {
             return false;
         } else {
@@ -35,19 +38,22 @@ Class DataStore
         }
     }
 
-    private function checkDataFormat($data) {
+    private function checkDataFormat($data)
+    {
         // actually need to check at some point in the future!
         return true;
     }
 
-    private function createCategory($category) {
+    private function createCategory($category)
+    {
         if (!$this->categoryExists($category)) {
             $this->data[$category] = array();
         }
         return true;
     }
 
-    private function categoryExists($category) {
+    private function categoryExists($category)
+    {
         if (!isset($this->data[$category])) {
             return false;
         } else {
@@ -55,7 +61,8 @@ Class DataStore
         }
     }
 
-    protected function saveKeyValue($key, $value, $category = 'default', $overwrite = true) {
+    protected function setKeyValue($key, $value, $category = 'default', $overwrite = true)
+    {
         $this->createCategory($category);
 
         if (isset($this->data[$category][$key]) && $overwrite === false) {
@@ -66,7 +73,8 @@ Class DataStore
         }
     }
 
-    protected function getKeyValue($key, $category = 'default') {
+    protected function getKeyValue($key, $category = 'default')
+    {
         if (isset($this->data[$category][$key])) {
             return $this->data[$category][$key];
         } else {
