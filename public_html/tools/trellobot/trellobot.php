@@ -16,6 +16,6 @@ require_once(__DIR__ . '/../../../www_secure/trellobot_keys.php');
 
 $loop = React\EventLoop\Factory::create();
 
-$trellobot = new TrelloBot('trellobot', $loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard);
+$trellobot = new TrelloBot('trellobot_test', $loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard);
 
 $loop->run();

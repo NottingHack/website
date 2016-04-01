@@ -4,6 +4,8 @@ require_once(__DIR__ . '/users.class.php');
 require_once(__DIR__ . '/preferences.class.php');
 require_once(__DIR__ . '/trello.class.php');
 
+use Carbon\Carbon;
+
 Class TrelloBot
 {
 
@@ -193,21 +195,33 @@ Class TrelloBot
         if (count($users) > 0) {
             $this->trello->getAllCards()->done(function($trelloData) use ($users) {
                 $cards = $trelloData;
+                $this->echoMsg("Got Cards");
                 $this->trello->getAllLists()->done(function($trelloData) use ($cards, $users) {
+                    $this->echoMsg("Got Lists");
                     $cards = $this->orderCards($cards, $trelloData);
-
                     foreach ($users as $user) {
                         if (count($cards[$user->getTrelloId()]) > 0) {
                             $msg = 'Hey ' . $user->getName() . ', you have the following tasks on your list:' . "\n";
                             // CHANGE THIS - Go in list order
                             // Actually, need to change the way the cards are saved, needs more intelligence
-                            foreach ($cards[$user->getTrelloId()] as $list) {
-                                foreach ($list as $card) {
-                                    $msg .= $card['name'] . "\n";
+                            $notifyLists = $this->preferences->getListsForUser($user->getSlackId());
+                            
+                            foreach ($notifyLists as $listName) {
+                                if (isset($cards[$user->getTrelloId()][$listName])) {
+                                    foreach ($cards[$user->getTrelloId()][$listName] as $card) {
+                                        $msg .= $this->formatUserMessage($card);
+                                    }
                                 }
                             }
 
-                            $this->sendMsg($msg, $user->getDM());
+                            /*foreach ($cards[$user->getTrelloId()] as $list) {
+                                foreach ($list as $card) {
+                                    $msg .= $card['name'] . "\n";
+                                }
+                            }*/
+
+                            $this->echoMsg($msg);
+                            //$this->sendMsg($msg, $user->getDM());
                         }
                     }
                 });
@@ -221,7 +235,8 @@ Class TrelloBot
         return [$this->users->getBySlackUsername("geeksareforlife")];
     }
 
-    private function orderCards($unsortedCards, $lists) {
+    private function orderCards($unsortedCards, $lists)
+    {
         $listLookup = [];
         $cards = [
             'unassigned' => [],
@@ -232,17 +247,94 @@ Class TrelloBot
         }
         foreach ($unsortedCards as $card) {
             if (count($card['idMembers']) > 0) {
-                foreach ($card['idMembers'] as $userId) {
-                    if (!isset($cards[$userId])) {
-                        $cards[$userId] = [];
+                foreach ($card['idMembers'] as $userTrelloId) {
+                    if (!isset($cards[$userTrelloId])) {
+                        $cards[$userTrelloId] = [];
                     }
-                    if (!isset($cards[$userId][$listLookup[$card['idList']]])) {
-                        $cards[$userId][$listLookup[$card['idList']]] = [];
+                    if (!isset($cards[$userTrelloId][$listLookup[$card['idList']]])) {
+                        $cards[$userTrelloId][$listLookup[$card['idList']]] = [];
                     }
-                    $cards[$userId][$listLookup[$card['idList']]][] = $card;
+                    
+
+                    $cards[$userTrelloId][$listLookup[$card['idList']]][] = $this->extractCardDetails($card, $listLookup[$card['idList']], $userTrelloId);
                 }
+            } else {
+                // unassigned card
+                if (!isset($cards['unassigned'][$listLookup[$card['idList']]])) {
+                        $cards['unassigned'][$listLookup[$card['idList']]] = [];
+                    }
+                $cards['unassigned'][$listLookup[$card['idList']]][] = $this->extractCardDetails($card, $listLookup[$card['idList']]);
             }
         }
+
+        // sort them
+
+        // return them
         return $cards;
+    }
+
+    private function extractCardDetails($card, $listName, $userTrelloId = '') {
+        $newCard = [
+            'trello_id'     => $card['id'],
+            'title'         => $card['name'],
+            'other_users'   => [],
+            'due'           => '',
+            'list_name'      => $listName,
+            ];
+
+        if ($userTrelloId != '') {
+            $user = $this->users->getByTrelloId($userTrelloId);
+            $card['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
+        }
+
+        if (!is_null($card['due'])) {
+            $newCard['due'] = new Carbon($card['due']);
+            if ($userTrelloId != '') {
+                $newCard['due']->timezone = $this->preferences->getTimezoneForUser($user->getSlackId());
+            }
+        }
+
+        return $newCard;
+    }
+
+    private function convertUserList($users, $exclude = '')
+    {
+        $userList = [];
+
+        foreach ($users as $user) {
+            if ($user == $exclude) {
+                continue;
+            } else {
+                $userList[] = $this->users->getByTrelloId($user);
+            }
+        }
+
+        return $userList;
+    }
+
+    private function formatUserMessage($card) {
+        $msg = '_' . $card['title'] . '_';
+        if ($card['due'] == '') {
+            $msg .= '. This one doesn’t have a due date, does it need one?';
+        } else {
+            $diff = $card['due']->diffInDays(null, false);
+            if ($diff > 0) {
+                $msg .= ' was due ' . $diff . ' days ago (' . $card['due']->toFormattedDateString() . ').';
+            } elseif ($diff == 0) {
+                $msg .= ', due *today*.';
+            } elseif ($diff > -7) {
+                $msg .= ', due on ' . $card['due']->format('l') . ' (' . $card['due']->toFormattedDateString() . ').';
+            } else {
+                $msg .= ', due on ' . $card['due']->toFormattedDateString() . '.';
+            }
+        }
+
+        $msg .= '  ' . 'TASKID';
+
+        $msg .= ' - ' . $card['list_name'];
+
+        $msg .= "\n";
+
+        return $msg;
     }
 }

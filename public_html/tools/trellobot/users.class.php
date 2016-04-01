@@ -77,6 +77,14 @@ class Users
 		}
 	}
 
+	public function getByTrelloId($id) {
+		if (isset($this->users[$this->usersByTrelloId[$id]])) {
+			return $this->users[$this->usersByTrelloId[$id]];
+		} else {
+			return false;
+		}
+	}
+
 	public function getBySlackUsername($username) {
 		if (isset($this->users[$this->usersBySlackName[$username]])) {
 			return $this->users[$this->usersBySlackName[$username]];

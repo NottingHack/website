@@ -2,6 +2,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "coderstephen/slack-client": "^0.2.3"
+        "coderstephen/slack-client": "^0.2.3",
+        "nesbot/carbon": "^1.21"
     }
 }

@@ -5,12 +5,18 @@ require_once('datastore.class.php');
 class Preferences extends DataStore
 {
 
-    private $defaults = [
+    private $userDefaults = [
         'time'      =>  '13:00',
         'timezone'  =>  'Europe/London',
         'frequency' =>  'daily',
         'lists'     =>  ['In Progress', 'Next', 'Incoming Tasks', 'On Hold / Waiting'],
         ];
+
+    private $sysDefaults = [
+        'time'      =>  '13:00',
+        ];
+
+    private $system = 'system';
 
     public function __construct()
     {
@@ -19,26 +25,34 @@ class Preferences extends DataStore
         parent::__construct();
     }
 
+    public function saveTime($time) {
+        return $this->saveValue('time', $time, $this->system);
+    }
+
     public function saveTimeForUser($time, $userId)
     {
         return $this->saveValue('time', $time, $userId);
     }
 
-    public function saveTimezoneForUser($time, $userId)
+    public function saveTimezoneForUser($timezone, $userId)
     {
-        return $this->saveValue('time', $time, $userId);
+        return $this->saveValue('timezone', $timezone, $userId);
     }
 
-    public function saveFrequencyForUser($time, $userId)
+    public function saveFrequencyForUser($frequency, $userId)
     {
-        return $this->saveValue('time', $time, $userId);
+        return $this->saveValue('frequency', $frequency, $userId);
     }
 
-    public function saveListsForUser($time, $userId)
+    public function saveListsForUser($lists, $userId)
     {
-        return $this->saveValue('time', $time, $userId);
+        return $this->saveValue('lists', $lists, $userId);
     }
 
+    public function getTime()
+    {
+        return $this->getValueOrDefault('time', $this->system);
+    }
 
     public function getTimeForUser($userId)
     {
@@ -77,7 +91,7 @@ class Preferences extends DataStore
     private function getValueOrDefault($key, $userId)
     {
         if ($this->getKeyValue($key, $userId) === false) {
-            return $this->defaults[$key];
+            return $this->userDefaults[$key];
         } else {
             return $this->getKeyValue($key, $userId);
         }
