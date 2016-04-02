@@ -27,12 +27,14 @@ planet/cache/
 # API Keys #
 ############
 www_secure/slack_keys.php
+www_secure/trellobot_keys.php
 
 # Logs and databases #
 ######################
 *.log
 *.sql
 *.sqlite
+public_html/tools/trellobot/data/*
 
 # pid and lock files #
 ######################
