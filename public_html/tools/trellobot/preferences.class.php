@@ -49,6 +49,11 @@ class Preferences extends DataStore
         return $this->saveValue('lists', $lists, $userId);
     }
 
+    public function saveLastNotifiedForUser($timestamp, $userId)
+    {
+        return $this->saveValue('last_notified', $timestamp, $userId);
+    }
+
     public function getTime()
     {
         return $this->getValueOrDefault('time', $this->system);
@@ -72,6 +77,15 @@ class Preferences extends DataStore
     public function getListsForUser($userId)
     {
         return $this->getValueOrDefault('lists', $userId);
+    }
+
+    public function getLastNotifiedForUser($userId)
+    {
+        if ($this->getKeyValue('last_notified', $userId) === false) {
+            return 1;
+        } else {
+            return $this->getKeyValue('last_notified', $userId);
+        }
     }
     
 

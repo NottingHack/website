@@ -100,4 +100,12 @@ class Users
 			return false;
 		}
 	}
+
+	public function getAllTrelloUsers() {
+		$return = [];
+		foreach ($this->usersByTrelloName as $id) {
+			$return[] = $this->users[$id];
+		}
+		return $return;
+	}
 }

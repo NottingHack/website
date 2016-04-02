@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . '/users.class.php');
 require_once(__DIR__ . '/preferences.class.php');
+require_once(__DIR__ . '/tasks.class.php');
 require_once(__DIR__ . '/trello.class.php');
 
 use Carbon\Carbon;
@@ -22,6 +23,8 @@ Class TrelloBot
 
     private $preferences;
 
+    private $tasks;
+
     private $connected;
 
     private $timer;
@@ -34,6 +37,8 @@ Class TrelloBot
         $this->slackName = $name;
 
         $this->preferences = New Preferences;
+
+        $this->tasks = New Tasks;
 
         $this->users = new Users;
 
@@ -202,26 +207,35 @@ Class TrelloBot
                     foreach ($users as $user) {
                         if (count($cards[$user->getTrelloId()]) > 0) {
                             $msg = 'Hey ' . $user->getName() . ', you have the following tasks on your list:' . "\n";
-                            // CHANGE THIS - Go in list order
-                            // Actually, need to change the way the cards are saved, needs more intelligence
+                            
                             $notifyLists = $this->preferences->getListsForUser($user->getSlackId());
                             
                             foreach ($notifyLists as $listName) {
                                 if (isset($cards[$user->getTrelloId()][$listName])) {
-                                    foreach ($cards[$user->getTrelloId()][$listName] as $card) {
-                                        $msg .= $this->formatUserMessage($card);
+                                    if ($listName == 'On Hold / Waiting') {
+                                        $noun = 'tasks';
+                                        if (count($cards[$user->getTrelloId()][$listName] == 1)) {
+                                            $noun = 'task';
+                                        }
+                                        $msg .= 'Additionally, you have ' . count($cards[$user->getTrelloId()][$listName]) . ' ' . $noun . ' on hold:' . "\n";
+                                        foreach ($cards[$user->getTrelloId()][$listName] as $card) {
+                                            $msg .= $this->formatOnHoldCardMessage($card);
+                                        }
+                                    } else {
+                                        foreach ($cards[$user->getTrelloId()][$listName] as $card) {
+                                            $msg .= $this->formatNormalCardMessage($card);
+                                        }
                                     }
                                 }
                             }
 
-                            /*foreach ($cards[$user->getTrelloId()] as $list) {
-                                foreach ($list as $card) {
-                                    $msg .= $card['name'] . "\n";
-                                }
-                            }*/
+                            $msg .= "\n" . 'I can help you manage these tasks. Type *help tasks* for more details' . "\n";
+                            $msg .= 'To change the time of these notifications, type *time 13:00*, or type *help user* for more details' . "\n";
 
                             $this->echoMsg($msg);
                             //$this->sendMsg($msg, $user->getDM());
+                            
+                            $this->userNotified($user);
                         }
                     }
                 });
@@ -231,8 +245,37 @@ Class TrelloBot
 
     private function getUsersToNotify()
     {
-        $this->echoMsg("Notifying GeeksAreForLife");
-        return [$this->users->getBySlackUsername("geeksareforlife")];
+        $users = $this->users->getAllTrelloUsers();
+
+        $notifyUsers = [];
+
+        foreach ($users as $user) {
+            if ($this->checkNotifyUser($user)) {
+                $notifyUsers[] = $user;
+            }
+        }
+        return [];
+    }
+
+    private function checkNotifyUser($user) {
+        $time =  $this->preferences->getTimeForUser($user->getSlackId());
+        $timezone = $this->preferences->getTimezoneForUser($user->getSlackId());
+        $frequency = $this->preferences->getFrequencyForUser($user->getSlackId());
+        $lastNotified = Carbon::createFromTimestamp($this->preferences->getLastNotifiedForUser($user->getSlackId()), $timezone);
+
+        $now = Carbon::now($timezone);
+
+        if ($lastNotified->diffInDays($now, false) == 0) {
+            // last notified today, not again
+            return false;
+        }
+
+        $this->echoMsg($user->getName());
+        $this->echoMsg($now->format("H:i"));
+    }
+
+    private function userNotified($user) {
+        $this->preferences->saveLastNotifiedForUser(time(), $user->getSlackId());
     }
 
     private function orderCards($unsortedCards, $lists)
@@ -276,6 +319,7 @@ Class TrelloBot
     private function extractCardDetails($card, $listName, $userTrelloId = '') {
         $newCard = [
             'trello_id'     => $card['id'],
+            'task_id'       => $this->tasks->getTaskId($card['id']),
             'title'         => $card['name'],
             'other_users'   => [],
             'due'           => '',
@@ -288,7 +332,7 @@ Class TrelloBot
         }
 
         if (!is_null($card['due'])) {
-            $newCard['due'] = new Carbon($card['due']);
+            $newCard['due'] = Carbon::parse($card['due']);
             if ($userTrelloId != '') {
                 $newCard['due']->timezone = $this->preferences->getTimezoneForUser($user->getSlackId());
             }
@@ -312,8 +356,8 @@ Class TrelloBot
         return $userList;
     }
 
-    private function formatUserMessage($card) {
-        $msg = '_' . $card['title'] . '_';
+    private function formatNormalCardMessage($card) {
+        $msg = '*' . $card['title'] . '*';
         if ($card['due'] == '') {
             $msg .= '. This one doesn’t have a due date, does it need one?';
         } else {
@@ -329,9 +373,21 @@ Class TrelloBot
             }
         }
 
-        $msg .= '  ' . 'TASKID';
+        if (count($card['other_users']) > 0) {
+            // OTHER USERS ARE HELPING WITH THIS
+        }
+
+        $msg .= '  _' . $card['task_id'] . '_';
 
         $msg .= ' - ' . $card['list_name'];
+
+        $msg .= "\n";
+
+        return $msg;
+    }
+
+    private function formatOnHoldCardMessage($card) {
+        $msg = $card['title'] . '.  _' . $card['task_id'] . '_';
 
         $msg .= "\n";
 
