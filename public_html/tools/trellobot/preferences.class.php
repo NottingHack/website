@@ -14,6 +14,7 @@ class Preferences extends DataStore
 
     private $sysDefaults = [
         'time'      =>  '13:00',
+        'lists'     =>  ['In Progress', 'Next', 'Incoming Tasks', 'On Hold / Waiting'],
         ];
 
     private $system = 'system';
@@ -27,6 +28,10 @@ class Preferences extends DataStore
 
     public function saveTime($time) {
         return $this->saveValue('time', $time, $this->system);
+    }
+
+    public function saveLastNotified($timestamp) {
+        return $this->saveValue('last_notified', $timestamp, $this->system);
     }
 
     public function saveTimeForUser($time, $userId)
@@ -57,6 +62,20 @@ class Preferences extends DataStore
     public function getTime()
     {
         return $this->getValueOrDefault('time', $this->system);
+    }
+
+    public function getLists()
+    {
+        return $this->getValueOrDefault('lists', $this->system);
+    }
+
+    public function getLastNotified()
+    {
+        if ($this->getKeyValue('last_notified', $this->system) === false) {
+            return 1;
+        } else {
+            return $this->getKeyValue('last_notified', $this->system);
+        }
     }
 
     public function getTimeForUser($userId)
@@ -105,7 +124,11 @@ class Preferences extends DataStore
     private function getValueOrDefault($key, $userId)
     {
         if ($this->getKeyValue($key, $userId) === false) {
-            return $this->userDefaults[$key];
+            if ($userId == 'system') {
+                return $this->sysDefaults[$key];
+            } else {
+                return $this->userDefaults[$key];
+            }
         } else {
             return $this->getKeyValue($key, $userId);
         }

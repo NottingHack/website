@@ -42,6 +42,10 @@ class User {
         return $this->slackId;
     }
 
+    public function getSlackUsername() {
+        return $this->slackUsername;
+    }
+
     public function getDM() {
         return $this->dmId;
     }
