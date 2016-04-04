@@ -12,10 +12,16 @@ if (isset($options['d']) or isset($options['debug'])) {
 
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/trellobot.class.php');
-require_once(__DIR__ . '/../../../www_secure/trellobot_keys.php');
+// Defines: 
+// $botName
+// $slackToken
+// $trelloAppKey
+// $trelloToken
+//$ trelloBoard
+require_once(__DIR__ . '/../../../www_secure/trellobot_conf.php');
 
 $loop = React\EventLoop\Factory::create();
 
-$trellobot = new TrelloBot('trellobot_test', $loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard);
+$trellobot = new TrelloBot($botName, $loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard);
 
 $loop->run();
