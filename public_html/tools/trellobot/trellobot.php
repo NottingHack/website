@@ -1,4 +1,7 @@
 <?php
+// just in case
+date_default_timezone_set('UTC');
+
 $options = getopt('d', array("debug"));
 
 $debug = false;
