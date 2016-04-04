@@ -7,7 +7,14 @@ require_once(__DIR__ . '/trello.class.php');
 
 use Carbon\Carbon;
 
-
+/**
+ * The whole shebang
+ * 
+ * This class is far too large, but I'm not sure how to break it up
+ * For now I will organise the functions into general groupings, maybe that
+ * will suggest additional objects
+ * 
+ */
 Class TrelloBot
 {
 
@@ -30,6 +37,25 @@ Class TrelloBot
 
     private $timer;
 
+
+    //  SSSSS  EEEEEEE TTTTTTT UU   UU PPPPPP
+    // SS      EE        TTT   UU   UU PP   PP
+    //  SSSSS  EEEEE     TTT   UU   UU PPPPPP
+    //      SS EE        TTT   UU   UU PP
+    //  SSSSS  EEEEEEE   TTT    UUUUU  PP
+
+    /**
+     * Builds up all the required objects and connects to Slack's Real Time API
+     * 
+     * Also adds in the trigger to process incoming messages
+     * 
+     * @param string $name Slack username of bot
+     * @param object &$loop The ReactPHP loop
+     * @param string $slackToken Slack token for connection
+     * @param string $trelloAppKey Slack App Key for connection
+     * @param string $trelloToken Trello Token for API
+     * @param string $trelloBoard Board ID we are interested in
+     */
     public function __construct($name, &$loop, $slackToken, $trelloAppKey, $trelloToken, $trelloBoard)
     {
         global $debug;
@@ -63,6 +89,11 @@ Class TrelloBot
         $this->startTimer($loop);
     }
 
+    /**
+     * Connects to the Slack Real Time API
+     * 
+     * Once connected it populates the list of users and gets their DM channelIDs
+     */
     private function connect()
     {
         $this->slackRTC->connect()->then(function () {
@@ -89,11 +120,37 @@ Class TrelloBot
         });
     }
 
+    /**
+     * Puts a periodic timer into the loop to allow us to do automatic actions
+     * 
+     * @param object &$loop THe ReactPHP loop
+     */
     private function startTimer(&$loop)
     {
         $this->timer = $loop->addPeriodicTimer(30, array($this, 'doPeriodicActions'));
     }
 
+    /**
+     * Called every 30 seconds. Attempts to complete our automatic items.
+     */
+    public function doPeriodicActions()
+    {
+        $this->notifyUsers();
+        $this->notifyGeneral();
+    }
+
+    // IIIII NN   NN IIIII TTTTTTT IIIII   AAA   LL          MM    MM  SSSSS    GGGG
+    //  III  NNN  NN  III    TTT    III   AAAAA  LL          MMM  MMM SS       GG  GG
+    //  III  NN N NN  III    TTT    III  AA   AA LL          MM MM MM  SSSSS  GG
+    //  III  NN  NNN  III    TTT    III  AAAAAAA LL          MM    MM      SS GG   GG
+    // IIIII NN   NN IIIII   TTT   IIIII AA   AA LLLLLLL     MM    MM  SSSSS   GGGGGG
+
+
+    /**
+     * Processes all incoming messages from Slack
+     * 
+     * @param array $data Data from Slack
+     */
     public function processMessage ($data)
     {
         // is this message intended for me?
@@ -125,13 +182,14 @@ Class TrelloBot
         }
     }
 
-    public function doPeriodicActions()
-    {
-        $this->notifyUsers();
-        $this->notifyGeneral();
-    }
-
-    private function sendMsg($msg, $channelId = null, $channelName)
+    /**
+     * Send a message to a specific channel ID or channel name
+     * 
+     * @param string $msg 
+     * @param string|null $channelId Slack ID of channel to send to. Can be a DM
+     * @param string $channelName Text name of channel to send to
+     */
+    private function sendMsg($msg, $channelId = null, $channelName = null)
     {
         if (is_null($channelId)) {
             $this->slackRTC->getChannelByName($channelName)->then(function (\Slack\Channel $channel) use ($msg) {
@@ -151,6 +209,11 @@ Class TrelloBot
         }
     }
 
+    /**
+     * Debug - send a message to StdOut
+     * 
+     * @param string $msg Message to send
+     */
     private function echoMsg($msg)
     {
         if ($this->debug) {
@@ -158,6 +221,12 @@ Class TrelloBot
         }
     }
 
+    /**
+     * Checks to see if a message is from us
+     * 
+     * @param string $data Message data
+     * @return boolean
+     */
     private function fromMe($data)
     {
         if ($data['user'] == $this->slackId) {
@@ -167,6 +236,12 @@ Class TrelloBot
         return false;
     }
 
+    /**
+     * Is the message to us, either in a DM, or mentioning us?
+     * 
+     * @param array $data Message data
+     * @return boolean
+     */
     private function toMe($data)
     {
         global $users, $botSlackId;
@@ -181,6 +256,12 @@ Class TrelloBot
         return false;
     }
 
+    /**
+     * Strip our username, and anything before from a message
+     * 
+     * @param string $message Message text
+     * @return string Message text without username
+     */
     private function stripUsername($message)
     {
         $username = '<@' . $this->slackId . '>';
@@ -192,6 +273,20 @@ Class TrelloBot
         return $message;    
     }
 
+
+    // IIIII NN   NN  CCCCC   OOOOO  MM    MM IIIII NN   NN   GGGG
+    //  III  NNN  NN CC    C OO   OO MMM  MMM  III  NNN  NN  GG  GG
+    //  III  NN N NN CC      OO   OO MM MM MM  III  NN N NN GG
+    //  III  NN  NNN CC    C OO   OO MM    MM  III  NN  NNN GG   GG
+    // IIIII NN   NN  CCCCC   OOOO0  MM    MM IIIII NN   NN  GGGGGG
+
+
+    /**
+     * Processes a TIME message and sets the user's time if it is valid
+     * 
+     * @param array $data Message data
+     * @param string $message Message text
+     */
     private function setUserTimePref($data, $message)
     {
         if (preg_match('/(\d{2}:\d{2})/', $message, $matches) === 1) {
@@ -209,6 +304,12 @@ Class TrelloBot
         }
     }
 
+    /**
+     * Processes a FREQUENCY message and sets the user's frequency if it is valid
+     * 
+     * @param array $data Message data
+     * @param string $message Message text
+     */
     private function setUserFreqPref($data, $message)
     {
         if (preg_match('/(daily|weekly|every other day|weekend)/', strtolower($message), $matches) === 1) {
@@ -223,7 +324,12 @@ Class TrelloBot
         }
     }
 
-
+    /**
+     * Finds the appropriate help message and sends it back
+     * 
+     * @param array $data Message data
+     * @param string $message Message text
+     */
     private function processHelp($data, $message)
     {
         if (preg_match('/^help (.*)$/', $message, $matches) === 1) {
@@ -235,6 +341,13 @@ Class TrelloBot
             }
         }
     }
+
+    //  OOOOO  UU   UU TTTTTTT   GGGG   OOOOO  IIIII NN   NN   GGGG
+    // OO   OO UU   UU   TTT    GG  GG OO   OO  III  NNN  NN  GG  GG
+    // OO   OO UU   UU   TTT   GG      OO   OO  III  NN N NN GG
+    // OO   OO UU   UU   TTT   GG   GG OO   OO  III  NN  NNN GG   GG
+    //  OOOO0   UUUUU    TTT    GGGGGG  OOOO0  IIIII NN   NN  GGGGGG
+
 
     private function notifyGeneral()
     {
