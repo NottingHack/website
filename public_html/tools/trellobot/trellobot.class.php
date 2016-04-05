@@ -173,11 +173,11 @@ Class TrelloBot
                     $this->setUserFreqPref($data, $message);
                     break;
                 case 'action':
-                    $this->processAction($data, $message);
+                    //$this->processAction($data, $message);
                     break;
                 default:
                     // assume this is a taskID
-                    $this->processTaskId($data, $action, $message);
+                    //$this->processTaskId($data, $action, $message);
             }
         }
     }
@@ -613,7 +613,7 @@ Class TrelloBot
 
         if ($userTrelloId != '') {
             $user = $this->users->getByTrelloId($userTrelloId);
-            $card['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
+            $newCard['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
         }
 
         if (!is_null($card['due'])) {
@@ -643,6 +643,7 @@ Class TrelloBot
 
     private function formatNormalCardMessage($card)
     {
+        var_dump($card);
         $msg = '*' . $card['title'] . '*';
         if ($card['due'] == '') {
             $msg .= '. This one doesn’t have a due date, does it need one?';
@@ -660,7 +661,12 @@ Class TrelloBot
         }
 
         if (count($card['other_users']) > 0) {
-            // OTHER USERS ARE HELPING WITH THIS
+            $other_users = [];
+            foreach ($card['other_users'] as $user) {
+                $other_users[] = '@' . $user->getSlackUsername();
+            }
+            $join = count($other_users) > 1 ? 'are' : 'is';
+            $msg .= ' ' . $this->getEnglishList($other_users) . ' ' . $join . ' helping with this.';
         }
 
         $msg .= '  _' . $card['task_id'] . '_';
@@ -689,6 +695,20 @@ Class TrelloBot
             return file_get_contents($path);
         } else {
             return false;
+        }
+    }
+
+    private function getEnglishList($list) {
+        if (count($list) == 0) {
+            return '';
+        } elseif (count($list) == 1) {
+            return $list[0];
+        } elseif (count($list) == 2) {
+            return $list[0] . ' and ' . $list[1];
+        } else {
+            $last = array_pop($list);
+
+            return implode(', ', $list) . ', and ' . $last;
         }
     }
 }
