@@ -332,8 +332,8 @@ Class TrelloBot
      */
     private function processHelp($data, $message)
     {
-        if (preg_match('/^help (.*)$/', $message, $matches) === 1) {
-            $helpType = 'help-' . $matches[1];
+        if (preg_match('/^\s*help (.*)$/i', $message, $matches) === 1) {
+            $helpType = 'help-' . trim(strtolower($matches[1]));
             if ($msg = $this->getCannedMessage($helpType)) {
                 $this->sendMsg($msg, $data['channel']);
             } else {
