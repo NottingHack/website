@@ -360,6 +360,7 @@ class NHAuth extends AuthPlugin
     }
 
     $user->load();
+    $user->getPassword();
 
     if ($user->mId == "0") // user doesn't exist
     {
@@ -367,7 +368,8 @@ class NHAuth extends AuthPlugin
       return false;
     }
 
-    if ($user->mPassword == "#") /* invalid password hash, as set by this plugin on account creation */
+    if (is_a($user->mPassword, "InvalidPassword"))
+    // if ($user->mPassword == "#") /* invalid password hash, as set by this plugin on account creation */
     {
       writeMsg("is_local_user> invalid hash - user not local");
       return false;
@@ -445,6 +447,7 @@ class NHAuth extends AuthPlugin
     writeMsg("hms_query> result = [" . print_r($res, true));
     return $res;
   }
+
 }
 
- 
+
