@@ -149,7 +149,7 @@ class NHAuth extends AuthPlugin
       $user->setRealName($this->realname);
       $user->setEmail($this->email);
       $user->confirmEmail();
-      $user->mPassword = "#"; /* invalid password hash - i.e. no local password */
+      $user->mPassword = new FakePassword(); /* invalid password hash - i.e. no local password */
       $user->saveSettings();
       writeMsg("updateUser saved settings");      
     }
@@ -450,4 +450,8 @@ class NHAuth extends AuthPlugin
 
 }
 
-
+class FakePassword {
+  public function toString() {
+    return "#";
+  }
+}
