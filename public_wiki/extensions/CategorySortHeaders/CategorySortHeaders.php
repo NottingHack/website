@@ -3,7 +3,7 @@ if (!defined( 'MEDIAWIKI' ) ) die('Not an entry point');
 
 /**
  * Extension to allow specifying custom multi-character 'first-character'
- * sorting headers to list pages under in categories, using syntax like 
+ * sorting headers to list pages under in categories, using syntax like
  * [[category:Foo|^Header^Invisible part of sortkey]] or even just
  * [[category:Foo|^Header^]].
  *
@@ -32,7 +32,7 @@ if (!defined( 'MEDIAWIKI' ) ) die('Not an entry point');
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -48,10 +48,11 @@ $wgExtensionCredits['other'][] = array(
         'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
         'descriptionmsg' => 'categorysortheaders-desc',
         'url' => 'https://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
-        'version' => 0.2,
+        'version' => '0.3.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';
+$wgMessagesDirs['CategorySortHeaders'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['CategorySortHeaders'] = $dir . 'CategorySortHeaders.i18n.php';
 $wgAutoloadClasses['CustomHeaderCollation'] = $dir . 'CategorySortHeaders_body.php';
 
