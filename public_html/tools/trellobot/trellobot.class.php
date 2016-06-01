@@ -37,6 +37,8 @@ Class TrelloBot
 
     private $timer;
 
+    private $meeting = '';
+
 
     //  SSSSS  EEEEEEE TTTTTTT UU   UU PPPPPP
     // SS      EE        TTT   UU   UU PP   PP
@@ -162,6 +164,13 @@ Class TrelloBot
 
             $action = strtolower(substr($message, 0, strpos($message, ' ')));
 
+            // is this a taskID?
+            $trelloId = $this->tasks->getTrelloId($action);
+            if ($trelloId !== false) {
+                $this->processTaskId($data, $trelloId, $message);
+                return;
+            }
+
             switch ($action) {
                 case 'help':
                     $this->processHelp($data, $message);
@@ -173,11 +182,13 @@ Class TrelloBot
                     $this->setUserFreqPref($data, $message);
                     break;
                 case 'action':
-                    //$this->processAction($data, $message);
+                    $this->processAction($data, $message);
+                    break;
+                case 'start':
+                    
                     break;
                 default:
-                    // assume this is a taskID
-                    //$this->processTaskId($data, $action, $message);
+                    $this->sendMsg($this->getCannedMessage('general-error'), $data['channel']);
             }
         }
     }
@@ -340,6 +351,16 @@ Class TrelloBot
                 $this->sendMsg($this->getCannedMessage('error-help'), $data['channel']);
             }
         }
+    }
+
+    private function processTaskId($data, $trelloId, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with tasks yet!", $data['channel']);
+    }
+
+    private function processAction($data, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with actions yet!", $data['channel']);
     }
 
     //  OOOOO  UU   UU TTTTTTT   GGGG   OOOOO  IIIII NN   NN   GGGG
