@@ -138,6 +138,10 @@ $wgRightsText = "Creative Commons Attribution-ShareAlike 3.0 License";
 $wgRightsIcon = "https://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 # $wgRightsCode = ""; # Not yet used
 
+wfLoadSkin( 'Vector' );
+wfLoadSkin( 'MonoBook' );
+wfLoadSkin( 'Modern' );
+wfLoadSkin( 'CologneBlue' );
 $wgDefaultSkin = 'vector';
 # To remove various skins from the User Preferences choices
 $wgSkipSkins = array("modern", "chick", "cologneblue", "myskin", "nostalgia", "simple", "standard");
@@ -270,32 +274,32 @@ $wgNamespacesWithSubpages = array(
 */
 
 # Adding the ParserFunctions extension
-require_once( "$IP/extensions/ParserFunctions/ParserFunctions.php" );
+wfLoadExtension( 'ParserFunctions' );
 $wgPFEnableStringFunctions = true;
 
 # Adding SyntaxHighlight_GeSHi extension
-require_once("$IP/extensions/SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.php");
+wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 
 # Adding Poem extension
-require_once($IP.'/extensions/Poem/Poem.php');
+wfLoadExtension( 'Poem');
 
 # Adding Widgets extension
 require_once("$IP/extensions/Widgets/Widgets.php");
 $wgGroupPermissions['sysop']['editwidgets'] = true;
 
 # Adding SpecialInterwiki extension
-require_once("$IP/extensions/Interwiki/Interwiki.php");
+wfLoadExtension( 'Interwiki' );
 $wgGroupPermissions['*']['interwiki'] = false;
 $wgGroupPermissions['sysop']['interwiki'] = true;
 $wgGroupPermissions['interwiki']['interwiki'] = true;
 
 # Adding ReplaceText Extension
-require_once( "$IP/extensions/ReplaceText/ReplaceText.php" );
+wfLoadExtension( 'ReplaceText' );
 $wgGroupPermissions['bureaucrat']['replacetext'] = true;
 
 # Adding in the WikiEditor Extension
 # Bundled in 1.19 an later
-require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
+wfLoadExtension( 'WikiEditor' );
 # Enables use of WikiEditor by default but still allow users to disable it in preferences
 $wgDefaultUserOptions['usebetatoolbar'] = 1;
 $wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
@@ -308,7 +312,7 @@ $wgDefaultUserOptions['usenavigabletoc'] = 0;
 
 # Adding Renameuser extenstion
 # Bundled in 1.19 and later
-require_once("$IP/extensions/Renameuser/Renameuser.php");
+wfLoadExtension( 'Renameuser' );
 
 # Adding Category Sort Headers extension
 require_once( "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php" );
