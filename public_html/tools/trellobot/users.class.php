@@ -49,11 +49,14 @@ class Users
 	public function setDMs($dms) {
 		foreach ($dms as $dm) {
 			$dmId = $dm->getId();
-			$dm->getUser()->then(function($user) use ($dmId) {
-				$id = $this->usersBySlackId[$user->getId()];
 
-				$this->users[$id]->setDM($dmId);
-				$this->usersByDM[$dmId] = $id;
+			$dm->getUser()->then(function($user) use ($dmId) {
+				if(isset($this->usersBySlackId[$user->getId()])) {
+					$id = $this->usersBySlackId[$user->getId()];
+
+					$this->users[$id]->setDM($dmId);
+					$this->usersByDM[$dmId] = $id;
+				}
 			});
 		}
 	}
