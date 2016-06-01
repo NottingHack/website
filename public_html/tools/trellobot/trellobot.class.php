@@ -37,6 +37,8 @@ Class TrelloBot
 
     private $timer;
 
+    private $meeting = '';
+
 
     //  SSSSS  EEEEEEE TTTTTTT UU   UU PPPPPP
     // SS      EE        TTT   UU   UU PP   PP
@@ -162,6 +164,13 @@ Class TrelloBot
 
             $action = strtolower(substr($message, 0, strpos($message, ' ')));
 
+            // is this a taskID?
+            $trelloId = $this->tasks->getTrelloId($action);
+            if ($trelloId !== false) {
+                $this->processTaskId($data, $trelloId, $message);
+                return;
+            }
+
             switch ($action) {
                 case 'help':
                     $this->processHelp($data, $message);
@@ -175,9 +184,11 @@ Class TrelloBot
                 case 'action':
                     $this->processAction($data, $message);
                     break;
+                case 'start':
+                    
+                    break;
                 default:
-                    // assume this is a taskID
-                    $this->processTaskId($data, $action, $message);
+                    $this->sendMsg($this->getCannedMessage('general-error'), $data['channel']);
             }
         }
     }
@@ -332,14 +343,24 @@ Class TrelloBot
      */
     private function processHelp($data, $message)
     {
-        if (preg_match('/^help (.*)$/', $message, $matches) === 1) {
-            $helpType = 'help-' . $matches[1];
+        if (preg_match('/^\s*help (.*)$/i', $message, $matches) === 1) {
+            $helpType = 'help-' . trim(strtolower($matches[1]));
             if ($msg = $this->getCannedMessage($helpType)) {
                 $this->sendMsg($msg, $data['channel']);
             } else {
                 $this->sendMsg($this->getCannedMessage('error-help'), $data['channel']);
             }
         }
+    }
+
+    private function processTaskId($data, $trelloId, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with tasks yet!", $data['channel']);
+    }
+
+    private function processAction($data, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with actions yet!", $data['channel']);
     }
 
     //  OOOOO  UU   UU TTTTTTT   GGGG   OOOOO  IIIII NN   NN   GGGG
@@ -613,7 +634,7 @@ Class TrelloBot
 
         if ($userTrelloId != '') {
             $user = $this->users->getByTrelloId($userTrelloId);
-            $card['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
+            $newCard['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
         }
 
         if (!is_null($card['due'])) {
@@ -643,6 +664,7 @@ Class TrelloBot
 
     private function formatNormalCardMessage($card)
     {
+        var_dump($card);
         $msg = '*' . $card['title'] . '*';
         if ($card['due'] == '') {
             $msg .= '. This one doesn’t have a due date, does it need one?';
@@ -660,7 +682,12 @@ Class TrelloBot
         }
 
         if (count($card['other_users']) > 0) {
-            // OTHER USERS ARE HELPING WITH THIS
+            $other_users = [];
+            foreach ($card['other_users'] as $user) {
+                $other_users[] = '@' . $user->getSlackUsername();
+            }
+            $join = count($other_users) > 1 ? 'are' : 'is';
+            $msg .= ' ' . $this->getEnglishList($other_users) . ' ' . $join . ' helping with this.';
         }
 
         $msg .= '  _' . $card['task_id'] . '_';
@@ -689,6 +716,20 @@ Class TrelloBot
             return file_get_contents($path);
         } else {
             return false;
+        }
+    }
+
+    private function getEnglishList($list) {
+        if (count($list) == 0) {
+            return '';
+        } elseif (count($list) == 1) {
+            return $list[0];
+        } elseif (count($list) == 2) {
+            return $list[0] . ' and ' . $list[1];
+        } else {
+            $last = array_pop($list);
+
+            return implode(', ', $list) . ', and ' . $last;
         }
     }
 }
