@@ -50,15 +50,18 @@ class Users
 		foreach ($dms as $dm) {
 			$dmId = $dm->getId();
 			$dm->getUser()->then(function($user) use ($dmId) {
-				$id = $this->usersBySlackId[$user->getId()];
+				if (isset($this->usersBySlackId[$user->getId()])) {
+					$id = $this->usersBySlackId[$user->getId()];
 
-				$this->users[$id]->setDM($dmId);
-				$this->usersByDM[$dmId] = $id;
+					$this->users[$id]->setDM($dmId);
+					$this->usersByDM[$dmId] = $id;
+				}
 			});
 		}
 	}
 
 	public function setTrelloUsers($users) {
+		var_dump($users);
 		foreach ($users as $trellouser) {
 			if (isset($this->usersByTrelloName[$trellouser['username']])) {
 				$id = $this->usersByTrelloName[$trellouser['username']];
