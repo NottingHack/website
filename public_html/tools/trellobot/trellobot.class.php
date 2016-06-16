@@ -167,8 +167,7 @@ Class TrelloBot
             // is this a taskID?
             $trelloId = $this->tasks->getTrelloId($action);
             if ($trelloId !== false) {
-                $this->sendMsg("Sorry, I can't deal with tasks yet!", $data['channel']);
-                //$this->processTaskId($data, $trelloId, $message);
+                $this->processTaskId($data, $trelloId, $message);
                 return;
             }
 
@@ -183,7 +182,10 @@ Class TrelloBot
                     $this->setUserFreqPref($data, $message);
                     break;
                 case 'action':
-                    //$this->processAction($data, $message);
+                    $this->processAction($data, $message);
+                    break;
+                case 'start':
+                    
                     break;
                 case 'start':
                     
@@ -352,6 +354,16 @@ Class TrelloBot
                 $this->sendMsg($this->getCannedMessage('error-help'), $data['channel']);
             }
         }
+    }
+
+    private function processTaskId($data, $trelloId, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with tasks yet!", $data['channel']);
+    }
+
+    private function processAction($data, $message)
+    {
+        $this->sendMsg("Sorry, I can't deal with actions yet!", $data['channel']);
     }
 
     //  OOOOO  UU   UU TTTTTTT   GGGG   OOOOO  IIIII NN   NN   GGGG

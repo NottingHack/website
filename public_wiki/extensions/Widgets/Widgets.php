@@ -1,41 +1,37 @@
 <?php
 /**
  *
- * {{#widget:<WidgetName>|<name1>=<value1>|<name2>=<value2>}}
+ * {{#widget:<WidgetName>|<param1>=<value1>|<param2>=<value2>}}
  *
  * @author Sergey Chernyshev
- * @version $Id: Widgets.php 15 2008-06-25 21:22:40Z sergey.chernyshev $
+ * @author Yaron Koren
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
-    echo "This file is not a valid entry point.";
-    exit( 1 );
+	echo "This file is not a valid entry point.";
+	exit( 1 );
 }
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'Widgets',
 	'descriptionmsg' => 'widgets-desc',
-	'version' => '0.9.2',
-	'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev]',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Widgets'
+	'version' => '1.2',
+	'author' => array( '[http://www.sergeychernyshev.com Sergey Chernyshev]', '...' ),
+	'url' => 'https://www.mediawiki.org/wiki/Extension:Widgets'
 );
 
 /**
  * Set this to the index of the Widget namespace
  */
 if ( !defined( 'NS_WIDGET' ) ) {
-   define( 'NS_WIDGET', 274 );
+	define( 'NS_WIDGET', 274 );
 }
 if ( !defined( 'NS_WIDGET_TALK' ) ) {
-   define( 'NS_WIDGET_TALK', NS_WIDGET + 1 );
+	define( 'NS_WIDGET_TALK', NS_WIDGET + 1 );
 } elseif ( NS_WIDGET_TALK != NS_WIDGET + 1 ) {
-   throw new MWException( 'Configuration error. Do not define NS_WIDGET_TALK, it is automatically set based on NS_WIDGET.' );
+	throw new MWException( 'Configuration error. Do not define NS_WIDGET_TALK, it is automatically set based on NS_WIDGET.' );
 }
-
-// Define new namespaces
-$wgExtraNamespaces[NS_WIDGET] = 'Widget';
-$wgExtraNamespaces[NS_WIDGET_TALK] = 'Widget_talk';
 
 // Support subpages only for talk pages by default
 $wgNamespacesWithSubpages[NS_WIDGET_TALK] = true;
@@ -43,62 +39,56 @@ $wgNamespacesWithSubpages[NS_WIDGET_TALK] = true;
 // Define new right
 $wgAvailableRights[] = 'editwidgets';
 
+// Assign editing to widgeteditor and sysop groups only (widgets can be dangerous so we do it here, not in LocalSettings)
+$wgGroupPermissions['*']['editwidgets'] = false;
+$wgGroupPermissions['widgeteditor']['editwidgets'] = true;
+$wgGroupPermissions['sysop']['editwidgets'] = true;
+
 // Set this to true to use FlaggedRevs extension's stable version for widget security
 $wgWidgetsUseFlaggedRevs = false;
 
-$dir = dirname( __FILE__ ) . '/';
+// Set a default directory for storage of compiled templates
+$wgWidgetsCompileDir = "$IP/extensions/Widgets/compiled_templates/";
+
+$dir = __DIR__ . '/';
 
 // Initialize Smarty
-require_once( $dir . 'smarty/Smarty.class.php' );
+require_once( $dir . 'smarty/libs/Smarty.class.php' );
+$wgMessagesDirs['Widgets'] = $dir . 'i18n';
 $wgExtensionMessagesFiles['Widgets'] = $dir . 'Widgets.i18n.php';
+$wgExtensionMessagesFiles['WidgetsNamespaces'] = $dir . 'Widgets.i18n.namespaces.php';
 $wgAutoloadClasses['WidgetRenderer'] = $dir . 'WidgetRenderer.php';
 
-if( defined('MW_SUPPORTS_LOCALISATIONCACHE') ) {
-	$wgExtensionMessagesFiles['WidgetsMagic'] = $dir . 'Widgets.i18n.magic.php';
-} else {
-	// Pre 1.16alpha backward compatibility for magic words
-	$wgHooks['LanguageGetMagic'][] = 'widgetLanguageGetMagic';
-}
-
-function widgetLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
-	switch ( $langCode ) {
-	default:
-		$magicWords['widget'] = array ( 0, 'widget' );
-	}
-	return true;
-}
+$wgExtensionMessagesFiles['WidgetsMagic'] = $dir . 'Widgets.i18n.magic.php';
 
 // Parser function registration
 $wgExtensionFunctions[] = 'widgetNamespacesInit';
+$wgExtensionFunctions[] = 'WidgetRenderer::initRandomString';
 $wgHooks['ParserFirstCallInit'][] = 'widgetParserFunctions';
-$wgHooks['ParserAfterTidy'][] = 'processEncodedWidgetOutput';
+$wgHooks['ParserAfterTidy'][] = 'WidgetRenderer::outputCompiledWidget';
+$wgHooks['CanonicalNamespaces'][] = 'widgetsAddNamespaces';
 
+/**
+ * @param $parser Parser
+ * @return bool
+ */
 function widgetParserFunctions( &$parser ) {
-    $parser->setFunctionHook( 'widget', array( 'WidgetRenderer', 'renderWidget' ) );
+	$parser->setFunctionHook( 'widget', 'WidgetRenderer::renderWidget' );
 
-    return true;
+	return true;
 }
 
-function processEncodedWidgetOutput( &$out, &$text ) {
-	// Find all hidden content and restore to normal
-	$text = preg_replace(
-		'/ENCODED_CONTENT ([0-9a-zA-Z\/+]+=*)* END_ENCODED_CONTENT/esm',
-		'base64_decode("$1")',
-		$text
-	);
-
+// Define new namespaces
+function widgetsAddNamespaces( &$list ) {
+	$list[NS_WIDGET] = 'Widget';
+	$list[NS_WIDGET_TALK] = 'Widget_talk';
 	return true;
 }
 
 function widgetNamespacesInit() {
-	global $wgGroupPermissions, $wgNamespaceProtection, $wgWidgetsUseFlaggedRevs;
+	global $wgNamespaceProtection, $wgWidgetsUseFlaggedRevs;
 
-	if (!$wgWidgetsUseFlaggedRevs)
-	{
-		// Assign editing to widgeteditor group only (widgets can be dangerous so we do it here, not in LocalSettings)
-		$wgGroupPermissions['*']['editwidgets'] = false;
-		$wgGroupPermissions['widgeteditor']['editwidgets'] = true;
-
+	if ( !$wgWidgetsUseFlaggedRevs ) {
 		// Setting required namespace permission rights
 		$wgNamespaceProtection[NS_WIDGET] = array( 'editwidgets' );
 	}

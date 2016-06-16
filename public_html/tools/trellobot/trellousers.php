@@ -10,6 +10,8 @@ $trellousers = array(
     'sophierach'        =>  'sophierwilkinson',
     'rob'               =>  'roberthunt87',
     'daniel1111'        =>  'daniel1111',
+    'msemtd'            =>  'michaelerskine2',
+    'katemonkey'        =>  'katebolin3',
     );
 
 

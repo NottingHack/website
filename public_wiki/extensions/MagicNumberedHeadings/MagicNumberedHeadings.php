@@ -72,7 +72,7 @@ function MagicNumberedHeadingsInternalParseBeforeLinks($parser, $text, $stripSta
 {
         if (MagicWord::get( 'MAG_NUMBEREDHEADINGS' )->matchAndRemove( $text ) )
         {
-                $parser->mOptions->mNumberHeadings = (TRUE);
+                $parser->mOptions->setNumberHeadings(true);
         }
         return true;
 }
