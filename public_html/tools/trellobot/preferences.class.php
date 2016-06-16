@@ -13,7 +13,7 @@ class Preferences extends DataStore
         ];
 
     private $sysDefaults = [
-        'time'      =>  '13:00',
+        'time'      =>  '21:46',
         'lists'     =>  ['In Progress', 'Next', 'Incoming Tasks', 'On Hold / Waiting'],
         ];
 

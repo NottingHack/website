@@ -400,7 +400,13 @@ Class TrelloBot
                             }
                         } else {
                             $user = $this->users->getByTrelloId($trelloId);
-                            $msg .= '@' . $user->getSlackUsername() . ' has ' . $counts['total'] . ' outstanding tasks';
+                            if ($user) {
+                                $msg .= '@' . $user->getSlackUsername();
+                            } else {
+                                $msg .= 'An unknown user';
+                            }
+
+                            $msg .= ' has ' . $counts['total'] . ' outstanding tasks';
                             if ($counts['overdue'] == 1) {
                                 $msg .= ', 1 of which is overdue';
                             } elseif ($counts['overdue'] > 1) {
@@ -682,7 +688,12 @@ Class TrelloBot
         if (count($card['other_users']) > 0) {
             $other_users = [];
             foreach ($card['other_users'] as $user) {
-                $other_users[] = '@' . $user->getSlackUsername();
+                if (!$user) {
+                    // this was a user that is on trello, but no longer on slack
+                    $other_users[] = "unknown";
+                } else {
+                    $other_users[] = '@' . $user->getSlackUsername();
+                }
             }
             $join = count($other_users) > 1 ? 'are' : 'is';
             $msg .= ' ' . $this->getEnglishList($other_users) . ' ' . $join . ' helping with this.';
