@@ -62,7 +62,6 @@ class Users
 	}
 
 	public function setTrelloUsers($users) {
-		var_dump($users);
 		foreach ($users as $trellouser) {
 			if (isset($this->usersByTrelloName[$trellouser['username']])) {
 				$id = $this->usersByTrelloName[$trellouser['username']];
@@ -82,7 +81,7 @@ class Users
 	}
 
 	public function getByTrelloId($id) {
-		if (isset($this->users[$this->usersByTrelloId[$id]])) {
+		if (isset($this->usersByTrelloId[$id]) && isset($this->users[$this->usersByTrelloId[$id]])) {
 			return $this->users[$this->usersByTrelloId[$id]];
 		} else {
 			return false;

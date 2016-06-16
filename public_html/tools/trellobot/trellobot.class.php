@@ -187,9 +187,6 @@ Class TrelloBot
                 case 'start':
                     
                     break;
-                case 'start':
-                    
-                    break;
                 default:
                     $this->sendMsg($this->getCannedMessage('general-error'), $data['channel']);
             }
@@ -263,7 +260,6 @@ Class TrelloBot
         if ($data['channel'][0] == 'D') {
             return true;
         }
-        var_dump($data);
         if (strpos($data['text'], $this->slackId) !== false) {
             return true;
         }
@@ -635,14 +631,14 @@ Class TrelloBot
             'list_name'      => $listName,
         ];
 
-        if ($userTrelloId != '') {
+        if ($userTrelloId != '' && $this->users->getByTrelloId($userTrelloId) !== false) {
             $user = $this->users->getByTrelloId($userTrelloId);
             $newCard['other_users'] = $this->convertUserList($card['idMembers'], $userTrelloId);
         }
 
         if (!is_null($card['due'])) {
             $newCard['due'] = Carbon::parse($card['due']);
-            if ($userTrelloId != '') {
+            if ($userTrelloId != '' && isset($user)) {
                 $newCard['due']->timezone = $this->preferences->getTimezoneForUser($user->getSlackId());
             }
         }
@@ -667,7 +663,6 @@ Class TrelloBot
 
     private function formatNormalCardMessage($card)
     {
-        var_dump($card);
         $msg = '*' . $card['title'] . '*';
         if ($card['due'] == '') {
             $msg .= '. This one doesn’t have a due date, does it need one?';
