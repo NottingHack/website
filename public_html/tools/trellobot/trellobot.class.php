@@ -5,6 +5,8 @@ require_once(__DIR__ . '/preferences.class.php');
 require_once(__DIR__ . '/tasks.class.php');
 require_once(__DIR__ . '/trello.class.php');
 
+require_once(__DIR__ . '/meeting.class.php');
+
 use Carbon\Carbon;
 
 /**
@@ -37,7 +39,7 @@ Class TrelloBot
 
     private $timer;
 
-    private $meeting = '';
+    private $meeting = false;
 
 
     //  SSSSS  EEEEEEE TTTTTTT UU   UU PPPPPP
@@ -161,8 +163,15 @@ Class TrelloBot
         }
         if ($this->toMe($data)) {
             $message = $this->stripUsername($data['text']);
+            $this->echoMsg("Message: " . $message);
 
-            $action = strtolower(substr($message, 0, strpos($message, ' ')));
+            if (strpos($message, ' ') !== false) {
+                $action = strtolower(substr($message, 0, strpos($message, ' ')));
+            } else {
+                $action = strtolower(trim($message));
+            }
+
+            $this->echoMsg("Action: " . $action);
 
             // is this a taskID?
             $trelloId = $this->tasks->getTrelloId($action);
@@ -171,24 +180,30 @@ Class TrelloBot
                 return;
             }
 
-            switch ($action) {
-                case 'help':
-                    $this->processHelp($data, $message);
-                    break;
-                case 'time':
-                    $this->setUserTimePref($data, $message);
-                    break;
-                case 'frequency':
-                    $this->setUserFreqPref($data, $message);
-                    break;
-                case 'action':
-                    $this->processAction($data, $message);
-                    break;
-                case 'start':
-                    
-                    break;
-                default:
-                    $this->sendMsg($this->getCannedMessage('general-error'), $data['channel']);
+            // commands that can happen anywhere
+            $commands = array('help', 'time', 'frequency', 'action', 'start');
+            if (in_array($action, $commands)) {
+                switch ($action) {
+                    case 'help':
+                        $this->processHelp($data, $message);
+                        break;
+                    case 'time':
+                        $this->setUserTimePref($data, $message);
+                        break;
+                    case 'frequency':
+                        $this->setUserFreqPref($data, $message);
+                        break;
+                    case 'action':
+                        $this->processAction($data, $message);
+                        break;
+                    case 'start':
+                        $this->meeting = new Meeting($data['channel'], $this);
+                        break;
+                    default:
+                        $this->sendMsg($this->getCannedMessage('general-error'), $data['channel']);
+                }
+            } elseif ($this->meeting !== false && $meeting->getChannel() == $data['channel']) {
+                // finally, meetings
             }
         }
     }
@@ -349,6 +364,8 @@ Class TrelloBot
             } else {
                 $this->sendMsg($this->getCannedMessage('error-help'), $data['channel']);
             }
+        } else {
+            $this->sendMsg($this->getCannedMessage('error-help'), $data['channel']);
         }
     }
 
