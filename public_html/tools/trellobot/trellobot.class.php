@@ -462,7 +462,7 @@ Class TrelloBot
                     $this->echoMsg("Got Lists (Notify Users)");
                     $cards = $this->orderCards($cards, $trelloData);
                     foreach ($users as $user) {
-                        if (count($cards[$user->getTrelloId()]) > 0) {
+                        if (isset($cards[$user->getTrelloId()]) && count($cards[$user->getTrelloId()]) > 0) {
                             $msg = 'Hey ' . $user->getName() . ', you have the following tasks on your list:' . "\n\n";
                             
                             $notifyLists = $this->preferences->getListsForUser($user->getSlackId());
