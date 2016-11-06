@@ -331,3 +331,6 @@ $wgAuth = new NHAuth();
 
 # Adding AppleTouchIcon extension
 require_once('extensions/AppleTouchIcon/AppleTouchIcon.php');
+
+# Adding Cookie notice
+wfLoadExtension( 'CookieWarning' );
