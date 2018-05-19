@@ -157,7 +157,7 @@ $wgAllowExternalImagesFrom = array( 'http://chart.apis.google.com/' );
 */
 
 $wgEnableUploads       = true;
-$wgUseImageMagick = false;
+$wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # File Extensions allowed for upload
