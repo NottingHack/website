@@ -161,7 +161,7 @@ $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # File Extensions allowed for upload
-$wgFileExtensions = array('png', 'gif', 'pde', 'jpg', 'jpeg', 'pdf', 'sh3d', 'psd', 'svg', 'zip', 'ppt', 'odp', 'pem');
+$wgFileExtensions = array('png', 'gif', 'pde', 'jpg', 'jpeg', 'pdf', 'sh3d', 'psd', 'svg', 'zip', 'ppt', 'odp', 'pem', 'key');
 
 #If issues with JavaScript fasle positive uncomment
 # $wgAllowTitlesInSVG = true;
