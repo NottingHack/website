@@ -85,7 +85,7 @@ $(document).ready(function() {
 <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
 <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-
+<meta name="google-site-verification" content="tZ9G8lLNt_Kvx92Ung79gW-WLDIJajOd78V5VWlenys" />
 </head>
 
 <body <?php body_class(); ?>>
