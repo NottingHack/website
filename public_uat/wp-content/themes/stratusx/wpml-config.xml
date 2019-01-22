@@ -1,0 +1,21 @@
+<wpml-config>
+  <custom-types>
+    <custom-type translate="1">themo_tour</custom-type>
+  </custom-types>
+  <taxonomies>
+    <taxonomy translate="1">themo_tour_type</taxonomy>
+  </taxonomies>
+  <custom-fields>
+    <custom-field action="translate">th_tour_highlight</custom-field>
+    <custom-field action="translate">th_tour_title</custom-field>
+    <custom-field action="translate">th_tour_intro</custom-field>
+    <custom-field action="translate">th_tour_button_text</custom-field>
+    <custom-field action="copy-once">th_tour_thumb</custom-field>
+    <custom-field action="copy-once">themo_transparent_header</custom-field>
+    <custom-field action="copy-once">themo_hide_title</custom-field>
+    <custom-field action="copy-once">themo_page_layout</custom-field>
+    <custom-field action="copy-once">_elementor_page_settings</custom-field>
+    <custom-field action="copy-once">themo_header_content_style</custom-field>
+    <custom-field action="copy-once">themo_alt_logo</custom-field>
+  </custom-fields>
+</wpml-config>

@@ -1,0 +1,122 @@
+
+/* Customizer / Kirki Styling */
+
+.customize-control-kirki-switch .switch label {border-radius:5px}
+.customize-control-kirki-switch .switch label:after {border-radius:3px}
+
+.control-section-kirki-default .customize-control-title {margin-top:6px}
+
+.control-section-kirki-default .customize-control-description {
+    margin-top:-4px;
+    margin-bottom:8px;
+}
+
+li.customize-control a.tooltip.hint--left {
+    top:6px;
+    text-decoration:none;
+}
+
+.customize-control {margin-bottom:28px}
+
+.kirki-reset-section {text-decoration:none; display:none}
+
+
+
+/* Elementor Styling */
+/*
+.elementor-background-overlay,
+.elementor-element-overlay,
+.elementor-editor-element-settings {z-index:10000 !important}
+
+.elementor-widget-wrap {z-index:10010}
+
+.elementor-section-wrap {border:1px solid #000}
+
+.elementor-section-wrap .elementor-top-section .elementor-container .elementor-row {margin-top:50px !important; }
+
+ .elementor-editor-active .elementor.elementor-edit-mode .elementor-editor-widget-settings,
+.elementor-editor-active .elementor.elementor-edit-mode .elementor-editor-column-settings {z-index:10020}
+
+
+/* Styling for OT Labels */
+
+.format-setting-label,
+.option-tree-setting-body .format-settings .label {
+	border-bottom:0 !important;
+	margin:5px 0 5px !important;
+	padding:0 !important;
+	width:100%;
+}
+.option-tree-setting-body .format-settings .label {margin:25px 0 5px !important}
+
+
+
+/* Hide unused Portfolio format options */
+
+.post-type-themo_portfolio .post-format-gallery,
+.post-type-themo_portfolio .post-format-video,
+.post-type-themo_portfolio .post-format-audio,
+.post-type-themo_portfolio #post-format-gallery,
+.post-type-themo_portfolio #post-format-video,
+.post-type-themo_portfolio #post-format-audio,
+.post-type-themo_portfolio .post-format-quote,
+.post-type-themo_portfolio #post-format-quote,
+.post-type-themo_portfolio .post-format-aside,
+.post-type-themo_portfolio #post-format-aside {display:none}
+
+.post-type-themo_portfolio #post-formats-select br {display:none}
+
+.post-type-themo_portfolio #post-formats-select label:after {
+	content:" ";
+	display:block;
+}
+
+
+
+/* Page Layout / Disable nav section */
+
+#themo_page_layout_meta_box .inside {padding-top:15px}
+
+#themo_page_layout_meta_box .rwmb-label {
+	font-weight:bold;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+
+/* Override Formidable inline CSS affecting Shortcodes input */
+
+.wp-admin #TB_ajaxContent,
+.wp-admin #TB_ajaxContent #su-generator {
+	min-height:400px !important;
+	max-height:90% !important;
+}
+
+
+
+/* OptionTree / Meta Box */
+
+.ot-metabox-wrapper .wp-editor-container {border:1px #dedede solid !important}
+
+#setting_themo_template_select_help {display:none}
+
+.checkbox-inline-wrap .type-checkbox .format-setting-inner p {
+    padding-right:10px !important;
+    width:auto !important;
+}
+
+
+
+/* Widget Logic - hide notice */
+
+#wpchefgadget_alert_lla {display:none !important}
+
+
+
+/* Master Slider notice styling */
+
+body.toplevel_page_masterslider .notice-info p .th-dismiss {
+	position:absolute;
+	right:30px;
+}

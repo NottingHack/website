@@ -1,0 +1,157 @@
+
+
+/* Primary Color */
+
+
+.btn-cta-primary,
+.navbar .navbar-nav > li > a:hover:after,
+.navbar .navbar-nav > li.active > a:after,
+.navbar .navbar-nav > li.active > a:hover:after,
+.navbar .navbar-nav > li.active > a:focus:after,
+form input[type=submit], .with_frm_style .frm_submit input[type=submit],
+.with_frm_style .frm_submit input[type=button],
+.frm_form_submit_style, .with_frm_style.frm_login_form input[type=submit],
+form input[type=submit]:hover,
+.with_frm_style .frm_submit input[type=submit]:hover,
+.with_frm_style .frm_submit input[type=button]:hover,
+.frm_form_submit_style:hover, .with_frm_style.frm_login_form input[type=submit]:hover,
+html .woocommerce a.button.alt, html .woocommerce-page a.button.alt,
+html .woocommerce a.button, html .woocommerce-page a.button,
+.woocommerce #respond input#submit.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
+.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,
+.woocommerce #respond input#submit.disabled, .woocommerce #respond input#submit:disabled,
+.woocommerce #respond input#submit:disabled[disabled], .woocommerce a.button.disabled,
+.woocommerce a.button:disabled, .woocommerce a.button:disabled[disabled],
+.woocommerce button.button.disabled, .woocommerce button.button:disabled,
+.woocommerce button.button:disabled[disabled], .woocommerce input.button.disabled,
+.woocommerce input.button:disabled, .woocommerce input.button:disabled[disabled],
+.woocommerce #respond input#submit.disabled:hover, .woocommerce #respond input#submit:disabled:hover,
+.woocommerce #respond input#submit:disabled[disabled]:hover, .woocommerce a.button.disabled:hover,
+.woocommerce a.button:disabled:hover, .woocommerce a.button:disabled[disabled]:hover,
+.woocommerce button.button.disabled:hover, .woocommerce button.button:disabled:hover,
+.woocommerce button.button:disabled[disabled]:hover, .woocommerce input.button.disabled:hover,
+.woocommerce input.button:disabled:hover, .woocommerce input.button:disabled[disabled]:hover,
+.woocommerce #respond input#submit.alt.disabled, .woocommerce #respond input#submit.alt.disabled:hover,
+.woocommerce #respond input#submit.alt:disabled, .woocommerce #respond input#submit.alt:disabled:hover,
+.woocommerce #respond input#submit.alt:disabled[disabled], .woocommerce #respond input#submit.alt:disabled[disabled]:hover,
+.woocommerce a.button.alt.disabled, .woocommerce a.button.alt.disabled:hover,
+.woocommerce a.button.alt:disabled, .woocommerce a.button.alt:disabled:hover, .woocommerce a.button.alt:disabled[disabled],
+.woocommerce a.button.alt:disabled[disabled]:hover, .woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt.disabled:hover, .woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover, .woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover, .woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt.disabled:hover, .woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled:hover, .woocommerce input.button.alt:disabled[disabled],
+.woocommerce input.button.alt:disabled[disabled]:hover, p.demo_store,
+.woocommerce.widget_price_filter .ui-slider .ui-slider-handle,
+.th-conversion form input[type=submit],
+.th-conversion .with_frm_style input[type=submit],
+.th-pricing-column.th-highlight,
+.search-submit, .search-submit:hover,
+.widget .tagcloud a:hover, .footer .tagcloud a:hover
+{background-color:#3A3B74}
+
+
+a, .accent,
+.navbar .navbar-nav .dropdown-menu li.active a,
+.navbar .navbar-nav .dropdown-menu li a:hover,
+.navbar .navbar-nav .dropdown-menu li.active a:hover,
+.page-title h1, .inner-container > h1.entry-title,
+.woocommerce ul.products li.product .price,
+.woocommerce ul.products li.product .price del,
+.woocommerce .single-product .product .price,
+.woocommerce.single-product .product .price,
+.woocommerce .single-product .product .price ins,
+.woocommerce.single-product .product .price ins,
+.a2c-ghost.woocommerce a.button,
+.th-cta .th-cta-text span,
+.elementor-widget-themo-header .th-header-wrap .elementor-icon-box-title,
+.elementor-widget-themo-info-card .th-info-card-wrap .elementor-icon-box-title,
+.map-info h3, .th-pkg-content h3, .th-pricing-cost,
+.elementor-widget-themo-service-block .th-service-block-w .elementor-icon-box-title,
+#main-flex-slider .slides h1,
+.th-team-member-social a i:hover,
+.elementor-widget-toggle .elementor-toggle .elementor-toggle-title,
+.elementor-widget-toggle .elementor-toggle .elementor-toggle-title.active,
+.elementor-widget-toggle .elementor-toggle .elementor-toggle-icon
+{color:#3A3B74}
+
+
+.btn-standard-primary,
+.btn-ghost-primary:hover,
+.pager li > a:hover,
+.pager li > span:hover,
+.a2c-ghost.woocommerce a.button:hover {
+	background-color:#3A3B74;
+	border-color:#3A3B74;
+}
+
+
+.btn-ghost-primary,
+.th-portfolio-filters a.current,
+.a2c-ghost.woocommerce a.button {
+	color:#3A3B74;
+	border-color:#3A3B74;
+}
+
+
+form select:focus,
+form textarea:focus,
+form input:focus,
+.th-widget-area .widget select:focus,
+.search-form input:focus
+{border-color:#3A3B74 !important}
+
+
+
+
+
+
+
+/* Accent Color */
+
+
+.elementor-widget-themo-header .th-header-wrap .elementor-icon,
+.elementor-widget-themo-header.elementor-view-default .th-header-wrap .elementor-icon,
+.elementor-widget-themo-service-block .th-service-block-w .elementor-icon,
+.elementor-widget-themo-service-block.elementor-view-default .th-service-block-w .elementor-icon
+{color:#F5BE58}
+
+
+.btn-cta-accent,
+.a2c-cta.woocommerce a.button,
+.a2c-cta.woocommerce a.button:hover,
+.elementor-widget-themo-header.elementor-view-stacked .th-header-wrap .elementor-icon,
+.elementor-widget-themo-service-block.elementor-view-stacked .th-service-block-w .elementor-icon
+{background-color:#F5BE58}
+
+
+body #booked-profile-page input[type=submit].button-primary,
+body table.booked-calendar input[type=submit].button-primary,
+body .booked-modal input[type=submit].button-primary,
+body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button,
+body #booked-profile-page .booked-profile-appt-list .appt-block.approved .status-block
+{background:#F5BE58 !important}
+
+
+body #booked-profile-page input[type=submit].button-primary,
+body table.booked-calendar input[type=submit].button-primary,
+body .booked-modal input[type=submit].button-primary,
+body table.booked-calendar .booked-appt-list .timeslot .timeslot-people button
+{border-color:#F5BE58 !important}
+
+
+.btn-standard-accent,
+.btn-ghost-accent:hover {
+	background-color:#F5BE58;
+	border-color:#F5BE58;
+}
+
+
+.btn-ghost-accent,
+.elementor-widget-themo-header.elementor-view-framed .th-header-wrap .elementor-icon,
+.elementor-widget-themo-service-block.elementor-view-framed .th-service-block-w .elementor-icon {
+	color:#F5BE58;
+	border-color:#F5BE58;
+}
