@@ -1,0 +1,15 @@
+{
+	"name": "AuthHMS",
+	"version": "0.0.2",
+	"author": [
+		"Daniel Swann"
+	],
+	"url": "https://github.com/NottingHack/instrumentation",
+	"description": "Allow login to wiki using HMS credentials",
+	"license-name": "GPL-3.0+",
+	"type": "auth",
+	"AutoloadClasses": {
+		"MediaWiki\\Auth\\HmsPasswordPrimaryAuthenticationProvider": "HmsPasswordPrimaryAuthenticationProvider.php"
+	},
+	"manifest_version": 1
+}
