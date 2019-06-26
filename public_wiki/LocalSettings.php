@@ -323,7 +323,7 @@ require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
 require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
 
 # Adding CSS extension
-require_once("$IP/extensions/CSS/CSS.php");
+wfLoadExtension( 'CSS' );
 
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );

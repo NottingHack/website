@@ -27,7 +27,7 @@ class WidgetRenderer {
 		$smarty->compile_dir = $wgWidgetsCompileDir;
 
 		// registering custom Smarty plugins
-		$smarty->addPluginsDir( "$IP/extensions/Widgets/smarty_plugins/" );
+		$smarty->addPluginsDir( __DIR__ . "/smarty_plugins/" );
 
 		$smarty->enableSecurity();
 		// These settings were for Smarty v2 - they don't seem to
@@ -130,7 +130,8 @@ class WidgetRenderer {
 		try {
 			$output = $smarty->fetch( "wiki:$widgetName" );
 		} catch ( Exception $e ) {
-			return '<div class="error">' . wfMessage( 'widgets-error', htmlentities( $widgetName ) )->text() . '</div>';
+			wfDebugLog( "Widgets", "Smarty exception while parsing '$widgetName': " . $e->getMessage() );
+			return '<div class="error">' . wfMessage( 'widgets-error', htmlentities( $widgetName ) )->text() . ': ' . $e->getMessage() . '</div>';
 		}
 
 		// To prevent the widget output from being tampered with, the
@@ -171,8 +172,9 @@ class WidgetRenderer {
 					$widgetCode = '';
 				}
 			} else {
-				$widgetArticle = new Article( $widgetTitle, 0 );
-				$widgetCode = $widgetArticle->getContent();
+				$widgetWikiPage = new WikiPage( $widgetTitle );
+				$widgetContent = $widgetWikiPage->getContent();
+				$widgetCode = ContentHandler::getContentText( $widgetContent );
 			}
 
 			// Remove <noinclude> sections and <includeonly> tags from form definition
