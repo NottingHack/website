@@ -1,5 +1,6 @@
 <?php
-if (!defined( 'MEDIAWIKI' ) ) die('Not an entry point');
+if ( !defined( 'MEDIAWIKI' ) ) { die( 'Not an entry point' );
+}
 
 /**
  * Extension to allow specifying custom multi-character 'first-character'
@@ -41,19 +42,17 @@ if (!defined( 'MEDIAWIKI' ) ) die('Not an entry point');
  * @author Brian Wolff
  */
 
+$wgExtensionCredits['other'][] = [
+	'path' => __FILE__,
+	'name' => 'CategorySortHeaders',
+	'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
+	'descriptionmsg' => 'categorysortheaders-desc',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
+	'version' => '0.3.0',
+];
 
-$wgExtensionCredits['other'][] = array(
-        'path' => __FILE__,
-        'name' => 'CategorySortHeaders',
-        'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
-        'descriptionmsg' => 'categorysortheaders-desc',
-        'url' => 'https://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
-        'version' => '0.3.0',
-);
-
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 $wgMessagesDirs['CategorySortHeaders'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['CategorySortHeaders'] = $dir . 'CategorySortHeaders.i18n.php';
 $wgAutoloadClasses['CustomHeaderCollation'] = $dir . 'CategorySortHeaders_body.php';
 
 $wgCategoryCollation = 'CustomHeaderCollation';
