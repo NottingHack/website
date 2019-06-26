@@ -1,8 +1,8 @@
 <?php
 /**
- * AppleTouchIcon extension 
+ * AppleTouchIcon extension
  * Add all the needed lines to head not just the one
- * 
+ *
  * @file
  * @ingroup Extensions
  * @version 0.1
@@ -25,7 +25,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'AppleTouchIcon',
 	'author'         => array ( 'Matt Lloyd'),
 	'descriptionmsg' => 'appletouchicon-desc',
-	'url'            => 'https://wiki.nottinghakc.org.uk/wiki/User:LWK',
+	'url'            => 'https://wiki.nottinghack.org.uk/wiki/User:LWK',
 	'version'        => APPLETOUCHICON_VERSION,
 );
 

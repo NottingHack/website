@@ -22,57 +22,43 @@
  */
  
 /**
- * This extension realizes a new MagicWord __NUMBEREDHEADINGS__.
+ * This extension realizes a new MagicWord {{NUMBEREDHEADINGS}}.
  * If an article contains this MagicWord, numbering of the
  * headings is performed regardless of the user preference setting.
  * 
- * How to use:
- * * include this extension in LocalSettings.php: 
- *   require_once($IP.'/extensions/MagicNoNumberedHeadings.php');
- * * Add "__NUMBEREDHEADINGS__" to any article of your choice.
  * 
  * @author Purodha Blissenbach
- * @version $Revision: 1.12
+ * @author James Hayward
+ * @version $Revision: 2.0
  */
  
 if (!defined('MEDIAWIKI')) {
-        die("This requires the MediaWiki enviroment.");
+	die("This requires the MediaWiki enviroment.");
 }
 
 $wgExtensionCredits['parserhook'][] = array(
-        'name' => 'MagicNumberedHeadings',
-        'version' => '1.12',
-        'author' => 'Purodha Blissenbach',
-        'url' => 'https://www.mediawiki.org/wiki/Extension:MagicNumberedHeadings',
-        'description' => 'Adds MagicWord "<nowiki>__NUMBEREDHEADINGS__</nowiki>"',
+	'name' => 'MagicNumberedHeadings_NH',
+	'version' => '1.2',
+	'author' => 'Purodha Blissenbach, James Hayward',
+	'url' => 'https://www.mediawiki.org/wiki/Extension:MagicNumberedHeadings',
+	'description' => 'Adds MagicWord "<nowiki>{{NUMBEREDHEADINGS}}</nowiki>"',
 );
-$dir = dirname(__FILE__) . '/';
  
-$wgExtensionMessagesFiles['MagicNumberedHeadings'] = $dir . 'MagicNumberedHeadings.i18n.php';
+$wgExtensionMessagesFiles['MagicNumberedHeadings_NH'] = dirname(__FILE__) . '/MagicNumberedHeadings.i18n.php';
  
-$wgHooks['MagicWordMagicWords'][] = 'MagicNumberedHeadingsMagicWordMagicWords';
-$wgHooks['MagicWordwgVariableIDs'][] = 'MagicNumberedHeadingsMagicWordwgVariableIDs';
-#$wgHooks['ParserBeforeInternalParse'][] = 'MagicNumberedHeadingsParserBeforeInternalParse';
-$wgHooks['InternalParseBeforeLinks'][] = 'MagicNumberedHeadingsInternalParseBeforeLinks';
- 
-function MagicNumberedHeadingsMagicWordMagicWords(&$magicWords)
-{
-        $magicWords[] = 'MAG_NUMBEREDHEADINGS';
-        return true;
+$wgHooks['ParserGetVariableValueSwitch'][] = 'MNH_AssignValue';
+$wgHooks['MagicWordwgVariableIDs'][] = 'MNH_DeclareVarIds';
+
+
+function MNH_AssignValue(&$parser, &$cache, &$magicWordId, &$ret) {
+	if ('MAG_NUMBEREDHEADINGS' == $magicWordId) {
+		$parser->mOptions->setNumberHeadings(true);
+		$ret = '';
+	}
+	return true;
 }
- 
-function MagicNumberedHeadingsMagicWordwgVariableIDs(&$wgVariableIDs)
-{
-        $wgVariableIDs[] = 'MAG_NUMBEREDHEADINGS';
-        return true;
-}
- 
-#function MagicNumberedHeadingsParserBeforeInternalParse($parser, $text, $stripState)
-function MagicNumberedHeadingsInternalParseBeforeLinks($parser, $text, $stripState)
-{
-        if (MagicWord::get( 'MAG_NUMBEREDHEADINGS' )->matchAndRemove( $text ) )
-        {
-                $parser->mOptions->setNumberHeadings(true);
-        }
-        return true;
+
+function MNH_DeclareVarIds(&$customVariableIds) {
+	$customVariableIds[] = 'MAG_NUMBEREDHEADINGS';
+	return true;
 }

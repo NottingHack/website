@@ -315,22 +315,52 @@ $wgDefaultUserOptions['usenavigabletoc'] = 0;
 wfLoadExtension( 'Renameuser' );
 
 # Adding Category Sort Headers extension
-require_once( "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php" );
+wfLoadExtension( 'CategorySortHeaders' );
 
 # Adding MagicNumberedHeadings extension
 //require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
 // Trying my own
-require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
+wfLoadExtension( 'MagicNumberedHeadings');
 
 # Adding CSS extension
-require_once("$IP/extensions/CSS/CSS.php");
+wfLoadExtension( 'CSS.php' );
 
 # Adding HMS auth extension
-require_once('extensions/HMSAuth/Auth.php');
-$wgAuth = new NHAuth();
+wfLoadExtension( 'AuthHMS' );
+
+$wgAuthManagerAutoConfig['primaryauth'] = [
+	MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
+		'class' => MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class,
+		'args' => [
+		[
+			// Last one should be authoritative, or else the user will get
+			// a less-than-helpful error message (something like "supplied
+			// authentication info not supported" rather than "wrong
+			// password") if it too fails.
+				'authoritative' => false //,
+				//'loginOnly' => true
+			]
+		],
+		'sort' => 10,
+	],
+	MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class => [
+		'class' => MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class,
+		'args' => [
+			[
+				 'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
+				 'secret'        => 'zklWx467WSd32x',
+				 'salt'          => '$1$rwioejrikjxcv29xkmfcx$',
+				 'debug'         => true,
+				 'log_file'      => '/home/mediawiki/wikiauth.log',
+				 'authoritative' => true
+			]
+		],
+		'sort' => 100,
+	]
+];
 
 # Adding AppleTouchIcon extension
-require_once('extensions/AppleTouchIcon/AppleTouchIcon.php');
+wfLoadExtension( 'AppleTouchIcon');
 
 # Adding Cookie notice
 wfLoadExtension( 'CookieWarning' );
