@@ -323,7 +323,7 @@ require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
 require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
 
 # Adding CSS extension
-wfLoadExtension( 'CSS.php' );
+require_once("$IP/extensions/CSS/CSS.php");
 
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );
@@ -360,7 +360,7 @@ $wgAuthManagerAutoConfig['primaryauth'] = [
 ];
 
 # Adding AppleTouchIcon extension
-wfLoadExtension( 'AppleTouchIcon');
+require_once('extensions/AppleTouchIcon/AppleTouchIcon.php');
 
 # Adding Cookie notice
 wfLoadExtension( 'CookieWarning' );
