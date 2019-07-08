@@ -23,6 +23,8 @@ class AppleTouchIconHooks {
         $out->addHeadItem( "icon-180", "<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon-180x180.png\">");
         $out->addHeadItem( "mask-icon", "<link rel=\"mask-icon\" href=\"/safari-pinned-tab.svg?v=XBJgQp70gw\" color=\"#195905\">");
         $out->addHeadItem( "apple-mobile-web-app-title", "<meta name=\"apple-mobile-web-app-title\" content=\"WIKI\">");
+        $out->addHeadItem( "fav-32", "<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png?v=XBJgQp70gw\">");
+        $out->addHeadItem( "fav-16", "<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png?v=XBJgQp70gw\">");
         return true;
     }
 }
