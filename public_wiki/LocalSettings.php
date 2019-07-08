@@ -128,7 +128,11 @@ $wgEmailAuthentication = true;
  +------------------------------+
 */
 
-$wgLogo             = "/nottinghack_small.png";
+$wgLogo             = "/logo/nottinghack_with_white.png";
+$wgLogoHD = [
+	"2x" => "/logo/nottinghack_with_white@2x.png",
+	"3x" => "/logo/nottinghack_with_white@2x.png"
+];
 
 $wgUseTeX           = true;
 
