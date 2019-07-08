@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'APPLETOUCHICON_VERSION', '0.1, 2015-05-15' );
+define( 'APPLETOUCHICON_VERSION', '0.2, 2019-07-08' );
 
 $wgAutoloadClasses['AppleTouchIconHooks'] = __DIR__ . '/AppleTouchIcon.body.php';
 $wgHooks['BeforePageDisplay'][] = 'AppleTouchIconHooks::onBeforePageDisplay';
