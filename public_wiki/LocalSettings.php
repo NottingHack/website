@@ -37,7 +37,7 @@ if ( $wgCommandLineMode ) {
 	}
 }
 
-$wgShellLocale = "en_US.utf8";
+$wgShellLocale = "en_GB.utf8";
 
 $wgLanguageCode = "en";
 
@@ -160,7 +160,7 @@ $wgAllowExternalImagesFrom = array( 'http://chart.apis.google.com/' );
  +------------------------------+
 */
 
-$wgEnableUploads       = true;
+$wgEnableUploads = true;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
@@ -266,7 +266,7 @@ $wgNamespacesWithSubpages = array(
 	NH_NS_GROUP_TALK	=>	false,
 	NH_NS_LIBRARY		=>	true,
 	NH_NS_LIBRARY_TALK	=>	false,
-	NH_NS_TEAM		=>	true,
+	NH_NS_TEAM		    =>	true,
 	NH_NS_TEAM_TALK		=>	false
 );
 
@@ -370,3 +370,7 @@ require_once('extensions/AppleTouchIcon/AppleTouchIcon.php');
 # Adding Cookie notice
 wfLoadExtension( 'CookieWarning' );
 $wgCookieWarningEnabled = true;
+
+# Adding InputBox and
+wfLoadExtension( 'InputBox' );
+wfLoadExtension( 'ImageMap' );
