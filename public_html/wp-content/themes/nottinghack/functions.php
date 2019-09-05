@@ -5,7 +5,7 @@
  * Sets up the theme and provides some helper functions. Some helper functions
  * are used in the theme as custom template tags. Others are attached to action and
  * filter hooks in WordPress to change core functionality.
- * 
+ *
  * @package WordPress
  * @subpackage Nottinghack
  * @since Nottinghack 1.0
@@ -87,11 +87,11 @@ $nh_carousel = array(
 function nh_init_method() {
 	if (!is_admin()) {
     	wp_deregister_script( 'jquery' );
-	    wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js');
+	    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js');
     	wp_enqueue_script( 'jquery' );
     }
-}    
- 
+}
+
 add_action('init', 'nh_init_method');
 add_filter( 'show_admin_bar', '__return_false' );
 
@@ -147,7 +147,7 @@ function nottinghack_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'nottinghack' ),
 	) );
-	
+
 	// Enable feature image
 	add_theme_support( 'post-thumbnails' );
 }
@@ -231,7 +231,7 @@ function nottinghack_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	// Area 7, located on the front page only. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Top Side Front Page Widget Area', 'nottinghack' ),
@@ -242,7 +242,7 @@ function nottinghack_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	// Area 8, located on the front page only. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Bottom Side Front Page Widget Area', 'nottinghack' ),
@@ -253,7 +253,7 @@ function nottinghack_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	// Area 9, located on the front page only. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Bottom Front Page Widget Area', 'nottinghack' ),
@@ -264,7 +264,7 @@ function nottinghack_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
-	
+
 	// Area 7, located on the front page only. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'New Front Page Widget Area', 'nottinghack' ),
@@ -350,7 +350,7 @@ if ( ! function_exists( 'nottinghack_carousel_images' ) ) :
  */
 function nottinghack_carousel_images() {
 	global $nh_carousel;
-	
+
 	foreach ($nh_carousel as $image) {
 		echo('<img src="' . get_bloginfo('template_url') . '/images/carousel/' . $image['image'] . '" width="620" height="250" alt="' . $image['title'] . '" />');
 	}
@@ -365,11 +365,11 @@ if ( ! function_exists( 'nottinghack_carousel_js' ) ) :
  */
 function nottinghack_carousel_js() {
 	global $nh_carousel, $nh_c_time_move, $nh_c_time_anim;
-	
+
 	echo('var iNumImgs = ' . count($nh_carousel) . ';' . "\n");
 	echo('var iTimeMove = ' . $nh_c_time_move . ';' . "\n");
 	echo('var iTimeAnim = ' . $nh_c_time_anim . ';' . "\n\n");
-	
+
 	echo('var aTexts = new Array();' . "\n");
 	for ($i = 0; $i < count($nh_carousel); $i++) {
 		echo('aTexts[' . $i . '] = new Object;' . "\n");
@@ -381,8 +381,8 @@ function nottinghack_carousel_js() {
 		echo('aTexts[' . $i . '].type = "' . $nh_carousel[$i]['type'] . '";' . "\n");
 		echo('aTexts[' . $i . '].link = "' . $nh_carousel[$i]['link'] . '";' . "\n");
 	}
-	
-	
+
+
 }
 endif;
 
@@ -394,7 +394,7 @@ if ( ! function_exists( 'nottinghack_carousel_ind' ) ) :
  */
 function nottinghack_carousel_ind() {
 	global $nh_carousel;
-	
+
 	echo('<ul>' . "\n");
 	for ($i = 0; $i < count($nh_carousel); $i++) {
 		echo('<li id="nh-ind-' . $i . '"');
