@@ -14,7 +14,7 @@ class GL_Cal extends WP_Widget {
 	
 	//private $feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/private-acbf60a032394b53e3caae31e5c725eb/';   // old API call
 	
-	private $feed_url = 'https://www.google.com/calendar/feeds/info%40nottinghack.org.uk/public/basic'; // April 2015 API call
+	private $feed_url = 'http://www.google.com/calendar/feeds/info%40nottinghack.org.uk/public/basic/'; // April 2015 API call
 	function GL_Cal() {
 		// widget actual processes
 		$widget_ops = array('classname' => 'widget_gl_cal', 'description' => 'Provides agenda of upcoming events' );
@@ -56,7 +56,8 @@ class GL_Cal extends WP_Widget {
 		global $current_user;
 		extract( $args );
 		
-		$xml_url = $this->feed_url . 'full?max-results=' . $instance['show_num'] . '&futureevents=true&orderby=starttime&sortorder=a&singleevents=true';
+		//$xml_url = $this->feed_url . 'full?max-results=' . $instance['show_num'] . '&futureevents=true&orderby=starttime&sortorder=a&singleevents=true';
+		$xml_url = $this->feed_url . '?max-results=' . $instance['show_num'] . '&futureevents=true&orderby=starttime&sortorder=a&singleevents=true';
 		$xml = file_get_contents( $xml_url );
 		
 		# check that we got something!
