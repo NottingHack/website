@@ -356,7 +356,7 @@ $wgAuthManagerAutoConfig['primaryauth'] = [
 				 'secret'        => 'zklWx467WSd32x',
 				 'salt'          => '$1$rwioejrikjxcv29xkmfcx$',
 				 'debug'         => true,
-				 'log_file'      => '/home/nottinghack/extensions/AuthHMS/wikiauth.log',
+				 'log_file'      => '/home/nottinghack/public_wiki/extensions/AuthHMS/wikiauth.log',
 				 'authoritative' => true
 			]
 		],
