@@ -374,3 +374,6 @@ $wgCookieWarningEnabled = true;
 # Adding InputBox and
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'ImageMap' );
+
+# Adding EmbedVVideo https://www.mediawiki.org/wiki/Extension:EmbedVideo
+wfLoadExtension( 'EmbedVideo' );
