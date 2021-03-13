@@ -96,6 +96,9 @@ $wgGroupPermissions['*']['edit'] = false;
 # Sysops or logged-in users can create accounts for others through Special:Userlogin
 $wgGroupPermissions['*']['createaccount'] = false;
 
+## The protocol and server name to use in fully-qualified URLs
+$wgServer = "https://wiki.nottinghack.org.uk";
+
 $wgLocaltimezone = 'UTC';
 
 # $wgLocalTZoffset = date("Z") / 60;
