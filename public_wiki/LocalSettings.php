@@ -355,7 +355,7 @@ $wgAuthManagerAutoConfig['primaryauth'] = [
 				 'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
 				 'secret'        => 'zklWx467WSd32x',
 				 'salt'          => '$1$rwioejrikjxcv29xkmfcx$',
-				 'debug'         => true,
+				 'debug'         => false,
 				 'log_file'      => '/home/nottinghack/public_wiki/extensions/AuthHMS/wikiauth.log',
 				 'authoritative' => true
 			]
