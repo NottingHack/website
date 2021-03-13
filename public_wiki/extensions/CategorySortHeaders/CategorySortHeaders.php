@@ -1,5 +1,6 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) { die( 'Not an entry point' );
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point' );
 }
 
 /**
@@ -20,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) ) { die( 'Not an entry point' );
  * Run either update.php or updateCollation.php
  * (update.php can be run from the web installer if need be.)
  *
- **************************************************************
+ *
  *
  * Copyright © 2011 Brian Wolff
  *
@@ -45,7 +46,7 @@ if ( !defined( 'MEDIAWIKI' ) ) { die( 'Not an entry point' );
 $wgExtensionCredits['other'][] = [
 	'path' => __FILE__,
 	'name' => 'CategorySortHeaders',
-	'author' => '[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
+	'author' => '[https://mediawiki.org/wiki/User:Bawolff Brian Wolff]',
 	'descriptionmsg' => 'categorysortheaders-desc',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:CategorySortHeaders',
 	'version' => '0.3.0',

@@ -18,7 +18,7 @@
 class CSS {
 
 	/**
-	 * @param Parser $parser
+	 * @param Parser &$parser
 	 * @param string $css
 	 * @return string
 	 */
@@ -26,6 +26,9 @@ class CSS {
 		global $wgCSSPath, $wgStylePath, $wgCSSIdentifier;
 
 		$css = trim( $css );
+		if ( !$css ) {
+			return '';
+		}
 		$title = Title::newFromText( $css );
 		$rawProtection = "$wgCSSIdentifier=1";
 		$headItem = '<!-- Begin Extension:CSS -->';
@@ -72,8 +75,8 @@ class CSS {
 	}
 
 	/**
-	 * @param RawPage $rawPage
-	 * @param string $text
+	 * @param RawPage &$rawPage
+	 * @param string &$text
 	 * @return bool true
 	 */
 	public static function onRawPageViewBeforeOutput( &$rawPage, &$text ) {

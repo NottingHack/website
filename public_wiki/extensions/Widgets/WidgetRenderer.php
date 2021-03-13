@@ -10,7 +10,7 @@ class WidgetRenderer {
 
 	// Stores the compiled widgets for after the parser has run.
 	// Must be public for use in anonymous callback function in PHP 5.3
-	public static $widgets = array();
+	public static $widgets = [];
 
 	public static function initRandomString() {
 		// Add a random string to the prefix to ensure no conflicts
@@ -19,7 +19,7 @@ class WidgetRenderer {
 	}
 
 	public static function renderWidget( &$parser, $widgetName ) {
-		global $IP, $wgWidgetsCompileDir;
+		global $wgWidgetsCompileDir;
 
 		$smarty = new Smarty;
 		$smarty->left_delimiter = '<!--{';
@@ -29,36 +29,17 @@ class WidgetRenderer {
 		// registering custom Smarty plugins
 		$smarty->addPluginsDir( __DIR__ . "/smarty_plugins/" );
 
-		$smarty->enableSecurity();
-		// These settings were for Smarty v2 - they don't seem to
-		// have an equivalent in Smarty v3.
-		/*
-		$smarty->security_settings = array(
-			'IF_FUNCS' => array(
-					'is_array',
-					'isset',
-					'array',
-					'list',
-					'count',
-					'sizeof',
-					'in_array',
-					'true',
-					'false',
-					'null'
-					),
-			'MODIFIER_FUNCS' => array( 'validate' )
-		);
-		*/
+		$smarty->enableSecurity( 'WidgetSecurity' );
 
 		// Register the Widgets extension functions.
 		$smarty->registerResource(
 			'wiki',
-			array(
-				array( 'WidgetRenderer', 'wiki_get_template' ),
-				array( 'WidgetRenderer', 'wiki_get_timestamp' ),
-				array( 'WidgetRenderer', 'wiki_get_secure' ),
-				array( 'WidgetRenderer', 'wiki_get_trusted' )
-			)
+			[
+				[ 'WidgetRenderer', 'wiki_get_template' ],
+				[ 'WidgetRenderer', 'wiki_get_timestamp' ],
+				[ 'WidgetRenderer', 'wiki_get_secure' ],
+				[ 'WidgetRenderer', 'wiki_get_trusted' ]
+			]
 		);
 
 		$params = func_get_args();
@@ -67,7 +48,7 @@ class WidgetRenderer {
 		array_shift( $params );
 		array_shift( $params );
 
-		$params_tree = array();
+		$params_tree = [];
 
 		foreach ( $params as $param ) {
 			$pair = explode( '=', $param, 2 );
@@ -104,7 +85,7 @@ class WidgetRenderer {
 				// If next level of subtree doesn't exist yet,
 				// create an empty one.
 				if ( !array_key_exists( $subkey, $subtree ) ) {
-					$subtree[$subkey] = array();
+					$subtree[$subkey] = [];
 				}
 
 				// move to the lower level
@@ -116,7 +97,7 @@ class WidgetRenderer {
 				// If this is already an array, push into it;
 				// otherwise, convert into an array first.
 				if ( !is_array( $subtree[$last_key] ) ) {
-					$subtree[$last_key] = array( $subtree[$last_key] );
+					$subtree[$last_key] = [ $subtree[$last_key] ];
 				}
 				$subtree[$last_key][] = $val;
 			} else {
@@ -144,7 +125,7 @@ class WidgetRenderer {
 	public static function outputCompiledWidget( &$out, &$text ) {
 		$text = preg_replace_callback(
 			'/' . self::$markerPrefix . '-(\d+)' . self::$markerSuffix . '/S',
-			function( $matches ) {
+			function ( $matches ) {
 				// Can't use self:: in an anonymous function pre PHP 5.4
 				return WidgetRenderer::$widgets[$matches[1]];
 			},
@@ -159,7 +140,7 @@ class WidgetRenderer {
 	public static function wiki_get_template( $widgetName, &$widgetCode, $smarty_obj ) {
 		global $wgWidgetsUseFlaggedRevs;
 
-		$widgetTitle = Title::newFromText( $widgetName, NS_WIDGET );
+		$widgetTitle = Title::makeTitleSafe( NS_WIDGET, $widgetName );
 
 		if ( $widgetTitle && $widgetTitle->exists() ) {
 			if ( $wgWidgetsUseFlaggedRevs ) {
@@ -179,7 +160,7 @@ class WidgetRenderer {
 
 			// Remove <noinclude> sections and <includeonly> tags from form definition
 			$widgetCode = StringUtils::delimiterReplace( '<noinclude>', '</noinclude>', '', $widgetCode );
-			$widgetCode = strtr( $widgetCode, array( '<includeonly>' => '', '</includeonly>' => '' ) );
+			$widgetCode = strtr( $widgetCode, [ '<includeonly>' => '', '</includeonly>' => '' ] );
 
 			return true;
 		} else {
@@ -188,11 +169,11 @@ class WidgetRenderer {
 	}
 
 	public static function wiki_get_timestamp( $widgetName, &$widgetTimestamp, $smarty_obj ) {
-		$widgetTitle = Title::newFromText( $widgetName, NS_WIDGET );
+		$widgetTitle = Title::makeTitleSafe( NS_WIDGET, $widgetName );
 
 		if ( $widgetTitle && $widgetTitle->exists() ) {
 			$widgetArticle = new Article( $widgetTitle, 0 );
-			$widgetTimestamp = $widgetArticle->getTouched();
+			$widgetTimestamp = $widgetArticle->getPage()->getTouched();
 			return true;
 		} else {
 			return false;

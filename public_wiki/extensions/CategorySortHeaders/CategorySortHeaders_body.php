@@ -1,6 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) { die( "Not an entry point" );
-}
 
 /**
  * Pretty much based on UppercaseCollation from core.
