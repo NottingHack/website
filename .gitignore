@@ -1,6 +1,7 @@
 # media wiki files #
 ################################
 public_wiki/SecretSettings.php
+public_wiki/extensions/AuthHMS/wikiauth.log
 public_wiki/extensions/HMSAuth/log.txt
 public_wiki/extensions/Widgets/compiled_templates/
 
