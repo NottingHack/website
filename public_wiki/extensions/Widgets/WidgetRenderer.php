@@ -19,7 +19,7 @@ class WidgetRenderer {
 	}
 
 	public static function renderWidget( &$parser, $widgetName ) {
-		global $wgWidgetsCompileDir;
+		global $IP, $wgWidgetsCompileDir;
 
 		$smarty = new Smarty;
 		$smarty->left_delimiter = '<!--{';
@@ -169,7 +169,7 @@ class WidgetRenderer {
 	}
 
 	public static function wiki_get_timestamp( $widgetName, &$widgetTimestamp, $smarty_obj ) {
-		$widgetTitle = Title::makeTitleSafe( NS_WIDGET, $widgetName );
+		$widgetTitle = Title::newFromText( $widgetName, NS_WIDGET );
 
 		if ( $widgetTitle && $widgetTitle->exists() ) {
 			$widgetArticle = new Article( $widgetTitle, 0 );
