@@ -150,17 +150,9 @@ wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'Modern' );
 wfLoadSkin( 'CologneBlue' );
 wfLoadSkin( 'MinervaNeue' );
-$wgDefaultSkin = 'vector';
-$wgMFDefaultSkinClass = 'SkinMinerva';
+$wgDefaultSkin = 'minerva';
 # To remove various skins from the User Preferences choices
 $wgSkipSkins = array("modern", "chick", "cologneblue", "myskin", "nostalgia", "simple", "standard");
-
-$wgMinervaTalkAtTop['base'] = true;
-$wgMinervaAdvancedMainMenu['base'] = true;
-$wgMinervaPersonalMenu['base'] = true;
-$wgMinervaHistoryInPageActions['base'] = true;
-$wgMinervaOverflowInPageActions['base'] = true;
-$wgMinervaShowCategories['base'] = true;
 
 $wgAllowExternalImages = false;
 $wgAllowExternalImagesFrom = array( 'http://chart.apis.google.com/' );
@@ -390,4 +382,13 @@ wfLoadExtension( 'ImageMap' );
 # Adding EmbedVVideo https://www.mediawiki.org/wiki/Extension:EmbedVideo
 wfLoadExtension( 'EmbedVideo' );
 
-wfLoadExtension( 'MobileFrontend' );
+# not working with 1.35
+// wfLoadExtension( 'MobileFrontend' );
+// $wgMFDefaultSkinClass = 'SkinMinerva';
+
+// $wgMinervaTalkAtTop['base'] = true;
+// $wgMinervaAdvancedMainMenu['base'] = true;
+// $wgMinervaPersonalMenu['base'] = true;
+// $wgMinervaHistoryInPageActions['base'] = true;
+// $wgMinervaOverflowInPageActions['base'] = true;
+// $wgMinervaShowCategories['base'] = true;
