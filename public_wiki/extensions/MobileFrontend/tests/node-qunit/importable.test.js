@@ -24,6 +24,7 @@ QUnit.module( 'MobileFrontend imports', {
 		mediawiki.setUp( sandbox, global );
 		mustache.setUp( sandbox, global );
 		global.OO.ui = {
+			CategoryLookupInputWidget: () => {},
 			TextInputWidget: () => {},
 			Tool: () => {},
 			mixin: {

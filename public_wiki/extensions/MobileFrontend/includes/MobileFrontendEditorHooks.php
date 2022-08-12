@@ -20,7 +20,7 @@ class MobileFrontendEditorHooks {
 			// schemaEditAttemptStep.js
 			'wgMFSchemaEditAttemptStepOversample' => $config->get( 'MFSchemaEditAttemptStepOversample' ),
 			// MFDefaultEditor should be `source`, `visual`, `preference`, or `abtest`.
-			// `preference` means to fall back on the desktop `visualeditor-editor` setting (if VE has been used)
+			// `preference` means to fall back on the desktop `visualeditor-editor` setting.
 			// `abtest` means to split between source and visual 50/50
 			// editor.js
 			'wgMFDefaultEditor' => $config->get( 'MFDefaultEditor' ),
@@ -79,6 +79,19 @@ class MobileFrontendEditorHooks {
 				],
 			] );
 		}
+
+		// If using MFContentProviderScriptPath, register contentProviderApi module to
+		// fix cors issues with visual editor
+		$config = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Config' );
+		$contentProviderApi = $config->get( 'MFContentProviderScriptPath' );
+		if ( $contentProviderApi ) {
+			$resourceLoader->register( [
+				'mobile.contentProviderApi' => $resourceBoilerplate + [
+					'targets' => [ 'mobile', 'desktop' ],
+					'scripts' => 'resources/mobile.contentProviderApi.js'
+				]
+			] );
+		}
 	}
 
 	/**
@@ -87,7 +100,7 @@ class MobileFrontendEditorHooks {
 	 * @param Title $title
 	 * @return bool
 	 */
-	protected static function isPageContentModelEditable( Title $title ): bool {
+	protected static function isPageContentModelEditable( Title $title ) : bool {
 		$contentHandler = MediaWikiServices::getInstance()->getContentHandlerFactory()
 			->getContentHandler( $title->getContentModel() );
 

@@ -43,7 +43,6 @@ function loadImage( placeholder ) {
 	// eslint-disable-next-line mediawiki/class-doc
 	image.className = placeholder.dataset.class || '';
 	image.alt = placeholder.dataset.alt || '';
-	image.useMap = placeholder.dataset.usemap;
 	image.style.cssText = placeholder.style.cssText || '';
 
 	// When the image has loaded

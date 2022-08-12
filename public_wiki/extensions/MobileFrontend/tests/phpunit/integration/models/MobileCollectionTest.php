@@ -1,11 +1,8 @@
 <?php
 
-use MobileFrontend\Models\MobileCollection;
-use MobileFrontend\Models\MobilePage;
-
 /**
  * @group MobileFrontend
- * @coversDefaultClass \MobileFrontend\Models\MobileCollection
+ * @coversDefaultClass MobileCollection
  */
 class MobileCollectionTest extends MediaWikiTestCase {
 	/**

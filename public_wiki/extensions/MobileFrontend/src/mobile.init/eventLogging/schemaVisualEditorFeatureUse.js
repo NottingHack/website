@@ -42,13 +42,11 @@ module.exports = function () {
 			var event = {
 				feature: data.feature,
 				action: data.action,
-				editingSessionId: data.editing_session_id,
-				// eslint-disable-next-line camelcase
-				editor_interface: data.editor_interface
+				editingSessionId: data.editing_session_id
 			};
 
 			if ( trackdebug ) {
-				log( topic, event, schemaVisualEditorFeatureUse.defaults );
+				log( topic, event );
 			} else {
 				schemaVisualEditorFeatureUse.log( event, (
 					mw.config.get( 'wgWMESchemaEditAttemptStepOversample' ) ||

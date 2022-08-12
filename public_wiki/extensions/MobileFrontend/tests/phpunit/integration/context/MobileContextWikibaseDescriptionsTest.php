@@ -17,7 +17,7 @@ class MobileContextWikibaseDescriptionsTest extends MediaWikiTestCase {
 	 */
 	protected $config;
 
-	protected function setUp(): void {
+	protected function setUp() : void {
 		parent::setUp();
 
 		// Set relevant configuration variables to their default values.
@@ -64,8 +64,9 @@ class MobileContextWikibaseDescriptionsTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers MobileContext::shouldShowWikibaseDescriptions
 	 * @dataProvider invalidFeatureProvider
+	 *
+	 * @covers MobileContext::shouldShowWikibaseDescriptions
 	 */
 	public function testItThrowsAnExceptionIfFailureIsInvalid( $feature ) {
 		$this->expectException( DomainException::class );

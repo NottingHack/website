@@ -78,21 +78,19 @@ QUnit.test( 'Reference failure renders error in drawer', function ( assert ) {
 
 QUnit.test( 'makeOnNestedReferenceClickHandler runs when associated with link', function ( assert ) {
 	const spy = sandbox.spy(),
-		sup = document.createElement( 'sup' ),
 		anchor = document.createElement( 'a' ),
 		eventWithAnchor = {
-			currentTarget: sup
+			target: anchor
 		},
 		eventWithDiv = {
-			currentTarget: document.createElement( 'div' )
+			target: document.createElement( 'div' )
 		},
 		callback = references.test.makeOnNestedReferenceClickHandler( spy );
 
-	sup.appendChild( anchor );
 	anchor.setAttribute( 'href', 'https://wikipedia.org' );
 	anchor.textContent = 'hello';
 	callback( eventWithAnchor );
-	assert.strictEqual( spy.calledOnce, true, 'The spy is called with a sup' );
+	assert.strictEqual( spy.calledOnce, true, 'The spy is called with an anchor' );
 	callback( eventWithDiv );
 	assert.strictEqual( spy.calledOnce, true, 'The spy was not called with a div' );
 } );

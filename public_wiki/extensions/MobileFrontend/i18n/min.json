@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"David Wadie Fisher-Freberg",
 			"Iwan Novirion",
 			"Muhraz",
-			"Naval Scene"
+			"Naval Scene",
+			"David Wadie Fisher-Freberg"
 		]
 	},
+	"mobile-frontend-categories-heading": "<strong>Kategori</strong>",
 	"mobile-frontend-clear-search": "Kosoangan",
 	"mobile-frontend-copyright": "Konten tasadio di bawah $1 kacuali dinyatoan lain.",
 	"mobile-frontend-editor-cancel": "Batal",

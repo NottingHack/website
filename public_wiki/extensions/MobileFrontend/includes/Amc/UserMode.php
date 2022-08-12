@@ -1,34 +1,34 @@
 <?php
 
-namespace MobileFrontend\Amc;
+namespace MobileFrontend\AMC;
 
+use DeferredUpdates;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use MobileFrontend\Features\IUserMode;
 use MobileFrontend\Features\IUserSelectableMode;
 use RuntimeException;
+use Wikimedia\Assert\Assert;
 
 class UserMode implements IUserMode, IUserSelectableMode {
 
-	public const USER_OPTION_MODE_AMC = 'mf_amc_optin';
+	const USER_OPTION_MODE_AMC = 'mf_amc_optin';
 
 	/**
 	 * Value in the user options when AMC is enabled
 	 */
-	public const OPTION_ENABLED = '1';
+	const OPTION_ENABLED = '1';
 
 	/**
 	 * Value in the user options when AMC is disabled (default state)
 	 */
-	public const OPTION_DISABLED = '0';
+	const OPTION_DISABLED = '0';
 
 	/**
-	 * @var UserIdentity
+	 * @var \User
 	 */
-	private $userIdentity;
-
+	private $user;
 	/**
 	 * @var Manager
 	 */
@@ -46,19 +46,19 @@ class UserMode implements IUserMode, IUserSelectableMode {
 
 	/**
 	 * @param Manager $amcManager
-	 * @param UserIdentity $userIdentity
+	 * @param \User $user
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param UserOptionsManager $userOptionsManager
 	 * @throws \RuntimeException When AMC mode is not available
 	 */
 	public function __construct(
 		Manager $amcManager,
-		UserIdentity $userIdentity,
+		\User $user,
 		UserOptionsLookup $userOptionsLookup,
 		UserOptionsManager $userOptionsManager
 	) {
 		$this->amc = $amcManager;
-		$this->userIdentity = $userIdentity;
+		$this->user = $user;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
 	}
@@ -76,7 +76,7 @@ class UserMode implements IUserMode, IUserSelectableMode {
 	 */
 	public function isEnabled() {
 		$userOption = $this->userOptionsLookup->getOption(
-			$this->userIdentity,
+			$this->user,
 			self::USER_OPTION_MODE_AMC,
 			self::OPTION_DISABLED
 		);
@@ -85,37 +85,55 @@ class UserMode implements IUserMode, IUserSelectableMode {
 	}
 
 	/**
-	 * Set Advanced Mobile Contributions mode to enabled or disabled.
-	 *
-	 * WARNING: Does not persist the updated user preference to the database.
-	 * The caller must handle this by calling User::saveSettings() after all
-	 * preference updates associated with this web request are made.
 	 * @param bool $isEnabled
 	 * @throws RuntimeException when mode is disabled
 	 */
-	public function setEnabled( bool $isEnabled ) {
+	public function setEnabled( $isEnabled ) {
+		$toSet = $isEnabled ? self::OPTION_ENABLED : self::OPTION_DISABLED;
 		if ( !$this->amc->isAvailable() ) {
 			throw new RuntimeException( 'AMC Mode is not available' );
 		}
-		$this->userOptionsManager->setOption(
-			$this->userIdentity,
+		Assert::parameterType( 'boolean', $isEnabled, 'isEnabled' );
+		$user = $this->user;
+		$userOptionsManager = $this->userOptionsManager;
+
+		$userOptionsManager->setOption(
+			$user,
 			self::USER_OPTION_MODE_AMC,
-			$isEnabled ? self::OPTION_ENABLED : self::OPTION_DISABLED
+			$toSet
 		);
+		DeferredUpdates::addCallableUpdate( function () use ( $user, $toSet, $userOptionsManager ) {
+			if ( wfReadOnly() ) {
+				return;
+			}
+
+			$latestUser = $user->getInstanceForUpdate();
+			if ( $latestUser === null ) {
+				throw new \InvalidArgumentException(
+					"User not found, so can't enable AMC mode"
+				);
+			}
+			$userOptionsManager->setOption(
+				$latestUser,
+				self::USER_OPTION_MODE_AMC,
+				$toSet
+			);
+			$latestUser->saveSettings();
+		}, DeferredUpdates::PRESEND );
 	}
 
 	/**
 	 * Create UserMode for given user
 	 * NamedConstructor used by hooks system
 	 *
-	 * @param UserIdentity $userIdentity
+	 * @param \User $user
 	 * @return self
 	 */
-	public static function newForUser( UserIdentity $userIdentity ) {
+	public static function newForUser( \User $user ) {
 		$services = MediaWikiServices::getInstance();
 		return new self(
 			$services->getService( 'MobileFrontend.AMC.Manager' ),
-			$userIdentity,
+			$user,
 			$services->getUserOptionsLookup(),
 			$services->getUserOptionsManager()
 		);

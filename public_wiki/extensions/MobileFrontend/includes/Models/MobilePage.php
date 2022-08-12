@@ -1,12 +1,7 @@
 <?php
 
-namespace MobileFrontend\Models;
-
-use File;
-use Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
-use Title;
 
 /**
  * Retrieves information specific to a mobile page
@@ -14,8 +9,8 @@ use Title;
  * @todo FIXME: Rename this class when its purpose becomes clearer
  */
 class MobilePage {
-	public const SMALL_IMAGE_WIDTH = 150;
-	public const TINY_IMAGE_WIDTH = 80;
+	const SMALL_IMAGE_WIDTH = 150;
+	const TINY_IMAGE_WIDTH = 80;
 
 	/**
 	 * @var Title Title for page
@@ -93,8 +88,9 @@ class MobilePage {
 			$userIdentity = $rev->getUser();
 			if ( $userIdentity ) {
 				$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-				$edit['name'] = $userIdentity->getName();
-				$edit['gender'] = $userOptionsLookup->getOption( $userIdentity, 'gender' );
+				$revUser = User::newFromIdentity( $userIdentity );
+				$edit['name'] = $revUser->getName();
+				$edit['gender'] = $userOptionsLookup->getOption( $revUser, 'gender' );
 			}
 		}
 		return $edit;

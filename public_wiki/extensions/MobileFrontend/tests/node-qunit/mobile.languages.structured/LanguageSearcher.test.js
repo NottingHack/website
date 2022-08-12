@@ -103,7 +103,6 @@ QUnit.module( 'MobileFrontend LanguageSearcher.js', {
 		this.languageSearcher = new LanguageSearcher( {
 			languages: apiLanguages,
 			variants: variants,
-			showSuggestedLanguages: true,
 			deviceLanguage: deviceLanguage
 		} );
 	},
@@ -144,7 +143,6 @@ QUnit.test( 'without variants, input event filters languages', function ( assert
 	const languageSearcher = new LanguageSearcher( {
 		languages: apiLanguages,
 		variants: false,
-		showSuggestedLanguages: true,
 		deviceLanguage: deviceLanguage
 	} );
 

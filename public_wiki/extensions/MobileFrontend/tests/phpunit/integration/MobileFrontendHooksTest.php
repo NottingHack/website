@@ -6,7 +6,7 @@ use MediaWiki\MediaWikiServices;
  * @group MobileFrontend
  */
 class MobileFrontendHooksTest extends MediaWikiTestCase {
-	protected function setUp(): void {
+	protected function setUp() : void {
 		parent::setUp();
 
 		MobileContext::resetInstanceForTesting();
@@ -81,8 +81,8 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	/**
 	 * Test headers and alternate/canonical links to be set or not
 	 *
-	 * @covers MobileFrontendHooks::onBeforePageDisplay
 	 * @dataProvider onBeforePageDisplayDataProvider
+	 * @covers MobileFrontendHooks::onBeforePageDisplay
 	 */
 	public function testOnBeforePageDisplay( $mobileUrlTemplate, $mfNoindexPages,
 		$mfEnableXAnalyticsLogging, $mfAutoDetectMobileView, $mfVaryOnUA, $mfXAnalyticsItems,
@@ -157,7 +157,7 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	 *
 	 * @param string $mode The mode for the test cases (desktop, mobile)
 	 * @param array $mfXAnalyticsItems
-	 * @param Title|null $title
+	 * @param Title $title
 	 * @return array Array of objects, including MobileContext (context),
 	 * SkinTemplate (sk) and OutputPage (out)
 	 */
@@ -227,8 +227,7 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 		] );
 		$title = Title::newFromText( 'PurgeTest' );
 
-		$htmlCacheUpdater = MediaWikiServices::getInstance()->getHtmlCacheUpdater();
-		$urls = $htmlCacheUpdater->getUrls( $title );
+		$urls = $title->getCdnUrls();
 
 		$expected = [
 			'http://en.wikipedia.org/wiki/PurgeTest',
@@ -241,8 +240,8 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers MobileFrontendHooks::onPageRenderingHash
 	 * @dataProvider provideOnPageRenderingHash
+	 * @covers MobileFrontendHooks::onPageRenderingHash
 	 */
 	public function testOnPageRenderingHash(
 		$shouldConfstrChange,
@@ -306,8 +305,8 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers MobileFrontendHooks::shouldMobileFormatSpecialPages
 	 * @dataProvider provideShouldMobileFormatSpecialPages
+	 * @covers MobileFrontendHooks::shouldMobileFormatSpecialPages
 	 */
 	public function testShouldMobileFormatSpecialPages(
 		$expected,
@@ -322,17 +321,10 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 
 		$user = $isAnon ? new User() : $this->getMutableTestUser()->getUser();
 		if ( !$isAnon && $userpref ) {
-			$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
-			$userOptionsManager->setOption(
-				$user,
-				MobileFrontendHooks::MOBILE_PREFERENCES_SPECIAL_PAGES,
-				true
-			);
+			$user->setOption( MobileFrontendHooks::MOBILE_PREFERENCES_SPECIAL_PAGES, true );
 		}
-		$this->assertSame(
-			$expected,
-			MobileFrontendHooks::shouldMobileFormatSpecialPages( $user )
-		);
+		$this->assertSame( $expected,
+			MobileFrontendHooks::shouldMobileFormatSpecialPages( $user ) );
 	}
 
 	public static function provideOnPageRenderingHash() {
@@ -343,8 +335,8 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers MobileFrontendHooks::onPageRenderingHash
 	 * @dataProvider provideDoThumbnailBeforeProduceHTML
+	 * @covers MobileFrontendHooks::onPageRenderingHash
 	 */
 	public function testDoThumbnailBeforeProduceHTML(
 		$expected,
@@ -385,7 +377,6 @@ class MobileFrontendHooksTest extends MediaWikiTestCase {
 	/**
 	 * Creates an instance of `File` which has the given MIME type.
 	 *
-	 * @param string $mimeType
 	 * @return File
 	 */
 	private function factoryFile( $mimeType ) {

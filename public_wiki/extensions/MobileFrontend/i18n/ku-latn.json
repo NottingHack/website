@@ -1,16 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
-			"Balyozxane",
 			"Bikarhêner",
 			"Cûndûllah el-Kurdî",
 			"George Animal",
 			"Ghybu",
 			"Gomada",
-			"Guherto",
-			"Mirzali"
+			"Mirzali",
+			"Balyozxane",
+			"Guherto"
 		]
 	},
+	"mobile-frontend-categories-heading": "<strong>Kategorî</strong>",
+	"mobile-frontend-categories-add": "Tevlî kategoriyê bike",
+	"mobile-frontend-categories-search": "Li kategoriyan bigere",
+	"mobile-frontend-categories-summary": "Li kategoriyan hate zêdekirin",
+	"mobile-frontend-categories-add-wait": "Kategorî tên tomarkirin, ji kerema xwe re bisekinin.",
+	"mobile-frontend-categories-normal": "Li gorî naverokê",
+	"mobile-frontend-categories-hidden": "Rêxistinî",
 	"mobile-frontend-changeslist-nocomment": "kurteya guhartinê tune ye",
 	"mobile-frontend-clear-search": "Paqij bike",
 	"mobile-frontend-diffview-anonymous": "Bikarhênerê bênav",
@@ -19,9 +26,9 @@
 	"mobile-frontend-diffview-editcount": "<div>$1</div> {{PLURAL:$1|guhartin}}",
 	"mobile-frontend-diffview-title": "Guhartin",
 	"mobile-frontend-editor-anon": "Bê têketinê biguherîne",
-	"mobile-frontend-editor-blocked-drawer-title": "Tu ji guherandina {{SITENAME}} hatî astengkirin.",
-	"mobile-frontend-editor-blocked-drawer-title-partial": "Tu ji guhartina vê rûpelê hatiyî astengkirin.",
-	"mobile-frontend-editor-blocked-drawer-help": "Hûragahiyan bibîne",
+	"mobile-frontend-editor-blocked-drawer-title": "Tu ji guherandina {{SITENAME}} hatî astengkirin",
+	"mobile-frontend-editor-blocked-drawer-title-partial": "Hûn ji guherandina vê rûpelê hatin astengkirin",
+	"mobile-frontend-editor-blocked-drawer-help": "Detay",
 	"mobile-frontend-editor-cancel": "Betal bike",
 	"mobile-frontend-editor-continue": "Pêşve",
 	"mobile-frontend-editor-editing": "Tê guhartin",

@@ -1,8 +1,6 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserOptionsManager;
-use MobileFrontend\Amc\UserMode;
 use MobileFrontend\Features\IFeature;
 
 /**
@@ -19,7 +17,7 @@ class SpecialMobileOptions extends MobileSpecialPage {
 
 	/**
 	 * Advanced Mobile Contributions mode
-	 * @var \MobileFrontend\Amc\Manager
+	 * @var \MobileFrontend\AMC\Manager
 	 */
 	private $amc;
 
@@ -28,19 +26,11 @@ class SpecialMobileOptions extends MobileSpecialPage {
 	 */
 	private $featureManager;
 
-	/** @var UserMode */
-	private $userMode;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
-
 	public function __construct() {
 		parent::__construct( 'MobileOptions' );
 		$this->services = MediaWikiServices::getInstance();
 		$this->amc = $this->services->getService( 'MobileFrontend.AMC.Manager' );
 		$this->featureManager = $this->services->getService( 'MobileFrontend.FeaturesManager' );
-		$this->userMode = $this->services->getService( 'MobileFrontend.AMC.UserMode' );
-		$this->userOptionsManager = $this->services->getUserOptionsManager();
 	}
 
 	/**
@@ -55,7 +45,6 @@ class SpecialMobileOptions extends MobileSpecialPage {
 	 */
 	public function setJsConfigVars() {
 		$this->getOutput()->addJsConfigVars( [
-			'wgMFCollapseSectionsByDefault' => $this->getConfig()->get( 'MFCollapseSectionsByDefault' ),
 			'wgMFEnableFontChanger' => $this->featureManager->isFeatureAvailableForCurrentUser(
 				'MFEnableFontChanger'
 			),
@@ -73,6 +62,7 @@ class SpecialMobileOptions extends MobileSpecialPage {
 		$this->setJsConfigVars();
 
 		$this->mobileContext->setForceMobileView( true );
+		$this->mobileContext->setContentTransformations( false );
 
 		if ( $this->getRequest()->wasPosted() ) {
 			$this->submitSettingsForm();
@@ -82,7 +72,7 @@ class SpecialMobileOptions extends MobileSpecialPage {
 	}
 
 	private function buildAMCToggle() {
-		/** @var \MobileFrontend\Amc\UserMode $userMode */
+		/** @var \MobileFrontend\AMC\UserMode $userMode */
 			$userMode = $this->services->getService( 'MobileFrontend.AMC.UserMode' );
 			$amcToggle = new OOUI\CheckboxInputWidget( [
 				'name' => 'enableAMC',
@@ -242,7 +232,7 @@ class SpecialMobileOptions extends MobileSpecialPage {
 			'type' => 'submit',
 		] );
 
-		if ( $user->isRegistered() ) {
+		if ( $user->isLoggedIn() ) {
 			$fields[] = new OOUI\HiddenInputWidget( [ 'name' => 'token',
 				'value' => $user->getEditToken() ] );
 		}
@@ -287,16 +277,38 @@ class SpecialMobileOptions extends MobileSpecialPage {
 	}
 
 	/**
+	 * @param WebRequest $request
+	 */
+	private function updateAmc( WebRequest $request ) {
+		if ( !$this->amc->isAvailable() ) {
+			return;
+		}
+
+		/** @var \MobileFrontend\AMC\UserMode $userMode */
+		$userMode = $this->services->getService( 'MobileFrontend.AMC.UserMode' );
+		$userMode->setEnabled( $request->getBool( 'enableAMC' ) );
+	}
+
+	/**
+	 * @param WebRequest $request
+	 */
+	private function updateBeta( WebRequest $request ) {
+		$group = $request->getBool( 'enableBeta' ) ? 'beta' : '';
+		$this->mobileContext->setMobileMode( $group );
+	}
+
+	/**
 	 * Saves the settings submitted by the settings form
 	 */
 	private function submitSettingsForm() {
 		$request = $this->getRequest();
 		$user = $this->getUser();
+		$output = $this->getOutput();
 
-		if ( $user->isRegistered() && !$user->matchEditToken( $request->getVal( 'token' ) ) ) {
+		if ( $user->isLoggedIn() && !$user->matchEditToken( $request->getVal( 'token' ) ) ) {
 			$errorText = __METHOD__ . '(): token mismatch';
 			wfDebugLog( 'mobile', $errorText );
-			$this->getOutput()->addHTML( '<div class="errorbox">'
+			$output->addHTML( '<div class="errorbox">'
 				. $this->msg( "mobile-frontend-save-error" )->parse()
 				. '</div>'
 			);
@@ -306,51 +318,18 @@ class SpecialMobileOptions extends MobileSpecialPage {
 
 		// We must treat forms that only update a single field specially because if we
 		// don't, all the other options will be clobbered with default values
-		$updateSingleOption = $request->getRawVal( 'updateSingleOption' );
-		$enableAMC = $request->getBool( 'enableAMC' );
-		$enableBetaMode = $request->getBool( 'enableBeta' );
-		$mobileMode = $enableBetaMode ? MobileContext::MODE_BETA : '';
-
-		if ( $updateSingleOption !== 'enableAMC' ) {
-			$this->mobileContext->setMobileMode( $mobileMode );
+		switch ( $request->getRawVal( 'updateSingleOption' ) ) {
+			case 'enableAMC':
+				$this->updateAmc( $request );
+				break;
+			case 'enableBeta':
+				$this->updateBeta( $request );
+				break;
+			default:
+				$this->updateAmc( $request );
+				$this->updateBeta( $request );
 		}
 
-		if ( $this->amc->isAvailable() && $updateSingleOption !== 'enableBeta' ) {
-			$this->userMode->setEnabled( $enableAMC );
-		}
-
-		DeferredUpdates::addCallableUpdate( function () use (
-			$updateSingleOption,
-			$mobileMode,
-			$enableAMC ) {
-			if ( wfReadOnly() ) {
-				return;
-			}
-
-			$latestUser = $this->getUser()->getInstanceForUpdate();
-			if ( $latestUser === null ) {
-				// The user is anon or could not be loaded from the database.
-				return;
-			}
-
-			if ( $updateSingleOption !== 'enableAMC' ) {
-				$this->userOptionsManager->setOption(
-					$latestUser,
-					MobileContext::USER_MODE_PREFERENCE_NAME,
-					$mobileMode
-				);
-			}
-
-			if ( $this->amc->isAvailable() && $updateSingleOption !== 'enableBeta' ) {
-				$this->userOptionsManager->setOption(
-					$latestUser,
-					UserMode::USER_OPTION_MODE_AMC,
-					$enableAMC ? UserMode::OPTION_ENABLED : UserMode::OPTION_DISABLED
-				);
-			}
-			$latestUser->saveSettings();
-		}, DeferredUpdates::PRESEND );
-
-		$this->getOutput()->redirect( $this->getRedirectUrl( $request ) );
+		$output->redirect( $this->getRedirectUrl( $request ) );
 	}
 }

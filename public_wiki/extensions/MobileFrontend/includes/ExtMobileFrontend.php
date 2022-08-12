@@ -1,14 +1,11 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
-use MobileFrontend\ContentProviders\IContentProvider;
-use MobileFrontend\Transforms\LazyImageTransform;
-use MobileFrontend\Transforms\MakeSectionsTransform;
-use MobileFrontend\Transforms\MoveLeadParagraphTransform;
-use MobileFrontend\Transforms\SubHeadingTransform;
+use MobileFrontend\ContentProviders\ContentProviderFactory;
 use Wikibase\Client\WikibaseClient;
+use Wikibase\DataModel\Entity\EntityDocument;
 use Wikibase\DataModel\Entity\ItemId;
-use Wikibase\DataModel\Services\Lookup\TermLookupException;
+use Wikibase\DataModel\Term\FingerprintProvider;
 use Wikimedia\IPUtils;
 
 /**
@@ -19,22 +16,19 @@ class ExtMobileFrontend {
 	 * Provide alternative HTML for a user page which has not been created.
 	 * Let the user know about it with pretty graphics and different texts depending
 	 * on whether the user is the owner of the page or not.
-	 * @internal Only for use inside MobileFrontend.
 	 * @param OutputPage $out
 	 * @param Title $title
 	 * @return string that is empty if the transform does not apply.
 	 */
 	public static function blankUserPageHTML( OutputPage $out, Title $title ) {
 		$pageUser = self::buildPageUserObject( $title );
-		$isHidden = $pageUser && $pageUser->isHidden();
-		$canViewHidden = !$isHidden || $out->getAuthority()->isAllowed( 'hideuser' );
 
 		$out->addModuleStyles( [
 			'mediawiki.ui.icon',
 			'mobile.userpage.styles', 'mobile.userpage.images'
 		] );
 
-		if ( $pageUser && !$title->exists() && $canViewHidden ) {
+		if ( $pageUser && !$title->exists() ) {
 			return self::getUserPageContent(
 				$out, $pageUser, $title );
 		} else {
@@ -43,45 +37,31 @@ class ExtMobileFrontend {
 	}
 
 	/**
-	 * Obtains content using the given content provider and routes it to the mobile formatter
-	 * if required.
-	 *
-	 * @param IContentProvider $provider
+	 * Transforms content to be mobile friendly version.
+	 * Filters out various elements and runs the MobileFormatter.
 	 * @param OutputPage $out
+	 * @param string|null $text override out html
 	 * @param bool $mobileFormatHtml whether content should be run through the MobileFormatter
 	 *
 	 * @return string
 	 */
-	public static function domParseWithContentProvider(
-		IContentProvider $provider,
-		OutputPage $out,
-		$mobileFormatHtml = true
-	) {
-		$html = $provider->getHTML();
-
-		// If we're not running the formatter we can exit earlier
-		if ( !$mobileFormatHtml ) {
-			return $html;
-		} else {
-			return self::domParseMobile( $out, $html );
-		}
-	}
-
-	/**
-	 * Transforms content to be mobile friendly version.
-	 * Filters out various elements and runs the MobileFormatter.
-	 *
-	 * @param OutputPage $out
-	 * @param string $html to render.
-	 *
-	 * @return string
-	 */
-	public static function domParseMobile( OutputPage $out, $html = '' ) {
+	public static function domParse( OutputPage $out, $text = null, $mobileFormatHtml = true ) {
 		$services = MediaWikiServices::getInstance();
 		$featureManager = $services->getService( 'MobileFrontend.FeaturesManager' );
+		/** @var ContentProviderFactory $contentProviderFactory */
+		$contentProviderFactory = $services->getService( 'MobileFrontend.ContentProviderFactory' );
 		/** @var MobileContext $context */
 		$context = $services->getService( 'MobileFrontend.Context' );
 		$config = $services->getService( 'MobileFrontend.Config' );
+		$provideTagline = $featureManager->isFeatureAvailableForCurrentUser(
+			'MFEnableWikidataDescriptions'
+		) && $context->shouldShowWikibaseDescriptions( 'tagline', $config );
+		$provider = $contentProviderFactory->getProvider( $out, $text, $provideTagline );
+
+		// If we're not running the formatter we can exit earlier
+		if ( !$mobileFormatHtml ) {
+			return $provider->getHTML();
+		}
 
 		$title = $out->getTitle();
 		$ns = $title->getNamespace();
@@ -89,8 +69,8 @@ class ExtMobileFrontend {
 
 		$enableSections = (
 			// Don't collapse sections e.g. on JS pages
-			$title->canExist()
-			&& $title->getContentModel() == CONTENT_MODEL_WIKITEXT
+			$out->canUseWikiPage()
+			&& $out->getWikiPage()->getContentModel() == CONTENT_MODEL_WIKITEXT
 			// And not in certain namespaces
 			&& array_search(
 				$ns,
@@ -100,6 +80,7 @@ class ExtMobileFrontend {
 			&& $isView
 		);
 
+		$html = $provider->getHTML();
 		// https://phabricator.wikimedia.org/T232690
 		if ( !MobileFormatter::canApply( $html, $config->get( 'MFMobileFormatterOptions' ) ) ) {
 			// In future we might want to prepend a message feeding
@@ -107,43 +88,23 @@ class ExtMobileFrontend {
 			return $html;
 		}
 
-		$formatter = new MobileFormatter(
-			MobileFormatter::wrapHtml( $html ),
-			$title,
-			$config,
-			$context
-		);
+		$formatter = MobileFormatter::newFromContext( $context, $provider, $enableSections, $config );
 
 		$hookContainer = $services->getHookContainer();
 		$hookContainer->run( 'MobileFrontendBeforeDOM', [ $context, $formatter ] );
 
-		$shouldLazyTransformImages = $featureManager->isFeatureAvailableForCurrentUser( 'MFLazyLoadImages' );
-		$leadParagraphEnabled = in_array( $ns, $config->get( 'MFNamespacesWithLeadParagraphs' ) );
-		$showFirstParagraphBeforeInfobox = $leadParagraphEnabled &&
-			$featureManager->isFeatureAvailableForCurrentUser( 'MFShowFirstParagraphBeforeInfobox' );
+		if ( $context->getContentTransformations() ) {
+			$isSpecialPage = $title->isSpecialPage();
+			$removeImages = $featureManager->isFeatureAvailableForCurrentUser( 'MFLazyLoadImages' );
+			$leadParagraphEnabled = in_array( $ns, $config->get( 'MFNamespacesWithLeadParagraphs' ) );
+			$showFirstParagraphBeforeInfobox = $leadParagraphEnabled &&
+				$featureManager->isFeatureAvailableForCurrentUser( 'MFShowFirstParagraphBeforeInfobox' );
 
-		$transforms = [];
-		if ( $enableSections ) {
-			$options = $config->get( 'MFMobileFormatterOptions' );
-			$topHeadingTags = $options['headings'];
-
-			$transforms[] = new SubHeadingTransform( $topHeadingTags );
-
-			$transforms[] = new MakeSectionsTransform(
-				$topHeadingTags,
-				true
-			);
+			// Remove images if they're disabled from special pages, but don't transform otherwise
+			$formatter->filterContent( !$isSpecialPage,
+				null,
+				$removeImages, $showFirstParagraphBeforeInfobox );
 		}
-
-		if ( $shouldLazyTransformImages ) {
-			$transforms[] = new LazyImageTransform( $config->get( 'MFLazyLoadSkipSmallImages' ) );
-		}
-
-		if ( $showFirstParagraphBeforeInfobox ) {
-			$transforms[] = new MoveLeadParagraphTransform( $title, $title->getLatestRevID() );
-		}
-
-		$formatter->applyTransforms( $transforms );
 
 		return $formatter->getText();
 	}
@@ -214,27 +175,50 @@ class ExtMobileFrontend {
 	}
 
 	/**
+	 * Returns the Wikibase entity associated with a page or null if none exists.
+	 *
+	 * @param string $item Wikibase id of the page
+	 * @return EntityDocument|null
+	 */
+	public static function getWikibaseEntity( $item ) {
+		if ( !class_exists( WikibaseClient::class ) ) {
+			return null;
+		}
+
+		try {
+			$entityLookup = WikibaseClient::getDefaultInstance()
+				->getStore()
+				->getEntityLookup();
+			$entity = $entityLookup->getEntity( new ItemId( $item ) );
+			if ( !$entity ) {
+				return null;
+			} else {
+				return $entity;
+			}
+		} catch ( Exception $ex ) {
+			// Do nothing, exception mostly due to description being unavailable in needed language
+			return null;
+		}
+	}
+
+	/**
 	 * Returns a short description of a page from Wikidata
 	 *
 	 * @param string $item Wikibase id of the page
 	 * @return string|null
 	 */
 	public static function getWikibaseDescription( $item ) {
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'WikibaseClient' ) ) {
-			return null;
-		}
-
 		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-		$termLookup = WikibaseClient::getTermLookup();
-		try {
-			$itemId = new ItemId( $item );
-		} catch ( InvalidArgumentException $exception ) {
-			return null;
-		}
+
+		$entity = self::getWikibaseEntity( $item );
 
 		try {
-			return $termLookup->getDescription( $itemId, $contLang->getCode() );
-		} catch ( TermLookupException $exception ) {
+			if ( !$entity || !$entity instanceof FingerprintProvider ) {
+				return null;
+			} else {
+				return $entity->getFingerprint()->getDescription( $contLang->getCode() )->getText();
+			}
+		} catch ( Exception $ex ) {
 			return null;
 		}
 	}

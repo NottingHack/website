@@ -1,3 +1,4 @@
+import { storiesOf } from '@storybook/html';
 import { wrap, fakeEventBus } from '../utils';
 import overlay from '../../src/mobile.startup/mediaViewer/overlay';
 import ImageCarousel from '../../src/mobile.mediaViewer/ImageCarousel.js';
@@ -10,22 +11,17 @@ m.define( 'mobile.mediaViewer', {
 	ImageCarousel
 } );
 
-export default {
-	title: 'mediaViewer'
-};
-
-export const Overlay = () => {
-	const mOverlay = overlay( {
-		title: 'File:Bananas.jpg',
-		thumbnails,
-		router: fakeRouter,
-		eventBus: fakeEventBus,
-		gateway: fakeGateway
-	} );
-	mOverlay.show();
-	return wrap( mOverlay, 'overlay-enabled' );
-};
-
-Overlay.story = {
-	name: 'overlay'
-};
+storiesOf( 'mediaViewer' )
+	.add( 'overlay',
+		() => {
+			const mOverlay = overlay( {
+				title: 'File:Bananas.jpg',
+				thumbnails,
+				router: fakeRouter,
+				eventBus: fakeEventBus,
+				gateway: fakeGateway
+			} );
+			mOverlay.show();
+			return wrap( mOverlay, 'overlay-enabled' );
+		}
+	);

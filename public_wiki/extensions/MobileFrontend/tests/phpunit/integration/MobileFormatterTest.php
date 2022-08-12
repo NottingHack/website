@@ -1,19 +1,14 @@
 <?php
 
-use MobileFrontend\Transforms\LazyImageTransform;
-use MobileFrontend\Transforms\MakeSectionsTransform;
-use MobileFrontend\Transforms\MoveLeadParagraphTransform;
-use MobileFrontend\Transforms\SubHeadingTransform;
-
 /**
  * @group MobileFrontend
  */
 class MobileFormatterTest extends MediaWikiTestCase {
-	private const TOC = '<div id="toc" class="toc-mobile"><h2>Contents</h2></div>';
+	const TOC = '<div id="toc" class="toc-mobile"><h2>Contents</h2></div>';
 	// phpcs:ignore Generic.Files.LineLength.TooLong
-	private const SECTION_INDICATOR = '<div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div>';
-	private const HATNOTE_CLASSNAME = 'hatnote';
-	private const INFOBOX_CLASSNAME = 'infobox';
+	const SECTION_INDICATOR = '<div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div>';
+	const HATNOTE_CLASSNAME = 'hatnote';
+	const INFOBOX_CLASSNAME = 'infobox';
 
 	/**
 	 * @var Config
@@ -25,7 +20,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 	 */
 	private $mfContext;
 
-	protected function setUp(): void {
+	protected function setUp() : void {
 		parent::setUp();
 
 		$services = \MediaWiki\MediaWikiServices::getInstance();
@@ -43,7 +38,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 	 */
 	private function makeSectionHeading( $heading, $innerHtml, $sectionNumber = 1 ) {
 		return "<$heading class=\"section-heading\""
-			. " onclick=\"mfTempOpenSection($sectionNumber)\">"
+			. " onclick=\"javascript:mfTempOpenSection($sectionNumber)\">"
 			. self::SECTION_INDICATOR
 			. "$innerHtml</$heading>";
 	}
@@ -71,14 +66,22 @@ class MobileFormatterTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @dataProvider provideHtmlTransform
+	 *
 	 * @param string $input
 	 * @param string $expected
 	 * @param callable|bool $callback
-	 * @covers MobileFormatter::applyTransforms
-	 * @covers MobileFormatter::parseItemsToRemove
-	 * @dataProvider provideHtmlTransform
+	 * @param bool $removeDefaults
+	 * @param bool $unused (previously was lazy loaded references)
+	 * @param bool $lazyLoadImages
+	 * @param bool $showFirstParagraphBeforeInfobox
+	 * @covers MobileFormatter::filterContent
+	 * @covers MobileFormatter::doRemoveImages
 	 */
-	public function testHtmlTransform( $input, $expected, $callback = false ) {
+	public function testHtmlTransform( $input, $expected, $callback = false,
+		$removeDefaults = false, $unused = false, $lazyLoadImages = false,
+		$showFirstParagraphBeforeInfobox = false
+	) {
 		$t = Title::newFromText( 'Mobile' );
 
 		// "yay" to Windows!
@@ -87,37 +90,51 @@ class MobileFormatterTest extends MediaWikiTestCase {
 		$mf = new MobileFormatter(
 			MobileFormatter::wrapHTML( $input ), $t, $this->mfConfig, $this->mfContext
 		);
-
-		$transforms = $callback ? $callback( $t ) : [];
-		$mf->applyTransforms( $transforms );
+		if ( $callback ) {
+			$callback( $mf );
+		}
+		$mf->topHeadingTags = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ];
+		$mf->filterContent( $removeDefaults, null, $lazyLoadImages,
+			$showFirstParagraphBeforeInfobox );
 
 		$html = $mf->getText();
 		$this->assertEquals( str_replace( "\n", '', $expected ), str_replace( "\n", '', $html ) );
 	}
 
 	/**
-	 * @covers MobileFormatter::applyTransforms
+	 * @covers MobileFormatter::enableExpandableSections
+	 * @covers MobileFormatter::filterContent
 	 */
 	public function testHtmlTransformWhenSkippingLazyLoadingSmallImages() {
 		$smallPic = '<img src="smallPicture.jpg" style="width: 4.4ex; height:3.34ex;">';
-		$enableSections = function ( Title $t ) {
-			return $this->buildTransforms( [ 'h1', 'h2' ], true, $t, true, false, false );
+		$enableSections = function ( MobileFormatter $mf ) {
+			$mf->enableExpandableSections();
 		};
+		$this->setMwGlobals( [
+			'wgMFLazyLoadSkipSmallImages' => true
+		] );
 
 		$this->testHtmlTransform(
 			'<p>text</p><h2>heading 1</h2>' . $smallPic,
 			$this->makeSectionHtml( 0, '<p>text</p>' )
 			. $this->makeSectionHeading( 'h2', 'heading 1' )
 			. $this->makeSectionHtml( 1, $smallPic ),
-			$enableSections
+			$enableSections,
+			false, false, true
 		);
 	}
 
 	public function provideHtmlTransform() {
-		$enableSections = function ( Title $t ) {
-			return $this->buildTransforms( [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' ], false, $t, true, true, true );
+		$enableSections = function ( MobileFormatter $mf ) {
+			$mf->enableExpandableSections();
 		};
 		$longLine = "\n" . str_repeat( 'A', 5000 );
+		$removeImages = function ( MobileFormatter $f ) {
+			$f->setRemoveMedia();
+		};
+		$mainPage = function ( MobileFormatter $f ) {
+			$f->setIsMainPage( true );
+		};
 		$originalImage = '<img alt="foo" src="foo.jpg" width="100" '
 			. 'height="100" srcset="foo-1.5x.jpg 1.5x, foo-2x.jpg 2x">';
 		$placeholder = '<span class="lazy-image-placeholder" '
@@ -127,6 +144,11 @@ class MobileFormatterTest extends MediaWikiTestCase {
 			. ' '
 			. '</span>';
 		$noscript = '<noscript><img alt="foo" src="foo.jpg" width="100" height="100"></noscript>';
+		$refText = '<p>They saved the world with one single unit test'
+			. '<sup class="reference"><a href="#cite-note-1">[1]</a></sup></p>';
+		$expectedReftext = '<p>They saved the world with one single unit test'
+			. '<sup class="reference"><a href="#cite-note-1">[1]</a></sup></p>';
+		$refhtml = '<ol class="references"><li>link 1</li><li>link 2</li></ol>';
 
 		return [
 			// Nested headings are not wrapped
@@ -140,16 +162,15 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					. $this->makeSectionHeading( 'h2', 'test' )
 					. $this->makeSectionHtml( 1, '<p>more text</p>' ),
 				$enableSections,
-				false
+				false, false, false
 			],
 			// # Lazy loading images
 			// Main page not impacted
 			[
 				'<div>a</div><h2>Today</h2>' . $originalImage . '<h2>Tomorrow</h2>Test.',
 				'<div>a</div><h2>Today</h2>' . $originalImage . '<h2>Tomorrow</h2>Test.',
-				// use default formatter
-				false,
-				true,
+				$mainPage,
+				false, false, true,
 			],
 			// Lead section images not impacted
 			[
@@ -161,7 +182,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					. $this->makeSectionHeading( 'h2', 'heading 2', 2 )
 					. $this->makeSectionHtml( 2, 'abc' ),
 				$enableSections,
-				true,
+				false, false, true,
 			],
 			// Test lazy loading of images outside the lead section
 			[
@@ -175,7 +196,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					. $this->makeSectionHeading( 'h2', 'heading 2', 2 )
 					. $this->makeSectionHtml( 2, 'abc' ),
 				$enableSections,
-				true,
+				false, false, true,
 			],
 			// https://phabricator.wikimedia.org/T130025, last section filtered
 			[
@@ -189,7 +210,40 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					. $this->makeSectionHeading( 'h2', 'heading 2', 2 )
 					. $this->makeSectionHtml( 2, $noscript . $placeholder ),
 				$enableSections,
-				true,
+				false, false, true,
+			],
+
+			// # Removal of images
+			[
+				'<img src="/foo/bar.jpg" alt="Blah"/>',
+				'<span class="mw-mf-image-replacement">[Blah]</span>',
+				$removeImages,
+			],
+			[
+				'<img alt="picture of kitty" src="kitty.jpg">',
+				'<span class="mw-mf-image-replacement">' .
+				'[picture of kitty]</span>',
+				$removeImages,
+			],
+			[
+				'<img src="kitty.jpg">',
+				'<span class="mw-mf-image-replacement">[' .
+					wfMessage( 'mobile-frontend-missing-image' ) . ']</span>',
+				$removeImages,
+			],
+			[
+				'<img alt src="kitty.jpg">',
+				'<span class="mw-mf-image-replacement">[' .
+					wfMessage( 'mobile-frontend-missing-image' ) . ']</span>',
+				$removeImages,
+			],
+			[
+				'<img alt src="kitty.jpg">look at the cute kitty!' .
+					'<img alt="picture of angry dog" src="dog.jpg">',
+				'<span class="mw-mf-image-replacement">[' .
+					wfMessage( 'mobile-frontend-missing-image' ) . ']</span>look at the cute kitty!' .
+					'<span class="mw-mf-image-replacement">[picture of angry dog]</span>',
+				$removeImages,
 			],
 
 			// # Section wrapping
@@ -256,7 +310,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// hat-note, lead section, no infobox, another section
@@ -278,7 +332,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// hat-note, lead section, infobox, another section
@@ -302,7 +356,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// first paragraph is already before the lead section
@@ -324,7 +378,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// infobox, but no paragraphs in the lead section
@@ -342,7 +396,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 1</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// no lead section, infobox after the first section
@@ -358,7 +412,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<table class="' . self::INFOBOX_CLASSNAME . '"><tr><td>infobox</td></tr></table>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// two infoboxes, lead section, another section
@@ -380,7 +434,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 1</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// first paragraph (which has coordinates and is hidden on mobile),
@@ -398,7 +452,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<table class="' . self::INFOBOX_CLASSNAME . '"><tr><td>infobox</td></tr></table>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// hatnote, infobox, thumbnail, lead section, another section
@@ -424,7 +478,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 
 			[
@@ -447,7 +501,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 
 			[
@@ -470,7 +524,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// infobox, a paragraph, list element
@@ -484,7 +538,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph</p><ol><li>item 1</li><li>item 2</li></ol>' .
 					'<table class="' . self::INFOBOX_CLASSNAME . '"><tr><td>infobox</td></tr></table>'
 				),
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 			[
 				// 2 hat-notes, ambox, 2 infoboxes, 2 paragraphs, another section
@@ -515,7 +569,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 3</p>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 
 			[
@@ -533,7 +587,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<tr><td><p>SURPRISE PARAGRAPH</p></td></tr></table>'
 				),
 
-				$enableSections, false, true,
+				$enableSections, false, false, false, true,
 			],
 
 			[
@@ -552,53 +606,27 @@ class MobileFormatterTest extends MediaWikiTestCase {
 					'<p>paragraph 1</p>'
 				),
 
-				$enableSections,  false, true,
+				$enableSections, false, false, false, true,
 			],
 		];
 	}
 
-	public function buildTransforms(
-		$topHeadingTags,
-		$lazyLoadSkipImages,
-		$title,
-		bool $scriptsEnabled,
-		bool $shouldLazyTransformImages,
-		bool $showFirstParagraphBeforeInfobox
-	) {
-		// Sectionify the content and transform it if necessary per section
-
-		$transforms = [];
-		$transforms[] = new SubHeadingTransform( $topHeadingTags );
-
-		$transforms[] = new MakeSectionsTransform(
-			$topHeadingTags,
-			$scriptsEnabled
-		);
-
-		if ( $shouldLazyTransformImages ) {
-			$transforms[] = new LazyImageTransform( $lazyLoadSkipImages );
-		}
-
-		if ( $showFirstParagraphBeforeInfobox ) {
-			$transforms[] = new MoveLeadParagraphTransform(
-				$title,
-				$title->getLatestRevID()
-			);
-		}
-		return $transforms;
-	}
-
 	/**
-	 * @covers MobileFormatter::applyTransforms
 	 * @dataProvider provideHeadingTransform
+	 * @covers MobileFormatter::makeSections
+	 * @covers MobileFormatter::enableExpandableSections
+	 * @covers MobileFormatter::filterContent
 	 */
 	public function testHeadingTransform( array $topHeadingTags, $input, $expectedOutput ) {
 		$t = Title::newFromText( 'Mobile' );
 		$formatter = new MobileFormatter( $input, $t, $this->mfConfig, $this->mfContext );
 
-		$formatter->applyTransforms(
-			$this->buildTransforms( $topHeadingTags, false, $t, true, false, false )
- );
+		// If MobileFormatter#enableExpandableSections isn't called, then headings
+		// won't be transformed.
+		$formatter->enableExpandableSections( true );
+
+		$formatter->topHeadingTags = $topHeadingTags;
+		$formatter->filterContent();
 
 		$this->assertEquals( $expectedOutput, $formatter->getText() );
 	}
@@ -680,37 +708,36 @@ class MobileFormatterTest extends MediaWikiTestCase {
 
 	/**
 	 * @see https://phabricator.wikimedia.org/T137375
-	 * @covers MobileFormatter::applyTransforms
-	 * @covers MobileFormatter::parseItemsToRemove
+	 * @covers MobileFormatter::filterContent
 	 */
 	public function testT137375() {
 		$input = '<p>Hello, world!</p><h2>Section heading</h2><ol class="references"></ol>';
 		$formatter = new MobileFormatter(
 			$input, Title::newFromText( 'Special:Foo' ), $this->mfConfig, $this->mfContext
 		);
-		$formatter->applyTransforms( [] );
+		$formatter->filterContent( false, true, false );
 		// Success is not crashing when the input is not a DOMElement.
 		$this->assertTrue( true );
 	}
 
 	/**
 	 * @see https://phabricator.wikimedia.org/T149884
-	 * @param string $input
-	 * @covers MobileFormatter::applyTransforms
 	 * @dataProvider provideLoggingOfInfoboxesBeingWrappedInContainersWhenWrapped
+	 * @covers MobileFormatter::filterContent
+	 * @param string $input
 	 */
 	public function testLoggingOfInfoboxesBeingWrappedInContainersWhenWrapped( $input ) {
 		$this->setMwGlobals( [
 			'wgMFLogWrappedInfoboxes' => true
 		] );
 		$title = 'T149884';
-		$t = Title::newFromText( $title, NS_MAIN );
 		$formatter = new MobileFormatter(
 			MobileFormatter::wrapHTML( $input ),
-			$t,
+			Title::newFromText( $title, NS_MAIN ),
 			$this->mfConfig,
 			$this->mfContext
 		);
+		$formatter->enableExpandableSections();
 
 		$loggerMock = $this->createMock( \Psr\Log\LoggerInterface::class );
 		$loggerMock->expects( $this->once() )
@@ -723,9 +750,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 			} ) );
 
 		$this->setLogger( 'mobile', $loggerMock );
-		$formatter->applyTransforms(
-			$this->buildTransforms( [], false, $t, false, false, true )
-		);
+		$formatter->filterContent( false, false, false, true );
 	}
 
 	public function provideLoggingOfInfoboxesBeingWrappedInContainersWhenWrapped() {
@@ -742,7 +767,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 
 	/**
 	 * @see https://phabricator.wikimedia.org/T149884
-	 * @covers MobileFormatter::applyTransforms
+	 * @covers MobileFormatter::filterContent
 	 * @covers \MobileFrontend\Transforms\MoveLeadParagraphTransform::logInfoboxesWrappedInContainers
 	 * @dataProvider provideLoggingOfInfoboxesBeingWrappedInContainersWhenNotWrapped
 	 */
@@ -752,22 +777,20 @@ class MobileFormatterTest extends MediaWikiTestCase {
 		] );
 		$title = 'T149884';
 
-		$t = Title::newFromText( $title );
 		$formatter = new MobileFormatter(
 			MobileFormatter::wrapHTML( $input ),
-			$t,
+			Title::newFromText( $title ),
 			$this->mfConfig,
 			$this->mfContext
 		);
+		$formatter->enableExpandableSections();
 
 		$loggerMock = $this->createMock( \Psr\Log\LoggerInterface::class );
 		$loggerMock->expects( $this->never() )
 			->method( 'info' );
 
 		$this->setLogger( 'mobile', $loggerMock );
-		$formatter->applyTransforms(
-			$this->buildTransforms( [], false, $t, false, false, true )
-		);
+		$formatter->filterContent( false, false, false, true );
 	}
 
 	public function provideLoggingOfInfoboxesBeingWrappedInContainersWhenNotWrapped() {
@@ -786,7 +809,7 @@ class MobileFormatterTest extends MediaWikiTestCase {
 
 	/**
 	 * @see https://phabricator.wikimedia.org/T163805
-	 * @covers MobileFormatter::applyTransforms
+	 * @covers MobileFormatter::filterContent
 	 */
 	public function testLoggingOfInfoboxesSkipsInfoBoxInsideInfobox() {
 		$this->setMwGlobals( [
@@ -796,22 +819,21 @@ class MobileFormatterTest extends MediaWikiTestCase {
 		// wrapped inside different infobox
 		$input = $this->buildInfoboxHTML( $this->buildInfoboxHTML( 'test' ) );
 		$title = 'T163805';
-		$t = Title::newFromText( $title, NS_MAIN );
+
 		$formatter = new MobileFormatter(
 			MobileFormatter::wrapHTML( $input ),
 			Title::newFromText( $title, NS_MAIN ),
 			$this->mfConfig,
 			$this->mfContext
 		);
+		$formatter->enableExpandableSections();
 
 		$loggerMock = $this->createMock( \Psr\Log\LoggerInterface::class );
 		$loggerMock->expects( $this->never() )
 			->method( 'info' );
 
 		$this->setLogger( 'mobile', $loggerMock );
-		$formatter->applyTransforms(
-			$this->buildTransforms( [], false, $t, true, false, true )
-		);
+		$formatter->filterContent( false, false, false, true );
 	}
 
 	/**

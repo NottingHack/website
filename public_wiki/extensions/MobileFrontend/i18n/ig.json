@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tochiprecious",
 			"Ukabia",
 			"Uzoma Ozurumba",
+			"Tochiprecious",
 			"Weather Top Wizard",
 			"Pasjoesscc"
 		]
 	},
+	"mobile-frontend-categories-heading": "<strong>Ụdàkọ</strong>",
 	"mobile-frontend-diffview-editcount": "{{PLURAL:$1|ḿmezi}} <div>$1</div>",
 	"mobile-frontend-editor-cancel": "Hapụ̀",
 	"mobile-frontend-editor-save": "Dònye",

@@ -1,11 +1,6 @@
 <?php
 
-namespace MobileFrontend\Api;
-
-use ApiBase;
-use ApiFormatJson;
 use MediaWiki\MediaWikiServices;
-use Title;
 
 /**
  * Return the webapp manifest for this wiki
@@ -24,7 +19,7 @@ class ApiWebappManifest extends ApiBase {
 		$resultObj->addValue( null, 'orientation', 'portrait' );
 		$resultObj->addValue( null, 'dir', $services->getContentLanguage()->getDir() );
 		$resultObj->addValue( null, 'lang', $config->get( 'LanguageCode' ) );
-		$resultObj->addValue( null, 'display', 'minimal-ui' );
+		$resultObj->addValue( null, 'display', 'browser' );
 		$resultObj->addValue( null, 'theme_color', $config->get( 'MFManifestThemeColor' ) );
 		$resultObj->addValue( null, 'background_color', $config->get( 'MFManifestBackgroundColor' ) );
 		$resultObj->addValue( null, 'start_url', Title::newMainPage()->getLocalURL() );

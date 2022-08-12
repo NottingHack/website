@@ -1,26 +1,24 @@
 <?php
 
-namespace MobileFrontend\Amc;
+namespace MobileFrontend\AMC;
 
 use MediaWiki\ChangeTags\Taggable;
-use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserIdentity;
 use User;
 
 /**
  * Hooks for Advanced Mobile Contributions
  *
- * @package MobileFrontend\Amc
+ * @package MobileFrontend\AMC
  */
 final class Hooks {
 
 	/**
 	 * Helper method to tag objects like Logs or Recent changes
 	 * @param Taggable $taggable
-	 * @param UserIdentity $performer
+	 * @param \User $performer
 	 * @return bool
 	 */
-	private static function injectTagsIfPerformerUsesAMC( Taggable $taggable, UserIdentity $performer ) {
+	private static function injectTagsIfPerformerUsesAMC( Taggable $taggable, \User $performer ) {
 		$userMode = UserMode::newForUser( $performer );
 		if ( $userMode->isEnabled() ) {
 			$taggable->addTags( [ Manager::AMC_EDIT_TAG ] );
@@ -69,9 +67,7 @@ final class Hooks {
 	 * @param \ManualLogEntry $logEntry
 	 */
 	public static function onManualLogEntryBeforePublish( \ManualLogEntry $logEntry ) {
-		$performer = MediaWikiServices::getInstance()->getUserFactory()->
-			newFromUserIdentity( $logEntry->getPerformerIdentity() );
-		self::injectTagsIfPerformerUsesAMC( $logEntry, $performer );
+		self::injectTagsIfPerformerUsesAMC( $logEntry, $logEntry->getPerformer() );
 	}
 
 	/**
@@ -84,7 +80,7 @@ final class Hooks {
 		try {
 			// To be safe, we should use the User objected provided via RecentChange, not the
 			// currently logged-in user.
-			self::injectTagsIfPerformerUsesAMC( $rc, $rc->getPerformerIdentity() );
+			self::injectTagsIfPerformerUsesAMC( $rc, $rc->getPerformer() );
 		} catch ( \MWException $exception ) {
 			// ignore when performer is not found
 		}

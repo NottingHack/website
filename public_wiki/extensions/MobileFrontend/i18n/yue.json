@@ -6,13 +6,15 @@
 			"LNDDYL",
 			"Moon0319",
 			"Obonggi",
+			"Waihorace",
+			"Yueman",
 			"Roy17",
 			"SCP-2000",
-			"Sun8908",
-			"Waihorace",
-			"Yueman"
+			"Sun8908"
 		]
 	},
+	"mobile-frontend-categories-heading": "<strong>類</strong>",
+	"mobile-frontend-categories-search": "搵類",
 	"mobile-frontend-changeslist-nocomment": "冇編輯摘要",
 	"mobile-frontend-clear-search": "清除",
 	"mobile-frontend-copyright": "除非另外講明，響呢版度嘅內容係根據$1嘅條款發佈。",

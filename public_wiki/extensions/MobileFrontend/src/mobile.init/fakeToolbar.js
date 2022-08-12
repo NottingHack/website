@@ -22,7 +22,7 @@ module.exports = function fakeToolbar() {
 		.append( $( '<div>' )
 			.addClass( 've-mobile-fakeToolbar-header' )
 			// Minerva has some complicated styling for this class, so we have to include it
-			.addClass( 'overlay-header' )
+			.addClass( 'header' )
 			.append( $( '<div>' )
 				.addClass( 've-mobile-fakeToolbar' )
 				.append( $goBack, $loadingMessage )

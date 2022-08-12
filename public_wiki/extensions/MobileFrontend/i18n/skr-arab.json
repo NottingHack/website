@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Saraiki",
 			"Engr.ismailbhutta",
-			"Kaleem Bhatti",
-			"Saraiki"
+			"Kaleem Bhatti"
 		]
 	},
 	"abusefilter-edit-builder-vars-user-mobile": "بھانویں ورتݨ آلا موبائل انٹرفیس دے ذریعے ترمیم کرے یا نہ کرے",
 	"mobile-frontend-account-create-captcha-placeholder": "تصدیقی کوڈ لکھو",
+	"mobile-frontend-categories-search": "قسماں ڳولو",
 	"mobile-frontend-changeslist-nocomment": "تبدیلیاں دا کوئی خلاصہ کائنی",
 	"mobile-frontend-cite-error-title": "حوالے لوڈ کرݨ وچ غلطی تھئی",
 	"mobile-frontend-cite-error": "خراب دہرائی سُن٘ڄاݨ کرواوݨ آلے  پاروں حوالیاں دے چاڑھݨ وچ کوئی مشکل ہے۔",
@@ -17,11 +18,6 @@
 	"mobile-frontend-contributions-404-title": "ورتݨ آلے دا ناں ٹھیک کائنی ݙتا ڳیا",
 	"mobile-frontend-diffview-anonymous": "گمنام ورتݨ آلے",
 	"mobile-frontend-diffview-title": "تبدیلیاں",
-	"mobile-frontend-editor-blocked-drawer-action-login": "لاگ ان تھیوو",
-	"mobile-frontend-editor-blocked-drawer-action-ok": "ٹھیک ہے",
-	"mobile-frontend-editor-blocked-drawer-body-link": "ٻئے ݙیکھو",
-	"mobile-frontend-editor-blocked-drawer-reason-header": "سبب",
-	"mobile-frontend-editor-blocked-drawer-help": "تفصیل ݙیکھو",
 	"mobile-frontend-editor-cancel": "منسوخ",
 	"mobile-frontend-editor-captcha-try-again": "غلط کوڈ، دوبارہ کوشش کرو۔",
 	"mobile-frontend-editor-continue": "اڳلا",

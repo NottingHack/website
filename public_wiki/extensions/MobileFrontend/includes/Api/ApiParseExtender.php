@@ -1,14 +1,6 @@
 <?php
 
-namespace MobileFrontend\Api;
-
-use ApiBase;
-use ApiResult;
 use MediaWiki\MediaWikiServices;
-use MobileFormatter;
-use MobileFrontend\Transforms\MakeSectionsTransform;
-use MobileFrontend\Transforms\SubHeadingTransform;
-use Title;
 
 /**
  * Extends API action=parse with mobile goodies
@@ -18,24 +10,29 @@ class ApiParseExtender {
 	/**
 	 * APIGetAllowedParams hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/APIGetAllowedParams
-	 * @param ApiBase $module
+	 * @param ApiBase &$module
 	 * @param array|bool &$params Array of parameters
+	 * @return bool
 	 */
-	public static function onAPIGetAllowedParams( ApiBase $module, &$params ) {
+	public static function onAPIGetAllowedParams( ApiBase &$module, &$params ) {
 		if ( $module->getModuleName() == 'parse' ) {
 			$params['mobileformat'] = false;
+			$params['noimages'] = false;
 			$params['mainpage'] = false;
 		}
+		return true;
 	}
 
 	/**
 	 * APIAfterExecute hook handler
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/APIAfterExecute
-	 * @param ApiBase $module
+	 * @param ApiBase &$module
+	 * @return bool
 	 */
-	public static function onAPIAfterExecute( ApiBase $module ) {
+	public static function onAPIAfterExecute( ApiBase &$module ) {
 		$services = MediaWikiServices::getInstance();
 		$config = $services->getService( 'MobileFrontend.Config' );
+		$mfSpecialCaseMainPage = $config->get( 'MFSpecialCaseMainPage' );
 
 		$context = $services->getService( 'MobileFrontend.Context' );
 
@@ -46,28 +43,20 @@ class ApiParseExtender {
 			if ( isset( $data['parse']['text'] ) && $params['mobileformat'] ) {
 				$title = Title::newFromText( $data['parse']['title'] );
 				$text = $data['parse']['text'];
-
 				$mf = new MobileFormatter(
 					MobileFormatter::wrapHTML( $text ), $title, $config, $context
- );
+				);
+				$mf->setRemoveMedia( $params['noimages'] );
+				$mf->setIsMainPage( $params['mainpage'] && $mfSpecialCaseMainPage );
+				$mf->enableExpandableSections( !$params['mainpage'] );
+				$mf->disableScripts();
 				// HACK: need a nice way to request a TOC-free HTML in the first place
 				$mf->remove( [ '.toc', '.mw-headline-anchor' ] );
-
-				$transforms = [];
-				$options = $config->get( 'MFMobileFormatterOptions' );
-				$topHeadingTags = $options['headings'];
-
-				$transforms[] = new SubHeadingTransform( $topHeadingTags );
-
-				$transforms[] = new MakeSectionsTransform(
-					$topHeadingTags,
-					false
-				);
-
-				$mf->applyTransforms( $transforms );
+				$mf->filterContent();
 				$result->addValue( [ 'parse' ], 'text', $mf->getText(),
 					ApiResult::OVERRIDE | ApiResult::NO_SIZE_CHECK );
 			}
 		}
+		return true;
 	}
 }

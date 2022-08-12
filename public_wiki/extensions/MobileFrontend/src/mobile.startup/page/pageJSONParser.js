@@ -1,4 +1,5 @@
 const Page = require( '../Page' );
+const time = require( '../time' );
 const util = require( '../util' );
 
 /**
@@ -14,7 +15,7 @@ function parse( resp ) {
 		pageprops = resp.pageprops || {
 			displaytitle: mw.html.escape( resp.title )
 		},
-		terms = resp.terms || resp.entityterms;
+		terms = resp.terms;
 
 	if ( pageprops || terms ) {
 		// The label is either the display title or the label pageprop
@@ -35,7 +36,10 @@ function parse( resp ) {
 	// page may or may not exist.
 	if ( resp.revisions && resp.revisions[0] ) {
 		revision = resp.revisions[0];
-		resp.lastModified = new Date( revision.timestamp );
+		resp.lastModified = time.getLastModifiedMessage(
+			new Date( revision.timestamp ).getTime() / 1000,
+			revision.user
+		);
 	}
 
 	return new Page(

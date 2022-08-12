@@ -1,6 +1,6 @@
 import util from '../../src/mobile.startup/util';
 import { previewResponse, revisionResponse,
-	abuseFilterWarning, abuseFilterDisallowed, spam, editConflict, readOnly, captcha,
+	abuseFilterWarning, abuseFilterDisallowed, spamBlacklist, editConflict, readOnly, captcha,
 	blockResponse, saveSuccessResponse } from './data';
 
 /**
@@ -34,7 +34,7 @@ export const abuseFilterDisallowedApi = makeFakeApi(
 );
 
 export const abuseFilterSpamApi = makeFakeApi(
-	() => util.Deferred().resolve( spam )
+	() => util.Deferred().resolve( spamBlacklist )
 );
 
 export const editConflictApi = makeFakeApi(

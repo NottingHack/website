@@ -5,8 +5,8 @@
 			"Dibya Dutta",
 			"Gitartha.bordoloi",
 			"IKHazarika",
-			"Mohsin Ali",
 			"Nilamdyuti",
+			"Mohsin Ali",
 			"Simbu123"
 		]
 	},
@@ -22,8 +22,6 @@
 	"mobile-frontend-diffview-title": "$1ৰ বিভিন্ন সংশোধনসমূহৰ মাজৰ পাৰ্থক্য",
 	"mobile-frontend-editor-anon": "লগ্‌ ইন নকৰাকৈ সম্পাদনা কৰক",
 	"mobile-frontend-editor-anonwarning": "<strong>সতৰ্কবাণী:</strong> আপুনি প্ৰৱেশ কৰা নাই। আপুনি কোনো সম্পাদনা কৰিলে আপোনাৰ আই পি ঠিকনা মুকলিকৈ দৃশ্যমান হ'ব। যদি আপুনি <strong>লগ্‌ ইন</strong> বা <strong>এটা একাউণ্ট সৃষ্টি কৰে</strong>, তেন্তে আন সুবিধা পোৱাৰ লগতে আপোনাৰ সম্পাদনাসমূহ আপোনাৰ ব্যৱহাৰকাৰী নামত সংৰক্ষিত হ'ব।",
-	"mobile-frontend-editor-blocked-drawer-action-ok": "বাৰু",
-	"mobile-frontend-editor-blocked-drawer-action-randompage": "মোক অন্য এখন পৃষ্ঠালৈ লৈ যাওক",
 	"mobile-frontend-editor-editing-page": "<span><strong>সম্পাদনা কৰা হৈছে</strong> $1</span>",
 	"mobile-frontend-editor-licensing-with-terms": "পৰিবৰ্তনসমূহ সংৰক্ষণ কৰি, আপুনি $1ৰ সৈতে সন্মত হৈছে আৰু $3 {{PLURAL:$3|অনুজ্ঞাপত্ৰৰ}} অধীনত আপোনাৰ বৰঙণি মুকলি কৰিবলৈ সন্মত হৈছে।",
 	"mobile-frontend-editor-terms-link": "[$1 ব্যৱহাৰৰ চৰ্ত্তসমূহ]",

@@ -18,7 +18,7 @@ QUnit.test( 'mfExtend() - extending from constructor', function ( assert ) {
 	function TestChild() {}
 	function TestPrototype() {}
 	mfExtend( TestChild, TestPrototype, {} );
-	assert.ok( TestChild.prototype instanceof TestPrototype );
+	assert.strictEqual( TestChild.prototype instanceof TestPrototype, true );
 } );
 
 QUnit.test( 'mfExtend() - extending from object', function ( assert ) {

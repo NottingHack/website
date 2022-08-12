@@ -22,6 +22,7 @@ var skin,
 	$html = mfUtil.getDocument(),
 	Skin = require( '../mobile.startup/Skin' ),
 	eventBus = require( '../mobile.startup/eventBusSingleton' ),
+	schemaMobileWebSearch = require( './eventLogging/schemaMobileWebSearch' ),
 	schemaEditAttemptStep = require( './eventLogging/schemaEditAttemptStep' ),
 	schemaVisualEditorFeatureUse = require( './eventLogging/schemaVisualEditorFeatureUse' );
 
@@ -120,6 +121,7 @@ lazyLoadedImages();
 // should already be loaded (this doesn't trigger a new HTTP request), but we
 // don't specify a hard dependency because EventLogging may not be installed.
 mw.loader.using( 'ext.eventLogging' ).then( function () {
+	schemaMobileWebSearch();
 	schemaEditAttemptStep();
 	schemaVisualEditorFeatureUse();
 } );

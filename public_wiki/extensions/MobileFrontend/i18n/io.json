@@ -13,7 +13,6 @@
 	"mobile-frontend-diffview-title": "Modifikuri",
 	"mobile-frontend-editor-anon": "Redaktar sen enrejistar su",
 	"mobile-frontend-editor-anonwarning": "<strong>Averto:</strong> Vu ne eniris. Vua IP-adreso esos videbla publike se vu redaktos. Se vu <strong>facos log in</strong> o <strong>kreos konto</strong>, vua redakturi atribuesos a vua uzeronomo, inter altra avantaji.",
-	"mobile-frontend-editor-blocked-drawer-action-login": "Enirez",
 	"mobile-frontend-editor-blocked-drawer-title": "Vu impedesis pri redaktar {{SITENAME}}",
 	"mobile-frontend-editor-blocked-drawer-title-partial": "Vu impedesis pri redaktar ca pagino",
 	"mobile-frontend-editor-blocked-drawer-help": "Detali",

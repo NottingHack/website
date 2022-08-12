@@ -4,7 +4,7 @@
 // `no-restricted-properties` and `no-restricted-syntax` which are array based - ensuring the two
 // values being merged are concatenated
 
-/* eslint-disable quote-props, quotes */
+/* eslint-disable quote-props, quotes, one-var */
 const merge = require( './node_modules/eslint-config-wikimedia/language/merge.js' );
 const rules = {
 	"extends": [

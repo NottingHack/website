@@ -4,19 +4,19 @@
  * @group MobileFrontend
  */
 class MobileSpecialPageTest extends MediaWikiTestCase {
-	protected function setUp(): void {
+	protected function setUp() : void {
 		parent::setUp();
 		$this->setMwGlobals( 'wgScript', '/wiki/index.php' );
 	}
 
 	/**
+	 * @dataProvider provideGetDesktopUrl
+	 * @covers SpecialMobileHistory::getDesktopUrl
+	 * @covers SpecialMobileDiff::getDesktopUrl
 	 * @param string $class
 	 * @param string $subPage
 	 * @param array $params
 	 * @param string|null $expected
-	 * @covers SpecialMobileHistory::getDesktopUrl
-	 * @covers SpecialMobileDiff::getDesktopUrl
-	 * @dataProvider provideGetDesktopUrl
 	 */
 	public function testGetDesktopUrl( $class, $subPage, array $params, $expected ) {
 		$context = new RequestContext();

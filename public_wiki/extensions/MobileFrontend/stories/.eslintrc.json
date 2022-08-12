@@ -3,11 +3,7 @@
 	"extends": [
 		"../src/.eslintrc.json"
 	],
-	"globals": {
-		"$": "readonly"
-	},
 	"rules": {
-		"no-alert": "off",
-		"compat/compat": "off"
+		"no-alert": "off"
 	}
 }

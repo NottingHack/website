@@ -6,8 +6,55 @@
  */
 class MobileFrontendSkinHooksTest extends MediaWikiLangTestCase {
 	/**
-	 * @covers ::getPluralLicenseInfo
+	 * @covers ::interimTogglingSupport
+	 */
+	public function testInterimTogglingSupport() {
+		$nonce = RequestContext::getMain()->getOutput()->getCSP()->getNonce();
+		$js = MobileFrontendSkinHooks::interimTogglingSupport( $nonce );
+
+		$this->assertStringContainsString(
+			'function mfTempOpenSection(',
+			$js,
+			'creates global function called from MobileFormatter::prepareHeading'
+		);
+		$this->assertStringContainsString(
+			'mf-section-',
+			$js,
+			'uses (partial) ID set in MobileFormatter::createSectionBodyElement'
+		);
+		$this->assertStringContainsString(
+			'open-block',
+			$js,
+			'contains class name to be toggled'
+		);
+	}
+
+	/**
+	 * @covers ::gradeCImageSupport
+	 */
+	public function testGradeCImageSupport() {
+		$js = MobileFrontendSkinHooks::gradeCImageSupport();
+
+		$this->assertStringContainsString(
+			'noscript',
+			$js,
+			'gain the widest possible browser support, scan for noscript tag'
+		);
+		$this->assertStringContainsString(
+			'lazy-image-placeholder',
+			$js,
+			'check if sibling has the lazy-image-placeholder class gotten from ns[i].nextSibling;'
+		);
+		$this->assertStringContainsString(
+			'parentNode.replaceChild( img, p );',
+			$js,
+			'make sure the replacement to image tag was properly done'
+		);
+	}
+
+	/**
 	 * @dataProvider providePluralLicenseInfoData
+	 * @covers ::getPluralLicenseInfo
 	 */
 	public function testGetPluralLicenseInfo( $isDisabledValue, $license, $expectedResult ) {
 		$msgObj = $this->createMock( Message::class );
@@ -28,8 +75,8 @@ class MobileFrontendSkinHooksTest extends MediaWikiLangTestCase {
 	}
 
 	/**
-	 * @covers ::getPluralLicenseInfo
 	 * @dataProvider providePluralLicenseInfoWithNullMessageObjectData
+	 * @covers ::getPluralLicenseInfo
 	 */
 	public function testGetPluralLicenseInfoWithNullMessageObject( $license, $expected ) {
 		$this->assertSame(
@@ -58,8 +105,8 @@ class MobileFrontendSkinHooksTest extends MediaWikiLangTestCase {
 	}
 
 	/**
-	 * @covers ::getTermsLink
 	 * @dataProvider provideGetTermsLinkData
+	 * @covers ::getTermsLink
 	 */
 	public function testGetTermsLink( $isDisabled, $expected ) {
 		$messageMock = $this->createMock( Message::class );
@@ -141,7 +188,7 @@ class MobileFrontendSkinHooksTest extends MediaWikiLangTestCase {
 				],
 				[
 					'msg' => 'mobile-frontend-copyright',
-					// phpcs:ignore Generic.Files.LineLength
+					// @codingStandardsIgnoreLine
 					'link' => '<a class="external" rel="nofollow" href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>',
 					'plural' => 1
 				]
@@ -156,6 +203,7 @@ class MobileFrontendSkinHooksTest extends MediaWikiLangTestCase {
 				],
 				[
 					'msg' => 'mobile-frontend-copyright',
+					// @codingStandardsIgnoreLine
 					'link' => '<a href="/wiki/Rights_Page" title="Rights Page">CC BY 2.5</a>',
 					'plural' => 1
 				]

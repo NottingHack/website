@@ -68,13 +68,13 @@ function isNow( delta ) {
  * @instance
  * @param {number} ts timestamp
  * @param {string} username of the last user to modify the page
- * @param {string} gender of the last user to modify the page
- * @param {string} historyUrl url to the history page for the message
+ * @param {string} [gender] of the last user to modify the page
+ * @param {string} [historyUrl] url to the history page for the message, if omitted
+ *  returns plain text string rather than html
  * @return {string}
  */
 function getLastModifiedMessage( ts, username, gender, historyUrl ) {
-	var delta,
-		historyPageAnchor, userPageAnchor,
+	var delta, html,
 		keys = {
 			seconds: 'mobile-frontend-last-modified-with-user-seconds',
 			minutes: 'mobile-frontend-last-modified-with-user-minutes',
@@ -96,19 +96,20 @@ function getLastModifiedMessage( ts, username, gender, historyUrl ) {
 		);
 	}
 
-	historyPageAnchor = util.parseHTML( '<a>' ).attr( 'href', historyUrl || '#' );
-	userPageAnchor = util.parseHTML( '<a>' ).attr( 'href', mw.util.getUrl( 'User:' + username ) );
-
 	args.push(
-		historyPageAnchor,
+		historyUrl || '#',
 		// Abuse PLURAL support to determine if the user is anonymous or not
 		mw.language.convertNumber( username ? 1 : 0 ),
 		// Our abuse of PLURAL support means we have to pass the relative URL
 		// rather than construct it from a wikilink
-		username ? userPageAnchor : ''
+		username ? mw.util.getUrl( 'User:' + username ) : ''
 	);
-
-	return mw.message.apply( this, args ).parse();
+	html = mw.message.apply( this, args ).parse();
+	if ( historyUrl ) {
+		return html;
+	} else {
+		return util.parseHTML( '<div>' ).html( html ).text();
+	}
 }
 
 /**

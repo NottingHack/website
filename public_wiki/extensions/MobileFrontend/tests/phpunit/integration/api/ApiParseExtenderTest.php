@@ -5,12 +5,12 @@
  */
 class ApiParseExtenderTest extends MediaWikiTestCase {
 	// phpcs:ignore Generic.Files.LineLength.TooLong
-	private const SECTION_INDICATOR = '<div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div>';
+	const SECTION_INDICATOR = '<div class="mw-ui-icon mw-ui-icon-element indicator mw-ui-icon-small mw-ui-icon-flush-left"></div>';
 
 	/**
 	 * @dataProvider getData
-	 * @covers \MobileFrontend\Api\ApiParseExtender::onAPIGetAllowedParams
-	 * @covers \MobileFrontend\Api\ApiParseExtender::onAPIAfterExecute
+	 * @covers ApiParseExtender::onAPIGetAllowedParams
+	 * @covers ApiParseExtender::onAPIAfterExecute
 	 */
 	public function testApi( array $params, $expected ) {
 		$this->setMwGlobals( 'wgMFRemovableClasses',
@@ -32,8 +32,6 @@ class ApiParseExtenderTest extends MediaWikiTestCase {
 		] );
 		$this->assertFalse( isset( $data['errors'] ) );
 		$text = preg_replace( "/[\r\n]/", '', trim( $data['parse']['text']['*'] ) );
-		// Remove parser report comment as it is non-deterministic
-		$text = preg_replace( '/<!--.*?-->/s', '', $text );
 		$expected = preg_replace( "/[\r\n]/", '', trim( $expected ) );
 		$this->assertEquals( $expected, $text );
 	}

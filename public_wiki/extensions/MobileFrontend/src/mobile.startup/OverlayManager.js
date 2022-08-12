@@ -55,9 +55,6 @@ OverlayManager.prototype = {
 	 * @private
 	 */
 	_onHideOverlayOutsideOverlayManager: function () {
-		if ( !this.stack.length ) {
-			return;
-		}
 		const currentRoute = this.stack[0].route,
 			routeIsString = typeof currentRoute === 'string',
 			currentPath = this.router.getPath(),
@@ -167,14 +164,9 @@ OverlayManager.prototype = {
 			} else {
 				// else create an overlay using the factory function result
 				factoryResult = match.factoryResult;
-				// We were getting errors relating to no factoryResult.
-				// This should never happen.
-				// If it does an error should not be thrown.
-				if ( factoryResult ) {
-					match.overlay = factoryResult;
-					attachHideEvent( match.overlay );
-					self._show( factoryResult );
-				}
+				match.overlay = factoryResult;
+				attachHideEvent( match.overlay );
+				self._show( factoryResult );
 			}
 		}
 	},
@@ -303,14 +295,17 @@ OverlayManager.prototype = {
 	 *
 	 * The following code will display an overlay whenever a user visits a URL that
 	 * ends with '#/hi/name'. The value of `name` will be passed to the overlay.
-	 * Note the factory must return an Overlay.
-	 * If the overlay needs to load code asynchronously that should be done inside
-	 * the overlay.
 	 *
 	 *     @example
 	 *     overlayManager.add( /\/hi\/(.*)/, function ( name ) {
+	 *       var factoryResult = $.Deferred();
+	 *
+	 *       mw.using( 'mobile.HiOverlay', function () {
 	 *         var HiOverlay = M.require( 'HiOverlay' );
-	 *         return new HiOverlay( { name: name } ) );
+	 *         factoryResult.resolve( new HiOverlay( { name: name } ) );
+	 *       } );
+	 *
+	 *       return factoryResult;
 	 *     } );
 	 *
 	 * @memberof OverlayManager
@@ -369,10 +364,7 @@ OverlayManager.prototype = {
 		if ( this.stack.length === 0 ) {
 			throw new Error( 'Trying to replace OverlayManager\'s current overlay, but stack is empty' );
 		}
-		const stackOverlay = this.stack[0].overlay;
-		if ( stackOverlay ) {
-			this._hideOverlay( stackOverlay );
-		}
+		this._hideOverlay( this.stack[0].overlay );
 		this.stack[0].overlay = overlay;
 		attachHideEvent( overlay );
 		this._show( overlay );

@@ -167,32 +167,28 @@ class SpecialMobileDiff extends MobileSpecialPage {
 	 */
 	protected function displayDiffPage() {
 		$unhide = $this->getRequest()->getBool( 'unhide' );
+		$context = $this->getContext();
 		$contentHandler = MediaWikiServices::getInstance()
 			->getContentHandlerFactory()
 			->getContentHandler(
 				$this->rev->getSlot( SlotRecord::MAIN, RevisionRecord::RAW )->getModel()
 			);
-
-		// Set the title of the page, used for content model checks (T245172)
-		// There should be a better way to tell the DifferenceEngine which Title to use.
-		$correctTitleContext = new DerivativeContext( $this->getContext() );
-		$correctTitleContext->setTitle( $this->targetTitle );
-		// By setting the title, we lose the revision ID passed as subpage parameter,
-		// so pretend that it was set as URL parameter, so that links work (T263937)
-		$correctTitleContext->setRequest( new DerivativeRequest(
-			$this->getRequest(),
-			$this->getRequest()->getValues() + [ 'diff' => $this->revId ]
-		) );
-
-		$engine = $contentHandler->createDifferenceEngine( $correctTitleContext,
+		$engine = $contentHandler->createDifferenceEngine( $this->getContext(),
 			$this->getPrevId(), $this->revId, 0, false, $unhide );
 
 		$this->showHeader( $unhide );
-		$engine->setSlotDiffOptions( [ 'diff-type' => 'inline' ] );
-		$engine->showDiffPage( true );
-		$this->getOutput()->addHTML(
-			$engine->markPatrolledLink()
-		);
+		if ( function_exists( 'wikidiff2_do_diff' ) ) {
+			$engine->setSlotDiffOptions( [ 'diff-type' => 'inline' ] );
+			$engine->showDiffPage( true );
+			$this->getOutput()->addHTML(
+				$engine->markPatrolledLink()
+			);
+		} elseif ( get_class( $engine ) === DifferenceEngine::class ) {
+			wfDeprecated( 'Please install wikidiff2 to retain inline diff functionality.', '1.35.0' );
+			$engine = new InlineDifferenceEngine( $context, $this->getPrevId(), $this->revId, 0,
+				false, $unhide );
+			$engine->showDiffPage( false );
+		}
 	}
 
 	/**
@@ -352,7 +348,7 @@ class SpecialMobileDiff extends MobileSpecialPage {
 
 		// Note $userId will be 0 and $ipAddr an empty string if the current audience cannot see it.
 		if ( $userId ) {
-			$user = $this->getUserFactory()->newFromUserIdentity( $user );
+			$user = User::newFromIdentity( $user );
 			$edits = $user->getEditCount();
 			$attrs = [
 				'class' => MobileUI::iconClass( 'userAvatar-base20', 'before', 'mw-mf-user' ),
@@ -362,6 +358,7 @@ class SpecialMobileDiff extends MobileSpecialPage {
 			];
 			// Note we do not use LinkRenderer here as this will render
 			// a broken link if the user page does not exist
+			// @phan-suppress-next-line SecurityCheck-XSS
 			$output->addHTML(
 				Html::openElement( 'div', $attrs ) .
 				$this->getLinkRenderer()->makeLink(

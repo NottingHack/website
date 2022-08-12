@@ -7,8 +7,7 @@ var
 	header = require( '../mobile.startup/headers' ).header,
 	util = require( '../mobile.startup/util' ),
 	autosign = require( './autosign' ),
-	Button = require( '../mobile.startup/Button' ),
-	lazyImageLoader = require( '../mobile.startup/lazyImages/lazyImageLoader' );
+	Button = require( '../mobile.startup/Button' );
 
 /**
  * Callback executed when a save has successfully completed.
@@ -45,7 +44,7 @@ function TalkSectionOverlay( options ) {
 				click: function ( ev ) {
 					// If a link has been clicked (that's not the save button)
 					// check that it's okay to exit
-					if ( ev.target.tagName === 'BUTTON' &&
+					if ( ev.target.tagName === 'A' &&
 						ev.target.className.indexOf( 'save-button' ) === -1
 					) {
 						// If the user says okay, do nothing, continuing as if normal link
@@ -56,6 +55,7 @@ function TalkSectionOverlay( options ) {
 					}
 				},
 				'input textarea': 'onInputTextarea',
+				'focus textarea': 'onFocusTextarea',
 				'click .save-button': 'onSaveClick'
 			}
 		} )
@@ -65,7 +65,7 @@ function TalkSectionOverlay( options ) {
 mfExtend( TalkSectionOverlay, Overlay, {
 	templatePartials: util.extend( {}, Overlay.prototype.templatePartials, {
 		content: util.template( `
-<div class="content talk-section mw-parser-output">
+<div class="content talk-section">
 	{{{section.text}}}
 	<div class="comment">
 		<div class="list-header">{{reply}}</div>
@@ -95,8 +95,6 @@ mfExtend( TalkSectionOverlay, Overlay, {
 	defaults: util.extend( {}, Overlay.prototype.defaults, {
 		saveButton: new Button( {
 			block: true,
-			tagName: 'button',
-			disabled: true,
 			additionalClassNames: 'save-button',
 			progressive: true,
 			label: util.saveButtonMessage()
@@ -114,13 +112,7 @@ mfExtend( TalkSectionOverlay, Overlay, {
 	 * @param {Event} ev
 	 */
 	onInputTextarea: function ( ev ) {
-		var value = ev.target.value;
-		this.state.text = value;
-		if ( value ) {
-			this.$saveButton.prop( 'disabled', false );
-		} else {
-			this.$saveButton.prop( 'disabled', true );
-		}
+		this.state.text = ev.target.value;
 	},
 	/**
 	 * A function to run before exiting the overlay
@@ -166,9 +158,6 @@ mfExtend( TalkSectionOverlay, Overlay, {
 	 * @instance
 	 */
 	postRender: function () {
-		lazyImageLoader.loadImages(
-			lazyImageLoader.queryPlaceholders( this.$el[0] )
-		);
 		Overlay.prototype.postRender.apply( this );
 		this.$el.find( '.talk-section' ).prepend( $spinner );
 		this.$saveButton = this.options.saveButton.$el;
@@ -190,6 +179,15 @@ mfExtend( TalkSectionOverlay, Overlay, {
 		} else {
 			this.$textarea = this.$commentBox.find( 'textarea' );
 		}
+	},
+	/**
+	 * Handler for focus of textarea
+	 *
+	 * @memberof TalkSectionOverlay
+	 * @instance
+	 */
+	onFocusTextarea: function () {
+		this.$textarea.removeClass( 'error' );
 	},
 	/**
 	 * Handle a click on the save button
@@ -247,6 +245,8 @@ mfExtend( TalkSectionOverlay, Overlay, {
 				mw.notify( msg, { type: 'error' } );
 				enableSaveButton();
 			} );
+		} else {
+			this.$textarea.addClass( 'error' );
 		}
 	}
 } );

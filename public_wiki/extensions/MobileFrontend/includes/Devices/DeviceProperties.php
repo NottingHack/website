@@ -28,9 +28,7 @@ namespace MobileFrontend\Devices;
  * request is a mobile device, a tablet device, or neither.
  */
 class DeviceProperties {
-	/** @var bool */
 	private $isMobileDevice;
-	/** @var bool */
 	private $isTabletDevice;
 
 	/**

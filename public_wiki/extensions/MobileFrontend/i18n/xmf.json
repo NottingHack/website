@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Narazeni",
-			"Silovan"
+			"Silovan",
+			"Narazeni"
 		]
 	},
+	"mobile-frontend-categories-add": "კატეგორიაშა გეძინა",
 	"mobile-frontend-changeslist-nocomment": "ვარე რედაქტირაფაშ რეზიუმე",
 	"mobile-frontend-copyright": "დინორე წჷმორინაფილი რე $1 პირობეფით (შხვა ვარე მეწურაფილჷ-და).",
 	"mobile-frontend-featured-article": "დღაშ გიშაგორილი მასალა",

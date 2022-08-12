@@ -7,8 +7,8 @@ use Wikimedia\Rdbms\FakeResultWrapper;
  */
 class SpecialMobileWatchlistTest extends MediaWikiTestCase {
 	/**
-	 * @covers SpecialMobileWatchlist::addWatchlistHTML
 	 * @dataProvider provideAddWatchlistHTML
+	 * @covers SpecialMobileWatchlist::addWatchlistHTML
 	 */
 	public function testAddWatchlistHTML( $results, $expected, $msg ) {
 		$context = new DerivativeContext( RequestContext::getMain() );

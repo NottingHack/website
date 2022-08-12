@@ -6,20 +6,18 @@ const
 
 /**
  * @ignore
- * @param {PageGateway} pageGateway
- * getPageLanguages API call.
+ * @param {PageGateway} gateway
  * @return {jQuery.Promise} Resolves to LanguageSearcher
  */
-function loadLanguageSearcher( pageGateway ) {
+function loadLanguageSearcher( gateway ) {
 	return mw.loader.using( 'mobile.languages.structured' ).then( function () {
-		return pageGateway.getPageLanguages( mw.config.get( 'wgPageName' ), mw.config.get( 'wgUserLanguage' ) );
+		return gateway.getPageLanguages( mw.config.get( 'wgPageName' ), mw.config.get( 'wgUserLanguage' ) );
 	} ).then( function ( data ) {
 		const LanguageSearcher = m.require( 'mobile.languages.structured/LanguageSearcher' );
 
 		return new LanguageSearcher( {
 			languages: data.languages,
 			variants: data.variants,
-			showSuggestedLanguages: true,
 			deviceLanguage: getDeviceLanguage( navigator )
 		} );
 

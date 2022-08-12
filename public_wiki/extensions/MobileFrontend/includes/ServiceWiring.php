@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MobileFrontend\ContentProviders\ContentProviderFactory;
 use MobileFrontend\Features\BetaUserMode;
 use MobileFrontend\Features\Feature;
 use MobileFrontend\Features\FeaturesManager;
@@ -9,12 +10,17 @@ use MobileFrontend\Features\StableUserMode;
 use MobileFrontend\Features\UserModes;
 
 return [
-	'MobileFrontend.Config' => static function ( MediaWikiServices $services ) {
+	'MobileFrontend.Config' => function ( MediaWikiServices $services ) {
 		return $services->getService( 'ConfigFactory' )
 			->makeConfig( 'mobilefrontend' );
 	},
+	'MobileFrontend.ContentProviderFactory' =>
+	function ( MediaWikiServices $services ): ContentProviderFactory {
+		$config = $services->getService( 'MobileFrontend.Config' );
+		return new ContentProviderFactory( $config );
+	},
 
-	'MobileFrontend.UserModes' => static function ( MediaWikiServices $services ) {
+	'MobileFrontend.UserModes' => function ( MediaWikiServices $services ) {
 		$modes = new UserModes();
 		/** @var MobileContext $context */
 		$context = $services->getService( 'MobileFrontend.Context' );
@@ -24,7 +30,7 @@ return [
 		$modes->registerMode( $services->getService( 'MobileFrontend.AMC.UserMode' ) );
 		return $modes;
 	},
-	'MobileFrontend.FeaturesManager' => static function ( MediaWikiServices $services ) {
+	'MobileFrontend.FeaturesManager' => function ( MediaWikiServices $services ) {
 		$config = $services->getService( 'MobileFrontend.Config' );
 		$userModes = $services->getService( 'MobileFrontend.UserModes' );
 
@@ -45,35 +51,33 @@ return [
 			$config->get( 'MFUseDesktopSpecialHistoryPage' ) ) );
 		$manager->registerFeature( new Feature( 'MFUseDesktopSpecialWatchlistPage', 'mobile-frontend',
 			$config->get( 'MFUseDesktopSpecialWatchlistPage' ) ) );
-		$manager->registerFeature( new Feature( 'MFUseDesktopContributionsPage', 'mobile-frontend',
-			$config->get( 'MFUseDesktopContributionsPage' ) ) );
 
 		$manager->useHookToRegisterExtensionOrSkinFeatures();
 		return $manager;
 	},
-	'MobileFrontend.AMC.Manager' => static function ( MediaWikiServices $services ) {
+	'MobileFrontend.AMC.Manager' => function ( MediaWikiServices $services ) {
 		$config = $services->getService( 'MobileFrontend.Config' );
 		$context = $services->getService( 'MobileFrontend.Context' );
-		return new MobileFrontend\Amc\Manager( $config, $context );
+		return new MobileFrontend\AMC\Manager( $config, $context );
 	},
-	'MobileFrontend.AMC.UserMode' => static function ( MediaWikiServices $services ) {
-		return new MobileFrontend\Amc\UserMode(
+	'MobileFrontend.AMC.UserMode' => function ( MediaWikiServices $services ) {
+		return new MobileFrontend\AMC\UserMode(
 			$services->getService( 'MobileFrontend.AMC.Manager' ),
 			$services->getService( 'MobileFrontend.Context' )->getUser(),
 			$services->getUserOptionsLookup(),
 			$services->getUserOptionsManager()
 		);
 	},
-	'MobileFrontend.AMC.Outreach' => static function ( MediaWikiServices $services ) {
+	'MobileFrontend.AMC.Outreach' => function ( MediaWikiServices $services ) {
 		$config = $services->getService( 'MobileFrontend.Config' );
-		return new MobileFrontend\Amc\Outreach(
+		return new MobileFrontend\AMC\Outreach(
 			$services->getService( 'MobileFrontend.AMC.UserMode' ),
 			$services->getService( 'MobileFrontend.AMC.Manager' ),
 			$services->getService( 'MobileFrontend.Context' )->getUser(),
 			$config
 		);
 	},
-	'MobileFrontend.Context' => static function () {
+	'MobileFrontend.Context' => function () {
 		return MobileContext::singleton();
 	}
 ];
