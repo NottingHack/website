@@ -154,7 +154,7 @@ class HmsPasswordPrimaryAuthenticationProvider extends AbstractPrimaryAuthentica
     $this->writeMsg("userExists($username)");
     return true;
   }
-  
+
   public function onUserLoggedIn($user)
   {
     $this->writeMsg("onUserLoggedIn('" . $user->getName() . "')");
@@ -216,11 +216,11 @@ class HmsPasswordPrimaryAuthenticationProvider extends AbstractPrimaryAuthentica
     curl_setopt($ch, CURLOPT_POSTFIELDS, $query_string);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_FAILONERROR, TRUE);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4); // 4 second timeout 
-//  curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/RapidSSL_CA_bundle.pem'); 
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4); // 4 second timeout
+//  curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/RapidSSL_CA_bundle.pem');
 //  curl_setopt($ch, CURLOPT_CAINFO, '/home/nottinghack/public_wiki/extensions/HMSAuth/cacert.pem');
     curl_setopt($ch, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);
-    curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, TRUE); 
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, TRUE);
 
     $result = curl_exec($ch);
     if ($result == FALSE)
@@ -236,7 +236,7 @@ class HmsPasswordPrimaryAuthenticationProvider extends AbstractPrimaryAuthentica
     return $res;
   }
 
-  function writeMsg($sMsg) 
+  function writeMsg($sMsg)
   {
     if ($this->debug)
     {
