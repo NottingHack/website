@@ -147,8 +147,6 @@ $wgRightsIcon = "https://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 
 wfLoadSkin( 'Vector' );
 wfLoadSkin( 'MonoBook' );
-wfLoadSkin( 'Modern' );
-wfLoadSkin( 'CologneBlue' );
 wfLoadSkin( 'MinervaNeue' );
 $wgDefaultSkin = 'minerva';
 # To remove various skins from the User Preferences choices
