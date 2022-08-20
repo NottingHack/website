@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Esketti",
+			"Siebrand"
+		]
+	},
+	"mobiledetect-desc": "Detecteert mobiele apparaten en maakt het mogelijk in ieder geval de zichtbare inhoud te bepalen met de labels &lt;nomobile&gt; en &lt;mobileonly&gt;"
+}

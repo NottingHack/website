@@ -148,7 +148,16 @@ $wgRightsIcon = "https://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 wfLoadSkin( 'Vector' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'MinervaNeue' );
-$wgDefaultSkin = 'minerva';
+#$wgDefaultSkin = 'minerva';
+# Set default theme depending on browser
+wfLoadExtension( 'MobileDetect' );
+$mobile = wfMobileDetect();
+if ( $mobile ) {
+    $wgDefaultSkin = "chick"; # If mobile
+} else {
+    $wgDefaultSkin = "vector"; # If not mobile
+}
+
 # To remove various skins from the User Preferences choices
 $wgSkipSkins = array("modern", "chick", "cologneblue", "myskin", "nostalgia", "simple", "standard");
 
@@ -333,6 +342,9 @@ wfLoadExtension( 'CSS' );
 
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );
+
+# Adding Mobile Detect extension
+wfLoadExtension( 'MobileDetect' );
 
 $wgGroupPermissions['*']['autocreateaccount'] = true;
 $wgAuthManagerAutoConfig['primaryauth'] = [
