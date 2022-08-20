@@ -150,6 +150,7 @@ wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'MinervaNeue' );
 #$wgDefaultSkin = 'minerva';
 # Set default theme depending on browser
+# Adding Mobile Detect extension
 wfLoadExtension( 'MobileDetect' );
 $mobile = wfMobileDetect();
 if ( $mobile ) {
@@ -343,8 +344,6 @@ wfLoadExtension( 'CSS' );
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );
 
-# Adding Mobile Detect extension
-wfLoadExtension( 'MobileDetect' );
 
 $wgGroupPermissions['*']['autocreateaccount'] = true;
 $wgAuthManagerAutoConfig['primaryauth'] = [
