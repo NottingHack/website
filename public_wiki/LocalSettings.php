@@ -151,10 +151,10 @@ wfLoadSkin( 'MinervaNeue' );
 $wgDefaultSkin = 'vector';
 
 # Adding Mobile Detect extension
-wfLoadExtension( 'MobileDetect' );
+require_once "$IP/extensions/MobileDetect/MobileDetect.php";
 
 # Update default theme depending on browser
-if (wfMobileDetect()) {
+if (mobiledetect()) {
     $wgDefaultSkin = 'minerva'; # switch if mobile
 }
 # To remove various skins from the User Preferences choices
