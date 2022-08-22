@@ -148,17 +148,15 @@ $wgRightsIcon = "https://i.creativecommons.org/l/by-sa/3.0/88x31.png";
 wfLoadSkin( 'Vector' );
 wfLoadSkin( 'MonoBook' );
 wfLoadSkin( 'MinervaNeue' );
-#$wgDefaultSkin = 'minerva';
-# Set default theme depending on browser
+$wgDefaultSkin = 'vector';
+
 # Adding Mobile Detect extension
 wfLoadExtension( 'MobileDetect' );
-$mobile = wfMobileDetect();
-if ( $mobile ) {
-    $wgDefaultSkin = "chick"; # If mobile
-} else {
-    $wgDefaultSkin = "vector"; # If not mobile
-}
 
+# Update default theme depending on browser
+if (wfMobileDetect()) {
+    $wgDefaultSkin = 'minerva'; # switch if mobile
+}
 # To remove various skins from the User Preferences choices
 $wgSkipSkins = array("modern", "chick", "cologneblue", "myskin", "nostalgia", "simple", "standard");
 
