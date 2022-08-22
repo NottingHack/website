@@ -342,7 +342,6 @@ wfLoadExtension( 'CSS' );
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );
 
-
 $wgGroupPermissions['*']['autocreateaccount'] = true;
 $wgAuthManagerAutoConfig['primaryauth'] = [
 	MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
