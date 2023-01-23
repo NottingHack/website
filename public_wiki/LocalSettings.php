@@ -17,9 +17,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 /*
 if( defined( 'MW_INSTALL_PATH' ) ) {
-	$IP = MW_INSTALL_PATH;
+    $IP = MW_INSTALL_PATH;
 } else {
-	$IP = dirname( __FILE__ );
+    $IP = dirname( __FILE__ );
 }
 */
 // Import settings that are not safe to put into Git
@@ -32,9 +32,9 @@ set_include_path( implode( PATH_SEPARATOR, $path ) . PATH_SEPARATOR . get_includ
 //require_once( "$IP/includes/DefaultSettings.php" );
 
 if ( $wgCommandLineMode ) {
-	if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
-		die( "This script must be run from the command line\n" );
-	}
+    if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
+        die( "This script must be run from the command line\n" );
+    }
 }
 
 $wgShellLocale = "en_GB.utf8";
@@ -133,8 +133,8 @@ $wgEmailAuthentication = true;
 
 $wgLogo             = "/logo/nottinghack_with_white.png";
 $wgLogoHD = [
-	"2x" => "/logo/nottinghack_with_white@2x.png",
-	"3x" => "/logo/nottinghack_with_white@2x.png"
+    "2x" => "/logo/nottinghack_with_white@2x.png",
+    "3x" => "/logo/nottinghack_with_white@2x.png"
 ];
 
 $wgUseTeX           = true;
@@ -183,24 +183,23 @@ $wgSVGConverter = 'ImageMagick';
 
 # need to allow zips, as sh3d is a zip!
 $wgMimeTypeBlacklist = array(
-							 # HTML may contain cookie-stealing JavaScript and web bugs
-							 'text/html', 'text/javascript', 'text/x-javascript',  'application/x-shellscript',
-							 # PHP scripts may execute arbitrary code on the server
-							 'application/x-php', 'text/x-php',
-							 # Other types that may be interpreted by some servers
-							 'text/x-python', 'text/x-perl', 'text/x-bash', 'text/x-sh', 'text/x-csh',
-							 # Client-side hazards on Internet Explorer
-							 'text/scriptlet', 'application/x-msdownload',
-							 # Windows metafile, client-side vulnerability on some systems
-							 'application/x-msmetafile',
-							 # A ZIP file may be a valid Java archive containing an applet which exploits the
-							 # same-origin policy to steal cookies
-							 #'application/zip',
-							 # MS Office OpenXML and other Open Package Conventions files are zip files
-							 # and thus blacklisted just as other zip files
-							 'application/x-opc+zip',
-							 );
-
+    # HTML may contain cookie-stealing JavaScript and web bugs
+    'text/html', 'text/javascript', 'text/x-javascript',  'application/x-shellscript',
+    # PHP scripts may execute arbitrary code on the server
+    'application/x-php', 'text/x-php',
+    # Other types that may be interpreted by some servers
+    'text/x-python', 'text/x-perl', 'text/x-bash', 'text/x-sh', 'text/x-csh',
+    # Client-side hazards on Internet Explorer
+    'text/scriptlet', 'application/x-msdownload',
+    # Windows metafile, client-side vulnerability on some systems
+    'application/x-msmetafile',
+    # A ZIP file may be a valid Java archive containing an applet which exploits the
+    # same-origin policy to steal cookies
+    #'application/zip',
+    # MS Office OpenXML and other Open Package Conventions files are zip files
+    # and thus blacklisted just as other zip files
+    'application/x-opc+zip',
+);
 
 /*
  +------------------------------+
@@ -227,57 +226,57 @@ $wgExtraNamespaces[NH_NS_TEAM] = "Team";
 $wgExtraNamespaces[NH_NS_TEAM_TALK] = "Team_talk";
 
 $wgNamespacesToBeSearchedDefault = array(
-	NS_MAIN				=>	true,
-	NS_TALK				=>	false,
-	NS_USER				=>	true,
-	NS_USER_TALK		=>	false,
-	NS_PROJECT			=>	false,
-	NS_PROJECT_TALK		=>	false,
-	NS_FILE				=>	false,
-	NS_FILE_TALK		=>	false,
-	NS_MEDIAWIKI		=>	false,
-	NS_MEDIAWIKI_TALK	=>	false,
-	NS_TEMPLATE			=>	false,
-	NS_TEMPLATE_TALK	=>	false,
-	NS_HELP				=>	false,
-	NS_HELP_TALK		=>	false,
-	NS_CATEGORY			=>	false,
-	NS_CATEGORY_TALK	=>	false,
-	NH_NS_PROJECT		=>	true,
-	NH_NS_PROJECT_TALK	=>	false,
-	NH_NS_GROUP			=>	true,
-	NH_NS_GROUP_TALK	=>	false,
-	NH_NS_LIBRARY		=>	true,
-	NH_NS_LIBRARY_TALK	=>	false,
-	NH_NS_TEAM		=>	true,
-	NH_NS_TEAM_TALK		=>	false
+    NS_MAIN             =>  true,
+    NS_TALK             =>  false,
+    NS_USER             =>  true,
+    NS_USER_TALK        =>  false,
+    NS_PROJECT          =>  false,
+    NS_PROJECT_TALK     =>  false,
+    NS_FILE             =>  false,
+    NS_FILE_TALK        =>  false,
+    NS_MEDIAWIKI        =>  false,
+    NS_MEDIAWIKI_TALK   =>  false,
+    NS_TEMPLATE         =>  false,
+    NS_TEMPLATE_TALK    =>  false,
+    NS_HELP             =>  false,
+    NS_HELP_TALK        =>  false,
+    NS_CATEGORY         =>  false,
+    NS_CATEGORY_TALK    =>  false,
+    NH_NS_PROJECT       =>  true,
+    NH_NS_PROJECT_TALK  =>  false,
+    NH_NS_GROUP         =>  true,
+    NH_NS_GROUP_TALK    =>  false,
+    NH_NS_LIBRARY       =>  true,
+    NH_NS_LIBRARY_TALK  =>  false,
+    NH_NS_TEAM      =>  true,
+    NH_NS_TEAM_TALK     =>  false
 );
 
 $wgNamespacesWithSubpages = array(
-	NS_MAIN				=>	true,
-	NS_TALK				=>	false,
-	NS_USER				=>	true,
-	NS_USER_TALK		=>	false,
-	NS_PROJECT			=>	false,
-	NS_PROJECT_TALK		=>	false,
-	NS_FILE				=>	false,
-	NS_FILE_TALK		=>	false,
-	NS_MEDIAWIKI		=>	false,
-	NS_MEDIAWIKI_TALK	=>	false,
-	NS_TEMPLATE			=>	false,
-	NS_TEMPLATE_TALK	=>	false,
-	NS_HELP				=>	false,
-	NS_HELP_TALK		=>	false,
-	NS_CATEGORY			=>	false,
-	NS_CATEGORY_TALK	=>	false,
-	NH_NS_PROJECT		=>	true,
-	NH_NS_PROJECT_TALK	=>	false,
-	NH_NS_GROUP			=>	true,
-	NH_NS_GROUP_TALK	=>	false,
-	NH_NS_LIBRARY		=>	true,
-	NH_NS_LIBRARY_TALK	=>	false,
-	NH_NS_TEAM		    =>	true,
-	NH_NS_TEAM_TALK		=>	false
+    NS_MAIN             =>  true,
+    NS_TALK             =>  false,
+    NS_USER             =>  true,
+    NS_USER_TALK        =>  false,
+    NS_PROJECT          =>  false,
+    NS_PROJECT_TALK     =>  false,
+    NS_FILE             =>  false,
+    NS_FILE_TALK        =>  false,
+    NS_MEDIAWIKI        =>  false,
+    NS_MEDIAWIKI_TALK   =>  false,
+    NS_TEMPLATE         =>  false,
+    NS_TEMPLATE_TALK    =>  false,
+    NS_HELP             =>  false,
+    NS_HELP_TALK        =>  false,
+    NS_CATEGORY         =>  false,
+    NS_CATEGORY_TALK    =>  false,
+    NH_NS_PROJECT       =>  true,
+    NH_NS_PROJECT_TALK  =>  false,
+    NH_NS_GROUP         =>  true,
+    NH_NS_GROUP_TALK    =>  false,
+    NH_NS_LIBRARY       =>  true,
+    NH_NS_LIBRARY_TALK  =>  false,
+    NH_NS_TEAM          =>  true,
+    NH_NS_TEAM_TALK     =>  false
 );
 
 
@@ -342,36 +341,38 @@ wfLoadExtension( 'CSS' );
 # Adding HMS auth extension
 wfLoadExtension( 'AuthHMS' );
 
+require_once( "/home/nottinghack/www_secure/HMSAuthSecret.php" );
+
 $wgGroupPermissions['*']['autocreateaccount'] = true;
 $wgAuthManagerAutoConfig['primaryauth'] = [
-	MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
-		'class' => MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class,
-		'args' => [
-		[
-			// Last one should be authoritative, or else the user will get
-			// a less-than-helpful error message (something like "supplied
-			// authentication info not supported" rather than "wrong
-			// password") if it too fails.
-				'authoritative' => false //,
-				//'loginOnly' => true
-			]
-		],
-		'sort' => 10,
-	],
-	MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class => [
-		'class' => MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class,
-		'args' => [
-			[
-				 'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
-				 'secret'        => 'zklWx467WSd32x',
-				 'salt'          => '$1$rwioejrikjxcv29xkmfcx$',
-				 'debug'         => false,
-				 'log_file'      => '/home/nottinghack/public_wiki/extensions/AuthHMS/wikiauth.log',
-				 'authoritative' => true
-			]
-		],
-		'sort' => 100,
-	]
+    MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
+        'class' => MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class,
+        'args' => [
+            [
+                // Last one should be authoritative, or else the user will get
+                // a less-than-helpful error message (something like "supplied
+                // authentication info not supported" rather than "wrong
+                // password") if it too fails.
+                'authoritative' => false //,
+                //'loginOnly' => true
+            ]
+        ],
+        'sort' => 10,
+    ],
+    MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class => [
+        'class' => MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class,
+        'args' => [
+            [
+                'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
+                'secret'        => $auth_hms_secret,
+                'salt'          => $auth_hms_salt,
+                'debug'         => false,
+                'log_file'      => '/home/nottinghack/public_wiki/extensions/AuthHMS/wikiauth.log',
+                'authoritative' => true
+            ]
+        ],
+        'sort' => 100,
+    ]
 ];
 
 # Adding AppleTouchIcon extension
