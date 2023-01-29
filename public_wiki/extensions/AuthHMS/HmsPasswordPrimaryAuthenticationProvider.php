@@ -12,7 +12,7 @@ use Wikimedia\Rdbms\IDatabase;
  *
  * @file
  * @ingroup   Extensions
- * @version   0.1.0
+ * @version   0.2.0
  * @author    Daniel Swann, Matt Lloyd
  * @copyright © 2023 Daniel Swann, Matt Lloyd
  * @licence   MIT
@@ -229,7 +229,7 @@ class HmsPasswordPrimaryAuthenticationProvider extends AbstractPrimaryAuthentica
     private function writeMsg($sMsg)
     {
         if ($this->debug) {
-            $sOutput = date('M d H:i:s') . ': ' . $sMsg . '\n';
+            $sOutput = date('M d H:i:s') . ': ' . $sMsg . "\n";
             file_put_contents($this->log_file, $sOutput, FILE_APPEND);
         }
     }
