@@ -363,10 +363,11 @@ $wgAuthManagerAutoConfig['primaryauth'] = [
         'class' => MediaWiki\Auth\HmsPasswordPrimaryAuthenticationProvider::class,
         'args' => [
             [
-                'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
+                // 'hms_url'       => 'https://lspace.nottinghack.org.uk/wiki/wikiauth.php',
+                'hms_url'       => 'https://hms.nottinghack.org.uk/api/mw-auth-hms',
                 'secret'        => $auth_hms_secret,
                 'salt'          => $auth_hms_salt,
-                'debug'         => false,
+                'debug'         => true,
                 'log_file'      => '/home/nottinghack/public_wiki/extensions/AuthHMS/wikiauth.log',
                 'authoritative' => true
             ]
