@@ -115,7 +115,8 @@ $wgDiff3 = "/usr/bin/diff3";
 */
 
 $wgEnableEmail      = true;
-$wgEnableUserEmail  = true; //UPO
+$wgEnableUserEmail  = false; //UPO
+$wgUserEmailUseReplyTo = true;
 
 $wgEmergencyContact = "webmaster@nottinghack.org.uk";
 $wgPasswordSender = "webmaster@nottinghack.org.uk";
@@ -124,6 +125,15 @@ $wgEnotifUserTalk = true; //UPO
 $wgEnotifWatchlist = true; //UPO
 $wgEmailAuthentication = true;
 
+$wgSMTP = [
+    'host'      => 'tls://andromeda.lwk.me', // could also be an IP address. Where the SMTP server is located. If using SSL or TLS, add the prefix "ssl://" or "tls://".
+    'IDHost'    => 'wiki.nottinghack.org.uk',      // Generally this will be the domain name of your website (aka mywiki.org)
+    'localhost' => 'nottinghack.org.uk',      // Same as IDHost above; required by some mail servers
+    'port'      => 587,                // Port to use when connecting to the SMTP server
+    'auth'      => true,               // Should we use SMTP authentication (true or false)
+    'username'  => $smtp_username,     // Username to use for SMTP authentication (if being used)
+    'password'  => $smtp_password       // Password to use for SMTP authentication (if being used)
+];
 
 /*
  +------------------------------+
