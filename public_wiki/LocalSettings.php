@@ -141,10 +141,12 @@ $wgSMTP = [
  +------------------------------+
 */
 
+
 $wgLogo             = "/logo/nottinghack_with_white.png";
-$wgLogoHD = [
-    "2x" => "/logo/nottinghack_with_white@2x.png",
-    "3x" => "/logo/nottinghack_with_white@2x.png"
+$wgLogos = [
+    '1x' => "/logo/nottinghack_with_white.png",
+    '2x' => "/logo/nottinghack_with_white@2x.png",
+    // 'svg' => "path/to/svg_version.svg"
 ];
 
 $wgUseTeX           = true;
