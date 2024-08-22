@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Dj",
 			"Glanthor Reviol",
-			"Tacsipacsi",
-			"Ajeje Brazorf"
+			"Tacsipacsi"
 		]
 	},
 	"widgets-desc": "Lehetővé teszi a wiki adminisztrátorainak, hogy kötetlen alakú minialkalmazásokat adjanak a wikihez lapok szerkesztésével a(z) {{ns:widget}} névtérben. Közösség által fejlesztett minialkalmazások a [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] oldalon találhatók.",

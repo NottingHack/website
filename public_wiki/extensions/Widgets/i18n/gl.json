@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Toliño"
 		]
 	},
 	"widgets-desc": "Permite aos administradores do wiki engadir widgets ao editar páxinas no espazo de nomes \"{{ns:widget}}\".\nPódense atopar os widgets desenvolvidos para a comunidade en [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",

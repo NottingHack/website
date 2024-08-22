@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bennylin",
-			"Irwangatot",
 			"Ajeje Brazorf",
-			"Daud I.F. Argana"
+			"Bennylin",
+			"Daud I.F. Argana",
+			"Irwangatot"
 		]
 	},
 	"widgets-desc": "Mengizinkan pengurus wiki untuk menambahkan ''free-form widget'' ke wiki dengan menyunting halaman di ruang nama {{ns:widget}}.\nWidget (gawai) kontribusi komunitas dapat ditemukan di [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",

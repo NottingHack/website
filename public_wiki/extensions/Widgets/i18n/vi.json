@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Minh Nguyen",
-			"Prenn",
-			"Ajeje Brazorf"
+			"Prenn"
 		]
 	},
 	"widgets-desc": "Cho phép các bảo quản viên wiki thêm tiện ích vào wiki bằng cách sửa đổi trang trong không gian tên {{ns:widget}}.\nCó thể lấy thêm tiện ích do cộng đồng đóng góp tại [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].",

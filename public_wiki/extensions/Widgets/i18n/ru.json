@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"G0rn",
 			"Okras",
 			"Vlad5250",
-			"Александр Сигачёв",
-			"Ajeje Brazorf"
+			"Александр Сигачёв"
 		]
 	},
 	"widgets-desc": "Позволяет администраторам вики добавлять различные виджеты, посредством редактирования страниц пространства имён {{ns:widget}}. Поддерживаемые сообществом виджеты можно найти на [https://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].",

@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Danmichaelo",
 			"Jon Harald Søby",
-			"Nghtwlkr",
-			"Ajeje Brazorf"
+			"Nghtwlkr"
 		]
 	},
 	"widgets-desc": "Tillater wikiadministratorer å legge til fri-form skjermelement til wikien ved å redigere siden innen {{ns:widget}}-navnerommet.\nFellesskaps-bidratte skjermelement kan finnes på [http://mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
@@ -14,6 +14,7 @@
 	"grouppage-widgeteditor": "{{ns:project}}:Bidragsytere for skjermelement",
 	"action-editwidgets": "opprette og redigere widgeter",
 	"right-editwidgets": "Lag og rediger [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:Widgets skjermelement] i <code>{{ns:widget}}</code>-navnerommet",
+	"grant-editwidgets": "Opprette og redigere widgeter",
 	"widgets-config-useflaggedrevs": "Sett denne til true for å bruke FlaggedRevs-utvidelsens stabile versjon for widgetsikkerhet",
 	"widgets-config-compiledir": "Sett en standardmappe for lagring av kompilerte maler"
 }

@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Beta16",
 			"Civvì",
 			"Darth Kule",
-			"Nemo bis",
-			"Ajeje Brazorf"
+			"Nemo bis"
 		]
 	},
 	"widgets-desc": "Permette agli amministratori del sito di aggiungere widget liberi al sito modificando pagine nel namespace {{ns:widget}}.\nWidget creati dalla comunità possono essere trovati su [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",

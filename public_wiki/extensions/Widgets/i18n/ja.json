@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Fryed-peach",
 			"Iwai.masaharu",
 			"Shirayuki",
 			"Whym",
-			"青子守歌",
-			"Ajeje Brazorf"
+			"青子守歌"
 		]
 	},
 	"widgets-desc": "管理者が「{{ns:widget}}」名前空間内のページを編集し、ウィキに自由な形式のウィジェットを追加できるようにする。\nコミュニティが提供しているウィジェットは [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] にある",

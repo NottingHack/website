@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu",
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Xuacu"
 		]
 	},
 	"widgets-desc": "Permite a los alministradores de la wiki amestar widgets de mou llibre editando páxines del espaciu de nomes \"{{ns:widget}}\".\nPuen alcontrase widgets fechos pola comunidá en [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",

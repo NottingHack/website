@@ -1,6 +1,6 @@
 {
 	"name": "Widgets",
-	"version": "1.4.1",
+	"version": "1.5.0",
 	"author": [
 		"[https://www.sergeychernyshev.com Sergey Chernyshev]",
 		"Yaron Koren",
@@ -11,7 +11,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "parserhook",
 	"requires": {
-		"MediaWiki": ">= 1.30.0"
+		"MediaWiki": ">= 1.35.0"
 	},
 	"config": {
 		"WidgetsUseFlaggedRevs": {
@@ -45,9 +45,6 @@
 		"ParserFirstCallInit": "WidgetInitializer::initParserFunctions",
 		"ParserAfterTidy": "WidgetRenderer::outputCompiledWidget"
 	},
-	"ExtensionFunctions": [
-		"WidgetRenderer::initRandomString"
-	],
 	"AvailableRights": [
 		"editwidgets"
 	],
@@ -59,6 +56,11 @@
 			"editwidgets": true
 		},
 		"sysop": {
+			"editwidgets": true
+		}
+	},
+	"GrantPermissions": {
+		"editwidgets": {
 			"editwidgets": true
 		}
 	},
@@ -74,7 +76,8 @@
 	"AutoloadClasses": {
 		"WidgetInitializer": "WidgetInitializer.php",
 		"WidgetRenderer": "WidgetRenderer.php",
-		"WidgetSecurity": "WidgetSecurity.php"
+		"WidgetSecurity": "WidgetSecurity.php",
+		"SmartyResourceWiki": "SmartyResourceWiki.php"
 	},
 	"callback": "WidgetInitializer::init",
 	"load_composer_autoloader": true,

@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Geraki",
 			"Lou",
 			"Omnipaedista",
 			"Protnet",
-			"ZaDiak",
-			"Ajeje Brazorf"
+			"ZaDiak"
 		]
 	},
 	"widgets-desc": "Επιτρέπει στους διαχειριστές του wiki να προσθέτουν ελεύθερης μορφής widget στο wiki μέσω επεξεργασίας σελίδων στο χώρο ονομάτων {{ns:widget}}.\nWidget φτιαγμένα από την κοινότητα μπορούν να βρεθούν στο [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",

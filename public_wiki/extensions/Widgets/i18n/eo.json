@@ -2,9 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Airon90",
+			"Ajeje Brazorf",
 			"DannyS712",
-			"Robin van der Vliet",
-			"Ajeje Brazorf"
+			"Robin van der Vliet"
 		]
 	},
 	"widgets-error": "Eraro en [[{{ns:widget}}:$1|fenestraĵo $1]]",

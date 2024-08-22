@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby",
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Robby"
 		]
 	},
 	"widgets-error": "Feeler an [[{{ns:widget}}:$1|widget $1]]",

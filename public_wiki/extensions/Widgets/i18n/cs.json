@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Kuvaly",
 			"Matěj Grabovský",
 			"Mormegil",
-			"Reaperman",
-			"Ajeje Brazorf"
+			"Reaperman"
 		]
 	},
 	"widgets-desc": "Umožňuje správcům wiki přidávat na wiki ovládací prvky úpravou stránek ve jmenném prostoru {{ns:widget}}.\nPrvky vytvořené komunitou lze nalézt na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
