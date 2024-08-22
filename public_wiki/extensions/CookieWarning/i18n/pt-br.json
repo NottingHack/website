@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
+		]
+	},
+	"cookiewarning-info": "Cookies nos ajudam a entregar nossos serviços. Ao usar nossos serviços, você concorda com o uso de cookies.",
+	"cookiewarning-desc": "Fornece um aviso no topo da página sobre cookies.",
+	"cookiewarning-moreinfo-label": "Mais informações",
+	"cookiewarning-ok-label": "OK"
+}
