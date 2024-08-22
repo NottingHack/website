@@ -341,6 +341,7 @@ wfLoadExtension( 'Renameuser' );
 
 # Adding Category Sort Headers extension
 require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
+wfLoadExtension( 'CategorySortHeaders' );
 
 # Adding MagicNumberedHeadings extension
 //require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
