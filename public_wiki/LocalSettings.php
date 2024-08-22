@@ -340,7 +340,7 @@ $wgDefaultUserOptions['usenavigabletoc'] = 0;
 wfLoadExtension( 'Renameuser' );
 
 # Adding Category Sort Headers extension
-require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
+#require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
 wfLoadExtension( 'CategorySortHeaders' );
 
 # Adding MagicNumberedHeadings extension
