@@ -144,9 +144,9 @@ $wgSMTP = [
 
 $wgLogo             = "/logo/nottinghack_with_white.png";
 $wgLogos = [
-    '1x' => "/logo/nottinghack_with_white.png",
-    '2x' => "/logo/nottinghack_with_white@2x.png",
-    // 'svg' => "path/to/svg_version.svg"
+    '1x' => "logo/nottinghack_with_white.png",
+    '2x' => "logo/nottinghack_with_white@2x.png",
+    'svg' => "logo/nottinghack_with_white.svg"
 ];
 
 $wgUseTeX           = true;
@@ -401,6 +401,7 @@ wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'ImageMap' );
 
 # Adding EmbedVVideo https://www.mediawiki.org/wiki/Extension:EmbedVideo
+# HMS: Space Access
 wfLoadExtension( 'EmbedVideo' );
 
 # not working with 1.35
