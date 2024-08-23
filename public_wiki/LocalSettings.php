@@ -404,7 +404,7 @@ wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'ImageMap' );
 
 # Adding EmbedVVideo https://www.mediawiki.org/wiki/Extension:EmbedVideo
-// wfLoadExtension( 'EmbedVideo' );
+wfLoadExtension( 'EmbedVideo' );
 
 # not working with 1.35
 // wfLoadExtension( 'MobileFrontend' );
