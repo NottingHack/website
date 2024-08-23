@@ -346,7 +346,7 @@ wfLoadExtension( 'CategorySortHeaders' );
 # Adding MagicNumberedHeadings extension
 //require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
 // Trying my own
-require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
+// require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
 
 # Adding CSS extension
 wfLoadExtension( 'CSS' );
@@ -360,6 +360,9 @@ $wgGroupPermissions['*']['autocreateaccount'] = true;
 $wgAuthManagerAutoConfig['primaryauth'] = [
     MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
         'class' => MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class,
+        'services' => [
+            'DBLoadBalancer',
+        ],
         'args' => [
             [
                 // Last one should be authoritative, or else the user will get
@@ -401,8 +404,7 @@ wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'ImageMap' );
 
 # Adding EmbedVVideo https://www.mediawiki.org/wiki/Extension:EmbedVideo
-# HMS: Space Access
-wfLoadExtension( 'EmbedVideo' );
+// wfLoadExtension( 'EmbedVideo' );
 
 # not working with 1.35
 // wfLoadExtension( 'MobileFrontend' );
