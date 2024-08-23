@@ -309,7 +309,7 @@ wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 wfLoadExtension( 'Poem');
 
 # Adding Widgets extension
-require_once("$IP/extensions/Widgets/Widgets.php");
+wfLoadExtension( 'Widgets' );
 $wgGroupPermissions['sysop']['editwidgets'] = true;
 
 # Adding SpecialInterwiki extension
