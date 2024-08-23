@@ -361,7 +361,7 @@ $wgAuthManagerAutoConfig['primaryauth'] = [
     MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class => [
         'class' => MediaWiki\Auth\LocalPasswordPrimaryAuthenticationProvider::class,
         'services' => [
-            'DBLoadBalancer',
+            'DBLoadBalancerFactory',
         ],
         'args' => [
             [
