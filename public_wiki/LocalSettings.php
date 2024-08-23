@@ -343,11 +343,6 @@ wfLoadExtension( 'Renameuser' );
 #require_once "$IP/extensions/CategorySortHeaders/CategorySortHeaders.php";
 wfLoadExtension( 'CategorySortHeaders' );
 
-# Adding MagicNumberedHeadings extension
-//require_once($IP.'/extensions/MagicNumberedHeadings/MagicNumberedHeadings.php');
-// Trying my own
-// require_once($IP.'/extensions/MagicNumberedHeadings_NH/MagicNumberedHeadings.php');
-
 # Adding CSS extension
 wfLoadExtension( 'CSS' );
 
