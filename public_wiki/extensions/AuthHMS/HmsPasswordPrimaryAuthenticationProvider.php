@@ -32,7 +32,8 @@ class HmsPasswordPrimaryAuthenticationProvider extends AbstractPrimaryAuthentica
     public function __construct($params = [])
     {
         $this->writeMsg('__construct');
-        \Hooks::register('UserLoggedIn', [$this, 'onUserLoggedIn']);
+        $hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+        $hookContainer->register('UserLoggedIn', [$this, 'onUserLoggedIn']);
 
         $this->hms_url  = $params['hms_url'];
         $this->secret   = $params['secret'];
