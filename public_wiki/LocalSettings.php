@@ -213,7 +213,7 @@ $wgMimeTypeBlacklist = array(
     'application/x-opc+zip',
 );
 
-# explicitly allow the MIME type for DOCS files. This is a recommended but optional setting. However, given the 
+# explicitly allow the MIME type for DOCX files. This is a recommended but optional setting. However, given the 
 # list of explicit blocks above, it seems sensible to add it.
 $wgTrustedMediaFormats[] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
