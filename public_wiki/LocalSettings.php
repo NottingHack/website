@@ -187,7 +187,7 @@ $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # File Extensions allowed for upload
-$wgFileExtensions = array('png', 'gif', 'pde', 'jpg', 'jpeg', 'pdf', 'sh3d', 'psd', 'svg', 'zip', 'odp', 'pem', 'key', 'mp4', 'm4v', 'odt', 'ods', 'odg');
+$wgFileExtensions = array('png', 'gif', 'pde', 'jpg', 'jpeg', 'pdf', 'sh3d', 'psd', 'svg', 'zip', 'odp', 'pem', 'key', 'mp4', 'm4v', 'odt', 'ods', 'odg', 'docx');
 
 #If issues with JavaScript fasle positive uncomment
 # $wgAllowTitlesInSVG = true;
@@ -212,6 +212,10 @@ $wgMimeTypeBlacklist = array(
     # and thus blacklisted just as other zip files
     'application/x-opc+zip',
 );
+
+# explicitly allow the MIME type for DOCX files. This is a recommended but optional setting. However, given the 
+# list of explicit blocks above, it seems sensible to add it.
+$wgTrustedMediaFormats[] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 
 /*
  +------------------------------+
