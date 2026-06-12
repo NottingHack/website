@@ -126,7 +126,7 @@ $wgEnotifWatchlist = true; //UPO
 $wgEmailAuthentication = true;
 
 $wgSMTP = [
-    'host'      => 'tls://andromeda.lwk.me', // could also be an IP address. Where the SMTP server is located. If using SSL or TLS, add the prefix "ssl://" or "tls://".
+    'host'      => 'andromeda.lwk.me', // could also be an IP address. Where the SMTP server is located. If using SSL or TLS, add the prefix "ssl://" or "tls://".
     'IDHost'    => 'wiki.nottinghack.org.uk',      // Generally this will be the domain name of your website (aka mywiki.org)
     'localhost' => 'nottinghack.org.uk',      // Same as IDHost above; required by some mail servers
     'port'      => 587,                // Port to use when connecting to the SMTP server
@@ -411,3 +411,6 @@ wfLoadExtension( 'EmbedVideo' );
 // $wgMinervaHistoryInPageActions['base'] = true;
 // $wgMinervaOverflowInPageActions['base'] = true;
 // $wgMinervaShowCategories['base'] = true;
+
+// Added by aaron feb2026 to accommodate anubis
+$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
